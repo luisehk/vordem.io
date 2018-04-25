@@ -1,0 +1,15 @@
+.git/
+.idea/
+.tmp/
+node_modules/
+npm-debug.log
+.env
+env/
+.static/
+.media/
+celerybeat*
+.cache
+.tox
+.tx
+__pycache__
+*.pyc

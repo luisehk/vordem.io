@@ -1,0 +1,64 @@
+version: '2'
+
+  ### data
+  db:
+    image: postgres:9.6
+    environment:
+      - POSTGRES_DB=1yiKPuNTJDnsLhRApQRrFH2QR
+      - POSTGRES_USER=lCoRG7vLQYZvQX1SUUFfgQXbj
+      - POSTGRES_PASSWORD=lkV8AWmeYCexiMGCFq0bleTFJ
+    volumes:
+      - /srv/learningco/postgres:/var/lib/postgresql/data
+
+  redis:
+    image: redis:3.2
+    volumes:
+      - /srv/learningco/redis:/data
+
+  cache:
+    image: redis:3.2
+    volumes:
+      - /srv/learningco/cache:/data
+
+
+  ### application
+  app: &app
+    build: docker/python
+    command: gunicorn -b 0.0.0.0:8000 learningco.wsgi:application --timeout 180 --workers 5 -k gevent --enable-stdio-inheritance --reload
+    env_file: .env
+    environment:
+      - DATABASE_URL=postgres://lCoRG7vLQYZvQX1SUUFfgQXbj:lkV8AWmeYCexiMGCFq0bleTFJ@db:5432/1yiKPuNTJDnsLhRApQRrFH2QR
+      - PYTHONUNBUFFERED=TRUE
+    links:
+      - db
+      - redis
+      - cache
+    volumes:
+      - .:/usr/src/app
+      - /srv/learningco/static:/usr/src/app/.static
+      - /srv/learningco/media:/usr/src/app/.media
+
+  worker:
+    <<: *app
+    command: celery worker --app=learningco.celery.app -B
+    ports: []
+
+
+  ### http
+  cdn:
+    build: docker/cdn
+    links:
+      - app
+    volumes:
+      - /srv/learningco/static:/usr/share/nginx/html/static:ro
+      - /srv/learningco/media:/usr/share/nginx/html/media:ro
+
+  proxy:
+    build: docker/proxy
+    ports:
+      - "80:80"
+    links:
+      - app
+      - cdn
+    volumes:
+      - /srv/learningco/certs:/data/certs

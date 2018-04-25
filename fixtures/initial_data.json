@@ -1,0 +1,52 @@
+[
+    {
+        "model": "sites.site",
+        "pk": 1,
+        "fields": {
+            "domain": "learningco.io",
+            "name": "learningco.io"
+        }
+    },
+    {
+        "model": "socialaccount.socialapp",
+        "pk": 1,
+        "fields": {
+            "provider": "facebook",
+            "name": "facebook_login",
+            "client_id": "FB",
+            "secret": "FB",
+            "key": "",
+            "sites": [
+                1
+            ]
+        }
+    },
+    {
+        "model": "socialaccount.socialapp",
+        "pk": 2,
+        "fields": {
+            "provider": "linkedin",
+            "name": "linkedin_login",
+            "client_id": "LI",
+            "secret": "LI",
+            "key": "",
+            "sites": [
+                1
+            ]
+        }
+    },
+    {
+        "model": "socialaccount.socialapp",
+        "pk": 3,
+        "fields": {
+            "provider": "twitter",
+            "name": "twitter_login",
+            "client_id": "TW",
+            "secret": "TW",
+            "key": "",
+            "sites": [
+                1
+            ]
+        }
+    }
+]

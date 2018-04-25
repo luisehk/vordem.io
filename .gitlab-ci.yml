@@ -1,0 +1,14 @@
+image: tmaier/docker-compose:latest
+
+services:
+  - docker:dind
+
+before_script:
+  - docker info
+  - docker-compose --version
+  - scripts/build.sh
+
+test:
+  script:
+    - scripts/migrate.sh
+    - scripts/test.sh
