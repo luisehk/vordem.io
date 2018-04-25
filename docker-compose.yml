@@ -57,7 +57,7 @@ services:
   proxy:
     build: docker/proxy
     ports:
-      - "80:80"
+      - "8000:80"
     links:
       - app
       - cdn
