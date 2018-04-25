@@ -1,0 +1,50 @@
+{% extends 'account/base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block content %}
+<section class="section">
+  <form action="{% url 'account_login' %}" method="POST">
+    {% csrf_token %}
+
+    <h1>Sign in</h1>
+    <p>
+      <input
+        type="text"
+        placeholder="Email"
+        name="login"
+        id="id_login" />
+    </p>
+
+    <p>
+      <input
+        type="password"
+        placeholder="Password"
+        name="password"
+        id="id_password" />
+    </p>
+
+    <p>
+      <button type="submit">Sign in</button>
+    </p>
+
+    <a href="{% url 'account_reset_password' %}">
+      Forgot my password
+    </a>
+
+    {% if form.non_field_errors or form.login.errors or form.password.errors %}
+      <div>
+        <ol>
+          {% for error in form.non_field_errors %}
+          <li>{{ error|escape }}</li>
+          {% endfor %} {% for error in form.login.errors %}
+          <li>{{ error|escape }}</li>
+          {% endfor %} {% for error in form.password.errors %}
+          <li>{{ error|escape }}</li>
+          {% endfor %}
+        </ol>
+      </div>
+    {% endif %}
+  </form>
+</section>
+{% endblock %}
