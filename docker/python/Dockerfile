@@ -21,5 +21,14 @@ RUN pip install -r requirements.txt --default-timeout 450
 VOLUME /usr/src/app
 WORKDIR /usr/src/app
 
+# install postgres-client
+RUN apt-get install -y postgresql-client
+
+# add wait-for-postgres script
+ADD wait-for-postgres.sh /root/
+RUN cat /root/wait-for-postgres.sh
+
 EXPOSE 8000
+
+ENTRYPOINT ["/root/wait-for-postgres.sh"]
 CMD ["gunicorn", "-b", "0.0.0.0:8000", "learningco.wsgi:application", "--reload", "--enable-stdio-inheritance"]
