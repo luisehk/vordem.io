@@ -5,6 +5,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 SECRET_KEY = os.environ.get('SECRET_KEY', 'this-is-a-development-key')
 DEBUG = os.environ.get('DEBUG', 'False').lower() == 'true'
+LOCAL = os.environ.get('LOCAL', 'False').lower() == 'true'
 ALLOWED_HOSTS = ['*']
 
 INSTALLED_APPS = [
@@ -157,7 +158,7 @@ DEBUG_TOOLBAR_PANELS = [
 ]
 
 # static and media files
-STATIC_URL = '/static/'
+STATIC_URL = '/static/' if not LOCAL else '/local-static/'
 STATIC_ROOT = os.path.join(BASE_DIR, '.static/')
 
 MEDIA_ROOT = os.path.join(BASE_DIR, '.media/')
