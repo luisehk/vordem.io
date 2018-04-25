@@ -44,7 +44,7 @@ def warm_user_profile_avatar(sender, **kwargs):
 def notify_user_creation(sender, **kwargs):
     if kwargs.get('created', False):
         user = kwargs.get('instance', None)
-        password = ''
+        password = ''  # nosec
 
         if not user.has_usable_password():
             # Disconnect signal to avoid transaction abortion
