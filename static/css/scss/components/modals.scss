@@ -1,0 +1,50 @@
+.modal-box {
+  max-width: 46.4rem;
+  margin: 1.6rem auto;
+  padding: 7rem 10rem 10rem;
+  color: $dark-yellow;
+  background-color: $yellow;
+  border-radius: .8rem;
+  box-shadow: 0 2px 4px 0 rgba(0,0,0,.5);
+
+  @media screen and (max-width: 464px) {
+    padding: 2.4rem;
+    margin: 0;
+    border-radius: 0;
+    min-height: 100vh;
+    box-shadow: none;
+	}
+
+  .primary-button {
+    font-size: 1.6rem;
+    margin-top: 3.2rem;
+    width: 100%;
+  }
+
+  .button + .primary-button {
+    margin-top: .8rem;
+  }
+
+  .classless-form {
+    p {
+      margin-bottom: .8rem;
+
+      input {
+        padding: .8rem;
+        color: $dark-yellow;
+        font-size: 1.6rem;
+        border: 0;
+        width: 100%;
+        margin: .8rem 0;
+      }
+    }
+  }
+
+  .blockLabels {
+    border: none;
+  }
+
+  .ctrlHolder {
+    margin: 1.6rem 0;
+  }
+}

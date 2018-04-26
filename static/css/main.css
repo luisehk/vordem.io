@@ -12,6 +12,16 @@ body {
   color: #666;
   background-color: #5A574E; }
 
+.page-title, .page-subtitle {
+  font-size: 2.4rem;
+  font-weight: 700;
+  margin: 1.6rem 0;
+  line-height: 1.2;
+  color: #fff; }
+
+.page-subtitle {
+  color: #7D6000; }
+
 .text-input {
   background-color: transparent;
   color: #7D6000;
@@ -25,16 +35,70 @@ body {
 .button {
   padding: 1.6rem 2.4rem;
   border-radius: .4rem;
-  display: block;
   border: none;
   cursor: pointer; }
+  .button-small {
+    padding: .8rem;
+    background-image: -webkit-linear-gradient(#ddd 0%, #A8A8A8 100%);
+    background-image: -o-linear-gradient(#ddd 0%, #A8A8A8 100%);
+    background-image: linear-gradient(#ddd 0%, #A8A8A8 100%); }
+  .button-full {
+    display: block;
+    text-align: center;
+    text-transform: uppercase;
+    width: 100%; }
 
 .primary-button {
-  background-color: #516173;
+  background: #516173;
   font-size: 1.8rem;
   color: #fff;
+  display: block;
   text-transform: uppercase;
   letter-spacing: 1px; }
+  .primary-button-small {
+    padding: .8rem; }
+
+.secondary-button {
+  font-weight: 700;
+  color: #246250;
+  background-image: -webkit-linear-gradient(#96C9BA 0%, #6DA995 100%);
+  background-image: -o-linear-gradient(#96C9BA 0%, #6DA995 100%);
+  background-image: linear-gradient(#96C9BA 0%, #6DA995 100%); }
+
+.modal-box {
+  max-width: 46.4rem;
+  margin: 1.6rem auto;
+  padding: 7rem 10rem 10rem;
+  color: #7D6000;
+  background-color: #EFB701;
+  border-radius: .8rem;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5); }
+  @media screen and (max-width: 464px) {
+    .modal-box {
+      padding: 2.4rem;
+      margin: 0;
+      border-radius: 0;
+      min-height: 100vh;
+      box-shadow: none; } }
+  .modal-box .primary-button {
+    font-size: 1.6rem;
+    margin-top: 3.2rem;
+    width: 100%; }
+  .modal-box .button + .primary-button {
+    margin-top: .8rem; }
+  .modal-box .classless-form p {
+    margin-bottom: .8rem; }
+    .modal-box .classless-form p input {
+      padding: .8rem;
+      color: #7D6000;
+      font-size: 1.6rem;
+      border: 0;
+      width: 100%;
+      margin: .8rem 0; }
+  .modal-box .blockLabels {
+    border: none; }
+  .modal-box .ctrlHolder {
+    margin: 1.6rem 0; }
 
 .login {
   font-size: 2.4rem;
@@ -58,7 +122,8 @@ body {
   .login .page-title {
     font-size: 2.4rem;
     font-weight: 700;
-    margin: 1.6rem 0; }
+    margin: 1.6rem 0;
+    color: #7D6000; }
   .login .logo + .page-title {
     margin-top: 4rem; }
   .login .text-input {
