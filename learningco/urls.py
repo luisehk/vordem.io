@@ -5,12 +5,10 @@ from django.conf.urls import url, include
 from allauth.account.views import confirm_email
 from learningco import settings  # noqa
 from learningco.apps.users.views import UserHome
-from . import admin
 
 
 urlpatterns = [
     # django defaults
-    url(r'^admin/', admin.site.urls),
     url(r'^accounts/', include('allauth.urls')),
 
     # REST framework and authentication
@@ -35,6 +33,7 @@ urlpatterns = [
     url(r'^users/', include(
         'learningco.apps.users.urls', namespace='users')),
 
+    # home
     url(r'^$', UserHome.as_view(), name='index'),
 ]
 

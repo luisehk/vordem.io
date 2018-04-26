@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+  {% for company in object_list %}
+    <p>{{ company.name }}</p>
+  {% empty %}
+    <p>No existe ninguna compañía.</p>
+  {% endfor %}
+{% endblock %}
