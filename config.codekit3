@@ -220,11 +220,11 @@
 		"oAP": "\/learningco\/apps\/admin\/__pycache__\/models.cpython-36.pyc",
 		"oF": 0
 		},
-	"\/learningco\/apps\/admin\/admin.py": {
+	"\/learningco\/apps\/admin\/__pycache__\/urls.cpython-36.pyc": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/learningco\/apps\/admin\/admin.py",
+		"oAP": "\/learningco\/apps\/admin\/__pycache__\/urls.cpython-36.pyc",
 		"oF": 0
 		},
 	"\/learningco\/apps\/admin\/apps.py": {
@@ -241,25 +241,515 @@
 		"oAP": "\/learningco\/apps\/admin\/migrations\/__init__.py",
 		"oF": 0
 		},
-	"\/learningco\/apps\/admin\/models.py": {
+	"\/learningco\/apps\/admin\/migrations\/__pycache__\/__init__.cpython-36.pyc": {
 		"cB": 0,
 		"ft": 8192,
-		"oA": 0,
-		"oAP": "\/learningco\/apps\/admin\/models.py",
+		"oA": 1,
+		"oAP": "\/learningco\/apps\/admin\/migrations\/__pycache__\/__init__.cpython-36.pyc",
 		"oF": 0
 		},
-	"\/learningco\/apps\/admin\/tests.py": {
+	"\/learningco\/apps\/admin\/models\/__init__.py": {
 		"cB": 0,
 		"ft": 8192,
-		"oA": 0,
-		"oAP": "\/learningco\/apps\/admin\/tests.py",
+		"oA": 1,
+		"oAP": "\/learningco\/apps\/admin\/models\/__init__.py",
 		"oF": 0
 		},
-	"\/learningco\/apps\/admin\/views.py": {
+	"\/learningco\/apps\/admin\/models\/__pycache__\/__init__.cpython-36.pyc": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 1,
+		"oAP": "\/learningco\/apps\/admin\/models\/__pycache__\/__init__.cpython-36.pyc",
+		"oF": 0
+		},
+	"\/learningco\/apps\/admin\/urls.py": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
-		"oAP": "\/learningco\/apps\/admin\/views.py",
+		"oAP": "\/learningco\/apps\/admin\/urls.py",
+		"oF": 0
+		},
+	"\/learningco\/apps\/admin\/views\/__init__.py": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 1,
+		"oAP": "\/learningco\/apps\/admin\/views\/__init__.py",
+		"oF": 0
+		},
+	"\/learningco\/apps\/admin\/views\/companies.py": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/learningco\/apps\/admin\/views\/companies.py",
+		"oF": 0
+		},
+	"\/learningco\/apps\/companies\/__init__.py": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 1,
+		"oAP": "\/learningco\/apps\/companies\/__init__.py",
+		"oF": 0
+		},
+	"\/learningco\/apps\/companies\/__pycache__\/__init__.cpython-36.pyc": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 1,
+		"oAP": "\/learningco\/apps\/companies\/__pycache__\/__init__.cpython-36.pyc",
+		"oF": 0
+		},
+	"\/learningco\/apps\/companies\/__pycache__\/apps.cpython-36.pyc": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/learningco\/apps\/companies\/__pycache__\/apps.cpython-36.pyc",
+		"oF": 0
+		},
+	"\/learningco\/apps\/companies\/__pycache__\/urls.cpython-36.pyc": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/learningco\/apps\/companies\/__pycache__\/urls.cpython-36.pyc",
+		"oF": 0
+		},
+	"\/learningco\/apps\/companies\/apps.py": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/learningco\/apps\/companies\/apps.py",
+		"oF": 0
+		},
+	"\/learningco\/apps\/companies\/migrations\/__init__.py": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 1,
+		"oAP": "\/learningco\/apps\/companies\/migrations\/__init__.py",
+		"oF": 0
+		},
+	"\/learningco\/apps\/companies\/migrations\/__pycache__\/__init__.cpython-36.pyc": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 1,
+		"oAP": "\/learningco\/apps\/companies\/migrations\/__pycache__\/__init__.cpython-36.pyc",
+		"oF": 0
+		},
+	"\/learningco\/apps\/companies\/models\/__init__.py": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 1,
+		"oAP": "\/learningco\/apps\/companies\/models\/__init__.py",
+		"oF": 0
+		},
+	"\/learningco\/apps\/companies\/models\/__pycache__\/__init__.cpython-36.pyc": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 1,
+		"oAP": "\/learningco\/apps\/companies\/models\/__pycache__\/__init__.cpython-36.pyc",
+		"oF": 0
+		},
+	"\/learningco\/apps\/companies\/models\/companies.py": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/learningco\/apps\/companies\/models\/companies.py",
+		"oF": 0
+		},
+	"\/learningco\/apps\/companies\/urls.py": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/learningco\/apps\/companies\/urls.py",
+		"oF": 0
+		},
+	"\/learningco\/apps\/companies\/views\/__init__.py": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 1,
+		"oAP": "\/learningco\/apps\/companies\/views\/__init__.py",
+		"oF": 0
+		},
+	"\/learningco\/apps\/messaging\/__init__.py": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 1,
+		"oAP": "\/learningco\/apps\/messaging\/__init__.py",
+		"oF": 0
+		},
+	"\/learningco\/apps\/messaging\/__pycache__\/__init__.cpython-36.pyc": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 1,
+		"oAP": "\/learningco\/apps\/messaging\/__pycache__\/__init__.cpython-36.pyc",
+		"oF": 0
+		},
+	"\/learningco\/apps\/messaging\/email\/__init__.py": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 1,
+		"oAP": "\/learningco\/apps\/messaging\/email\/__init__.py",
+		"oF": 0
+		},
+	"\/learningco\/apps\/messaging\/email\/__pycache__\/__init__.cpython-36.pyc": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 1,
+		"oAP": "\/learningco\/apps\/messaging\/email\/__pycache__\/__init__.cpython-36.pyc",
+		"oF": 0
+		},
+	"\/learningco\/apps\/messaging\/email\/__pycache__\/apps.cpython-36.pyc": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/learningco\/apps\/messaging\/email\/__pycache__\/apps.cpython-36.pyc",
+		"oF": 0
+		},
+	"\/learningco\/apps\/messaging\/email\/__pycache__\/helpers.cpython-36.pyc": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/learningco\/apps\/messaging\/email\/__pycache__\/helpers.cpython-36.pyc",
+		"oF": 0
+		},
+	"\/learningco\/apps\/messaging\/email\/apps.py": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/learningco\/apps\/messaging\/email\/apps.py",
+		"oF": 0
+		},
+	"\/learningco\/apps\/messaging\/email\/helpers.py": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/learningco\/apps\/messaging\/email\/helpers.py",
+		"oF": 0
+		},
+	"\/learningco\/apps\/messaging\/firebase\/__init__.py": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 1,
+		"oAP": "\/learningco\/apps\/messaging\/firebase\/__init__.py",
+		"oF": 0
+		},
+	"\/learningco\/apps\/messaging\/firebase\/__pycache__\/__init__.cpython-36.pyc": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 1,
+		"oAP": "\/learningco\/apps\/messaging\/firebase\/__pycache__\/__init__.cpython-36.pyc",
+		"oF": 0
+		},
+	"\/learningco\/apps\/messaging\/firebase\/__pycache__\/apps.cpython-36.pyc": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/learningco\/apps\/messaging\/firebase\/__pycache__\/apps.cpython-36.pyc",
+		"oF": 0
+		},
+	"\/learningco\/apps\/messaging\/firebase\/__pycache__\/models.cpython-36.pyc": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/learningco\/apps\/messaging\/firebase\/__pycache__\/models.cpython-36.pyc",
+		"oF": 0
+		},
+	"\/learningco\/apps\/messaging\/firebase\/__pycache__\/signals.cpython-36.pyc": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/learningco\/apps\/messaging\/firebase\/__pycache__\/signals.cpython-36.pyc",
+		"oF": 0
+		},
+	"\/learningco\/apps\/messaging\/firebase\/__pycache__\/tasks.cpython-36.pyc": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/learningco\/apps\/messaging\/firebase\/__pycache__\/tasks.cpython-36.pyc",
+		"oF": 0
+		},
+	"\/learningco\/apps\/messaging\/firebase\/api\/__pycache__\/serializers.cpython-36.pyc": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/learningco\/apps\/messaging\/firebase\/api\/__pycache__\/serializers.cpython-36.pyc",
+		"oF": 0
+		},
+	"\/learningco\/apps\/messaging\/firebase\/api\/__pycache__\/urls.cpython-36.pyc": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/learningco\/apps\/messaging\/firebase\/api\/__pycache__\/urls.cpython-36.pyc",
+		"oF": 0
+		},
+	"\/learningco\/apps\/messaging\/firebase\/api\/__pycache__\/views.cpython-36.pyc": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/learningco\/apps\/messaging\/firebase\/api\/__pycache__\/views.cpython-36.pyc",
+		"oF": 0
+		},
+	"\/learningco\/apps\/messaging\/firebase\/api\/serializers.py": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/learningco\/apps\/messaging\/firebase\/api\/serializers.py",
+		"oF": 0
+		},
+	"\/learningco\/apps\/messaging\/firebase\/api\/urls.py": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/learningco\/apps\/messaging\/firebase\/api\/urls.py",
+		"oF": 0
+		},
+	"\/learningco\/apps\/messaging\/firebase\/api\/views.py": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/learningco\/apps\/messaging\/firebase\/api\/views.py",
+		"oF": 0
+		},
+	"\/learningco\/apps\/messaging\/firebase\/apps.py": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/learningco\/apps\/messaging\/firebase\/apps.py",
+		"oF": 0
+		},
+	"\/learningco\/apps\/messaging\/firebase\/migrations\/0001_initial.py": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/learningco\/apps\/messaging\/firebase\/migrations\/0001_initial.py",
+		"oF": 0
+		},
+	"\/learningco\/apps\/messaging\/firebase\/migrations\/__init__.py": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 1,
+		"oAP": "\/learningco\/apps\/messaging\/firebase\/migrations\/__init__.py",
+		"oF": 0
+		},
+	"\/learningco\/apps\/messaging\/firebase\/migrations\/__pycache__\/0001_initial.cpython-36.pyc": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/learningco\/apps\/messaging\/firebase\/migrations\/__pycache__\/0001_initial.cpython-36.pyc",
+		"oF": 0
+		},
+	"\/learningco\/apps\/messaging\/firebase\/migrations\/__pycache__\/__init__.cpython-36.pyc": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 1,
+		"oAP": "\/learningco\/apps\/messaging\/firebase\/migrations\/__pycache__\/__init__.cpython-36.pyc",
+		"oF": 0
+		},
+	"\/learningco\/apps\/messaging\/firebase\/models.py": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/learningco\/apps\/messaging\/firebase\/models.py",
+		"oF": 0
+		},
+	"\/learningco\/apps\/messaging\/firebase\/signals.py": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/learningco\/apps\/messaging\/firebase\/signals.py",
+		"oF": 0
+		},
+	"\/learningco\/apps\/messaging\/firebase\/tasks.py": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/learningco\/apps\/messaging\/firebase\/tasks.py",
+		"oF": 0
+		},
+	"\/learningco\/apps\/users\/__init__.py": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 1,
+		"oAP": "\/learningco\/apps\/users\/__init__.py",
+		"oF": 0
+		},
+	"\/learningco\/apps\/users\/__pycache__\/__init__.cpython-36.pyc": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 1,
+		"oAP": "\/learningco\/apps\/users\/__pycache__\/__init__.cpython-36.pyc",
+		"oF": 0
+		},
+	"\/learningco\/apps\/users\/__pycache__\/adapters.cpython-36.pyc": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/learningco\/apps\/users\/__pycache__\/adapters.cpython-36.pyc",
+		"oF": 0
+		},
+	"\/learningco\/apps\/users\/__pycache__\/apps.cpython-36.pyc": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/learningco\/apps\/users\/__pycache__\/apps.cpython-36.pyc",
+		"oF": 0
+		},
+	"\/learningco\/apps\/users\/__pycache__\/languages.cpython-36.pyc": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/learningco\/apps\/users\/__pycache__\/languages.cpython-36.pyc",
+		"oF": 0
+		},
+	"\/learningco\/apps\/users\/__pycache__\/models.cpython-36.pyc": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/learningco\/apps\/users\/__pycache__\/models.cpython-36.pyc",
+		"oF": 0
+		},
+	"\/learningco\/apps\/users\/__pycache__\/signals.cpython-36.pyc": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/learningco\/apps\/users\/__pycache__\/signals.cpython-36.pyc",
+		"oF": 0
+		},
+	"\/learningco\/apps\/users\/__pycache__\/urls.cpython-36.pyc": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/learningco\/apps\/users\/__pycache__\/urls.cpython-36.pyc",
+		"oF": 0
+		},
+	"\/learningco\/apps\/users\/__pycache__\/views.cpython-36.pyc": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/learningco\/apps\/users\/__pycache__\/views.cpython-36.pyc",
+		"oF": 0
+		},
+	"\/learningco\/apps\/users\/adapters.py": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/learningco\/apps\/users\/adapters.py",
+		"oF": 0
+		},
+	"\/learningco\/apps\/users\/api\/__pycache__\/serializers.cpython-36.pyc": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/learningco\/apps\/users\/api\/__pycache__\/serializers.cpython-36.pyc",
+		"oF": 0
+		},
+	"\/learningco\/apps\/users\/api\/__pycache__\/urls.cpython-36.pyc": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/learningco\/apps\/users\/api\/__pycache__\/urls.cpython-36.pyc",
+		"oF": 0
+		},
+	"\/learningco\/apps\/users\/api\/__pycache__\/views.cpython-36.pyc": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/learningco\/apps\/users\/api\/__pycache__\/views.cpython-36.pyc",
+		"oF": 0
+		},
+	"\/learningco\/apps\/users\/api\/mixins.py": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/learningco\/apps\/users\/api\/mixins.py",
+		"oF": 0
+		},
+	"\/learningco\/apps\/users\/api\/serializers.py": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/learningco\/apps\/users\/api\/serializers.py",
+		"oF": 0
+		},
+	"\/learningco\/apps\/users\/api\/urls.py": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/learningco\/apps\/users\/api\/urls.py",
+		"oF": 0
+		},
+	"\/learningco\/apps\/users\/api\/views.py": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/learningco\/apps\/users\/api\/views.py",
+		"oF": 0
+		},
+	"\/learningco\/apps\/users\/apps.py": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/learningco\/apps\/users\/apps.py",
+		"oF": 0
+		},
+	"\/learningco\/apps\/users\/languages.py": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/learningco\/apps\/users\/languages.py",
+		"oF": 0
+		},
+	"\/learningco\/apps\/users\/migrations\/0001_initial.py": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/learningco\/apps\/users\/migrations\/0001_initial.py",
+		"oF": 0
+		},
+	"\/learningco\/apps\/users\/migrations\/__init__.py": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 1,
+		"oAP": "\/learningco\/apps\/users\/migrations\/__init__.py",
+		"oF": 0
+		},
+	"\/learningco\/apps\/users\/migrations\/__pycache__\/0001_initial.cpython-36.pyc": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/learningco\/apps\/users\/migrations\/__pycache__\/0001_initial.cpython-36.pyc",
+		"oF": 0
+		},
+	"\/learningco\/apps\/users\/migrations\/__pycache__\/__init__.cpython-36.pyc": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 1,
+		"oAP": "\/learningco\/apps\/users\/migrations\/__pycache__\/__init__.cpython-36.pyc",
+		"oF": 0
+		},
+	"\/learningco\/apps\/users\/models.py": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/learningco\/apps\/users\/models.py",
+		"oF": 0
+		},
+	"\/learningco\/apps\/users\/signals.py": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/learningco\/apps\/users\/signals.py",
+		"oF": 0
+		},
+	"\/learningco\/apps\/users\/urls.py": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/learningco\/apps\/users\/urls.py",
+		"oF": 0
+		},
+	"\/learningco\/apps\/users\/views.py": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/learningco\/apps\/users\/views.py",
 		"oF": 0
 		},
 	"\/learningco\/celery.py": {
@@ -304,27 +794,6 @@
 		"oAP": "\/messaging\/email\/__pycache__\/helpers.cpython-36.pyc",
 		"oF": 0
 		},
-	"\/messaging\/email\/helpers.py": {
-		"cB": 0,
-		"ft": 8192,
-		"oA": 0,
-		"oAP": "\/messaging\/email\/helpers.py",
-		"oF": 0
-		},
-	"\/messaging\/email\/templates\/emails\/base.html": {
-		"cB": 0,
-		"ft": 8192,
-		"oA": 0,
-		"oAP": "\/messaging\/email\/templates\/emails\/base.html",
-		"oF": 0
-		},
-	"\/messaging\/firebase\/__init__.py": {
-		"cB": 0,
-		"ft": 8192,
-		"oA": 1,
-		"oAP": "\/messaging\/firebase\/__init__.py",
-		"oF": 0
-		},
 	"\/messaging\/firebase\/__pycache__\/__init__.cpython-36.pyc": {
 		"cB": 0,
 		"ft": 8192,
@@ -360,48 +829,6 @@
 		"oAP": "\/messaging\/firebase\/api\/__pycache__\/views.cpython-36.pyc",
 		"oF": 0
 		},
-	"\/messaging\/firebase\/api\/serializers.py": {
-		"cB": 0,
-		"ft": 8192,
-		"oA": 0,
-		"oAP": "\/messaging\/firebase\/api\/serializers.py",
-		"oF": 0
-		},
-	"\/messaging\/firebase\/api\/urls.py": {
-		"cB": 0,
-		"ft": 8192,
-		"oA": 0,
-		"oAP": "\/messaging\/firebase\/api\/urls.py",
-		"oF": 0
-		},
-	"\/messaging\/firebase\/api\/views.py": {
-		"cB": 0,
-		"ft": 8192,
-		"oA": 0,
-		"oAP": "\/messaging\/firebase\/api\/views.py",
-		"oF": 0
-		},
-	"\/messaging\/firebase\/apps.py": {
-		"cB": 0,
-		"ft": 8192,
-		"oA": 0,
-		"oAP": "\/messaging\/firebase\/apps.py",
-		"oF": 0
-		},
-	"\/messaging\/firebase\/migrations\/0001_initial.py": {
-		"cB": 0,
-		"ft": 8192,
-		"oA": 0,
-		"oAP": "\/messaging\/firebase\/migrations\/0001_initial.py",
-		"oF": 0
-		},
-	"\/messaging\/firebase\/migrations\/__init__.py": {
-		"cB": 0,
-		"ft": 8192,
-		"oA": 1,
-		"oAP": "\/messaging\/firebase\/migrations\/__init__.py",
-		"oF": 0
-		},
 	"\/messaging\/firebase\/migrations\/__pycache__\/0001_initial.cpython-36.pyc": {
 		"cB": 0,
 		"ft": 8192,
@@ -414,27 +841,6 @@
 		"ft": 8192,
 		"oA": 1,
 		"oAP": "\/messaging\/firebase\/migrations\/__pycache__\/__init__.cpython-36.pyc",
-		"oF": 0
-		},
-	"\/messaging\/firebase\/models.py": {
-		"cB": 0,
-		"ft": 8192,
-		"oA": 0,
-		"oAP": "\/messaging\/firebase\/models.py",
-		"oF": 0
-		},
-	"\/messaging\/firebase\/signals.py": {
-		"cB": 0,
-		"ft": 8192,
-		"oA": 0,
-		"oAP": "\/messaging\/firebase\/signals.py",
-		"oF": 0
-		},
-	"\/messaging\/firebase\/tasks.py": {
-		"cB": 0,
-		"ft": 8192,
-		"oA": 0,
-		"oAP": "\/messaging\/firebase\/tasks.py",
 		"oF": 0
 		},
 	"\/README.txt": {
@@ -516,6 +922,32 @@
 		"oS": 0,
 		"uL": 1
 		},
+	"\/static\/css\/scss\/_mixins.scss": {
+		"aP": 0,
+		"bl": 0,
+		"dP": 10,
+		"dS": 0,
+		"ft": 4,
+		"ma": 0,
+		"oA": 1,
+		"oAP": "\/static\/css\/scss\/_mixins.css",
+		"oF": 0,
+		"oS": 0,
+		"uL": 1
+		},
+	"\/static\/css\/scss\/_type.scss": {
+		"aP": 0,
+		"bl": 0,
+		"dP": 10,
+		"dS": 0,
+		"ft": 4,
+		"ma": 0,
+		"oA": 1,
+		"oAP": "\/static\/css\/scss\/_type.css",
+		"oF": 0,
+		"oS": 0,
+		"uL": 1
+		},
 	"\/static\/css\/scss\/_variables.scss": {
 		"aP": 0,
 		"bl": 0,
@@ -568,6 +1000,19 @@
 		"oS": 0,
 		"uL": 1
 		},
+	"\/static\/css\/scss\/components\/modals.scss": {
+		"aP": 0,
+		"bl": 0,
+		"dP": 10,
+		"dS": 0,
+		"ft": 4,
+		"ma": 0,
+		"oA": 1,
+		"oAP": "\/static\/css\/scss\/components\/modals.css",
+		"oF": 0,
+		"oS": 0,
+		"uL": 1
+		},
 	"\/static\/css\/scss\/pages\/login.scss": {
 		"aP": 0,
 		"bl": 0,
@@ -591,6 +1036,17 @@
 		"plM": 3758088159,
 		"prP": 0
 		},
+	"\/static\/imgs\/profile-neutral.png": {
+		"ft": 32768,
+		"iS": 1476,
+		"oA": 0,
+		"oAP": "\/static\/imgs\/profile-neutral.png",
+		"oF": 0,
+		"oIPL": 0,
+		"opt": 0,
+		"oT": 1,
+		"q": 100
+		},
 	"\/static\/js\/main.js": {
 		"ft": 64,
 		"ma": 0,
@@ -608,11 +1064,102 @@
 		"oAP": "\/templates\/.blank",
 		"oF": 0
 		},
+	"\/templates\/account\/accounts_inactive.html": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/templates\/account\/accounts_inactive.html",
+		"oF": 0
+		},
+	"\/templates\/account\/email.html": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/templates\/account\/email.html",
+		"oF": 0
+		},
+	"\/templates\/account\/email_confirm.html": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/templates\/account\/email_confirm.html",
+		"oF": 0
+		},
 	"\/templates\/account\/login.html": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
 		"oAP": "\/templates\/account\/login.html",
+		"oF": 0
+		},
+	"\/templates\/account\/logout.html": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/templates\/account\/logout.html",
+		"oF": 0
+		},
+	"\/templates\/account\/password_change.html": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/templates\/account\/password_change.html",
+		"oF": 0
+		},
+	"\/templates\/account\/password_reset.html": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/templates\/account\/password_reset.html",
+		"oF": 0
+		},
+	"\/templates\/account\/password_reset_done.html": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/templates\/account\/password_reset_done.html",
+		"oF": 0
+		},
+	"\/templates\/account\/password_reset_from_key.html": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/templates\/account\/password_reset_from_key.html",
+		"oF": 0
+		},
+	"\/templates\/account\/password_reset_from_key_done.html": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/templates\/account\/password_reset_from_key_done.html",
+		"oF": 0
+		},
+	"\/templates\/account\/password_set.html": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/templates\/account\/password_set.html",
+		"oF": 0
+		},
+	"\/templates\/account\/signup_closed.html": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/templates\/account\/signup_closed.html",
+		"oF": 0
+		},
+	"\/templates\/account\/verification_sent.html": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/templates\/account\/verification_sent.html",
+		"oF": 0
+		},
+	"\/templates\/account\/verified_email_required.html": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/templates\/account\/verified_email_required.html",
 		"oF": 0
 		},
 	"\/templates\/base.html": {
@@ -622,11 +1169,18 @@
 		"oAP": "\/templates\/base.html",
 		"oF": 0
 		},
-	"\/users\/__init__.py": {
+	"\/templates\/emails\/base.html": {
 		"cB": 0,
 		"ft": 8192,
-		"oA": 1,
-		"oAP": "\/users\/__init__.py",
+		"oA": 0,
+		"oAP": "\/templates\/emails\/base.html",
+		"oF": 0
+		},
+	"\/templates\/emails\/welcome.html": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/templates\/emails\/welcome.html",
 		"oF": 0
 		},
 	"\/users\/__pycache__\/__init__.cpython-36.pyc": {
@@ -678,13 +1232,6 @@
 		"oAP": "\/users\/__pycache__\/urls.cpython-36.pyc",
 		"oF": 0
 		},
-	"\/users\/adapters.py": {
-		"cB": 0,
-		"ft": 8192,
-		"oA": 0,
-		"oAP": "\/users\/adapters.py",
-		"oF": 0
-		},
 	"\/users\/api\/__pycache__\/serializers.cpython-36.pyc": {
 		"cB": 0,
 		"ft": 8192,
@@ -706,62 +1253,6 @@
 		"oAP": "\/users\/api\/__pycache__\/views.cpython-36.pyc",
 		"oF": 0
 		},
-	"\/users\/api\/mixins.py": {
-		"cB": 0,
-		"ft": 8192,
-		"oA": 0,
-		"oAP": "\/users\/api\/mixins.py",
-		"oF": 0
-		},
-	"\/users\/api\/serializers.py": {
-		"cB": 0,
-		"ft": 8192,
-		"oA": 0,
-		"oAP": "\/users\/api\/serializers.py",
-		"oF": 0
-		},
-	"\/users\/api\/urls.py": {
-		"cB": 0,
-		"ft": 8192,
-		"oA": 0,
-		"oAP": "\/users\/api\/urls.py",
-		"oF": 0
-		},
-	"\/users\/api\/views.py": {
-		"cB": 0,
-		"ft": 8192,
-		"oA": 0,
-		"oAP": "\/users\/api\/views.py",
-		"oF": 0
-		},
-	"\/users\/apps.py": {
-		"cB": 0,
-		"ft": 8192,
-		"oA": 0,
-		"oAP": "\/users\/apps.py",
-		"oF": 0
-		},
-	"\/users\/languages.py": {
-		"cB": 0,
-		"ft": 8192,
-		"oA": 0,
-		"oAP": "\/users\/languages.py",
-		"oF": 0
-		},
-	"\/users\/migrations\/0001_initial.py": {
-		"cB": 0,
-		"ft": 8192,
-		"oA": 0,
-		"oAP": "\/users\/migrations\/0001_initial.py",
-		"oF": 0
-		},
-	"\/users\/migrations\/__init__.py": {
-		"cB": 0,
-		"ft": 8192,
-		"oA": 1,
-		"oAP": "\/users\/migrations\/__init__.py",
-		"oF": 0
-		},
 	"\/users\/migrations\/__pycache__\/0001_initial.cpython-36.pyc": {
 		"cB": 0,
 		"ft": 8192,
@@ -774,52 +1265,6 @@
 		"ft": 8192,
 		"oA": 1,
 		"oAP": "\/users\/migrations\/__pycache__\/__init__.cpython-36.pyc",
-		"oF": 0
-		},
-	"\/users\/models.py": {
-		"cB": 0,
-		"ft": 8192,
-		"oA": 0,
-		"oAP": "\/users\/models.py",
-		"oF": 0
-		},
-	"\/users\/signals.py": {
-		"cB": 0,
-		"ft": 8192,
-		"oA": 0,
-		"oAP": "\/users\/signals.py",
-		"oF": 0
-		},
-	"\/users\/static\/img\/profile-neutral.png": {
-		"ft": 32768,
-		"iS": 1476,
-		"oA": 0,
-		"oAP": "\/users\/static\/img\/profile-neutral.png",
-		"oF": 0,
-		"oIPL": 0,
-		"opt": 0,
-		"oT": 1,
-		"q": 100
-		},
-	"\/users\/templates\/emails\/welcome.html": {
-		"cB": 0,
-		"ft": 8192,
-		"oA": 0,
-		"oAP": "\/users\/templates\/emails\/welcome.html",
-		"oF": 0
-		},
-	"\/users\/urls.py": {
-		"cB": 0,
-		"ft": 8192,
-		"oA": 0,
-		"oAP": "\/users\/urls.py",
-		"oF": 0
-		},
-	"\/users\/views.py": {
-		"cB": 0,
-		"ft": 8192,
-		"oA": 0,
-		"oAP": "\/users\/views.py",
 		"oF": 0
 		}
 	},
