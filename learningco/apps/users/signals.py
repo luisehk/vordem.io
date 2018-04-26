@@ -3,6 +3,7 @@ from django.contrib.auth import get_user_model
 from django.db.models.signals import post_save
 from ..messaging.email.helpers import send_email
 from .models import Profile
+from .languages import set_language
 
 
 User = get_user_model()
@@ -73,5 +74,4 @@ def populate_social_info(sender, **kwargs):
 
 def apply_language_preferrence(sender, user, *args, **kwargs):
     if user and user.profile:
-        from users.languages import set_language
         set_language(user.profile.preferred_language)
