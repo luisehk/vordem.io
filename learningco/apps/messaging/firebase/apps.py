@@ -3,10 +3,12 @@ from django.apps import AppConfig
 
 
 class FirebaseConfig(AppConfig):
-    name = 'firebase'
+    name = 'learningco.apps.messaging.firebase'
+    label = 'learningco_firebase'
 
     def ready(self):
-        from messaging.firebase.signals import send_push_notification
+        from learningco.apps.messaging.firebase.signals import \
+            send_push_notification
         from notifications.models import Notification
 
         post_save.connect(send_push_notification, sender=Notification)

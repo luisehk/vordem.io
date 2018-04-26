@@ -4,13 +4,14 @@ from django.apps import AppConfig
 
 
 class UsersConfig(AppConfig):
-    name = 'users'
+    name = 'learningco.apps.users'
+    label = 'learningco_users'
 
     def ready(self):
-        from users.models import Profile
         from django.contrib.auth import get_user_model
         from allauth.socialaccount.models import SocialAccount
-        from users.signals import (
+        from learningco.apps.users.models import Profile
+        from learningco.apps.users.signals import (
             create_user_profile, warm_user_profile_avatar,
             set_email_as_username, notify_user_creation,
             populate_social_info, apply_language_preferrence,

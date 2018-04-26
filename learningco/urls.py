@@ -1,4 +1,5 @@
-from users.api.views import FacebookLogin, TwitterLogin, LinkedInLogin
+from learningco.apps.users.api.views import \
+    FacebookLogin, TwitterLogin, LinkedInLogin
 from rest_framework_swagger.views import get_swagger_view
 from rest_framework.authtoken import views as authviews
 from django.conf.urls.static import static
@@ -22,11 +23,14 @@ urlpatterns = [
     url(r'^docs/', get_swagger_view()),
 
     # API
-    url(r'^api/', include('messaging.firebase.api.urls')),
-    url(r'^api/', include('users.api.urls')),
+    url(r'^api/', include(
+        'learningco.apps.messaging.firebase.api.urls')),
+    url(r'^api/', include(
+        'learningco.apps.users.api.urls')),
 
     # application
-    url(r'^users/', include('users.urls', namespace='users')),
+    url(r'^users/', include(
+        'learningco.apps.users.urls', namespace='users')),
 ]
 
 if settings.DEBUG:

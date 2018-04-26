@@ -49,13 +49,12 @@ INSTALLED_APPS = [
     'fcm',
     'corsheaders',
 
-    'messaging.email',
-    'messaging.firebase',
-    'users',
-
     'notifications',
 
     'learningco.apps.admin',
+    'learningco.apps.messaging.email',
+    'learningco.apps.messaging.firebase',
+    'learningco.apps.users',
 ]
 
 MIDDLEWARE = [
@@ -214,7 +213,7 @@ if os.environ.get('EMAIL_HOST_USER', ''):
 
 # push notifications
 FCM_APIKEY = os.environ.get('FCM_APIKEY', '')
-FCM_DEVICE_MODEL = 'firebase.CustomDevice'
+FCM_DEVICE_MODEL = 'learningco_firebase.CustomDevice'
 FCM_MAX_RECIPIENTS = 1000
 
 # authentication
@@ -231,8 +230,8 @@ ACCOUNT_LOGOUT_ON_GET = True
 SOCIALACCOUNT_EMAIL_VERIFICATION = False
 SOCIALACCOUNT_EMAIL_REQUIRED = False
 LOGIN_REDIRECT_URL = '/'
-ACCOUNT_ADAPTER = 'users.adapters.AccountAdapter'
-SOCIALACCOUNT_ADAPTER = 'users.adapters.SocialAccountAdapter'
+ACCOUNT_ADAPTER = 'learningco.apps.users.adapters.AccountAdapter'
+SOCIALACCOUNT_ADAPTER = 'learningco.apps.users.adapters.SocialAccountAdapter'
 ACCOUNT_LOGOUT_ON_PASSWORD_CHANGE = False
 ACCOUNT_LOGIN_ON_PASSWORD_RESET = True
 
@@ -242,7 +241,7 @@ AUTHENTICATION_BACKENDS = (
 )
 
 REST_AUTH_SERIALIZERS = {
-    'LOGIN_SERIALIZER': 'users.api.serializers.MobileLoginSerializer',
+    'LOGIN_SERIALIZER': 'learningco.apps.users.api.serializers.MobileLoginSerializer',  # noqa
 }
 
 AUTH_PASSWORD_VALIDATORS = [

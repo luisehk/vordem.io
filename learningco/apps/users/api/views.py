@@ -5,9 +5,9 @@ from rest_auth.social_serializers import TwitterLoginSerializer
 from rest_auth.registration.views import SocialLoginView
 from rest_auth.views import LoginView
 from django.contrib.auth.models import User
-from users.api.serializers import UserSerializer, ProfileSerializer
 from rest_framework.viewsets import ModelViewSet
-from users.models import Profile
+from ..api.serializers import UserSerializer, ProfileSerializer
+from ..models import Profile
 
 
 class FacebookLogin(SocialLoginView):
