@@ -6,6 +6,8 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = os.environ.get('SECRET_KEY', 'this-is-a-development-key')
 DEBUG = os.environ.get('DEBUG', 'False').lower() == 'true'
 LOCAL = os.environ.get('LOCAL', 'False').lower() == 'true'
+SHOW_DEBUG_TOOLBAR = os.environ.get(
+    'SHOW_DEBUG_TOOLBAR', 'False').lower() == 'true'
 ALLOWED_HOSTS = ['*']
 
 INSTALLED_APPS = [
@@ -127,9 +129,13 @@ CSRF_COOKIE_HTTPONLY = SECURE_COOKIES
 SESSION_COOKIE_SECURE = SECURE_COOKIES
 SESSION_COOKIE_HTTPONLY = SECURE_COOKIES
 
-# debugging
+
+def custom_show_toolbar(self):
+    return SHOW_DEBUG_TOOLBAR
+
+
 DEBUG_TOOLBAR_CONFIG = {
-    'SHOW_TOOLBAR_CALLBACK': lambda x: DEBUG,
+    'SHOW_TOOLBAR_CALLBACK': custom_show_toolbar,
 }
 
 ADMINS = []
