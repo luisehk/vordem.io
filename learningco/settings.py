@@ -104,7 +104,7 @@ SITE_ID = 1
 TAGGIT_CASE_INSENSITIVE = True
 
 # language
-LANGUAGE_CODE = 'en-US'
+LANGUAGE_CODE = 'es-MX'
 LOCALE_PATHS = (os.path.join(BASE_DIR, 'locale'),)
 
 
@@ -113,7 +113,6 @@ def ugettext(s):
 
 
 LANGUAGES = (
-    ('en', ugettext('English')),
     ('es', ugettext('Spanish')),
 )
 
