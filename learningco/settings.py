@@ -54,6 +54,7 @@ INSTALLED_APPS = [
     'notifications',
 
     'learningco.apps.admin',
+    'learningco.apps.companies',
     'learningco.apps.messaging.email',
     'learningco.apps.messaging.firebase',
     'learningco.apps.users',
