@@ -1,26 +1,7 @@
-from allauth.socialaccount.providers.linkedin_oauth2.views import LinkedInOAuth2Adapter  # noqa
-from allauth.socialaccount.providers.facebook.views import FacebookOAuth2Adapter  # noqa
-from allauth.socialaccount.providers.twitter.views import TwitterOAuthAdapter
-from rest_auth.social_serializers import TwitterLoginSerializer
-from rest_auth.registration.views import SocialLoginView
-from rest_auth.views import LoginView
 from django.contrib.auth.models import User
 from rest_framework.viewsets import ModelViewSet
 from ..api.serializers import UserSerializer, ProfileSerializer
 from ..models import Profile
-
-
-class FacebookLogin(SocialLoginView):
-    adapter_class = FacebookOAuth2Adapter
-
-
-class LinkedInLogin(SocialLoginView):
-    adapter_class = LinkedInOAuth2Adapter
-
-
-class TwitterLogin(LoginView):
-    serializer_class = TwitterLoginSerializer
-    adapter_class = TwitterOAuthAdapter
 
 
 class ProfileViewSet(ModelViewSet):

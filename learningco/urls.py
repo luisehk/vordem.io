@@ -4,8 +4,6 @@ from django.conf.urls.static import static
 from django.conf.urls import url, include
 from learningco import settings  # noqa
 from . import admin
-from learningco.apps.users.api.views import \
-    FacebookLogin, TwitterLogin, LinkedInLogin
 from learningco.apps.users.views import UserHome
 
 
@@ -17,9 +15,6 @@ urlpatterns = [
     # REST framework and authentication
     url(r'^rest-auth/', include('rest_auth.urls')),
     url(r'^rest-auth/registration/', include('rest_auth.registration.urls')),
-    url(r'^rest-auth/facebook/$', FacebookLogin.as_view(), name='fb_login'),
-    url(r'^rest-auth/linkedin/$', LinkedInLogin.as_view(), name='li_login'),
-    url(r'^rest-auth/twitter/$', TwitterLogin.as_view(), name='twitter_login'),
     url(r'^api-token-auth/', authviews.obtain_auth_token),
     url(r'^docs/', get_swagger_view()),
 

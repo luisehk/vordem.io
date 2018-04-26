@@ -25,10 +25,6 @@ INSTALLED_APPS = [
 
     'allauth',
     'allauth.account',
-    'allauth.socialaccount',
-    'allauth.socialaccount.providers.facebook',
-    'allauth.socialaccount.providers.linkedin_oauth2',
-    'allauth.socialaccount.providers.twitter',
 
     'rest_framework',
     'rest_framework.authtoken',
@@ -236,11 +232,8 @@ ACCOUNT_LOGIN_ON_EMAIL_CONFIRMATION = True
 ACCOUNT_CONFIRM_EMAIL_ON_GET = True
 ACCOUNT_SESSION_REMEMBER = True
 ACCOUNT_LOGOUT_ON_GET = True
-SOCIALACCOUNT_EMAIL_VERIFICATION = False
-SOCIALACCOUNT_EMAIL_REQUIRED = False
 LOGIN_REDIRECT_URL = '/'
 ACCOUNT_ADAPTER = 'learningco.apps.users.adapters.AccountAdapter'
-SOCIALACCOUNT_ADAPTER = 'learningco.apps.users.adapters.SocialAccountAdapter'
 ACCOUNT_LOGOUT_ON_PASSWORD_CHANGE = False
 ACCOUNT_LOGIN_ON_PASSWORD_RESET = True
 
@@ -279,45 +272,6 @@ AUTH_PASSWORD_VALIDATORS = [
         )
     },
 ]
-
-SOCIALACCOUNT_PROVIDERS = {
-    'facebook': {
-        'METHOD': 'oauth2',
-        'SCOPE': [
-            'email', 'public_profile', 'user_friends'],
-        'AUTH_PARAMS': {
-            'auth_type': 'https'},
-        'FIELDS': [
-            'id',
-            'email',
-            'name',
-            'first_name',
-            'last_name',
-            'verified',
-            'locale',
-            'timezone',
-            'link',
-            'gender',
-            'updated_time'],
-        'EXCHANGE_TOKEN': True,
-        'VERIFIED_EMAIL': False,
-        'VERSION': 'v2.4'
-    },
-    'linkedin': {
-        'SCOPE': [
-            'r_emailaddress',
-        ],
-        'PROFILE_FIELDS': [
-            'id',
-            'first-name',
-            'last-name',
-            'email-address',
-            'picture-url',
-            'public-profile-url',
-        ]
-    }
-
-}
 
 # thumbnails
 VERSATILEIMAGEFIELD_SETTINGS = {
