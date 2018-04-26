@@ -2,9 +2,10 @@ from rest_framework_swagger.views import get_swagger_view
 from rest_framework.authtoken import views as authviews
 from django.conf.urls.static import static
 from django.conf.urls import url, include
+from allauth.account.views import confirm_email
 from learningco import settings  # noqa
-from . import admin
 from learningco.apps.users.views import UserHome
+from . import admin
 
 
 urlpatterns = [
@@ -13,6 +14,8 @@ urlpatterns = [
     url(r'^accounts/', include('allauth.urls')),
 
     # REST framework and authentication
+    url(r'^rest-auth/registration/account-confirm-email/(?P<key>.+)/$',
+        confirm_email, name='account_confirm_email'),
     url(r'^rest-auth/', include('rest_auth.urls')),
     url(r'^rest-auth/registration/', include('rest_auth.registration.urls')),
     url(r'^api-token-auth/', authviews.obtain_auth_token),
