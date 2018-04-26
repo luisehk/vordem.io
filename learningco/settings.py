@@ -159,7 +159,10 @@ DEBUG_TOOLBAR_PANELS = [
 
 # static and media files
 STATIC_URL = '/static/' if not LOCAL else '/local-static/'
-STATIC_ROOT = os.path.join(BASE_DIR, '.static/')
+STATIC_ROOT = os.path.join(
+    BASE_DIR,
+    '.static/' if not LOCAL else 'static/'
+)
 
 MEDIA_ROOT = os.path.join(BASE_DIR, '.media/')
 MEDIA_URL = os.environ.get('MEDIA_URL', '/media/')

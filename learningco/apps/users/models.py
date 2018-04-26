@@ -24,7 +24,9 @@ class Profile(models.Model):
         null=True, blank=True, ppoi_field='ppoi',
         placeholder_image=OnDiscPlaceholderImage(
             path=os.path.join(
-                settings.BASE_DIR, 'users/static/img/profile-neutral.png')))
+                settings.BASE_DIR,
+                'static/imgs/profile-neutral.png'
+            )))
     ppoi = PPOIField('Image PPOI', default=(0.5, 0.5))
 
     # contact info
