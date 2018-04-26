@@ -3,34 +3,29 @@
 {% load i18n %}
 
 {% block content %}
-<section class="section">
+<section class="section box-modal login">
+  <svg class="logo" width="226" height="61" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><text id="b" font-family="Antonio-Bold, Antonio" font-size="48" font-style="condensed" font-weight="bold" fill="#FFF"><tspan x="2.097" y="55">Great Team</tspan> <tspan x="208.019" y="55" font-size="18">©</tspan></text><filter x="-.9%" y="-1.4%" width="101.8%" height="105.8%" filterUnits="objectBoundingBox" id="a"><feOffset dy="1" in="SourceAlpha" result="shadowOffsetOuter1"/><feGaussianBlur stdDeviation=".5" in="shadowOffsetOuter1" result="shadowBlurOuter1"/><feColorMatrix values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.277881567 0" in="shadowBlurOuter1"/></filter><path d="M.5 67.5h223.009" id="d"/><filter x="-.4%" y="-33.3%" width="100.9%" height="200%" filterUnits="objectBoundingBox" id="c"><feMorphology radius=".5" operator="dilate" in="SourceAlpha" result="shadowSpreadOuter1"/><feOffset dy="1" in="shadowSpreadOuter1" result="shadowOffsetOuter1"/><feMorphology radius="1" in="SourceAlpha" result="shadowInner"/><feOffset dy="1" in="shadowInner" result="shadowInner"/><feComposite in="shadowOffsetOuter1" in2="shadowInner" operator="out" result="shadowOffsetOuter1"/><feColorMatrix values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.17747962 0" in="shadowOffsetOuter1"/></filter><path d="M.5 71.5h223.009" id="f"/><filter x="-.7%" y="-50%" width="101.3%" height="233.3%" filterUnits="objectBoundingBox" id="e"><feMorphology radius="1" operator="dilate" in="SourceAlpha" result="shadowSpreadOuter1"/><feOffset dy="1" in="shadowSpreadOuter1" result="shadowOffsetOuter1"/><feMorphology radius="1" in="SourceAlpha" result="shadowInner"/><feOffset dy="1" in="shadowInner" result="shadowInner"/><feComposite in="shadowOffsetOuter1" in2="shadowInner" operator="out" result="shadowOffsetOuter1"/><feColorMatrix values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.16443048 0" in="shadowOffsetOuter1"/></filter></defs><g fill="none" fill-rule="evenodd"><g fill="#FFF" transform="translate(1 -13)"><use filter="url(#a)" xlink:href="#b"/><use xlink:href="#b"/></g><g stroke-linecap="square" transform="translate(1 -13)"><use fill="#000" filter="url(#c)" xlink:href="#d"/><use stroke="#FFF" xlink:href="#d"/></g><g stroke-linecap="square" transform="translate(1 -13)"><use fill="#000" filter="url(#e)" xlink:href="#f"/><use stroke="#FFF" stroke-width="2" xlink:href="#f"/></g></g></svg>
+  <h1 class="page-title">Iniciar sesión</h1>
   <form action="{% url 'account_login' %}" method="POST">
     {% csrf_token %}
 
-    <h1>Sign in</h1>
-    <p>
-      <input
-        type="text"
-        placeholder="Email"
-        name="login"
-        id="id_login" />
-    </p>
+    <input
+      class="text-input"
+      type="text"
+      placeholder="Email"
+      name="login"
+      id="id_login" />
 
-    <p>
-      <input
-        type="password"
-        placeholder="Password"
-        name="password"
-        id="id_password" />
-    </p>
+    <input
+      class="text-input"
+      type="password"
+      placeholder="Password"
+      name="password"
+      id="id_password" />
 
-    <p>
-      <button type="submit">Sign in</button>
-    </p>
+    <a class="text-link" href="{% url 'account_reset_password' %}">¿Olvidaste tu contraseña?</a>
 
-    <a href="{% url 'account_reset_password' %}">
-      Forgot my password
-    </a>
+    <button class="primary-button button" type="submit">Ingresar</button>
 
     {% if form.non_field_errors or form.login.errors or form.password.errors %}
       <div>

@@ -1,0 +1,10 @@
+.text-input {
+  background-color: transparent;
+  color: $dark-yellow;
+  outline: none;
+  outline-style: none;
+  border: none;
+  border-bottom: 2px solid lighten($dark-yellow, 10%);
+  padding: .8rem;
+  display: block;
+}
