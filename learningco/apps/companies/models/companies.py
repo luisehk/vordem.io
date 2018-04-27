@@ -21,10 +21,10 @@ class Company(models.Model):
     name = models.CharField(
         max_length=150)
     industry = models.ForeignKey(
-        Industry, on_delete=models.SET_NULL, null=True)
+        Industry, null=True, blank=True, on_delete=models.SET_NULL)
     size = models.CharField(
         max_length=1, choices=COMPANY_SIZES, default=COMPANY_SIZE_UNKNOWN)
     human_resources = models.ManyToManyField(
-        User, related_name='hr_companies')
+        User, blank=True, related_name='hr_companies')
     leaders = models.ManyToManyField(
-        User, related_name='leader_companies')
+        User, blank=True, related_name='leader_companies')
