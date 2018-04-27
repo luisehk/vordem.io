@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+  <h1>Compañias</h1>
+
+  <p>
+    <a href="{% url 'admin:company-add' %}">Crear nueva compañia</a>
+  </p>
+
+  <br />
+
+  <section>
+    {% for company in object_list %}
+      <p><a href="{% url 'admin:company-update' company.id %}">{{ company.name }}</a></p>
+    {% empty %}
+      <p>No existe ninguna compañía.</p>
+    {% endfor %}
+  </section>
+
+{% endblock %}

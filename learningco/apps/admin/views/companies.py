@@ -7,22 +7,22 @@ from ...companies.models import Company
 
 class CompanyList(LoginRequiredMixin, ListView):
     model = Company
-    template_name = 'admin/company_list.html'
+    template_name = 'admin/companies/list.html'
 
 
 class CompanyCreate(LoginRequiredMixin, CreateView):
     model = Company
-    fields = ['name']
-    template_name = 'admin/company_create.html'
+    fields = ['name', 'industry', 'size']
+    template_name = 'admin/companies/create.html'
 
 
 class CompanyUpdate(LoginRequiredMixin, UpdateView):
     model = Company
-    fields = ['name']
-    template_name = 'admin/company_update.html'
+    fields = ['name', 'industry', 'size', 'human_resources', 'leaders']
+    template_name = 'admin/companies/update.html'
 
 
 class CompanyDelete(LoginRequiredMixin, DeleteView):
     model = Company
-    template_name = 'admin/company_delete.html'
+    template_name = 'admin/companies/delete.html'
     success_url = reverse_lazy('admin:company-list')
