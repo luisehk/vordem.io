@@ -25,4 +25,4 @@ class CompanyUpdate(LoginRequiredMixin, UpdateView):
 class CompanyDelete(LoginRequiredMixin, DeleteView):
     model = Company
     template_name = 'admin/company_delete.html'
-    success_url = reverse_lazy('company-list')
+    success_url = reverse_lazy('admin:company-list')
