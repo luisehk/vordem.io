@@ -2,12 +2,12 @@
 {% load static %}
 
 {% block content %}
-  <h1>Crear nueva compañia</h1>
-
+<div class="modal-box">
+  <h1 class="page-title">Crear nueva compañia</h1>
   <form action="" method="post">
     {% csrf_token %}
     {{ form.as_p }}
-    <input type="submit" value="Save" />
+    <input class="button primary-button" type="submit" value="Save" />
   </form>
-
+</div>
 {% endblock %}

@@ -276,6 +276,20 @@
 		"oAP": "\/learningco\/apps\/admin\/views\/__init__.py",
 		"oF": 0
 		},
+	"\/learningco\/apps\/admin\/views\/__pycache__\/__init__.cpython-36.pyc": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 1,
+		"oAP": "\/learningco\/apps\/admin\/views\/__pycache__\/__init__.cpython-36.pyc",
+		"oF": 0
+		},
+	"\/learningco\/apps\/admin\/views\/__pycache__\/companies.cpython-36.pyc": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/learningco\/apps\/admin\/views\/__pycache__\/companies.cpython-36.pyc",
+		"oF": 0
+		},
 	"\/learningco\/apps\/admin\/views\/companies.py": {
 		"cB": 0,
 		"ft": 8192,
@@ -318,11 +332,53 @@
 		"oAP": "\/learningco\/apps\/companies\/apps.py",
 		"oF": 0
 		},
+	"\/learningco\/apps\/companies\/migrations\/0001_initial.py": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/learningco\/apps\/companies\/migrations\/0001_initial.py",
+		"oF": 0
+		},
+	"\/learningco\/apps\/companies\/migrations\/0002_industry.py": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/learningco\/apps\/companies\/migrations\/0002_industry.py",
+		"oF": 0
+		},
+	"\/learningco\/apps\/companies\/migrations\/0003_auto_20180426_2203.py": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/learningco\/apps\/companies\/migrations\/0003_auto_20180426_2203.py",
+		"oF": 0
+		},
 	"\/learningco\/apps\/companies\/migrations\/__init__.py": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 1,
 		"oAP": "\/learningco\/apps\/companies\/migrations\/__init__.py",
+		"oF": 0
+		},
+	"\/learningco\/apps\/companies\/migrations\/__pycache__\/0001_initial.cpython-36.pyc": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/learningco\/apps\/companies\/migrations\/__pycache__\/0001_initial.cpython-36.pyc",
+		"oF": 0
+		},
+	"\/learningco\/apps\/companies\/migrations\/__pycache__\/0002_industry.cpython-36.pyc": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/learningco\/apps\/companies\/migrations\/__pycache__\/0002_industry.cpython-36.pyc",
+		"oF": 0
+		},
+	"\/learningco\/apps\/companies\/migrations\/__pycache__\/0003_auto_20180426_2203.cpython-36.pyc": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/learningco\/apps\/companies\/migrations\/__pycache__\/0003_auto_20180426_2203.cpython-36.pyc",
 		"oF": 0
 		},
 	"\/learningco\/apps\/companies\/migrations\/__pycache__\/__init__.cpython-36.pyc": {
@@ -346,11 +402,32 @@
 		"oAP": "\/learningco\/apps\/companies\/models\/__pycache__\/__init__.cpython-36.pyc",
 		"oF": 0
 		},
+	"\/learningco\/apps\/companies\/models\/__pycache__\/companies.cpython-36.pyc": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/learningco\/apps\/companies\/models\/__pycache__\/companies.cpython-36.pyc",
+		"oF": 0
+		},
+	"\/learningco\/apps\/companies\/models\/__pycache__\/industries.cpython-36.pyc": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/learningco\/apps\/companies\/models\/__pycache__\/industries.cpython-36.pyc",
+		"oF": 0
+		},
 	"\/learningco\/apps\/companies\/models\/companies.py": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
 		"oAP": "\/learningco\/apps\/companies\/models\/companies.py",
+		"oF": 0
+		},
+	"\/learningco\/apps\/companies\/models\/industries.py": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/learningco\/apps\/companies\/models\/industries.py",
 		"oF": 0
 		},
 	"\/learningco\/apps\/companies\/urls.py": {
@@ -948,6 +1025,19 @@
 		"oS": 0,
 		"uL": 1
 		},
+	"\/static\/css\/scss\/_utilities.scss": {
+		"aP": 0,
+		"bl": 0,
+		"dP": 10,
+		"dS": 0,
+		"ft": 4,
+		"ma": 0,
+		"oA": 1,
+		"oAP": "\/static\/css\/scss\/_utilities.css",
+		"oF": 0,
+		"oS": 0,
+		"uL": 1
+		},
 	"\/static\/css\/scss\/_variables.scss": {
 		"aP": 0,
 		"bl": 0,
@@ -1009,6 +1099,19 @@
 		"ma": 0,
 		"oA": 1,
 		"oAP": "\/static\/css\/scss\/components\/modals.css",
+		"oF": 0,
+		"oS": 0,
+		"uL": 1
+		},
+	"\/static\/css\/scss\/pages\/companies.scss": {
+		"aP": 0,
+		"bl": 0,
+		"dP": 10,
+		"dS": 0,
+		"ft": 4,
+		"ma": 0,
+		"oA": 1,
+		"oAP": "\/static\/css\/scss\/pages\/companies.css",
 		"oF": 0,
 		"oS": 0,
 		"uL": 1
@@ -1160,6 +1263,27 @@
 		"ft": 8192,
 		"oA": 0,
 		"oAP": "\/templates\/account\/verified_email_required.html",
+		"oF": 0
+		},
+	"\/templates\/admin\/companies\/create.html": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/templates\/admin\/companies\/create.html",
+		"oF": 0
+		},
+	"\/templates\/admin\/companies\/list.html": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/templates\/admin\/companies\/list.html",
+		"oF": 0
+		},
+	"\/templates\/admin\/companies\/update.html": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/templates\/admin\/companies\/update.html",
 		"oF": 0
 		},
 	"\/templates\/base.html": {

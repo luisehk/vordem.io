@@ -22,6 +22,24 @@ body {
 .page-subtitle {
   color: #7D6000; }
 
+.text-center {
+  text-align: center; }
+
+.center {
+  margin: 0 auto; }
+
+.block {
+  display: block; }
+
+.width-100 {
+  width: 100%; }
+
+.width-80 {
+  width: 80%; }
+
+.width-50 {
+  width: 50%; }
+
 .text-input {
   background-color: transparent;
   color: #7D6000;
@@ -36,9 +54,11 @@ body {
   padding: 1.6rem 2.4rem;
   border-radius: .4rem;
   border: none;
-  cursor: pointer; }
+  cursor: pointer;
+  text-decoration: none; }
   .button-small {
     padding: .8rem;
+    font-size: 1.2rem;
     background-image: -webkit-linear-gradient(#ddd 0%, #A8A8A8 100%);
     background-image: -o-linear-gradient(#ddd 0%, #A8A8A8 100%);
     background-image: linear-gradient(#ddd 0%, #A8A8A8 100%); }
@@ -145,3 +165,9 @@ body {
   .login .primary-button {
     width: 100%;
     margin: 2.4rem 0 0; }
+
+.companies .list-companies {
+  margin: 3.2rem 0; }
+
+.companies .secondary-button {
+  margin: 3.2rem auto; }
