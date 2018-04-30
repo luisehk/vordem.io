@@ -115,6 +115,28 @@ body {
 .m-tb--xxl {
   margin: 5.6rem 0; }
 
+.classless-form p {
+  margin: 1.6rem 0; }
+  .classless-form p label {
+    display: block;
+    margin-bottom: .4rem; }
+  .classless-form p input {
+    display: block;
+    padding: .8rem;
+    color: #7D6000;
+    font-size: 1.6rem;
+    border: 0;
+    width: 100%;
+    margin: .8rem 0; }
+  .classless-form p select {
+    width: 100%;
+    border: none;
+    color: #7D6000;
+    font-size: 1.6rem;
+    min-height: 3.2rem; }
+    .classless-form p select option {
+      padding: .4rem .8rem; }
+
 .text-input {
   background-color: transparent;
   color: #7D6000;
@@ -182,15 +204,6 @@ body {
     width: 100%; }
   .modal-box .button + .primary-button {
     margin-top: .8rem; }
-  .modal-box .classless-form p {
-    margin-bottom: .8rem; }
-    .modal-box .classless-form p input {
-      padding: .8rem;
-      color: #7D6000;
-      font-size: 1.6rem;
-      border: 0;
-      width: 100%;
-      margin: .8rem 0; }
   .modal-box .blockLabels {
     border: none; }
   .modal-box .ctrlHolder {

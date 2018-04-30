@@ -125,3 +125,34 @@
 .m-tb--xxl {
   margin: $xxl 0;
 }
+
+
+.classless-form {
+  p {
+    margin: 1.6rem 0;
+    label {
+      display: block;
+      margin-bottom: .4rem;
+    }
+    input {
+      display: block;
+      padding: .8rem;
+      color: $dark-yellow;
+      font-size: 1.6rem;
+      border: 0;
+      width: 100%;
+      margin: .8rem 0;
+    }
+    select {
+      width: 100%;
+      border: none;
+      color: $dark-yellow;
+      font-size: 1.6rem;
+      min-height: 3.2rem;
+
+      option {
+        padding: .4rem .8rem;
+      }
+    }
+  }
+}
