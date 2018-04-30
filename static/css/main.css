@@ -40,6 +40,81 @@ body {
 .width-50 {
   width: 50%; }
 
+.strong {
+  font-weight: 700; }
+
+.m-tb--xs {
+  margin: 0.8rem 0; }
+
+.m-tb--s {
+  margin: 1.6rem 0; }
+
+.m-tb--m {
+  margin: 3.2rem 0; }
+
+.m-tb--l {
+  margin: 4rem 0; }
+
+.m-tb--xl {
+  margin: 4.8rem 0; }
+
+.m-tb--xxl {
+  margin: 5.6rem 0; }
+
+.m-top--xs {
+  margin-top: 0.8rem; }
+
+.m-top--s {
+  margin-top: 1.6rem; }
+
+.m-top--m {
+  margin-top: 3.2rem; }
+
+.m-top--l {
+  margin-top: 4rem; }
+
+.m-top--xl {
+  margin-top: 4.8rem; }
+
+.m-top--xxl {
+  margin-top: 5.6rem; }
+
+.m-bottom--xs {
+  margin-bottom: 0.8rem; }
+
+.m-bottom--s {
+  margin-bottom: 1.6rem; }
+
+.m-bottom--m {
+  margin-bottom: 3.2rem; }
+
+.m-bottom--l {
+  margin-bottom: 4rem; }
+
+.m-bottom--xl {
+  margin-bottom: 4.8rem; }
+
+.m-bottom--xxl {
+  margin-bottom: 5.6rem; }
+
+.m-tb--xs {
+  margin: 0.8rem 0; }
+
+.m-tb--s {
+  margin: 1.6rem 0; }
+
+.m-tb--m {
+  margin: 3.2rem 0; }
+
+.m-tb--l {
+  margin: 4rem 0; }
+
+.m-tb--xl {
+  margin: 4.8rem 0; }
+
+.m-tb--xxl {
+  margin: 5.6rem 0; }
+
 .text-input {
   background-color: transparent;
   color: #7D6000;
@@ -48,7 +123,8 @@ body {
   border: none;
   border-bottom: 2px solid #b08700;
   padding: .8rem;
-  display: block; }
+  display: block;
+  font-size: 1.6rem; }
 
 .button {
   padding: 1.6rem 2.4rem;
