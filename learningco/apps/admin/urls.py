@@ -1,5 +1,3 @@
-from django.views.generic.base import RedirectView
-from django.urls import reverse_lazy
 from django.conf.urls import url
 from .views.companies import (
     CompanyList, CompanyCreate, CompanyUpdate, CompanyDelete
@@ -7,6 +5,7 @@ from .views.companies import (
 from .views.industries import (
     IndustryList, IndustryCreate, IndustryUpdate, IndustryDelete
 )
+from .views.admin import IndexView
 
 urlpatterns = [
     url(r'^companies$',
@@ -27,7 +26,5 @@ urlpatterns = [
     url(r'^industries/(?P<pk>[0-9]+)/delete/$',
         IndustryDelete.as_view(), name='industry-delete'),
 
-    url(r'^$',
-        RedirectView.as_view(
-            url=reverse_lazy('admin:company-list')), name='index'),
+    url(r'^$', IndexView.as_view(), name='index'),
 ]

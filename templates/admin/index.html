@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+  <div class="modal-box companies">
+    <h1 class="page-title">Back office</h1>
+
+    <section class="list list-companies">
+      <p>
+        <a href="{% url 'admin:company-list' %}">Compañias</a>
+      </p>
+      <p>
+        <a href="{% url 'admin:industry-list' %}">Industrias</a>
+      </p>
+    </section>
+  </div>
+{% endblock %}
