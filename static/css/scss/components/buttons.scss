@@ -3,9 +3,11 @@
   border-radius: .4rem;
   border: none;
   cursor: pointer;
+  text-decoration: none;
 
   &-small {
     padding: .8rem;
+    font-size: 1.2rem;
     @include grey-gradient;
   }
 

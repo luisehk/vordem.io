@@ -2,12 +2,27 @@
 {% load static %}
 
 {% block content %}
-  <h1>Crear nueva compañia</h1>
-
+<div class="modal-box">
+  <h1 class="page-title">Crear nueva compañia</h1>
   <form action="" method="post">
     {% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" value="Save" />
-  </form>
+    <label class="form-label strong block" for="id_name">Nombre</label>
+    <input class="text-input block width-100" type="text" name="name" maxlength="150" required="" id="id_name">
 
+    <label class="form-label strong block m-top--s" for="id_industry">Industria</label>
+    <select class="selector selector-industry" name="industry" required="" id="id_industry">
+      <option value="" selected="">---------</option>
+    </select>
+
+    <label class="form-label strong block m-top--s" for="id_size">Tamaño</label>
+    <select class="selector selector-size" name="size" id="id_size">
+      <option value="0" selected="">No especificado</option>
+      <option value="A">50-500 empleados</option>
+      <option value="B">500-5,000 empleados</option>
+      <option value="C">+5,000 empleados</option>
+    </select>
+
+    <input class="button primary-button" type="submit" value="Save" />
+  </form>
+</div>
 {% endblock %}

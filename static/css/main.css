@@ -22,6 +22,99 @@ body {
 .page-subtitle {
   color: #7D6000; }
 
+.text-center {
+  text-align: center; }
+
+.center {
+  margin: 0 auto; }
+
+.block {
+  display: block; }
+
+.width-100 {
+  width: 100%; }
+
+.width-80 {
+  width: 80%; }
+
+.width-50 {
+  width: 50%; }
+
+.strong {
+  font-weight: 700; }
+
+.m-tb--xs {
+  margin: 0.8rem 0; }
+
+.m-tb--s {
+  margin: 1.6rem 0; }
+
+.m-tb--m {
+  margin: 3.2rem 0; }
+
+.m-tb--l {
+  margin: 4rem 0; }
+
+.m-tb--xl {
+  margin: 4.8rem 0; }
+
+.m-tb--xxl {
+  margin: 5.6rem 0; }
+
+.m-top--xs {
+  margin-top: 0.8rem; }
+
+.m-top--s {
+  margin-top: 1.6rem; }
+
+.m-top--m {
+  margin-top: 3.2rem; }
+
+.m-top--l {
+  margin-top: 4rem; }
+
+.m-top--xl {
+  margin-top: 4.8rem; }
+
+.m-top--xxl {
+  margin-top: 5.6rem; }
+
+.m-bottom--xs {
+  margin-bottom: 0.8rem; }
+
+.m-bottom--s {
+  margin-bottom: 1.6rem; }
+
+.m-bottom--m {
+  margin-bottom: 3.2rem; }
+
+.m-bottom--l {
+  margin-bottom: 4rem; }
+
+.m-bottom--xl {
+  margin-bottom: 4.8rem; }
+
+.m-bottom--xxl {
+  margin-bottom: 5.6rem; }
+
+.m-tb--xs {
+  margin: 0.8rem 0; }
+
+.m-tb--s {
+  margin: 1.6rem 0; }
+
+.m-tb--m {
+  margin: 3.2rem 0; }
+
+.m-tb--l {
+  margin: 4rem 0; }
+
+.m-tb--xl {
+  margin: 4.8rem 0; }
+
+.m-tb--xxl {
+  margin: 5.6rem 0; }
+
 .text-input {
   background-color: transparent;
   color: #7D6000;
@@ -30,15 +123,18 @@ body {
   border: none;
   border-bottom: 2px solid #b08700;
   padding: .8rem;
-  display: block; }
+  display: block;
+  font-size: 1.6rem; }
 
 .button {
   padding: 1.6rem 2.4rem;
   border-radius: .4rem;
   border: none;
-  cursor: pointer; }
+  cursor: pointer;
+  text-decoration: none; }
   .button-small {
     padding: .8rem;
+    font-size: 1.2rem;
     background-image: -webkit-linear-gradient(#ddd 0%, #A8A8A8 100%);
     background-image: -o-linear-gradient(#ddd 0%, #A8A8A8 100%);
     background-image: linear-gradient(#ddd 0%, #A8A8A8 100%); }
@@ -145,3 +241,9 @@ body {
   .login .primary-button {
     width: 100%;
     margin: 2.4rem 0 0; }
+
+.companies .list-companies {
+  margin: 3.2rem 0; }
+
+.companies .secondary-button {
+  margin: 3.2rem auto; }
