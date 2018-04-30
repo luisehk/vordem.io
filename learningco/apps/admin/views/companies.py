@@ -2,6 +2,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import (
     ListView, CreateView, UpdateView, DeleteView)
 from django.urls import reverse_lazy
+from .mixins import EditCompanyAfterSuccess
 from ...companies.models import Company
 
 
@@ -10,13 +11,13 @@ class CompanyList(LoginRequiredMixin, ListView):
     template_name = 'admin/companies/list.html'
 
 
-class CompanyCreate(LoginRequiredMixin, CreateView):
+class CompanyCreate(LoginRequiredMixin, EditCompanyAfterSuccess, CreateView):
     model = Company
     fields = ['name', 'industry', 'size']
     template_name = 'admin/companies/create.html'
 
 
-class CompanyUpdate(LoginRequiredMixin, UpdateView):
+class CompanyUpdate(LoginRequiredMixin, EditCompanyAfterSuccess, UpdateView):
     model = Company
     fields = ['name', 'industry', 'size', 'human_resources', 'leaders']
     template_name = 'admin/companies/update.html'

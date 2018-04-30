@@ -28,3 +28,6 @@ class Company(models.Model):
         User, blank=True, related_name='hr_companies')
     leaders = models.ManyToManyField(
         User, blank=True, related_name='leader_companies')
+
+    def __str__(self):
+        return self.name
