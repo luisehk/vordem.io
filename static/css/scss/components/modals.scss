@@ -1,9 +1,19 @@
+.single {
+  .modal-box {
+    background-color: $yellow;
+    color: $text-color;
+    max-width: 46.4rem;
+    padding: 7rem 10rem 10rem;
+  }
+}
+
 .modal-box {
   max-width: 46.4rem;
-  margin: 1.6rem auto;
-  padding: 7rem 10rem 10rem;
-  color: $dark-yellow;
-  background-color: $yellow;
+  min-height: 40rem;
+  margin: 0 auto 1.6rem;
+  padding: 4rem 7rem;
+  color: $text-color;
+  background-color: #fff;
   border-radius: .8rem;
   box-shadow: 0 2px 4px 0 rgba(0,0,0,.5);
 
@@ -14,6 +24,10 @@
     min-height: 100vh;
     box-shadow: none;
 	}
+
+  &.dashboard {
+    max-width: 60%;
+  }
 
   .primary-button {
     font-size: 1.6rem;
@@ -31,5 +45,19 @@
 
   .ctrlHolder {
     margin: 1.6rem 0;
+  }
+
+  .modal-link {
+    color: $text-color;
+    display: block;
+    text-decoration: none;
+    padding: .4rem .8rem;
+    border-radius: .4rem;
+    background-color: lighten($text-color, 50%);
+    margin-bottom: .8rem;
+
+    &:hover {
+      text-decoration: none;
+    }
   }
 }

@@ -1,6 +1,7 @@
 * {
   box-sizing: border-box;
   margin: 0; padding: 0;
+  list-style: none;
 }
 
 html {
@@ -11,5 +12,10 @@ body {
   font: normal 1.6rem/1.5 sans-serif;
   font-family: $main-stack;
 	color: $text-color;
+  background-image: linear-gradient(-180deg, $yellow 40%, $brown 40%);
+  background-repeat: no-repeat;
   background-color: $brown;
 }
+ .single {
+   background-image: none;
+ }

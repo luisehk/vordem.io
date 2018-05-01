@@ -1,11 +1,19 @@
 .text-input {
   background-color: transparent;
-  color: $dark-yellow;
+  color: $text-color;
   outline: none;
   outline-style: none;
   border: none;
-  border-bottom: 2px solid lighten($dark-yellow, 10%);
+  border-bottom: 2px solid lighten($text-color, 10%);
   padding: .8rem;
   display: block;
   font-size: 1.6rem;
+}
+
+select {
+  border: none;
+  color: $text-color;
+  background-color: lighten($text-color, 50%);
+  font-size: 1.6rem;
+  min-height: 3.2rem;
 }

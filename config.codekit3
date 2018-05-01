@@ -1154,6 +1154,19 @@
 		"oS": 0,
 		"uL": 1
 		},
+	"\/static\/css\/scss\/components\/global-header.scss": {
+		"aP": 0,
+		"bl": 0,
+		"dP": 10,
+		"dS": 0,
+		"ft": 4,
+		"ma": 0,
+		"oA": 1,
+		"oAP": "\/static\/css\/scss\/components\/global-header.css",
+		"oF": 0,
+		"oS": 0,
+		"uL": 1
+		},
 	"\/static\/css\/scss\/components\/inputs.scss": {
 		"aP": 0,
 		"bl": 0,
@@ -1189,6 +1202,19 @@
 		"ma": 0,
 		"oA": 1,
 		"oAP": "\/static\/css\/scss\/pages\/companies.css",
+		"oF": 0,
+		"oS": 0,
+		"uL": 1
+		},
+	"\/static\/css\/scss\/pages\/dashboard.scss": {
+		"aP": 0,
+		"bl": 0,
+		"dP": 10,
+		"dS": 0,
+		"ft": 4,
+		"ma": 0,
+		"oA": 1,
+		"oAP": "\/static\/css\/scss\/pages\/dashboard.css",
 		"oF": 0,
 		"oS": 0,
 		"uL": 1
@@ -1363,6 +1389,13 @@
 		"oAP": "\/templates\/admin\/companies\/update.html",
 		"oF": 0
 		},
+	"\/templates\/admin\/index-old.html": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/templates\/admin\/index-old.html",
+		"oF": 0
+		},
 	"\/templates\/admin\/index.html": {
 		"cB": 0,
 		"ft": 8192,
@@ -1389,6 +1422,13 @@
 		"ft": 8192,
 		"oA": 0,
 		"oAP": "\/templates\/admin\/industries\/update.html",
+		"oF": 0
+		},
+	"\/templates\/base-simple.html": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/templates\/base-simple.html",
 		"oF": 0
 		},
 	"\/templates\/base.html": {

@@ -1,0 +1,55 @@
+.dashboard {
+  .page-title {
+    margin-top: 0;
+  }
+}
+
+.dashboard-sections {
+  display: flex;
+
+  @media screen and (max-width: 820px) {
+    display: block;
+	}
+
+  .section-container {
+    display: flex;
+    flex-direction: column;
+    padding: 1.6rem;
+    border: 1px solid lighten($text-color, 40%);
+    border-radius: .8rem;
+    width: 46%;
+    @media screen and (max-width: 820px) {
+      width: 100%;
+  	}
+
+    .page-subtitle {
+      color: $text-color;
+      margin-top: 0;
+    }
+
+    .list {
+      margin-bottom: 1.6rem;
+
+      .modal-link {
+        color: $text-color;
+        display: block;
+        text-decoration: none;
+        padding: .4rem .8rem;
+        border-radius: .4rem;
+        background-color: lighten($text-color, 50%);
+        margin-bottom: .8rem;
+      }
+    }
+
+    .secondary-button {
+      margin-top: auto;
+    }
+  }
+
+  .section-container + .section-container {
+    margin-left: auto;
+    @media screen and (max-width: 820px) {
+      margin-top: 1.6rem;
+  	}
+  }
+}

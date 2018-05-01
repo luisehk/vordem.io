@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+  <div class="modal-box dashboard">
+    <h1 class="page-title">Back office</h1>
+
+    <section>
+      <ul class="list">
+        <li class="list-link">
+          <a class="modal-link" href="{% url 'admin:company-list' %}">Compañias</a>
+        </li>
+        <li class="list-link">
+          <a class="modal-link" href="{% url 'admin:industry-list' %}">Industrias</a>
+        </li>
+      </ul>
+    </section>
+  </div>
+{% endblock %}

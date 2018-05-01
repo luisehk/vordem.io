@@ -4,14 +4,18 @@
 {% block content %}
 <div class="modal-box companies">
   <h1 class="page-title">Compañias</h1>
-  <a  class="button button-small secondary-button block width-80 center text-center" href="{% url 'admin:company-add' %}">Crear nueva compañia</a>
 
-  <section class="list list-companies">
+  <section class="companies">
+    <ul class="list">
     {% for company in object_list %}
-      <p><a href="{% url 'admin:company-update' company.id %}">{{ company.name }}</a></p>
+        <li class="list-link">
+          <a class="modal-link" href="{% url 'admin:company-update' company.id %}">{{ company.name }}</a>
+        </li>
     {% empty %}
+    </ul>
       <p>No existe ninguna compañía.</p>
     {% endfor %}
+    <a  class="button button-small secondary-button block center text-center" href="{% url 'admin:company-add' %}">Crear nueva compañia</a>
   </section>
 </div>
 {% endblock %}
