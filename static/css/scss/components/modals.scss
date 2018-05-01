@@ -5,6 +5,11 @@
     max-width: 46.4rem;
     padding: 7rem 10rem 10rem;
   }
+
+  .text-input {
+    color: $dark-yellow;
+    border-bottom: 2px solid lighten($dark-yellow, 10%);
+  }
 }
 
 .modal-box {

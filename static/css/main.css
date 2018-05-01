@@ -201,6 +201,10 @@ select {
   max-width: 46.4rem;
   padding: 7rem 10rem 10rem; }
 
+.single .text-input {
+  color: #7D6000;
+  border-bottom: 2px solid #b08700; }
+
 .modal-box {
   max-width: 46.4rem;
   min-height: 40rem;
