@@ -1375,13 +1375,6 @@
 		"oAP": "\/templates\/admin\/companies\/create.html",
 		"oF": 0
 		},
-	"\/templates\/admin\/companies\/list.html": {
-		"cB": 0,
-		"ft": 8192,
-		"oA": 0,
-		"oAP": "\/templates\/admin\/companies\/list.html",
-		"oF": 0
-		},
 	"\/templates\/admin\/companies\/update-old.html": {
 		"cB": 0,
 		"ft": 8192,
@@ -1396,13 +1389,6 @@
 		"oAP": "\/templates\/admin\/companies\/update.html",
 		"oF": 0
 		},
-	"\/templates\/admin\/index-old.html": {
-		"cB": 0,
-		"ft": 8192,
-		"oA": 0,
-		"oAP": "\/templates\/admin\/index-old.html",
-		"oF": 0
-		},
 	"\/templates\/admin\/index.html": {
 		"cB": 0,
 		"ft": 8192,
@@ -1415,13 +1401,6 @@
 		"ft": 8192,
 		"oA": 0,
 		"oAP": "\/templates\/admin\/industries\/create.html",
-		"oF": 0
-		},
-	"\/templates\/admin\/industries\/list.html": {
-		"cB": 0,
-		"ft": 8192,
-		"oA": 0,
-		"oAP": "\/templates\/admin\/industries\/list.html",
 		"oF": 0
 		},
 	"\/templates\/admin\/industries\/update.html": {
