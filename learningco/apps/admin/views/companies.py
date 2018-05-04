@@ -14,7 +14,7 @@ class CompanyCreate(LoginRequiredMixin, CreateView):
 
 class CompanyUpdate(LoginRequiredMixin, UpdateView):
     model = Company
-    fields = ['name', 'industry', 'size', 'human_resources', 'leaders']
+    fields = ['name', 'industry', 'size']
     template_name = 'admin/companies/update.html'
     success_url = reverse_lazy('admin:company-list')
 
