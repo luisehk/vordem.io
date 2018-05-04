@@ -29,5 +29,8 @@ class Company(models.Model):
     leaders = models.ManyToManyField(
         User, blank=True, related_name='leader_companies')
 
+    class Meta:
+        ordering = ['name']
+
     def __str__(self):
         return self.name
