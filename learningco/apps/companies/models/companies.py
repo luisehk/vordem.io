@@ -19,15 +19,25 @@ class Company(models.Model):
     )
 
     name = models.CharField(
+        verbose_name='Nombre',
         max_length=150)
     industry = models.ForeignKey(
-        Industry, null=True, blank=True, on_delete=models.SET_NULL)
+        Industry, verbose_name='Industria',
+        null=True, blank=True,
+        on_delete=models.SET_NULL)
     size = models.CharField(
-        max_length=1, choices=COMPANY_SIZES, default=COMPANY_SIZE_UNKNOWN)
+        verbose_name='Tamaño', max_length=1,
+        choices=COMPANY_SIZES,
+        default=COMPANY_SIZE_UNKNOWN)
     human_resources = models.ManyToManyField(
-        User, blank=True, related_name='hr_companies')
+        User, verbose_name='Recursos humanos',
+        blank=True, related_name='hr_companies')
     leaders = models.ManyToManyField(
-        User, blank=True, related_name='leader_companies')
+        User, verbose_name='Líderes',
+        blank=True, related_name='leader_companies')
+
+    class Meta:
+        ordering = ['name']
 
     def __str__(self):
         return self.name
