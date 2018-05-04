@@ -1,25 +1,16 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import (
     CreateView, UpdateView, DeleteView)
-from django.urls import reverse_lazy
-from ...companies.models import Company
+from .mixins import CompanyGenericView, CompanyFormView
 
 
-class CompanyCreate(LoginRequiredMixin, CreateView):
-    model = Company
-    fields = ['name', 'industry', 'size']
+class CompanyCreate(LoginRequiredMixin, CompanyFormView, CreateView):
     template_name = 'admin/companies/create.html'
-    success_url = reverse_lazy('admin:company-list')
 
 
-class CompanyUpdate(LoginRequiredMixin, UpdateView):
-    model = Company
-    fields = ['name', 'industry', 'size']
+class CompanyUpdate(LoginRequiredMixin, CompanyFormView, UpdateView):
     template_name = 'admin/companies/update.html'
-    success_url = reverse_lazy('admin:company-list')
 
 
-class CompanyDelete(LoginRequiredMixin, DeleteView):
-    model = Company
+class CompanyDelete(LoginRequiredMixin, CompanyGenericView, DeleteView):
     template_name = 'admin/companies/delete.html'
-    success_url = reverse_lazy('admin:company-list')
