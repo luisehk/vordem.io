@@ -1,3 +1,7 @@
+.hidden {
+  visibility: hidden;
+}
+
 .text-center {
   text-align: center;
 }
@@ -9,6 +13,10 @@
 .a--right {
   margin-left: auto;
   display: block;
+}
+
+.uppercase {
+  text-transform: uppercase;
 }
 
 .block {
@@ -131,6 +139,9 @@
   margin: $xxl 0;
 }
 
+///////////////////////////
+//  Form
+///////////////////////////
 
 .classless-form {
   p {
