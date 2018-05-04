@@ -36,7 +36,9 @@
                 </svg>
               </li>
 
-              <li class="dropdown-item"><a href="{% url 'account_logout' %}" class="nav-link">Cerrar sesión</a></li>
+              <li class="dropdown-item">
+                <a onclick="return confirm('¿Estás seguro de querer cerrar sesión?');" href="{% url 'account_logout' %}" class="nav-link">Cerrar sesión</a>
+              </li>
             </ul>
           </li>
         </ul>
