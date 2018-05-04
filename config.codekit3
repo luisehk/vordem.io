@@ -1382,6 +1382,13 @@
 		"oAP": "\/templates\/admin\/companies\/list.html",
 		"oF": 0
 		},
+	"\/templates\/admin\/companies\/update-old.html": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/templates\/admin\/companies\/update-old.html",
+		"oF": 0
+		},
 	"\/templates\/admin\/companies\/update.html": {
 		"cB": 0,
 		"ft": 8192,

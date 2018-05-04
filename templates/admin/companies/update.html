@@ -6,9 +6,68 @@
   <h1 class="page-title">Editar compañia <strong class="block m-top--s page-subtitle">{{ object.name }}</strong></h1>
 
   <form class="classless-form" action="" method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <input class="button primary-button" type="submit" value="Guardar" />
+  {% csrf_token %}
+    <p><label for="id_name">Nombre:</label>
+    <input type="text" name="name" value="Icalia Labs" maxlength="150" required="" id="id_name"></p>
+    <p><label for="id_industry">Industria:</label>
+    <select name="industry" id="id_industry">
+    <option value="">---------</option>
+    <option value="1" selected="">Retail</option>
+    <option value="2">Software</option>
+    </select></p>
+  <p><label for="id_size">Tamaño:</label>
+    <select name="size" id="id_size">
+    <option value="0">No especificado</option>
+    <option value="A" selected="">50-500 empleados</option>
+    <option value="B">500-5,000 empleados</option>
+    <option value="C">+5,000 empleados</option>
+    </select></p>
+  <label for="id_human_resources">Recursos Humanos:</label>
+    <ul class="list">
+      <li class="list-item">
+        <a class="modal-link" href="#">recursoshumanos@empresa.com</a>
+      </li>
+    </ul>
+    <button id="btn" type="button" class="button uppercase secondary-button button-small width-100 modal-open">Agregar cuenta de R.H.</button>
+    <div id="modal" class="modal-inside">
+      <div class="modal-inside-content">
+        <span class="close">&times;</span>
+        <h3 class="page-subtitle">Nueva cuenta de R.H.</h3>
+        <input type="text" placeholder="Correo electrónico" maxlength="150" required="">
+        <button type="button" class="button primary-button">Crear cuenta</button>
+      </div>
+    </div>
+    </p>
+    <input class="button primary-button" type="submit" value="Guardar">
   </form>
+
 </div>
+<script>
+  window.onload = function(){
+    // Get the modal
+    var modal = document.getElementById('modal');
+
+    // Get the button that opens the modal
+    var btn = document.getElementById("btn");
+
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close")[0];
+
+    // When the user clicks the button, open the modal
+    btn.onclick = function() {
+        modal.style.display = "flex";
+    }
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function() {
+        modal.style.display = "none";
+    }
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+      }
+  };
+</script>
+
 {% endblock %}
