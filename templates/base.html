@@ -1,4 +1,6 @@
 {% load static %}
+{% load account %}
+
 <!DOCTYPE html>
 <html>
 
@@ -21,7 +23,8 @@
         <li class="nav-item"><a href="{% url 'admin:industry-list' %}" class="nav-link">Industrias</a></li>
         <li class="nav-item">
           <ul class="dropdown">
-            <li class="dropdown-item">Usuario
+            <li class="dropdown-item">
+              {{ user.email }}
               <svg class="down-arrow" width="5px" height="5px" viewBox="0 0 5 5" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
               <!-- Generator: Sketch 49 (51002) - http://www.bohemiancoding.com/sketch -->
                 <desc>Created with Sketch.</desc>
@@ -33,6 +36,7 @@
                 </g>
               </svg>
             </li>
+
             <li class="dropdown-item"><a href="{% url 'account_logout' %}" class="nav-link">Cerrar sesión</a></li>
           </ul>
         </li>
