@@ -11,18 +11,14 @@
           Compañías
         </h2>
         <ul class="list">
-            <li class="list-item">
-              <a class="modal-link" href="{% url 'admin:company-list' %}">Nombre de compañía</a>
+          {% for company in companies %}
+            <li class="list-link">
+              <a class="modal-link" href="{% url 'admin:company-update' company.id %}">{{ company.name }}</a>
             </li>
-            <li class="list-item">
-              <a class="modal-link" href="{% url 'admin:company-list' %}">Nombre de compañía</a>
-            </li>
-            <li class="list-item">
-              <a class="modal-link" href="{% url 'admin:company-list' %}">Nombre de compañía</a>
-            </li>
-            <li class="list-item">
-              <a class="modal-link" href="{% url 'admin:company-list' %}">Nombre de compañía</a>
-            </li>
+          {% empty %}
+            </ul>
+            <p>No existe ninguna compañía.</p>
+          {% endfor %}
         </ul>
         <a  class="button button-small secondary-button block width-100 center text-center" href="{% url 'admin:company-add' %}">Crear nueva compañía</a>
       </section>
@@ -32,15 +28,14 @@
           Industrias
         </h2>
         <ul class="list">
-          <li class="list-item">
-            <a class="modal-link" href="{% url 'admin:industry-list' %}">Nombre de industria</a>
-          </li>
-          <li class="list-item">
-            <a class="modal-link" href="{% url 'admin:industry-list' %}">Nombre de industria</a>
-          </li>
-          <li class="list-item">
-            <a class="modal-link" href="{% url 'admin:industry-list' %}">Nombre de industria</a>
-          </li>
+          {% for industry in industries %}
+            <li class="list-link">
+              <a class="modal-link" href="{% url 'admin:industry-update' industry.id %}">{{ industry.name }}</a>
+            </li>
+          {% empty %}
+            </ul>
+            <p>No existe ninguna compañía.</p>
+          {% endfor %}
         </ul>
         <a  class="button button-small secondary-button block width-100 center text-center" href="{% url 'admin:industry-add' %}">Crear nueva industria</a>
       </section>
