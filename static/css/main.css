@@ -206,7 +206,7 @@ select {
   border-bottom: 2px solid #b08700; }
 
 .modal-box {
-  max-width: 46.4rem;
+  max-width: 66%;
   min-height: 40rem;
   margin: 0 auto 1.6rem;
   padding: 4rem 7rem;
@@ -222,7 +222,7 @@ select {
       min-height: 100vh;
       box-shadow: none; } }
   .modal-box.dashboard {
-    max-width: 60%; }
+    max-width: 66%; }
   .modal-box .primary-button {
     font-size: 1.6rem;
     margin-top: 3.2rem;
