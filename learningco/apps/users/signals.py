@@ -1,6 +1,7 @@
 from django.utils.translation import ugettext as _
 from django.contrib.auth import get_user_model
 from django.db.models.signals import post_save
+from crum import get_current_request
 from ..messaging.email.helpers import send_email
 from .models import Profile
 from .languages import set_language
@@ -53,16 +54,18 @@ def notify_user_creation(sender, **kwargs):
             password = User.objects.make_random_password()
             user.set_password(password)
             user.save()
+
             # reconnect the signal
             post_save.connect(notify_user_creation, sender=User)
 
         send_email(
-            subject=_('Welcome to Learningco'),
+            subject=_('Bienvenido to Learningco'),
             to_email=[user.email],
             template='emails/welcome.html',
             ctx={
                 'user': user.email,
                 'password': password,
+                'request': get_current_request()
             })
 
 

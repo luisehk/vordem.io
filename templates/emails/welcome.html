@@ -2,5 +2,13 @@
 {% load i18n %}
 
 {% block content %}
-  Bienvenido a LearningCo.
+  Hola <b>{{user}}</b>, tu cuenta en LearningCo ya está disponible.
+
+  {% if password %}
+    Puedes iniciar sesión usando tu correo electrónico y esta contraseña temporal: {{ password }}
+  {% endif %}
+
+  <br><br>
+
+  <a style="color: #000000; font-family: Arial, sans-serif; font-size: 14px;" href="{{ request.scheme }}://{{ request.get_host }}/accounts/login/">Ingresar</a>
 {% endblock %}
