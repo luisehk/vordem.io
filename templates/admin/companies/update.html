@@ -9,7 +9,16 @@
 
   <form class="classless-form" action="" method="post">
     {% csrf_token %}
-    {{ form.as_p }}
+
+    <label class="form-label strong block" for="id_name">Nombre</label>
+    <input class="text-input block width-100" type="text" name="name" maxlength="150" required="" id="id_name">
+
+    <label class="form-label strong block m-top--s" for="id_industry">Industria</label>
+    {{ form.industry }}
+
+    <label class="form-label strong block m-top--s" for="id_size">Tamaño</label>
+    {{ form.size }}
+
     <input class="button primary-button" type="submit" value="Guardar" />
   </form>
 </div>
