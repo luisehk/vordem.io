@@ -34,6 +34,10 @@ body {
 .center {
   margin: 0 auto; }
 
+.a--right {
+  margin-left: auto;
+  display: block; }
+
 .block {
   display: block; }
 
@@ -123,24 +127,27 @@ body {
 
 .classless-form p {
   margin: 1.6rem 0; }
-  .classless-form p label {
-    display: block;
-    margin-bottom: .4rem; }
-  .classless-form p input {
-    display: block;
-    padding: .8rem;
-    color: #666;
-    font-size: 1.6rem;
-    width: 100%;
-    margin: .8rem 0; }
-  .classless-form p select {
-    width: 100%;
-    border: none;
-    color: #666;
-    font-size: 1.6rem;
-    min-height: 3.2rem; }
-    .classless-form p select option {
-      padding: .4rem .8rem; }
+
+.classless-form label {
+  display: block;
+  margin-bottom: .4rem; }
+
+.classless-form input[type="text"], .classless-form input[type="email"] {
+  display: block;
+  padding: .8rem;
+  color: #666;
+  font-size: 1.6rem;
+  width: 100%;
+  margin: .8rem 0; }
+
+.classless-form select {
+  width: 100%;
+  border: none;
+  color: #666;
+  font-size: 1.6rem;
+  min-height: 3.2rem; }
+  .classless-form select option {
+    padding: .4rem .8rem; }
 
 .text-input {
   background-color: transparent;

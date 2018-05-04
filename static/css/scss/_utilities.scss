@@ -6,6 +6,11 @@
   margin: 0 auto;
 }
 
+.a--right {
+  margin-left: auto;
+  display: block;
+}
+
 .block {
   display: block;
 }
@@ -130,28 +135,28 @@
 .classless-form {
   p {
     margin: 1.6rem 0;
-    label {
-      display: block;
-      margin-bottom: .4rem;
     }
-    input {
-      display: block;
-      padding: .8rem;
-      color: $text-color;
-      font-size: 1.6rem;
-      width: 100%;
-      margin: .8rem 0;
-    }
-    select {
-      width: 100%;
-      border: none;
-      color: $text-color;
-      font-size: 1.6rem;
-      min-height: 3.2rem;
+  label {
+    display: block;
+    margin-bottom: .4rem;
+  }
+  input[type="text"], input[type="email"] {
+    display: block;
+    padding: .8rem;
+    color: $text-color;
+    font-size: 1.6rem;
+    width: 100%;
+    margin: .8rem 0;
+  }
+  select {
+    width: 100%;
+    border: none;
+    color: $text-color;
+    font-size: 1.6rem;
+    min-height: 3.2rem;
 
-      option {
-        padding: .4rem .8rem;
-      }
+    option {
+      padding: .4rem .8rem;
     }
   }
 }
