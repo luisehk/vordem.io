@@ -262,6 +262,34 @@
 		"oAP": "\/learningco\/apps\/admin\/models\/__pycache__\/__init__.cpython-36.pyc",
 		"oF": 0
 		},
+	"\/learningco\/apps\/admin\/serializers\/__init__.py": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 1,
+		"oAP": "\/learningco\/apps\/admin\/serializers\/__init__.py",
+		"oF": 0
+		},
+	"\/learningco\/apps\/admin\/serializers\/__pycache__\/__init__.cpython-36.pyc": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 1,
+		"oAP": "\/learningco\/apps\/admin\/serializers\/__pycache__\/__init__.cpython-36.pyc",
+		"oF": 0
+		},
+	"\/learningco\/apps\/admin\/serializers\/__pycache__\/companies.cpython-36.pyc": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/learningco\/apps\/admin\/serializers\/__pycache__\/companies.cpython-36.pyc",
+		"oF": 0
+		},
+	"\/learningco\/apps\/admin\/serializers\/companies.py": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/learningco\/apps\/admin\/serializers\/companies.py",
+		"oF": 0
+		},
 	"\/learningco\/apps\/admin\/urls.py": {
 		"cB": 0,
 		"ft": 8192,
@@ -717,6 +745,13 @@
 		"oAP": "\/learningco\/apps\/users\/__pycache__\/apps.cpython-36.pyc",
 		"oF": 0
 		},
+	"\/learningco\/apps\/users\/__pycache__\/helpers.cpython-36.pyc": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/learningco\/apps\/users\/__pycache__\/helpers.cpython-36.pyc",
+		"oF": 0
+		},
 	"\/learningco\/apps\/users\/__pycache__\/languages.cpython-36.pyc": {
 		"cB": 0,
 		"ft": 8192,
@@ -813,6 +848,13 @@
 		"ft": 8192,
 		"oA": 0,
 		"oAP": "\/learningco\/apps\/users\/apps.py",
+		"oF": 0
+		},
+	"\/learningco\/apps\/users\/helpers.py": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/learningco\/apps\/users\/helpers.py",
 		"oF": 0
 		},
 	"\/learningco\/apps\/users\/languages.py": {
@@ -1141,6 +1183,19 @@
 		"oS": 0,
 		"uL": 1
 		},
+	"\/static\/css\/scss\/components\/avatars.scss": {
+		"aP": 0,
+		"bl": 0,
+		"dP": 10,
+		"dS": 0,
+		"ft": 4,
+		"ma": 0,
+		"oA": 1,
+		"oAP": "\/static\/css\/scss\/components\/avatars.css",
+		"oF": 0,
+		"oS": 0,
+		"uL": 1
+		},
 	"\/static\/css\/scss\/components\/buttons.scss": {
 		"aP": 0,
 		"bl": 0,
@@ -1231,6 +1286,16 @@
 		"oF": 0,
 		"oS": 0,
 		"uL": 1
+		},
+	"\/static\/imgs\/avatar-default.svg": {
+		"ft": 2097152,
+		"miP": 0,
+		"oA": 2,
+		"oAP": "\/static\/imgs\/avatar-default.svg",
+		"oF": 0,
+		"opt": 0,
+		"plM": 3758088159,
+		"prP": 0
 		},
 	"\/static\/imgs\/logo.svg": {
 		"ft": 2097152,
@@ -1375,18 +1440,18 @@
 		"oAP": "\/templates\/admin\/companies\/create.html",
 		"oF": 0
 		},
-	"\/templates\/admin\/companies\/update-old.html": {
-		"cB": 0,
-		"ft": 8192,
-		"oA": 0,
-		"oAP": "\/templates\/admin\/companies\/update-old.html",
-		"oF": 0
-		},
 	"\/templates\/admin\/companies\/update.html": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
 		"oAP": "\/templates\/admin\/companies\/update.html",
+		"oF": 0
+		},
+	"\/templates\/admin\/index-admin.html": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/templates\/admin\/index-admin.html",
 		"oF": 0
 		},
 	"\/templates\/admin\/index.html": {

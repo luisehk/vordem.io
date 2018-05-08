@@ -43,6 +43,10 @@
 //  Margins
 ///////////////////////////
 
+.m-tb--0 {
+  margin: 0 auto;
+}
+
 .m-tb--xs {
   margin: $xs 0;
 }
@@ -67,6 +71,10 @@
   margin: $xxl 0;
 }
 
+.m-top--0 {
+  margin-top: 0;
+}
+
 .m-top--xs {
   margin-top: $xs;
 }
@@ -89,6 +97,10 @@
 
 .m-top--xxl {
   margin-top: $xxl;
+}
+
+.m-bottom--0 {
+  margin-bottom: 0;
 }
 
 .m-bottom--xs {
@@ -147,27 +159,4 @@
   p {
     margin: 1.6rem 0;
     }
-  label {
-    display: block;
-    margin-bottom: .4rem;
-  }
-  input[type="text"], input[type="email"] {
-    display: block;
-    padding: .8rem;
-    color: $text-color;
-    font-size: 1.6rem;
-    width: 100%;
-    margin: .8rem 0;
-  }
-  select {
-    width: 100%;
-    border: none;
-    color: $text-color;
-    font-size: 1.6rem;
-    min-height: 3.2rem;
-
-    option {
-      padding: .4rem .8rem;
-    }
-  }
 }
