@@ -72,6 +72,8 @@ exclude_patterns:
   - "dist/"
   - "features/"
   - "**/node_modules/"
+  - "**/migrations/*.py"
+  - "static/"
   - "script/"
   - "**/spec/"
   - "**/test/"
