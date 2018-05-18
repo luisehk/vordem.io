@@ -9,6 +9,13 @@
 	],
 "creatorBuild": "26330",
 "files": {
+	"\/.codeclimate.yml": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/.codeclimate.yml",
+		"oF": 0
+		},
 	"\/.editorconfig": {
 		"cB": 0,
 		"ft": 8192,
@@ -42,6 +49,13 @@
 		"ft": 8192,
 		"oA": 0,
 		"oAP": "\/.jshintignore",
+		"oF": 0
+		},
+	"\/.scss-lint.yml": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/.scss-lint.yml",
 		"oF": 0
 		},
 	"\/celerybeat-schedule": {
@@ -325,6 +339,13 @@
 		"oAP": "\/learningco\/apps\/admin\/views\/__pycache__\/companies.cpython-36.pyc",
 		"oF": 0
 		},
+	"\/learningco\/apps\/admin\/views\/__pycache__\/content.cpython-36.pyc": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/learningco\/apps\/admin\/views\/__pycache__\/content.cpython-36.pyc",
+		"oF": 0
+		},
 	"\/learningco\/apps\/admin\/views\/__pycache__\/industries.cpython-36.pyc": {
 		"cB": 0,
 		"ft": 8192,
@@ -351,6 +372,13 @@
 		"ft": 8192,
 		"oA": 0,
 		"oAP": "\/learningco\/apps\/admin\/views\/companies.py",
+		"oF": 0
+		},
+	"\/learningco\/apps\/admin\/views\/content.py": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/learningco\/apps\/admin\/views\/content.py",
 		"oF": 0
 		},
 	"\/learningco\/apps\/admin\/views\/industries.py": {
@@ -1261,6 +1289,19 @@
 		"oS": 0,
 		"uL": 1
 		},
+	"\/static\/css\/scss\/pages\/content.scss": {
+		"aP": 0,
+		"bl": 0,
+		"dP": 10,
+		"dS": 0,
+		"ft": 4,
+		"ma": 0,
+		"oA": 1,
+		"oAP": "\/static\/css\/scss\/pages\/content.css",
+		"oF": 0,
+		"oS": 0,
+		"uL": 1
+		},
 	"\/static\/css\/scss\/pages\/dashboard.scss": {
 		"aP": 0,
 		"bl": 0,
@@ -1447,6 +1488,97 @@
 		"oAP": "\/templates\/admin\/companies\/update.html",
 		"oF": 0
 		},
+	"\/templates\/admin\/content\/01.html": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/templates\/admin\/content\/01.html",
+		"oF": 0
+		},
+	"\/templates\/admin\/content\/02.html": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/templates\/admin\/content\/02.html",
+		"oF": 0
+		},
+	"\/templates\/admin\/content\/03.html": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/templates\/admin\/content\/03.html",
+		"oF": 0
+		},
+	"\/templates\/admin\/content\/04.html": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/templates\/admin\/content\/04.html",
+		"oF": 0
+		},
+	"\/templates\/admin\/content\/05.html": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/templates\/admin\/content\/05.html",
+		"oF": 0
+		},
+	"\/templates\/admin\/content\/06.html": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/templates\/admin\/content\/06.html",
+		"oF": 0
+		},
+	"\/templates\/admin\/content\/07.html": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/templates\/admin\/content\/07.html",
+		"oF": 0
+		},
+	"\/templates\/admin\/content\/08.html": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/templates\/admin\/content\/08.html",
+		"oF": 0
+		},
+	"\/templates\/admin\/content\/09.html": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/templates\/admin\/content\/09.html",
+		"oF": 0
+		},
+	"\/templates\/admin\/content\/10.html": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/templates\/admin\/content\/10.html",
+		"oF": 0
+		},
+	"\/templates\/admin\/content\/11.html": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/templates\/admin\/content\/11.html",
+		"oF": 0
+		},
+	"\/templates\/admin\/content\/12.html": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/templates\/admin\/content\/12.html",
+		"oF": 0
+		},
+	"\/templates\/admin\/content\/13.html": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/templates\/admin\/content\/13.html",
+		"oF": 0
+		},
 	"\/templates\/admin\/index-admin.html": {
 		"cB": 0,
 		"ft": 8192,
@@ -1475,6 +1607,13 @@
 		"oAP": "\/templates\/admin\/industries\/update.html",
 		"oF": 0
 		},
+	"\/templates\/base-content.html": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/templates\/base-content.html",
+		"oF": 0
+		},
 	"\/templates\/base-simple.html": {
 		"cB": 0,
 		"ft": 8192,
@@ -1501,6 +1640,13 @@
 		"ft": 8192,
 		"oA": 0,
 		"oAP": "\/templates\/emails\/welcome.html",
+		"oF": 0
+		},
+	"\/tox.ini": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/tox.ini",
 		"oF": 0
 		},
 	"\/users\/__pycache__\/__init__.cpython-36.pyc": {

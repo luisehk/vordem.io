@@ -23,6 +23,26 @@
   display: block;
 }
 
+.strong {
+  font-weight: 700;
+}
+
+.grid {
+  display: grid;
+}
+
+.grid-sidebar {
+  grid-template-columns: 20rem 4fr;
+  grid-template-rows: repeat(2, 10rem) 1fr;
+  grid-column-gap: $l;
+  grid-row-gap: $s;
+}
+
+
+///////////////////////////
+//  Widths
+///////////////////////////
+
 .width-100 {
   width: 100%;
 }
@@ -33,10 +53,6 @@
 
 .width-50 {
   width: 50%;
-}
-
-.strong {
-  font-weight: 700;
 }
 
 ///////////////////////////
@@ -127,29 +143,30 @@
   margin-bottom: $xxl;
 }
 
-.m-tb--xs {
-  margin: $xs 0;
+.m-rl--xs {
+  margin-right: $xs; margin-left: $xs;
 }
 
-.m-tb--s {
-  margin: $s 0;
+.m-rl--s {
+  margin-right: $s; margin-left: $s;
 }
 
-.m-tb--m {
-  margin: $m 0;
+.m-rl--m {
+  margin-right: $m; margin-left: $m;
 }
 
-.m-tb--l {
-  margin: $l 0;
+.m-rl--l {
+  margin-right: $l; margin-left: $l;
 }
 
-.m-tb--xl {
-  margin: $xl 0;
+.m-rl--xl {
+  margin-right: $xl; margin-left: $xl;
 }
 
-.m-tb--xxl {
-  margin: $xxl 0;
+.m-rl--xxl {
+  margin-right: $xxl; margin-left: $xxl;
 }
+
 
 ///////////////////////////
 //  Form
