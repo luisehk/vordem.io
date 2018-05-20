@@ -52,6 +52,7 @@
   justify-self: end;
   font-size: $xxl;
   line-height: 1;
+  text-align: right;
 }
 
 .tab {
@@ -84,61 +85,6 @@
 .content {
   grid-column: 2/3;
   grid-row: 2/-1;
-
-  .tabs + .tab-content {
-    border-radius: 0 $xs $xs $xs;
-  }
-
-  .tab-content {
-    background-color: #f8f8f8;
-    padding: $s;
-    border-radius: $xs;
-
-    &--item {
-      justify-content: space-between;
-      align-items: center;
-      border-radius: .8rem;
-      margin: $xs 0;
-      background-color: #fff;
-      box-shadow: 0 1px 1px 0 rgba(0,0,0,.3);
-      grid-template-columns: 1fr max-content;
-      grid-column-gap: 4rem;
-
-      &-link {
-        padding: $s;
-        color: $text-color;
-        text-decoration: none;
-        opacity: .8;
-
-        &:hover {
-          color: $dark-green;
-          opacity: 1;
-        }
-      }
-
-      .score-number {
-        font-size: $m;
-        margin-right: $s;
-      }
-    }
-    &--item:first-child {
-      margin-top: 0;
-    }
-
-    &--item:last-child {
-      margin: 0;
-    }
-
-    .show-app {
-      font-size: 1.2rem;
-      color: $text-color;
-      margin-left: $s;
-
-      input[type="checkbox"] {
-        margin-right: $xs;
-      }
-    }
-  }
 }
 
 .competencia {

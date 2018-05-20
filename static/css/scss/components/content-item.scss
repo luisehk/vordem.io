@@ -1,0 +1,113 @@
+.tabs + .tab-content {
+  border-radius: 0 $xs $xs $xs;
+}
+
+.tab-content {
+  background-color: #f8f8f8;
+  padding: $s;
+  border-radius: $xs;
+
+  &--item {
+    justify-content: space-between;
+    align-items: center;
+    border-radius: .8rem;
+    margin: $xs 0 $xs/2 0;
+    background-color: #fff;
+    box-shadow: 0 1px 1px 0 rgba(0,0,0,.3);
+    grid-template-columns: 1fr max-content;
+    grid-column-gap: 4rem;
+
+    &-link {
+      padding: $s;
+      color: $text-color;
+      text-decoration: none;
+      opacity: .8;
+
+      &:hover {
+        color: $dark-green;
+        opacity: 1;
+      }
+    }
+
+    .score-number {
+      font-size: $m;
+      margin-right: $s;
+    }
+  }
+  &--item:first-child {
+    margin-top: 0;
+  }
+
+  &--item:last-child {
+    margin: 0;
+  }
+}
+
+.show-app {
+  font-size: 1.2rem;
+  color: $text-color;
+  margin-left: $s;
+
+  input[type="checkbox"] {
+    margin-right: $xs;
+  }
+}
+
+.competencia-single {
+
+    .tab-content--item {
+      background-color: #f8f8f8;
+    }
+
+    .item-title {
+      font-size: $m;
+      padding: $s;
+      color: $dark-green;
+    }
+}
+
+.content--item {
+  padding: $s;
+  display: flex;
+  align-items: stretch;
+
+  & + & {
+    margin-top: $s;
+  }
+
+  .content--media {
+    width: 60%;
+    background-color: $muted-blue;
+
+    & + .content-info {
+      margin-left: $s;
+    }
+  }
+
+  .content-info {
+    grid-template-columns: 1fr 1fr;
+
+    .item-title,
+    .content-tag,
+    .content-text {
+      grid-column: 1/3;
+    }
+
+    .item-title {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .show-app {
+      display: inline-block;
+      margin-left: 0;
+      align-self: flex-end;
+    }
+
+    .button {
+      margin-left: auto;
+      padding: $xs $m;
+    }
+  }
+}

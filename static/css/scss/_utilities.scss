@@ -27,6 +27,19 @@
   font-weight: 700;
 }
 
+.icon-left {
+  padding-left: $s;
+}
+
+.icon-tag {
+  background: url(../imgs/tag.svg) left center no-repeat;
+  background-size: 1.2rem;
+}
+
+.relative {
+  position: relative;
+}
+
 .grid {
   display: grid;
 }
