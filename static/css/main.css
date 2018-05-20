@@ -57,6 +57,9 @@ a, svg {
 .uppercase {
   text-transform: uppercase; }
 
+.flex {
+  display: flex; }
+
 .block {
   display: block; }
 
@@ -232,9 +235,9 @@ select {
     font-size: 1rem;
     text-transform: uppercase;
     color: #666;
-    background-image: -webkit-linear-gradient(#eee 0%, #A8A8A8 100%);
-    background-image: -o-linear-gradient(#ddd 0%, #A8A8A8 100%);
-    background-image: linear-gradient(#ddd 0%, #A8A8A8 100%); }
+    background-image: -webkit-linear-gradient(#f0f0f0 0%, #BDBDBD 100%);
+    background-image: -o-linear-gradient(#f0f0f0 0%, #BDBDBD 100%);
+    background-image: linear-gradient(#f0f0f0 0%, #BDBDBD 100%); }
   .button-full {
     display: block;
     text-align: center;
@@ -265,6 +268,14 @@ select {
 .button-add {
   background-color: #6DA995;
   margin: 3.2rem 0 0 auto; }
+
+.button-search {
+  border-radius: 0 .4rem .4rem 0;
+  text-transform: uppercase;
+  color: #666;
+  background-image: -webkit-linear-gradient(#f0f0f0 0%, #BDBDBD 100%);
+  background-image: -o-linear-gradient(#f0f0f0 0%, #BDBDBD 100%);
+  background-image: linear-gradient(#f0f0f0 0%, #BDBDBD 100%); }
 
 .single .modal-box {
   background-color: #EFB701;
@@ -328,8 +339,7 @@ select {
   .modal-inside-content {
     background-color: #fff;
     margin: auto;
-    padding: 1.6rem;
-    width: 50%;
+    padding: 3.2rem;
     position: relative;
     border-radius: .8rem; }
     .modal-inside-content .close {
@@ -678,3 +688,51 @@ select {
   opacity: .4; }
   .edit-icon:hover {
     opacity: .8; }
+
+.content-add-header {
+  justify-content: space-between;
+  flex-wrap: wrap; }
+  .content-add-header .competencia-single-title {
+    display: inline-block;
+    font-size: 3.2rem; }
+  .content-add-header .score-global {
+    font-size: 3.2rem;
+    padding: 1.6rem;
+    border: 2px solid #eee;
+    align-self: center; }
+  .content-add-header .search-form {
+    flex-basis: 100%; }
+    .content-add-header .search-form .search-container {
+      border-radius: 0.8rem;
+      justify-content: space-between; }
+    .content-add-header .search-form .search-input {
+      width: 100%;
+      padding: 0.8rem 1.6rem;
+      font-size: 1.6rem; }
+
+.search-results {
+  min-height: 50vh;
+  text-align: center; }
+  .search-results-message {
+    margin: auto; }
+    .search-results-message-link {
+      display: block; }
+
+.lider .tab-content--item-link {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  grid-column-gap: 1.6rem; }
+
+.lider-img {
+  background-color: #ccc;
+  width: 9.6rem;
+  height: 5.6rem;
+  grid-column: 1/2;
+  grid-row: 1/3; }
+
+.lider .item-title, .lider-puesto {
+  grid-column: 2/3;
+  align-self: flex-end; }
+
+.lider-puesto {
+  align-self: flex-start; }

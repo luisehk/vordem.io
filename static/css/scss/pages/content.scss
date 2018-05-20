@@ -102,3 +102,75 @@
     opacity: .8;
   }
 }
+
+.content-add-header {
+  justify-content: space-between;
+  flex-wrap: wrap;
+
+  .competencia-single-title {
+    display: inline-block;
+    font-size: $m;
+  }
+
+  .score-global {
+    font-size: $m;
+    padding: $s;
+    border: 2px solid #eee;
+    align-self: center;
+  }
+
+  .search-form {
+    flex-basis: 100%;
+
+    .search-container {
+      border-radius: $xs;
+      justify-content: space-between;
+    }
+
+    .search-input {
+      width: 100%;
+      padding: $xs $s;
+      font-size: $s;
+    }
+  }
+}
+
+.search-results {
+  min-height: 50vh;
+  text-align: center;
+
+  &-message {
+    margin: auto;
+
+    &-link {
+      display: block;
+    }
+  }
+}
+
+.lider {
+
+  .tab-content--item-link {
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    grid-column-gap: $s;
+  }
+
+  &-img {
+    background-color: #ccc;
+    width: $xs * 12;
+    height: $xxl;
+    grid-column: 1/2;
+    grid-row: 1/3;
+  }
+
+  .item-title,
+  &-puesto {
+    grid-column: 2/3;
+    align-self: flex-end;
+  }
+
+  &-puesto {
+    align-self: flex-start;
+  }
+}

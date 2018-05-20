@@ -81,8 +81,7 @@
   &-content {
     background-color: #fff;
     margin: auto;
-    padding: 1.6rem;
-    width: 50%;
+    padding: $m;
     position: relative;
     border-radius: .8rem;
 
@@ -113,6 +112,7 @@
   }
 
 }
+
 .modal-link {
   color: $text-color;
   display: block;
