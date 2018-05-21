@@ -174,3 +174,14 @@
     align-self: flex-start;
   }
 }
+
+.reactivo {
+
+  .item-title {
+    font-weight: 400; 
+  }
+
+  &+& {
+    margin-top: $s;
+  }
+}

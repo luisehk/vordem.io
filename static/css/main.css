@@ -736,3 +736,9 @@ select {
 
 .lider-puesto {
   align-self: flex-start; }
+
+.reactivo .item-title {
+  font-weight: 400; }
+
+.reactivo + .reactivo {
+  margin-top: 1.6rem; }
