@@ -136,8 +136,8 @@
 }
 
 .search-results {
+  flex-wrap: wrap;
   min-height: 50vh;
-  text-align: center;
 
   &-message {
     margin: auto;
@@ -146,6 +146,39 @@
       display: block;
     }
   }
+
+  .tab-content--item {
+    box-shadow: none;
+    background-color: #f0f0f0;
+
+    &:first-child {
+      margin-top: $s;
+    }
+
+    .content--media {
+      width: 40%;
+    }
+
+    .content-info {
+      grid-template-columns: 8fr 1fr;
+
+      .item-title,
+      .content-tag,
+      .content-text {
+        grid-column: 1/2;
+      }
+
+      .assign-container {
+        grid-row: 1/4;
+        grid-column: 2/3;
+        align-self: center;
+        justify-self: center;
+        width: 40%;
+      }
+    }
+
+  }
+
 }
 
 .lider {
@@ -178,7 +211,7 @@
 .reactivo {
 
   .item-title {
-    font-weight: 400; 
+    font-weight: 400;
   }
 
   &+& {

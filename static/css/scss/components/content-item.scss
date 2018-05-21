@@ -57,12 +57,18 @@
 
     .tab-content--item {
       background-color: #f8f8f8;
+      border: 3px double lighten($text-color, 40%);
+      box-shadow: none;
     }
 
     .item-title {
       font-size: $m;
       padding: $s;
-      color: $dark-green;
+      color: darken($text-color, 10%);
+    }
+
+    .score-number {
+      color: darken($text-color, 10%);
     }
 }
 
