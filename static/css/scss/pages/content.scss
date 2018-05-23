@@ -126,12 +126,6 @@
       border-radius: $xs;
       justify-content: space-between;
     }
-
-    .search-input {
-      width: 100%;
-      padding: $xs $s;
-      font-size: $s;
-    }
   }
 }
 
@@ -150,10 +144,6 @@
   .tab-content--item {
     box-shadow: none;
     background-color: #f0f0f0;
-
-    &:first-child {
-      margin-top: $s;
-    }
 
     .content--media {
       width: 40%;
@@ -178,7 +168,10 @@
     }
 
   }
+}
 
+.search-results--item {
+    margin-top: $s;
 }
 
 .lider {

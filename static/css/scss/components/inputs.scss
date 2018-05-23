@@ -84,3 +84,15 @@ select {
   }
 
 }
+
+.search-input {
+  appearance: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  width: 100%;
+  padding: $xs $s;
+  font-size: $s;
+  border-radius: 4px 0 0 4px;
+  border: 1px solid rgba(0,0,0,.2);
+  border-right: none;
+}
