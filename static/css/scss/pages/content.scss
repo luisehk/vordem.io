@@ -131,10 +131,10 @@
 
 .search-results {
   flex-wrap: wrap;
-  min-height: 50vh;
 
   &-message {
     margin: auto;
+    padding: $xl*3 0;
 
     &-link {
       display: block;
