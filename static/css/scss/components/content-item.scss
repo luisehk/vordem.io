@@ -70,6 +70,10 @@
     .score-number {
       color: darken($text-color, 10%);
     }
+
+    .tool {
+      margin: 0 $s;
+    }
 }
 
 .content--item {
@@ -112,8 +116,33 @@
     }
 
     .button {
+      grid-column: 2;
       margin-left: auto;
       padding: $xs $m;
     }
+  }
+}
+
+.full-content {
+  margin-top: $m;
+
+  .content--item {
+    padding: $s 0;
+  }
+
+  .content--item + .content--item {
+    border-top: 1px solid rgba(0,0,0,.3);
+    padding-top: $m;
+  }
+}
+
+.grid-two-col {
+
+  .content--item {
+    margin: 0;
+  }
+
+  .content--item + .content--item {
+    margin-top: 0;
   }
 }
