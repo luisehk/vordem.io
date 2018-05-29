@@ -10,8 +10,8 @@ User = get_user_model()
 class Lesson(models.Model):
     skill = models.ForeignKey(
         Skill, verbose_name='Competencia',
-        null=True, blank=True,
-        on_delete=models.CASCADE)
+        null=False, on_delete=models.CASCADE,
+        related_name='lessons')
     name = models.CharField(
         verbose_name='Nombre',
         max_length=150)
@@ -34,4 +34,26 @@ class Video(Lesson):
 
 
 class Quiz(Lesson):
+    body = models.TextField(blank=False)
+
+
+class Question(models.Model):
+    quiz = models.ForeignKey(
+        Quiz, verbose_name='Cuestionario',
+        null=False, on_delete=models.CASCADE,
+        related_name='questions')
+    title = models.TextField(blank=False)
+
+
+class Option(models.Model):
+    question = models.ForeignKey(
+        Question, verbose_name='Pregunta',
+        null=False, on_delete=models.CASCADE,
+        related_name='options')
+    title = models.TextField(blank=False)
+    value = models.IntegerField(default=0)
+
+
+class Article(Lesson):
+    description = models.TextField(blank=False)
     body = models.TextField(blank=False)
