@@ -3,7 +3,6 @@ from versatileimagefield.image_warmer import VersatileImageFieldWarmer
 from versatileimagefield.placeholder import OnDiscPlaceholderImage
 from django.utils.translation import ugettext_lazy as _
 from django.contrib.auth import get_user_model
-from .languages import LANGUAGE, ENGLISH_CODE
 from django.conf import settings
 from django.db import models
 import os
@@ -31,12 +30,6 @@ class Profile(models.Model):
 
     # contact info
     phone = models.CharField(_('Phone'), max_length=100, blank=True)
-
-    # settings
-    preferred_language = models.CharField(
-        max_length=10,
-        default=ENGLISH_CODE,
-        choices=LANGUAGE)
 
     def __str__(self):
         return self.get_full_name() or self.user.email

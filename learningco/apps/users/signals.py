@@ -4,7 +4,6 @@ from django.db.models.signals import post_save
 from crum import get_current_request
 from ..messaging.email.helpers import send_email
 from .models import Profile
-from .languages import set_language
 
 
 User = get_user_model()
@@ -67,8 +66,3 @@ def notify_user_creation(sender, **kwargs):
                 'password': password,
                 'request': get_current_request()
             })
-
-
-def apply_language_preferrence(sender, user, *args, **kwargs):
-    if user and user.profile:
-        set_language(user.profile.preferred_language)
