@@ -25,6 +25,15 @@ class Profile(models.Model):
         (SILENT_GENERATION, 'Generación Silenciosa',),
     )
 
+    TOP_LEVEL_MANAGEMENT = 'TLM'
+    MIDDLE_LEVEL_MANAGEMENT = 'MLM'
+    OPERATION_LEVEL_EMPLOYEE = 'OLE'
+    LEVELS_OF_HIERARCHY = (
+        (TOP_LEVEL_MANAGEMENT, 'Directivo'),
+        (MIDDLE_LEVEL_MANAGEMENT, 'Gerencial'),
+        (OPERATION_LEVEL_EMPLOYEE, 'Operativo'),
+    )
+
     user = models.OneToOneField(
         User,
         on_delete=models.CASCADE,
@@ -46,7 +55,11 @@ class Profile(models.Model):
 
     # company leader attributes
     generation = models.CharField(
-        max_length=2, choices=GENERATIONS, default=MILLENIALS)
+        max_length=2, choices=GENERATIONS,
+        default=MILLENIALS)
+    level_of_hierarchy = models.CharField(
+        max_length=3, choices=LEVELS_OF_HIERARCHY,
+        default=OPERATION_LEVEL_EMPLOYEE)
 
     def __str__(self):
         return self.get_full_name() or self.user.email
