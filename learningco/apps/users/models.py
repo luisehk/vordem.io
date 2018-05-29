@@ -31,10 +31,6 @@ class Profile(models.Model):
 
     # contact info
     phone = models.CharField(_('Phone'), max_length=100, blank=True)
-    linkedin = models.URLField(_('Linkedin'), blank=True)
-    twitter = models.URLField(_('Twitter'), blank=True)
-    facebook = models.URLField(_('Facebook'), blank=True)
-    github = models.URLField(_('Github'), blank=True)
 
     # settings
     preferred_language = models.CharField(
@@ -55,14 +51,3 @@ class Profile(models.Model):
             image_attr='avatar')
 
         img_warmer.warm()
-
-    def populate_social_info(self, social):
-        if social.provider == 'twitter':
-            self.twitter = social.get_profile_url()
-            self.save()
-        elif social.provider == 'facebook':
-            self.facebook = social.get_profile_url()
-            self.save()
-        elif social.provider == 'linkedin':
-            self.linkedin = social.get_profile_url()
-            self.save()

@@ -69,12 +69,6 @@ def notify_user_creation(sender, **kwargs):
             })
 
 
-def populate_social_info(sender, **kwargs):
-    if kwargs.get('created', False):
-        social = kwargs.get('instance', None)
-        social.user.profile.populate_social_info(social)
-
-
 def apply_language_preferrence(sender, user, *args, **kwargs):
     if user and user.profile:
         set_language(user.profile.preferred_language)
