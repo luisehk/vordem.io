@@ -30,7 +30,7 @@ class Intro(Lesson):
 
 class Video(Lesson):
     body = models.TextField(blank=False)
-    video = EmbedVideoField()
+    video_url = EmbedVideoField()
 
 
 class Quiz(Lesson):
