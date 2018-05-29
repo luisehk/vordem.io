@@ -19,7 +19,7 @@ class Profile(models.Model):
     SILENT_GENERATION = 'GS'
     GENERATIONS = (
         (GENERATION_Z, 'Generación Z',),
-        (MILLENIALS, 'Millenial',),
+        (MILLENIALS, 'Millennial',),
         (GENERATION_X, 'Generación X',),
         (BABY_BOOMERS, 'Baby Boomer',),
         (SILENT_GENERATION, 'Generación Silenciosa',),
