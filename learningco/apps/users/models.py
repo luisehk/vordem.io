@@ -12,6 +12,19 @@ User = get_user_model()
 
 
 class Profile(models.Model):
+    GENERATION_Z = 'GZ'
+    MILLENIALS = 'GY'
+    GENERATION_X = 'GX'
+    BABY_BOOMERS = 'BB'
+    SILENT_GENERATION = 'GS'
+    GENERATIONS = (
+        (GENERATION_Z, 'Generación Z',),
+        (MILLENIALS, 'Millenial',),
+        (GENERATION_X, 'Generación X',),
+        (BABY_BOOMERS, 'Baby Boomer',),
+        (SILENT_GENERATION, 'Generación Silenciosa',),
+    )
+
     user = models.OneToOneField(
         User,
         on_delete=models.CASCADE,
@@ -30,6 +43,10 @@ class Profile(models.Model):
 
     # contact info
     phone = models.CharField(_('Phone'), max_length=100, blank=True)
+
+    # company leader attributes
+    generation = models.CharField(
+        max_length=2, choices=GENERATIONS, default=MILLENIALS)
 
     def __str__(self):
         return self.get_full_name() or self.user.email
