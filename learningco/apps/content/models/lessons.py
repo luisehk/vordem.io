@@ -57,3 +57,17 @@ class Option(models.Model):
 class Article(Lesson):
     description = models.TextField(blank=False)
     body = models.TextField(blank=False)
+
+
+class ActivityList(Lesson):
+    pass
+
+
+class Activity(models.Model):
+    activity_list = models.ForeignKey(
+        ActivityList, verbose_name='Lista de actividades',
+        null=False, on_delete=models.CASCADE,
+        related_name='activities')
+    title = models.CharField(max_length=150)
+    description = models.TextField(blank=False)
+    body = models.TextField(blank=False)
