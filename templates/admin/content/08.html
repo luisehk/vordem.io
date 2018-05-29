@@ -1,65 +1,51 @@
-{% extends 'base.html' %}
+{% extends 'base-content.html' %}
 {% load static %}
 
 {% block content %}
-  <div class="modal-box dashboard">
-    <h1 class="page-title">Lideres</h1>
-
-    <div class="dashboard-sections">
-      <section class="section-container width-100">
-        <ul class="list">
-          {% for company in companies %}
-            <li class="list-link list-leader-item">
-              <a class="modal-link" href="#">
-                <i class="avatar"></i><h3 class="list-leader-item--name">Nombre Apellido</h3><h4 class="list-leader-item--position">Gerente de ventas</h4><strong class="list-leader-item--advance">24%</strong>
-              </a>
-            </li>
-          {% empty %}
-            </ul>
-            <p>No existe ninguna compañía.</p>
-          {% endfor %}
+  <div class="page m-rl--m m-bottom--m company">
+    <header class="page-header">
+      <h1 class="page-title m-tb--0">Administrador de contenidos</h1>
+    </header>
+    <section class="content m-top--m">
+      <nav class="tabs">
+        <ul>
+          <li class="tab"><a href="#" class="tab-link is-current">Competencias</a></li>
+          <li class="tab"><a href="#" class="tab-link">Compañías</a></li>
         </ul>
-        <button id="btn" type="button" class="button button-small secondary-button block width-100 center text-center uppercase">Agregar lider</button>
-      </section>
-      <div id="modal" class="modal-inside">
-        <div class="modal-inside-content">
-          <span id="close" class="close">&times;</span>
-          <h3 class="page-subtitle m-tb--0">Nueva cuenta de lider</h3>
-          <p>Crea un lider individualmente.</p>
-          <input id="text" class="m-bottom--m" type="text" placeholder="Correo electrónico" maxlength="150">
-          <h3 class="page-subtitle m-bottom--0">Multiples cuentas</h3>
-          <p class="m-bottom--xs">Crea varios lideres a la vez al importar tu archivo excel.</p>
-          <button id="submit" type="button" class="button button-small primary-button">Importar archivo</button>
+      </nav>
+      <section class="tab-content">
+        <div class="competencia tab-content--item">
+          <a href="#" class="tab-content--item-link block"><h3 class="item-title">Comunicación</h3></a>
         </div>
-      </div>
-    </div>
-  </div>
-  <script>
-    window.onload = function(){
-      // Get the modal
-      var modal = document.getElementById('modal');
+        <div class="competencia tab-content--item">
+          <a href="#" class="tab-content--item-link block"><h3 class="item-title">Respeto</h3></a>
+        </div>
+        <div class="competencia tab-content--item">
+          <a href="#" class="tab-content--item-link block"><h3 class="item-title">Liderazgo</h3></a>
+        </div>
+        <div class="competencia tab-content--item">
+          <a href="#" class="tab-content--item-link block"><h3 class="item-title">Feedback</h3></a>
+        </div>
+        <div class="competencia tab-content--item">
+          <a href="#" class="tab-content--item-link block"><h3 class="item-title">Confianza</h3></a>
+        </div>
+        <div class="competencia tab-content--item">
+          <a href="#" class="tab-content--item-link block"><h3 class="item-title">Comunicación</h3></a>
+        </div>
+        <div class="competencia tab-content--item">
+          <a href="#" class="tab-content--item-link block"><h3 class="item-title">Respeto</h3></a>
+        </div>
+        <div class="competencia tab-content--item">
+          <a href="#" class="tab-content--item-link block"><h3 class="item-title">Liderazgo</h3></a>
+        </div>
+        <div class="competencia tab-content--item">
+          <a href="#" class="tab-content--item-link block"><h3 class="item-title">Feedback</h3></a>
+        </div>
+        <div class="competencia tab-content--item">
+          <a href="#" class="tab-content--item-link block"><h3 class="item-title">Confianza</h3></a>
+        </div>
+      </section>
+      <button class="button button-add secondary-button block">Agrega competencias</button>
+    </section>
 
-      // Get the button that opens the modal
-      var btn = document.getElementById("btn");
-
-      // Get the <span> element that closes the modal
-      var span = document.getElementById("close");
-
-      // When the user clicks the button, open the modal
-      btn.onclick = function() {
-          modal.style.display = "flex";
-      }
-      // When the user clicks on <span> (x), close the modal
-      span.onclick = function() {
-          modal.style.display = "none";
-      }
-      // When the user clicks anywhere outside of the modal, close it
-      window.onclick = function(event) {
-        if (event.target == modal) {
-            modal.style.display = "none";
-        }
-      }
-    };
-
-  </script>
 {% endblock %}

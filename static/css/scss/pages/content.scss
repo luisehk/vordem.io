@@ -38,13 +38,19 @@
   }
 }
 
-.tools {
-  grid-column: 1/2;
+.grid-sidebar {
+
+  .tools {
+    grid-column: 1/2;
+  }
+
+  .tool + .tool {
+    margin-top: $s;
+  }
 }
 
-.tool + .tool {
-  margin-top: $s;
-}
+
+
 
 .score-global {
   grid-column: 2/3;
