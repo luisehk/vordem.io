@@ -22,6 +22,7 @@ django-contrib-comments==1.8.0
 django-cors-headers==2.0.2
 django-crum==0.7.2
 django-debug-toolbar==1.7
+django-embed-video==1.1.2
 django-fcm==0.1.1
 django-filter==1.0.2
 django-postgrespool==0.3.1

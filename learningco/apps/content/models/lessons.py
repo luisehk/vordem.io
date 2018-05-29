@@ -1,4 +1,5 @@
 from django.contrib.auth import get_user_model
+from embed_video.fields import EmbedVideoField
 from django.db import models
 from .skills import Skill
 
@@ -21,3 +22,16 @@ class Lesson(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class Intro(Lesson):
+    body = models.TextField(blank=False)
+
+
+class Video(Lesson):
+    body = models.TextField(blank=False)
+    video = EmbedVideoField()
+
+
+class Quiz(Lesson):
+    body = models.TextField(blank=False)

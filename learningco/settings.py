@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'ckeditor',
     'colorfield',
     'versatileimagefield',
+    'embed_video',
 
     'djcelery_email',
     'cacheops',
@@ -297,6 +298,11 @@ VERSATILEIMAGEFIELD_RENDITION_KEY_SETS = {
         ('crop__42x42', 'crop__42x42'),
     ]
 }
+
+EMBED_VIDEO_BACKENDS = (
+    'embed_video.backends.YoutubeBackend',
+    'embed_video.backends.VimeoBackend',
+)
 
 # rest api
 REST_FRAMEWORK = {
