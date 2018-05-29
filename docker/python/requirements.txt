@@ -3,7 +3,7 @@ radon==2.2.0
 appdirs==1.4.3
 asgi_redis==1.4.0
 cached-property==1.3.0
-celery==4.0.2
+celery==4.1.1
 colorama==0.3.9
 coreapi==2.2.4
 coreschema==0.0.4
