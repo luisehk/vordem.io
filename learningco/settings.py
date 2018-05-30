@@ -55,6 +55,7 @@ INSTALLED_APPS = [
     'learningco.apps.companies',
     'learningco.apps.messaging.email',
     'learningco.apps.messaging.firebase',
+    'learningco.apps.score',
     'learningco.apps.users',
 ]
 
