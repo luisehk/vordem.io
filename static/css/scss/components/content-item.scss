@@ -85,13 +85,16 @@
     margin-top: $s;
   }
 
-  .content--media {
-    width: 60%;
-    background-color: $muted-blue;
+  &.media--container {
+    display: grid;
+    grid-template-columns: minmax(max-content, 25rem) 3fr;
+    grid-column-gap: 1.6rem;
+  }
 
-    & + .content-info {
-      margin-left: $s;
-    }
+  .content--media {
+    width: 100%;
+    height: auto;
+    background-color: $muted-blue;
   }
 
   .content-info {
