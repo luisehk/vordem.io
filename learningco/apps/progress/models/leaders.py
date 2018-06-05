@@ -36,6 +36,12 @@ class QuizAnswer(models.Model):
         on_delete=models.CASCADE)
 
 
+class ActivityCompletion(LessonCompletion):
+    file = models.FileField(
+        upload_to="activities",
+        blank=True, null=True)
+
+
 class SkillCompletion(models.Model):
     skill = models.ForeignKey(
         Skill,
