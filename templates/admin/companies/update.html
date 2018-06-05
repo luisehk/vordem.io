@@ -1,0 +1,139 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="modal-box">
+  <h1 class="page-title">
+    <strong class="block m-top--s page-subtitle">{{ object.name }}</strong>
+  </h1>
+
+  <form class="classless-form" action="" method="post">
+    {% csrf_token %}
+
+    <label class="form-label strong block" for="id_name">Nombre</label>
+    <input class="text-input block width-100" type="text" name="name" maxlength="150" required="" id="id_name" value="{{ form.name.value }}">
+
+    <label class="form-label strong block m-top--s" for="id_industry">Industria</label>
+    {{ form.industry }}
+
+    <label class="form-label strong block m-top--s" for="id_size">Tamaño</label>
+    {{ form.size }}
+
+    <label class="form-label strong block m-top--s"  for="id_human_resources">Recursos Humanos:</label>
+
+    <ul class="list">
+      {% for person in object.human_resources.all %}
+      <li class="list-item">
+        <a class="modal-link" href="#">{{ person.email }}</a>
+      </li>
+      {% empty %}
+        <p>Aún no has agregado una cuenta de Recursos Humanos.</p>
+      {% endfor %}
+    </ul>
+
+    <button id="btn" type="button" class="button uppercase secondary-button button-small width-100 modal-open">
+      Agregar cuenta de R.H.
+    </button>
+
+    <div id="modal" class="modal-inside">
+      <div class="modal-inside-content width-50">
+        <span id="close" class="close">&times;</span>
+        <h3 class="page-subtitle">Nueva cuenta de R.H.</h3>
+        <input id="text" type="text" placeholder="Correo electrónico" maxlength="150">
+        <button id="submit" type="button" class="button primary-button">Agregar cuenta</button>
+      </div>
+    </div>
+
+    <input class="button primary-button" type="submit" value="Guardar" />
+  </form>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+  window.onload = function(){
+    // Get the modal
+    var modal = document.getElementById('modal');
+
+    // Get the button that opens the modal
+    var btn = document.getElementById("btn");
+
+    // Get the <span> element that closes the modal
+    var span = document.getElementById("close");
+
+    // When the user clicks the button, open the modal
+    btn.onclick = function() {
+        modal.style.display = "flex";
+    }
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function() {
+        modal.style.display = "none";
+    }
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+      if (event.target == modal) {
+          modal.style.display = "none";
+      }
+    }
+  };
+
+  // modal actions
+  // TODO: clean this up
+  $(function() {
+    var emailField = $('#text');
+    var submitButton = $('#submit');
+
+    var isEmail = function(email) {
+      var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+      return regex.test(email);
+    }
+
+    function getCookie(name) {
+      var cookieValue = null;
+      if (document.cookie && document.cookie !== '') {
+        var cookies = document.cookie.split(';');
+        for (var i = 0; i < cookies.length; i++) {
+          var cookie = jQuery.trim(cookies[i]);
+          // Does this cookie string begin with the name we want?
+          if (cookie.substring(0, name.length + 1) === (name + '=')) {
+              cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+              break;
+          }
+        }
+      }
+      return cookieValue;
+    }
+
+    emailField.on('change paste keyup', function() {
+      if(isEmail(emailField.val()))
+        submitButton.show();
+      else
+        submitButton.hide()
+    });
+
+    submitButton.on('click', function() {
+      var data = JSON.stringify({
+        company_id: {{ object.pk }},
+        email: emailField.val()
+      });
+
+      $.ajax({
+        url: '/admin/companies/add-hr/',
+        type: 'post',
+        data: data,
+        dataType: 'json',
+        contentType: 'application/json',
+        headers: {
+          'X-CSRFToken': getCookie('csrftoken')
+        },
+        success: function(){
+          location.reload();
+        }
+      });
+    });
+
+    // hide submitButton by default
+    submitButton.hide();
+  });
+</script>
+{% endblock %}

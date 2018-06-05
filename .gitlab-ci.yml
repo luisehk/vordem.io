@@ -1,14 +1,75 @@
-image: tmaier/docker-compose:latest
+image: python:3.6
 
 services:
-  - docker:dind
+  - postgres:9.6
+  - redis:3.2
+
+variables:
+  PIP_CACHE_DIR: "$CI_PROJECT_DIR/.cache"
+  POSTGRES_DB: learningco
+
+cache:
+  paths:
+    - .cache/
+    - venv/
 
 before_script:
-  - docker info
-  - docker-compose --version
-  - scripts/build.sh
+  - echo "deb http://toolbelt.heroku.com/ubuntu ./" > /etc/apt/sources.list.d/heroku.list
+  - wget -O- https://toolbelt.heroku.com/apt/release.key | apt-key add -
+  - apt-get update
+  - apt-get install -y heroku-toolbelt
+  - apt-get install -y ruby-dev
+  - gem install dpl
+  - python --version
+  - pip install virtualenv
+  - virtualenv venv
+  - source venv/bin/activate
+  - pip install -r docker/python/requirements.txt
+
+stages:
+  - pep8
+  - radon
+  - bandit
+  - coverage
+  - test
+  - deploy
+
+pep8:
+  stage: pep8
+  script:
+    - flake8 --exclude='.git,venv,*migrations*,webapps/canvas' .
+
+radon:
+  stage: radon
+  script:
+    - radon cc -s -a --ignore='venv' .
+    - radon mi -s --ignore='venv' .
+
+bandit:
+  stage: bandit
+  script:
+    - bandit -r --exclude='venv' .
+
+coverage: &app
+  stage: coverage
+  variables:
+    DATABASE_URL: "postgresql://postgres:postgres@postgres:5432/$POSTGRES_DB"
+  script:
+    - python manage.py migrate
+    - coverage run --source='.' --omit='venv/*' manage.py test
+    - coverage report -m --fail-under=80
 
 test:
+  <<: *app
+  stage: test
   script:
-    - scripts/migrate.sh
-    - scripts/test.sh
+    - python manage.py test
+
+deploy:
+  stage: deploy
+  script:
+    - dpl --provider=heroku --app=learningco-dev --api-key=$HEROKU_API_KEY
+    - heroku run --exit-code --app learningco-dev python manage.py migrate
+    - heroku run --exit-code --app learningco-dev python manage.py collectstatic --noinput
+  only:
+    - master
