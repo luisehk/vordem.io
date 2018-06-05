@@ -55,6 +55,7 @@ INSTALLED_APPS = [
     'learningco.apps.progress',
     'learningco.apps.score',
     'learningco.apps.users',
+    'storages',
 ]
 
 MIDDLEWARE = [
@@ -98,19 +99,3 @@ WSGI_APPLICATION = 'learningco.wsgi.application'
 ROOT_URLCONF = 'learningco.urls'
 SITE_ID = 1
 TAGGIT_CASE_INSENSITIVE = True
-
-# static and media files
-STATIC_URL = '/static/' if not LOCAL else '/local-static/'
-STATIC_ROOT = os.path.join(
-    BASE_DIR,
-    '.static/'
-)
-
-STATICFILES_FINDERS = (
-    'django.contrib.staticfiles.finders.FileSystemFinder',
-    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-)
-
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static'),
-]

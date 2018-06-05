@@ -41,10 +41,13 @@ if settings.DEBUG:
     import debug_toolbar
     urlpatterns += [
         url(r'^__debug__/', include(debug_toolbar.urls)),
-    ] + static(
-        settings.MEDIA_URL, document_root=settings.MEDIA_ROOT
-    )
+    ]
 
-    if settings.LOCAL:
+    if not settings.USING_S3:
         urlpatterns += static(
-            settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+            settings.MEDIA_URL, document_root=settings.MEDIA_ROOT
+        )
+
+        if settings.LOCAL:
+            urlpatterns += static(
+                settings.STATIC_URL, document_root=settings.STATIC_ROOT)
