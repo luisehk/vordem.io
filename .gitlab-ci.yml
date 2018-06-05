@@ -2,12 +2,13 @@ image: python:3.6
 
 before_script:
   - python --version
-  - pip install bandit==1.4.0 radon==2.2.0 flake8==3.3.0
+  - pip install bandit==1.4.0 radon==2.2.0 flake8==3.3.0 coverage==4.3.4
 
 stages:
   - pep8
   - radon
   - bandit
+  - coverage
 
 pep8:
   stage: pep8
@@ -24,3 +25,10 @@ bandit:
   stage: bandit
   script:
     - bandit -r .
+
+coverage:
+  stage: coverage
+  script:
+    - pip install -r requirements.txt
+    - coverage run --source='.' manage.py test
+    - coverage report
