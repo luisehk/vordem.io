@@ -42,7 +42,6 @@ INSTALLED_APPS = [
     'embed_video',
 
     'djcelery_email',
-    'cacheops',
     'fcm',
     'corsheaders',
 
