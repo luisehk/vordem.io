@@ -30,18 +30,18 @@ stages:
 pep8:
   stage: pep8
   script:
-    - flake8 learningco
+    - flake8 --exclude='.git,venv,*migrations*,webapps/canvas' .
 
 radon:
   stage: radon
   script:
-    - radon cc learningco
-    - radon mi learningco
+    - radon cc -s -a --ignore='venv' .
+    - radon mi -s --ignore='venv' .
 
 bandit:
   stage: bandit
   script:
-    - bandit -r learningco
+    - bandit -r --exclude='venv' .
 
 coverage: &app
   stage: coverage
@@ -49,7 +49,7 @@ coverage: &app
     DATABASE_URL: "postgresql://postgres:postgres@postgres:5432/$POSTGRES_DB"
   script:
     - python manage.py migrate
-    - coverage run --source='.' manage.py test
+    - coverage run --source='.' --omit='venv/' manage.py test
     - coverage report -m --fail-under=80
 
 test:
