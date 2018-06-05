@@ -7,6 +7,10 @@ services:
 variables:
   POSTGRES_DB: learningco
 
+cache:
+  paths:
+  - ~/.cache/pip/
+
 before_script:
   - python --version
   - pip install bandit==1.4.0 radon==2.2.0 flake8==3.3.0 coverage==4.3.4
