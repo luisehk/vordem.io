@@ -13,7 +13,7 @@ cache:
 
 before_script:
   - python --version
-  - pip install bandit==1.4.0 radon==2.2.0 flake8==3.3.0 coverage==4.3.4
+  - pip install -r docker/python/requirements.txt
 
 stages:
   - pep8
@@ -42,7 +42,6 @@ coverage:
   variables:
     DATABASE_URL: "postgresql://postgres:postgres@postgres:5432/$POSTGRES_DB"
   script:
-    - pip install -r docker/python/requirements.txt
     - python manage.py migrate
     - coverage run --source='.' manage.py test
     - coverage report -m --fail-under=80
