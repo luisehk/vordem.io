@@ -37,4 +37,3 @@ class LeaderSkillQuestion(models.Model):
     question = models.TextField()
     score_before = models.IntegerField(default=0)
     score_now = models.IntegerField(default=0)
-
