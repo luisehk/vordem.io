@@ -41,4 +41,4 @@ coverage:
     - pip install -r docker/python/requirements.txt
     - python manage.py migrate
     - coverage run --source='.' manage.py test
-    - coverage report
+    - coverage report -m --fail-under=80
