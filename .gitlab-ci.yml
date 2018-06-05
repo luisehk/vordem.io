@@ -1,14 +1,26 @@
-image: tmaier/docker-compose:latest
-
-services:
-  - docker:dind
+image: python:3.6
 
 before_script:
-  - docker info
-  - docker-compose --version
-  - scripts/build.sh
+  - python --version
+  - pip install bandit==1.4.0 radon==2.2.0 flake8==3.3.0
 
-test:
+stages:
+  - pep8
+  - radon
+  - bandit
+
+pep8:
+  stage: pep8
   script:
-    - scripts/migrate.sh
-    - scripts/test.sh
+    - flake8
+
+radon:
+  stage: radon
+  script:
+    - radon cc .
+    - radon mi .
+
+bandit:
+  stage: bandit
+  script:
+    - bandit -r .
