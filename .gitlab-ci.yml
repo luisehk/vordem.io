@@ -9,7 +9,7 @@ variables:
 
 cache:
   paths:
-  - ~/.cache/pip/
+  - /root/.cache/pip/
 
 before_script:
   - python --version
