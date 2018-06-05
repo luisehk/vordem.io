@@ -15,3 +15,15 @@ class LessonCompletion(models.Model):
         on_delete=models.CASCADE)
     completed = models.BooleanField(default=False)
     score = models.IntegerField(default=0)
+
+
+class SkillCompletion(models.Model):
+    skill = models.ForeignKey(
+        Skill,
+        on_delete=models.CASCADE)
+    leader = models.ForeignKey(
+        User,
+        on_delete=models.CASCADE)
+    completed = models.BooleanField(default=False)
+    score = models.IntegerField(default=0)
+    comment = models.TextField()
