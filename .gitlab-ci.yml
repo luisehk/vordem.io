@@ -32,7 +32,9 @@ stages:
   - bandit
   - coverage
   - test
-  - deploy
+  - deploy_dev
+  - deploy_staging
+  - deploy_production
 
 pep8:
   stage: pep8
@@ -65,10 +67,28 @@ test:
   script:
     - python manage.py test
 
-deploy:
-  stage: deploy
+deploy_dev: &deploy
+  stage: deploy_dev
+  variables:
+    - HEROKU_APP: "learningco-dev"
   script:
-    - dpl --provider=heroku --app=learningco-dev --api-key=$HEROKU_API_KEY
-    - heroku run --exit-code --app learningco-dev python manage.py migrate
+    - dpl --provider=heroku --app=$HEROKU_APP--api-key=$HEROKU_API_KEY
+    - heroku run --exit-code --app $HEROKU_APP python manage.py migrate
   only:
     - master
+
+deploy_staging:
+  <<: *deploy
+  stage: deploy_staging
+  variables:
+    - HEROKU_APP: "learningco-staging"
+  only:
+    - staging
+
+deploy_production:
+  <<: *deploy
+  stage: deploy_production
+  variables:
+    - HEROKU_APP: "learningco-prod"
+  only:
+    - production
