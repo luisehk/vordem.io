@@ -558,11 +558,14 @@ select {
   align-items: stretch; }
   .content--item + .content--item {
     margin-top: 1.6rem; }
+  .content--item.media--container {
+    display: grid;
+    grid-template-columns: minmax(max-content, 25rem) 3fr;
+    grid-column-gap: 1.6rem; }
   .content--item .content--media {
-    width: 60%;
+    width: 100%;
+    height: auto;
     background-color: #516173; }
-    .content--item .content--media + .content-info {
-      margin-left: 1.6rem; }
   .content--item .content-info {
     grid-template-columns: 1fr 1fr; }
     .content--item .content-info .item-title,
