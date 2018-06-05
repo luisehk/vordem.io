@@ -70,6 +70,5 @@ deploy:
   script:
     - dpl --provider=heroku --app=learningco-dev --api-key=$HEROKU_API_KEY
     - heroku run --exit-code --app learningco-dev python manage.py migrate
-    - heroku run --exit-code --app learningco-dev python manage.py collectstatic --noinput
   only:
     - master
