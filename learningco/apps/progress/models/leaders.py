@@ -7,10 +7,10 @@ User = get_user_model()
 
 
 class LessonCompletion(models.Model):
-    lesson_id = models.ForeignKey(
+    lesson = models.ForeignKey(
         Lesson,
         on_delete=models.CASCADE)
-    leader_id = models.ForeignKey(
+    leader = models.ForeignKey(
         User,
         on_delete=models.CASCADE)
     completed = models.BooleanField(default=False)
