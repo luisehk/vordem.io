@@ -1,7 +1,5 @@
 import os
 
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
 DEBUG = os.environ.get('DEBUG', 'False').lower() == 'true'
 LOCAL = os.environ.get('LOCAL', 'False').lower() == 'true'
 SHOW_DEBUG_TOOLBAR = os.environ.get(

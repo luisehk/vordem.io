@@ -1,7 +1,5 @@
 import os
-
-
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+from .default import BASE_DIR
 
 MEDIA_ROOT = os.path.join(BASE_DIR, '.media/')
 MEDIA_URL = os.environ.get('MEDIA_URL', '/media/')

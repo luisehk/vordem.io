@@ -1,8 +1,7 @@
 import os
 import dj_database_url
 from .locale import TIME_ZONE
-
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+from .default import BASE_DIR
 
 
 # databases
