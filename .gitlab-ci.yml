@@ -1,5 +1,12 @@
 image: python:3.6
 
+services:
+  - postgres:9.6
+  - redis:3.2
+
+variables:
+  POSTGRES_DB: learningco
+
 before_script:
   - python --version
   - pip install bandit==1.4.0 radon==2.2.0 flake8==3.3.0 coverage==4.3.4
@@ -28,6 +35,8 @@ bandit:
 
 coverage:
   stage: coverage
+  variables:
+    DATABASE_URL: "postgresql://postgres:postgres@postgres:5432/$POSTGRES_DB"
   script:
     - pip install -r docker/python/requirements.txt
     - python manage.py migrate
