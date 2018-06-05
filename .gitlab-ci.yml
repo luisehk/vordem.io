@@ -20,6 +20,7 @@ stages:
   - radon
   - bandit
   - coverage
+  - test
 
 pep8:
   stage: pep8
@@ -37,7 +38,7 @@ bandit:
   script:
     - bandit -r .
 
-coverage:
+coverage: &app
   stage: coverage
   variables:
     DATABASE_URL: "postgresql://postgres:postgres@postgres:5432/$POSTGRES_DB"
@@ -45,3 +46,9 @@ coverage:
     - python manage.py migrate
     - coverage run --source='.' manage.py test
     - coverage report -m --fail-under=80
+
+test:
+  <<: *app
+  stage: test
+  script:
+    - python manage.py test
