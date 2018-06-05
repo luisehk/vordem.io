@@ -30,18 +30,18 @@ stages:
 pep8:
   stage: pep8
   script:
-    - flake8
+    - flake8 learningco
 
 radon:
   stage: radon
   script:
-    - radon cc .
-    - radon mi .
+    - radon cc learningco
+    - radon mi learningco
 
 bandit:
   stage: bandit
   script:
-    - bandit -r .
+    - bandit -r learningco
 
 coverage: &app
   stage: coverage
