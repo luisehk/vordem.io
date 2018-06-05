@@ -1,0 +1,11 @@
+@mixin green-gradient {
+  background-image: -webkit-linear-gradient(#96C9BA 0%, #6DA995 100%);
+  background-image: -o-linear-gradient(#96C9BA 0%, #6DA995 100%);
+  background-image: linear-gradient(#96C9BA 0%, #6DA995 100%);
+}
+
+@mixin grey-gradient {
+  background-image: -webkit-linear-gradient(#f0f0f0 0%, #BDBDBD 100%);
+  background-image: -o-linear-gradient(#f0f0f0 0%, #BDBDBD 100%);
+  background-image: linear-gradient(#f0f0f0 0%, #BDBDBD 100%);
+}

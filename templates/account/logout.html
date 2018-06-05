@@ -1,0 +1,22 @@
+{% extends "account/base.html" %}
+
+{% block content %}
+  <div class="modal-box">
+    <p class="page-title">¿Estás seguro de querer cerrar sesión?</p>
+
+    <form method="post" action="{% url 'account_logout' %}">
+      {% csrf_token %}
+
+      {% if redirect_field_value %}
+        <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}"/>
+      {% endif %}
+
+      <a href="javascript:history.back();" class="small">Regresar</a>
+
+      <button type="submit" name="button">
+        Cerrar sesión
+      </button>
+    </form>
+  </div>
+
+{% endblock %}

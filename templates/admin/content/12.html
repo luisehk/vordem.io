@@ -1,0 +1,69 @@
+{% extends 'base-content.html' %}
+{% load static %}
+
+{% block content %}
+  <div class="page m-rl--m m-bottom--m">
+    <header class="page-header flex">
+        <h1 class="page-title m-all--0">Administrador de contenidos</h1>
+        <button class="button secondary-button secondary-button-small block m-l--auto align-self-t" type="button">Recalcular asignación automática</button>
+    </header>
+    <section class="content m-top--m">
+      <div class="competencia competencia-single">
+        <div class="tab-content--item flex">
+          <h2 class="item-title">Respeto para millennials</h2>
+          <div class="tools flex">
+            <div class="tool">
+              <label class="tool-label" for="id_select">Jerarquía</label>
+              <select class="tool-select" id="id_select">
+                <option class="tool-select--opt" value="1">Directivo</option>
+                <option class="tool-select--opt" value="2">VPs</option>
+              </select>
+            </div>
+            <div class="tool">
+              <label class="tool-label" for="id_select">Generación</label>
+              <select class="tool-select" id="id_select">
+                <option class="tool-select--opt" value="1">Millennial</option>
+                <option class="tool-select--opt" value="2">Baby boommers</option>
+              </select>
+            </div>
+            <div class="tool">
+              <label class="tool-label" for="id_select">Calificación</label>
+              <select class="tool-select" id="id_select">
+                <option class="tool-select--opt" value="1">Baja</option>
+                <option class="tool-select--opt" value="2">Media</option>
+              </select>
+            </div>
+        </div>
+        </div>
+      </div>
+      <section class="full-content relative">
+
+          <div class="content--item media--container">
+            <div class="content--media"><!-- Video or image --></div>
+            <div class="content-info grid">
+              <h3 class="item-title">La importancia del respeto</h3>
+              <span class="content-tag icon-left icon-tag">Video</span>
+              <p class="content-text m-tb--s">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum officiis sint sapiente sequi labore, error quae architecto, neque fuga tempore!
+              </p>
+              <button class="button button-small" type="button">Editar</button>
+            </div>
+          </div>
+
+          <div class="content--item">
+            <div class="content--media"><!-- Video or image --></div>
+            <div class="content-info grid">
+              <h3 class="item-title">Creando un ambiente de respeto</h3>
+              <span class="content-tag icon-left icon-tag">Lectura</span>
+              <p class="content-text m-tb--s">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum officiis sint sapiente sequi labore, error quae architecto, neque fuga tempore!
+              </p>
+              <button class="button button-small" type="button">Editar</button>
+            </div>
+          </div>
+
+      </section>
+      <button class="button button-add secondary-button block">Agrega contenido</button>
+    </section>
+
+{% endblock %}

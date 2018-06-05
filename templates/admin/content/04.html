@@ -1,0 +1,105 @@
+{% extends 'base-content.html' %}
+{% load static %}
+
+{% block content %}
+  <div class="page m-rl--m m-bottom--m company grid grid-sidebar">
+    <header class="page-header grid grid-sidebar">
+      <img class="featured-img" src="">
+      <hgroup class="title-header">
+        <h1 class="page-title m-tb--0">Abraham Kuri</h1>
+        <h2 class="page-subtitle m-top--xs">CTO <span class="company-size">Icalia Labs</span></h2>
+      </hgroup>
+      <div class="tools">
+        <div class="tool">
+          <label class="tool-label" for="id_select">Jerarquía</label>
+          <select class="tool-select" id="id_select">
+            <option class="tool-select--opt" value="1">Directivo</option>
+            <option class="tool-select--opt" value="2">Gerente</option>
+          </select>
+        </div>
+        <div class="tool">
+          <label class="tool-label" for="id_select">Generación</label>
+          <select class="tool-select" id="id_select">
+            <option class="tool-select--opt" value="1">Millenial</option>
+            <option class="tool-select--opt" value="2">Baby boomer</option>
+          </select>
+        </div>
+      </div>
+      <div class="score-global">
+        <span class="score-global--number score-number"><a href="#" class="edit-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" class="edit-icon"><path d="M402.6 83.2l90.2 90.2c3.8 3.8 3.8 10 0 13.8L274.4 405.6l-92.8 10.3c-12.4 1.4-22.9-9.1-21.5-21.5l10.3-92.8L388.8 83.2c3.8-3.8 10-3.8 13.8 0zm162-22.9l-48.8-48.8c-15.2-15.2-39.9-15.2-55.2 0l-35.4 35.4c-3.8 3.8-3.8 10 0 13.8l90.2 90.2c3.8 3.8 10 3.8 13.8 0l35.4-35.4c15.2-15.3 15.2-40 0-55.2zM384 346.2V448H64V128h229.8c3.2 0 6.2-1.3 8.5-3.5l40-40c7.6-7.6 2.2-20.5-8.5-20.5H48C21.5 64 0 85.5 0 112v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V306.2c0-10.7-12.9-16-20.5-8.5l-40 40c-2.2 2.3-3.5 5.3-3.5 8.5z"/></svg></a> 70%</span>
+        <button class="button secondary-button secondary-button-small block m-top--xs" type="button">Recalcular asignación</button>
+      </div>
+    </header>
+    <section class="content">
+      <div class="competencia competencia-single">
+        <div class="tab-content--item grid">
+          <h2 class="item-title">Respeto</h2>
+          <span class="score-number"><a href="#" class="edit-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" class="edit-icon"><path d="M402.6 83.2l90.2 90.2c3.8 3.8 3.8 10 0 13.8L274.4 405.6l-92.8 10.3c-12.4 1.4-22.9-9.1-21.5-21.5l10.3-92.8L388.8 83.2c3.8-3.8 10-3.8 13.8 0zm162-22.9l-48.8-48.8c-15.2-15.2-39.9-15.2-55.2 0l-35.4 35.4c-3.8 3.8-3.8 10 0 13.8l90.2 90.2c3.8 3.8 10 3.8 13.8 0l35.4-35.4c15.2-15.3 15.2-40 0-55.2zM384 346.2V448H64V128h229.8c3.2 0 6.2-1.3 8.5-3.5l40-40c7.6-7.6 2.2-20.5-8.5-20.5H48C21.5 64 0 85.5 0 112v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V306.2c0-10.7-12.9-16-20.5-8.5l-40 40c-2.2 2.3-3.5 5.3-3.5 8.5z"/></svg></a> 20%</span>
+        </div>
+        <label class="show-app"><input type="checkbox" id="cbox1" value="first_checkbox">Mostrar en aplicación</label>
+      </div>
+      <nav class="tabs m-top--m">
+        <ul>
+          <li class="tab"><a href="#" class="tab-link is-current">Contenidos</a></li>
+          <li class="tab"><a href="#" class="tab-link">Reactivos</a></li>
+        </ul>
+      </nav>
+      <section class="tab-content relative">
+
+          <div class="content--item tab-content--item">
+            <div class="content--media"><!-- Video or image --></div>
+            <div class="content-info grid">
+              <h3 class="item-title">La importancia del respeto</h3>
+              <span class="content-tag icon-left icon-tag">Video</span>
+              <p class="content-text m-tb--s">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum officiis sint sapiente sequi labore, error quae architecto, neque fuga tempore!
+              </p>
+              <label class="show-app"><input type="checkbox" id="cbox1" value="first_checkbox">Mostrar en aplicación</label>
+              <button class="button button-small" type="button">Editar</button>
+            </div>
+          </div>
+
+          <div class="content--item tab-content--item">
+            <div class="content--media"><!-- Video or image --></div>
+            <div class="content-info grid">
+              <h3 class="item-title">Creando un ambiente de respeto</h3>
+              <span class="content-tag icon-left icon-tag">Lectura</span>
+              <p class="content-text m-tb--s">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum officiis sint sapiente sequi labore, error quae architecto, neque fuga tempore!
+              </p>
+              <label class="show-app"><input type="checkbox" id="cbox1" value="first_checkbox">Mostrar en aplicación</label>
+              <button class="button button-small" type="button">Editar</button>
+            </div>
+          </div>
+
+      </section>
+       <div class="modal-inside content-add flex" style="display:flex;"> <!-- <- Estilo inline solo para manternerlo abierto -->
+        <div class="modal-inside-content width-80">
+          <header class="content-add-header flex">
+            <hgroup class="title-header">
+              <h2 class="page-title m-tb--0">Abraham Kuri</h2>
+              <h3 class="page-subtitle m-top--xs">CTO <span class="company-size">Icalia Labs</span></h3>
+            </hgroup>
+            <div class="score-global">
+              <h2 class="competencia-single-title">Respeto</h2>
+              <span class="score-global--number score-number">70%</span>
+            </div>
+            <form class="search-form m-top--s" role="search">
+              <div class="search-container flex">
+                <input class="search-input" type="search" id="mySearch" name="q"
+                 placeholder="Intruduce un término de búsqueda para el contenido..." ><button class="button button-search">Buscar</button>
+              </div>
+            </form>
+            </header>
+            <section class="search-results flex">
+              <p class="search-results-message text-center">
+                No se encontró el contenido buscado.
+                <a href="#" class="search-results-message-link">Agregar nuevo contenido</a>
+              </p>
+            </section>
+          </div>
+      </div>
+      <button class="button button-add secondary-button block">Agrega contenido</button>
+    </section>
+
+{% endblock %}

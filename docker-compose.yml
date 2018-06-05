@@ -16,11 +16,6 @@ services:
     volumes:
       - /srv/learningco/redis:/data
 
-  cache:
-    image: redis:3.2
-    volumes:
-      - /srv/learningco/cache:/data
-
 
   ### application
   app: &app
@@ -33,7 +28,6 @@ services:
     links:
       - db
       - redis
-      - cache
     volumes:
       - .:/usr/src/app
       - /srv/learningco/static:/usr/src/app/.static
@@ -57,7 +51,7 @@ services:
   proxy:
     build: docker/proxy
     ports:
-      - "80:80"
+      - "8000:80"
     links:
       - app
       - cdn

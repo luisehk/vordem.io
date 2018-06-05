@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="modal-box">
+  <h1 class="page-title">
+    <strong class="block m-top--s page-subtitle">{{ object.name }}</strong>
+  </h1>
+
+  <form class="classless-form" action="" method="post">
+    {% csrf_token %}
+
+    <label class="form-label strong block" for="id_name">Nombre</label>
+    <input class="text-input block width-100" type="text" name="name" maxlength="150" required="" id="id_name" value="{{ form.name.value }}">
+
+    <input class="button primary-button" type="submit" value="Guardar" />
+  </form>
+</div>
+{% endblock %}
