@@ -14,6 +14,11 @@ cache:
     - venv/
 
 before_script:
+  - echo "deb http://toolbelt.heroku.com/ubuntu ./" > /etc/apt/sources.list.d/heroku.list
+  - wget -O- https://toolbelt.heroku.com/apt/release.key | apt-key add -
+  - apt-get update
+  - apt-get install -y heroku-toolbelt
+  - gem install dpl
   - python --version
   - pip install virtualenv
   - virtualenv venv
@@ -26,6 +31,7 @@ stages:
   - bandit
   - coverage
   - test
+  - deploy
 
 pep8:
   stage: pep8
@@ -57,3 +63,12 @@ test:
   stage: test
   script:
     - python manage.py test
+
+deploy:
+  stage: deploy
+  script:
+    - dpl --provider=heroku --app=learningco-dev --api-key=$HEROKU_API_KEY
+    - heroku run --exit-code --app learningco-dev python manage.py migrate
+    - heroku run --exit-code --app learningco-dev python manage.py collectstatic --noinput
+  only:
+    - master
