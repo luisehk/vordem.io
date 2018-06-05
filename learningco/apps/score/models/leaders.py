@@ -25,3 +25,16 @@ class LeaderSkillScore(models.Model):
     score_before = models.IntegerField(default=0)
     score_now = models.IntegerField(default=0)
     lessons = models.ManyToManyField(Lesson)
+
+
+class LeaderSkillQuestion(models.Model):
+    leader = models.ForeignKey(
+        User,
+        on_delete=models.CASCADE)
+    skill = models.ForeignKey(
+        Skill,
+        on_delete=models.CASCADE)
+    question = models.TextField()
+    score_before = models.IntegerField(default=0)
+    score_now = models.IntegerField(default=0)
+
