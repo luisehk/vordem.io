@@ -72,7 +72,7 @@ deploy_dev: &deploy
   variables:
     HEROKU_APP: "learningco-dev"
   script:
-    - dpl --provider=heroku --app=$HEROKU_APP--api-key=$HEROKU_API_KEY
+    - dpl --provider=heroku --app=$HEROKU_APP --api-key=$HEROKU_API_KEY
     - heroku run --exit-code --app $HEROKU_APP python manage.py migrate
   only:
     - master
