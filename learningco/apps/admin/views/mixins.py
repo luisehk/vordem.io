@@ -1,6 +1,7 @@
 from django.urls import reverse_lazy
 from ...utils.mixins import EditAfterSuccess
 from ...companies.models import Company, Industry
+from ...content.models import Skill
 
 
 class CompanyGenericView(object):
@@ -18,6 +19,15 @@ class IndustryGenericView(object):
 
 
 class IndustryFormView(IndustryGenericView):
+    fields = ['name']
+
+
+class SkillGenericView(object):
+    model = Skill
+    success_url = reverse_lazy('admin:skill-list')
+
+
+class SkillFormView(SkillGenericView):
     fields = ['name']
 
 
