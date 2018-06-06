@@ -1,6 +1,6 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import TemplateView
-from ...companies.models import Company, Industry
+from ....companies.models import Company, Industry
 
 
 class IndexView(LoginRequiredMixin, TemplateView):

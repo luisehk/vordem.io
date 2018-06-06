@@ -1,19 +1,19 @@
 from django.views.generic.base import RedirectView
 from django.urls import reverse_lazy
 from django.conf.urls import url
-from .views.companies import (
+from .views.rest.companies import AddHumanResourcesToCompany
+from .views.web.companies import (
     CompanyCreate, CompanyUpdate, CompanyDelete,
-    CompanyDetail, CompanyList, AddHumanResourcesToCompany
+    CompanyDetail, CompanyList
 )
-from .views.industries import (
+from .views.web.industries import (
     IndustryCreate, IndustryUpdate, IndustryDelete
 )
-from .views.content import (
+from .views.web.content import (
     Content01, Content02, Content03, Content04, Content05, Content06,
     Content07, Content08, Content09, Content10, Content11, Content12,
     Content13,
 )
-from .views.admin import IndexView
 
 urlpatterns = [
     url(r'^companies$',

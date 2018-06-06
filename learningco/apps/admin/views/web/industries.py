@@ -1,7 +1,7 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import (
     CreateView, UpdateView, DeleteView)
-from .mixins import IndustryGenericView, IndustryFormView
+from ..mixins import IndustryGenericView, IndustryFormView
 
 
 class IndustryCreate(LoginRequiredMixin, IndustryFormView, CreateView):
