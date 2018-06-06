@@ -65,6 +65,13 @@ VERSATILEIMAGEFIELD_RENDITION_KEY_SETS = {
         ('crop__128x128', 'crop__128x128'),
         ('crop__44x44', 'crop__44x44'),
         ('crop__42x42', 'crop__42x42'),
+    ],
+    'company_avatar': [
+        ('full_size', 'url'),
+        ('crop__280x280', 'crop__280x280'),
+        ('crop__128x128', 'crop__128x128'),
+        ('crop__44x44', 'crop__44x44'),
+        ('crop__42x42', 'crop__42x42'),
     ]
 }
 
