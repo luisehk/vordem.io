@@ -1,31 +1,34 @@
-{% extends 'base.html' %}
+{% extends 'base-content.html' %}
 {% load static %}
 
 {% block content %}
-  <div class="modal-box dashboard">
-    <h1 class="page-title">Compañias</h1>
-
-    <div class="dashboard-sections">
-      <section class="section-container width-100">
-        <ul class="list">
-          {% for company in object_list %}
-            <li class="list-link list-leader-item">
-              <a class="modal-link" href="{% url 'admin:company-detail' company.id %}">
-                <i class="avatar"></i>
-                <h3 class="list-leader-item--name">{{ company.name }}</h3>
-                <h4 class="list-leader-item--position">{{ company.industry }}</h4>
-                <strong class="list-leader-item--advance">24%</strong>
-              </a>
-            </li>
-          {% empty %}
-            </ul>
-            <p>No existe ninguna compañía.</p>
-          {% endfor %}
+  <div class="page m-rl--m m-bottom--m company">
+    <header class="page-header">
+      <h1 class="page-title m-tb--0">Administrador de contenidos</h1>
+    </header>
+    <section class="content m-top--m">
+      <nav class="tabs">
+        <ul>
+          <li class="tab"><a href="#" class="tab-link">Competencias</a></li>
+          <li class="tab"><a href="#" class="tab-link is-current">Compañías</a></li>
         </ul>
-        <a href="{% url 'admin:company-add' %}">
-          <button id="btn" type="button" class="button button-small secondary-button block width-100 center text-center uppercase">Agregar compañía</button>
-        </a>
+      </nav>
+
+      <section class="tab-content">
+        {% for company in object_list %}
+          <div class="competencia tab-content--item">
+            <a href="{% url 'admin:company-detail' company.id %}" class="tab-content--item-link block">
+              <h3 class="item-title">{{ company.name }}</h3>
+            </a>
+          </div>
+        {% empty %}
+          <p>No existe ninguna compañía.</p>
+        {% endfor %}
       </section>
-    </div>
-  </div>
+
+      <a href="{% url 'admin:company-add' %}">
+        <button class="button button-add secondary-button block">Agrega compañía</button>
+      </a>
+    </section>
+
 {% endblock %}
