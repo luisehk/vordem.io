@@ -4,7 +4,7 @@
 {% block content %}
   <div class="page m-rl--m m-bottom--m company grid grid-sidebar">
     <header class="page-header grid grid-sidebar">
-      <img class="featured-img" src="">
+      <img class="featured-img" src="{{ object.avatar.thumbnail.280x280 }}">
       <hgroup class="title-header">
         <h1 class="page-title m-tb--0">{{ object.name }}</h1>
         <h2 class="page-subtitle m-top--xs">{{ object.industry }} <span class="company-size">{{ object.get_size_display }}</span></h2>
