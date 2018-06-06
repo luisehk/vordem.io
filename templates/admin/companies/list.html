@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+  <div class="modal-box dashboard">
+    <h1 class="page-title">Compañias</h1>
+
+    <div class="dashboard-sections">
+      <section class="section-container width-100">
+        <ul class="list">
+          {% for company in object_list %}
+            <li class="list-link list-leader-item">
+              <a class="modal-link" href="{% url 'admin:company-detail' company.id %}">
+                <i class="avatar"></i>
+                <h3 class="list-leader-item--name">{{ company.name }}</h3>
+                <h4 class="list-leader-item--position">{{ company.industry }}</h4>
+                <strong class="list-leader-item--advance">24%</strong>
+              </a>
+            </li>
+          {% empty %}
+            </ul>
+            <p>No existe ninguna compañía.</p>
+          {% endfor %}
+        </ul>
+        <a href="{% url 'admin:company-add' %}">
+          <button id="btn" type="button" class="button button-small secondary-button block width-100 center text-center uppercase">Agregar compañía</button>
+        </a>
+      </section>
+    </div>
+  </div>
+{% endblock %}

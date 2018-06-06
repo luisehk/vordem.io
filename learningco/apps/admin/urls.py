@@ -3,7 +3,7 @@ from django.urls import reverse_lazy
 from django.conf.urls import url
 from .views.companies import (
     CompanyCreate, CompanyUpdate, CompanyDelete,
-    CompanyDetail, AddHumanResourcesToCompany
+    CompanyDetail, CompanyList, AddHumanResourcesToCompany
 )
 from .views.industries import (
     IndustryCreate, IndustryUpdate, IndustryDelete
@@ -17,9 +17,7 @@ from .views.admin import IndexView
 
 urlpatterns = [
     url(r'^companies$',
-        RedirectView.as_view(
-            url=reverse_lazy('admin:index')
-        ), name="company-list"),
+        CompanyList.as_view(), name="company-list"),
     url(r'^companies/add/$',
         CompanyCreate.as_view(), name='company-add'),
     url(r'^companies/detail/(?P<pk>[0-9]+)/$',
@@ -56,5 +54,7 @@ urlpatterns = [
     url(r'content/12$', Content12.as_view(), name='content-12'),
     url(r'content/13$', Content13.as_view(), name='content-13'),
 
-    url(r'^$', IndexView.as_view(), name='index'),
+    url(r'^$', RedirectView.as_view(
+        url=reverse_lazy('admin:company-list')
+    ), name='index'),
 ]

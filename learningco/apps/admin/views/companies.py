@@ -3,7 +3,8 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework import status
 from django.views.generic import (
-    CreateView, UpdateView, DeleteView, DetailView)
+    CreateView, UpdateView, DeleteView,
+    DetailView, ListView)
 from .mixins import CompanyGenericView, CompanyFormView
 from ..serializers.companies import CompanyHumanResources
 from ...companies.models import Company
@@ -23,6 +24,11 @@ class CompanyDelete(LoginRequiredMixin, CompanyGenericView, DeleteView):
 
 class CompanyDetail(LoginRequiredMixin, DetailView):
     template_name = 'admin/companies/detail.html'
+    queryset = Company.objects.all()
+
+
+class CompanyList(LoginRequiredMixin, ListView):
+    template_name = 'admin/companies/list.html'
     queryset = Company.objects.all()
 
 
