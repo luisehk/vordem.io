@@ -9,26 +9,26 @@
     <section class="content m-top--m">
       <nav class="tabs">
         <ul>
-          <li class="tab"><a href="{% url 'admin:skill-list' %}" class="tab-link">Competencias</a></li>
+          <li class="tab"><a href="{% url 'admin:skill-list' %}" class="tab-link is-current">Competencias</a></li>
           <li class="tab"><a href="{% url 'admin:industry-list' %}" class="tab-link">Industrias</a></li>
-          <li class="tab"><a href="{% url 'admin:company-list' %}" class="tab-link is-current">Compañías</a></li>
+          <li class="tab"><a href="{% url 'admin:company-list' %}" class="tab-link">Compañías</a></li>
         </ul>
       </nav>
 
       <section class="tab-content">
-        {% for company in object_list %}
+        {% for skill in object_list %}
           <div class="competencia tab-content--item">
-            <a href="{% url 'admin:company-detail' company.id %}" class="tab-content--item-link block">
-              <h3 class="item-title">{{ company.name }}</h3>
+            <a href="{% url 'admin:skill-update' skill.id %}" class="tab-content--item-link block">
+              <h3 class="item-title">{{ skill.name }}</h3>
             </a>
           </div>
         {% empty %}
-          <p>No existe ninguna compañía.</p>
+          <p>No existe ninguna competencia.</p>
         {% endfor %}
       </section>
 
-      <a href="{% url 'admin:company-add' %}">
-        <button class="button button-add secondary-button block">Agrega compañía</button>
+      <a href="{% url 'admin:skill-add' %}">
+        <button class="button button-add secondary-button block">Agrega competencia</button>
       </a>
     </section>
 
