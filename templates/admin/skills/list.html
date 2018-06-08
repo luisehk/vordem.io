@@ -18,7 +18,7 @@
       <section class="tab-content">
         {% for skill in object_list %}
           <div class="competencia tab-content--item">
-            <a href="{% url 'admin:skill-update' skill.id %}" class="tab-content--item-link block">
+            <a href="{% url 'admin:skill-detail' skill.id %}" class="tab-content--item-link block">
               <h3 class="item-title">{{ skill.name }}</h3>
             </a>
           </div>
