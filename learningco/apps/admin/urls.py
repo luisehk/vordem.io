@@ -1,26 +1,31 @@
 from django.views.generic.base import RedirectView
 from django.urls import reverse_lazy
 from django.conf.urls import url
-from .views.companies import (
-    CompanyCreate, CompanyUpdate, CompanyDelete, AddHumanResourcesToCompany
+from .views.rest.companies import AddHumanResourcesToCompany
+from .views.web.companies import (
+    CompanyCreate, CompanyUpdate, CompanyDelete,
+    CompanyDetail, CompanyList
 )
-from .views.industries import (
-    IndustryCreate, IndustryUpdate, IndustryDelete
+from .views.web.industries import (
+    IndustryCreate, IndustryUpdate, IndustryDelete, IndustryList,
+    IndustryDetail
 )
-from .views.content import (
+from .views.web.skills import (
+    SkillCreate, SkillUpdate, SkillDelete, SkillList, SkillDetail
+)
+from .views.web.content import (
     Content01, Content02, Content03, Content04, Content05, Content06,
     Content07, Content08, Content09, Content10, Content11, Content12,
     Content13,
 )
-from .views.admin import IndexView
 
 urlpatterns = [
     url(r'^companies$',
-        RedirectView.as_view(
-            url=reverse_lazy('admin:index')
-        ), name="company-list"),
+        CompanyList.as_view(), name="company-list"),
     url(r'^companies/add/$',
         CompanyCreate.as_view(), name='company-add'),
+    url(r'^companies/detail/(?P<pk>[0-9]+)/$',
+        CompanyDetail.as_view(), name='company-detail'),
     url(r'^companies/(?P<pk>[0-9]+)/$',
         CompanyUpdate.as_view(), name='company-update'),
     url(r'^companies/(?P<pk>[0-9]+)/delete/$',
@@ -29,15 +34,26 @@ urlpatterns = [
         AddHumanResourcesToCompany.as_view(), name='company-add-hr'),
 
     url(r'^industries$',
-        RedirectView.as_view(
-            url=reverse_lazy('admin:index')
-        ), name="industry-list"),
+        IndustryList.as_view(), name="industry-list"),
     url(r'^industries/add/$',
         IndustryCreate.as_view(), name='industry-add'),
+    url(r'^industries/detail/(?P<pk>[0-9]+)/$',
+        IndustryDetail.as_view(), name='industry-detail'),
     url(r'^industries/(?P<pk>[0-9]+)/$',
         IndustryUpdate.as_view(), name='industry-update'),
     url(r'^industries/(?P<pk>[0-9]+)/delete/$',
         IndustryDelete.as_view(), name='industry-delete'),
+
+    url(r'^skills$',
+        SkillList.as_view(), name="skill-list"),
+    url(r'^skills/add/$',
+        SkillCreate.as_view(), name='skill-add'),
+    url(r'^skills/detail/(?P<pk>[0-9]+)/$',
+        SkillDetail.as_view(), name='skill-detail'),
+    url(r'^skills/(?P<pk>[0-9]+)/$',
+        SkillUpdate.as_view(), name='skill-update'),
+    url(r'^skills/(?P<pk>[0-9]+)/delete/$',
+        SkillDelete.as_view(), name='skill-delete'),
 
     url(r'content/01$', Content01.as_view(), name='content-01'),
     url(r'content/02$', Content02.as_view(), name='content-02'),
@@ -53,5 +69,7 @@ urlpatterns = [
     url(r'content/12$', Content12.as_view(), name='content-12'),
     url(r'content/13$', Content13.as_view(), name='content-13'),
 
-    url(r'^$', IndexView.as_view(), name='index'),
+    url(r'^$', RedirectView.as_view(
+        url=reverse_lazy('admin:company-list')
+    ), name='index'),
 ]

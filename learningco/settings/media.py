@@ -30,12 +30,12 @@ else:
     AWS_QUERYSTRING_AUTH = False
 
     STATICFILES_LOCATION = 'static'
-    STATIC_URL = 'https://s3.amazonaws.com/{}/{}'.format(
+    STATIC_URL = 'https://s3.amazonaws.com/{}/{}/'.format(
         AWS_STORAGE_BUCKET_NAME, STATICFILES_LOCATION)
     STATICFILES_STORAGE = 'learningco.storages.StaticStorage'
 
     MEDIAFILES_LOCATION = 'media'
-    MEDIA_URL = 'https://s3.amazonaws.com/{}/{}'.format(
+    MEDIA_URL = 'https://s3.amazonaws.com/{}/{}/'.format(
         AWS_STORAGE_BUCKET_NAME, MEDIAFILES_LOCATION)
     DEFAULT_FILE_STORAGE = 'learningco.storages.MediaStorage'
 
@@ -60,6 +60,13 @@ VERSATILEIMAGEFIELD_SETTINGS = {
 VERSATILEIMAGEFIELD_USE_PLACEHOLDIT = True
 VERSATILEIMAGEFIELD_RENDITION_KEY_SETS = {
     'profile_avatar': [
+        ('full_size', 'url'),
+        ('crop__280x280', 'crop__280x280'),
+        ('crop__128x128', 'crop__128x128'),
+        ('crop__44x44', 'crop__44x44'),
+        ('crop__42x42', 'crop__42x42'),
+    ],
+    'company_avatar': [
         ('full_size', 'url'),
         ('crop__280x280', 'crop__280x280'),
         ('crop__128x128', 'crop__128x128'),

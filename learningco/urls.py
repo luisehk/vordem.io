@@ -3,8 +3,8 @@ from rest_framework.authtoken import views as authviews
 from django.conf.urls.static import static
 from django.conf.urls import url, include
 from allauth.account.views import confirm_email
-from learningco import settings  # noqa
 from learningco.apps.users.views import UserHome
+from django.conf import settings
 
 
 urlpatterns = [
