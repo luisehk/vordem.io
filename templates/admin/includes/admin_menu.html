@@ -1,19 +1,5 @@
-<nav class="tabs">
-  <ul>
-    <li class="tab">
-      <a href="{% url 'admin:skill-list' %}" class="tab-link {% if 'skills' in request.path %}is-current{% endif %}">
-        Competencias
-      </a>
-    </li>
-    <li class="tab">
-      <a href="{% url 'admin:industry-list' %}" class="tab-link {% if 'industries' in request.path %}is-current{% endif %}">
-        Industrias
-      </a>
-    </li>
-    <li class="tab">
-      <a href="{% url 'admin:company-list' %}" class="tab-link {% if 'companies' in request.path %}is-current{% endif %}">
-        Compañías
-      </a>
-    </li>
-  </ul>
-</nav>
+{% if request.resolver_match.url_name == 'skill-detail' %}
+  {% include 'admin/includes/admin_skill_menu.html' %}
+{% else %}
+  {% include 'admin/includes/admin_general_menu.html' %}
+{% endif %}
