@@ -7,13 +7,7 @@
       <h1 class="page-title m-tb--0">Administrador de contenidos</h1>
     </header>
     <section class="content m-top--m">
-      <nav class="tabs">
-        <ul>
-          <li class="tab"><a href="{% url 'admin:skill-list' %}" class="tab-link">Competencias</a></li>
-          <li class="tab"><a href="{% url 'admin:industry-list' %}" class="tab-link is-current">Industrias</a></li>
-          <li class="tab"><a href="{% url 'admin:company-list' %}" class="tab-link">Compañías</a></li>
-        </ul>
-      </nav>
+      {% include 'admin/includes/admin_menu.html' %}
 
       <section class="tab-content">
         {% for industry in object_list %}

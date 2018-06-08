@@ -1,3 +1,29 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block header_classes %}global-header width-100 center{% endblock %}
+
+{% block content %}
+  <div class="page m-rl--m m-bottom--m company">
+    <header class="page-header flex">
+      {% block header %}
+        <h1 class="page-title m-all--0">{% block title %}Administrador de contenidos{% endblock %}</h1>
+
+        {% block title_actions %}{% endblock %}
+      {% endblock %}
+    </header>
+
+    <section class="content m-top--m">
+      {% block menu %}
+        {% include 'admin/includes/admin_menu.html' %}
+      {% endblock %}
+
+      <section class="tab-content {% block inner_content_classes %}{% endblock %}">
+
+        {% block inner_content %}{% endblock %}
+      </section>
+
+      {% block bottom_actions %}{% endblock %}
+    </section>
+
+{% endblock %}
