@@ -1,22 +1,4 @@
-{% extends 'base.html' %}
+{% extends 'admin/companies/form.html' %}
 {% load static %}
 
-{% block content %}
-<div class="modal-box">
-  <h1 class="page-title">Crear nueva compañia</h1>
-  <form action="" method="post">
-    {% csrf_token %}
-
-    <label class="form-label strong block" for="id_name">Nombre</label>
-    <input class="text-input block width-100" type="text" name="name" maxlength="150" required="" id="id_name">
-
-    <label class="form-label strong block m-top--s" for="id_industry">Industria</label>
-    {{ form.industry }}
-
-    <label class="form-label strong block m-top--s" for="id_size">Tamaño</label>
-    {{ form.size }}
-
-    <input class="button primary-button" type="submit" value="Guardar" />
-  </form>
-</div>
-{% endblock %}
+{% block title %}Crear compañia{% endblock %}
