@@ -61,6 +61,7 @@ VERSATILEIMAGEFIELD_USE_PLACEHOLDIT = True
 VERSATILEIMAGEFIELD_RENDITION_KEY_SETS = {
     'profile_avatar': [
         ('full_size', 'url'),
+        ('crop__400x400', 'crop__400x400'),
         ('crop__280x280', 'crop__280x280'),
         ('crop__128x128', 'crop__128x128'),
         ('crop__44x44', 'crop__44x44'),
@@ -68,6 +69,7 @@ VERSATILEIMAGEFIELD_RENDITION_KEY_SETS = {
     ],
     'company_avatar': [
         ('full_size', 'url'),
+        ('crop__400x400', 'crop__400x400'),
         ('crop__280x280', 'crop__280x280'),
         ('crop__128x128', 'crop__128x128'),
         ('crop__44x44', 'crop__44x44'),
