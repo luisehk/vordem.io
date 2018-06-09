@@ -1,0 +1,21 @@
+<hgroup class="title-header">
+  <h1 class="page-title m-tb--0">{{ object.name }}</h1>
+  <h2 class="page-subtitle m-top--xs">{{ object.industry }} <span class="company-size">{{ object.get_size_display }}</span></h2>
+</hgroup>
+
+<div class="tools">
+  <div class="tool">
+    <label class="tool-label" for="id_select">Industria</label>
+    <select class="tool-select" id="id_select">
+      <option class="tool-select--opt" value="1">Tecnología</option>
+      <option class="tool-select--opt" value="2">Retail</option>
+    </select>
+  </div>
+  <div class="tool">
+    <label class="tool-label" for="id_select">Tamaño</label>
+    <select class="tool-select" id="id_select">
+      <option class="tool-select--opt" value="1">+5000 empleados</option>
+      <option class="tool-select--opt" value="2">+10,000 empleados</option>
+    </select>
+  </div>
+</div>

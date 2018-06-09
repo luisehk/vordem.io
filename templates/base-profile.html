@@ -1,0 +1,15 @@
+{% extends 'base-full.html' %}
+{% load static %}
+
+{% block content_classes %}{% endblock %}
+{% block page_classes %}grid grid-sidebar{% endblock %}
+
+{% block outer_header %}
+  <header class="page-header grid grid-sidebar">
+    {% include 'admin/includes/profile/avatar.html' %}
+
+    {% block profile_header %}{% endblock %}
+
+    {% include 'admin/includes/profile/score.html' %}
+  </header>
+{% endblock %}
