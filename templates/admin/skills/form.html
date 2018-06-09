@@ -1,0 +1,9 @@
+{% extends 'admin/includes/simple_form.html' %}
+{% load static %}
+
+{% block title %}Competencias{% endblock %}
+
+{% block fields %}
+  <label class="form-label strong block" for="id_name">Nombre</label>
+  <input class="text-input block width-100" type="text" name="name" maxlength="150" required="" id="id_name" value="{% firstof form.name.value '' %}">
+{% endblock %}
