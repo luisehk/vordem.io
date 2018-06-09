@@ -1,29 +1,20 @@
 {% extends 'base-full.html' %}
 {% load static %}
 
-{% block content %}
-  <div class="page m-rl--m m-bottom--m company">
-    <header class="page-header">
-      <h1 class="page-title m-tb--0">Administrador de contenidos</h1>
-    </header>
-    <section class="content m-top--m">
-      {% include 'admin/includes/admin_menu.html' %}
-
-      <section class="tab-content">
-        {% for industry in object_list %}
-          <div class="competencia tab-content--item">
-            <a href="{% url 'admin:industry-update' industry.id %}" class="tab-content--item-link block">
-              <h3 class="item-title">{{ industry.name }}</h3>
-            </a>
-          </div>
-        {% empty %}
-          <p>No existe ninguna industria.</p>
-        {% endfor %}
-      </section>
-
-      <a href="{% url 'admin:industry-add' %}">
-        <button class="button button-add secondary-button block">Agrega industria</button>
+{% block inner_content %}
+  {% for industry in object_list %}
+    <div class="competencia tab-content--item">
+      <a href="{% url 'admin:industry-update' industry.id %}" class="tab-content--item-link block">
+        <h3 class="item-title">{{ industry.name }}</h3>
       </a>
-    </section>
+    </div>
+  {% empty %}
+    <p>No existe ninguna industria.</p>
+  {% endfor %}
+{% endblock %}
 
+{% block bottom_actions %}
+  <a href="{% url 'admin:industry-add' %}">
+    <button class="button button-add secondary-button block">Agrega industria</button>
+  </a>
 {% endblock %}
