@@ -11,4 +11,3 @@ class ContentConfig(AppConfig):
         from learningco.apps.content.signals import warm_lesson_thumbnail
 
         post_save.connect(warm_lesson_thumbnail, sender=Lesson)
-

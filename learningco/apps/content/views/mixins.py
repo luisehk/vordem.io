@@ -12,7 +12,7 @@ class VideoGenericView(object):
 
 
 class VideoFormView(VideoGenericView):
-    fields = DEFAULT_LESSON_FIELDS + ['video_url']
+    fields = ['skill', 'name', 'body', 'default', 'video_url']
 
 
 class EditVideoAfterSuccess(EditAfterSuccess):
