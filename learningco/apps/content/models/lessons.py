@@ -1,8 +1,13 @@
+from versatileimagefield.fields import VersatileImageField, PPOIField
+from versatileimagefield.image_warmer import VersatileImageFieldWarmer
+from versatileimagefield.placeholder import OnDiscPlaceholderImage
 from django.contrib.auth import get_user_model
 from embed_video.fields import EmbedVideoField
 from polymorphic.models import PolymorphicModel
 from django.db import models
+from django.conf import settings
 from .skills import Skill
+import os
 
 
 User = get_user_model()
@@ -18,6 +23,14 @@ class Lesson(PolymorphicModel):
         max_length=150)
     body = models.TextField(blank=False, default='')
     default = models.BooleanField(default=False)
+    thumbnail = VersatileImageField(
+        null=True, blank=True, ppoi_field='ppoi',
+        placeholder_image=OnDiscPlaceholderImage(
+            path=os.path.join(
+                settings.BASE_DIR,
+                'static/imgs/profile-neutral.png'
+            )))
+    ppoi = PPOIField('Image PPOI', default=(0.5, 0.5))
 
     class Meta:
         ordering = ['name']
@@ -28,6 +41,14 @@ class Lesson(PolymorphicModel):
 
     def get_type(self):
         return self._meta.verbose_name.title()
+
+    def warm_thumbnail(self):
+        img_warmer = VersatileImageFieldWarmer(
+            instance_or_queryset=self,
+            rendition_key_set='lesson_thumbnail',
+            image_attr='thumbnail')
+
+        img_warmer.warm()
 
 
 class Intro(Lesson):

@@ -74,6 +74,13 @@ VERSATILEIMAGEFIELD_RENDITION_KEY_SETS = {
         ('crop__128x128', 'crop__128x128'),
         ('crop__44x44', 'crop__44x44'),
         ('crop__42x42', 'crop__42x42'),
+    ],
+    'lesson_thumbnail': [
+        ('full_size', 'url'),
+        ('crop__1100x680', 'crop__1100x680'),
+        ('crop__550x340', 'crop__550x340'),
+        ('crop__275x170', 'crop__275x170'),
+        ('crop__137x85', 'crop__137x85'),
     ]
 }
 

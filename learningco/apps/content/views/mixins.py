@@ -3,7 +3,7 @@ from ...utils.mixins import EditAfterSuccess
 from ...content.models import Video
 
 
-DEFAULT_LESSON_FIELDS = ['skill', 'name', 'default']
+DEFAULT_LESSON_FIELDS = ['skill', 'name', 'body', 'default', 'thumbnail']
 
 
 class VideoGenericView(object):
@@ -12,9 +12,7 @@ class VideoGenericView(object):
 
 
 class VideoFormView(VideoGenericView):
-    fields = DEFAULT_LESSON_FIELDS + [
-        'body', 'video_url'
-    ]
+    fields = DEFAULT_LESSON_FIELDS + ['video_url']
 
 
 class EditVideoAfterSuccess(EditAfterSuccess):
