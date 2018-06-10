@@ -1,0 +1,31 @@
+{% extends 'base-full.html' %}
+{% load static %}
+{% load embed_video_tags %}
+
+{% block menu %}
+  <div class="competencia competencia-single">
+    <div class="tab-content--item">
+      <h2 class="item-title">
+        {{ object.name }} <a href="{% url 'content:video-update' object.id %}">{% include 'admin/includes/components/edit_button.html' %}</a>
+      </h2>
+    </div>
+  </div>
+
+  {{ block.super }}
+{% endblock %}
+
+{% block inner_content_classes %}relative{% endblock %}
+
+{% block inner_content %}
+  The video tag:
+  {% video object.video_url as my_video %}
+    URL: {{ my_video.url }}
+    Thumbnail: {{ my_video.thumbnail }}
+    Backend: {{ my_video.backend }}
+
+    {% video my_video "large" %}
+  {% endvideo %}
+
+  Or embed shortcut:
+  {% video my_video '800x600' %}
+{% endblock %}

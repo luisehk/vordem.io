@@ -28,6 +28,8 @@ urlpatterns = [
     # web application
     url(r'^admin/', include(
         'learningco.apps.admin.urls', namespace='admin')),
+    url(r'^content/', include(
+        'learningco.apps.content.urls', namespace='content')),
     url(r'^companies/', include(
         'learningco.apps.companies.urls', namespace='companies')),
     url(r'^users/', include(
