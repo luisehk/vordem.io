@@ -15,26 +15,35 @@ class Lesson(models.Model):
     name = models.CharField(
         verbose_name='Nombre',
         max_length=150)
+    body = models.TextField(blank=False, default='')
     default = models.BooleanField(default=False)
 
     class Meta:
         ordering = ['name']
+        verbose_name = 'Lección'
 
     def __str__(self):
         return self.name
 
 
 class Intro(Lesson):
-    body = models.TextField(blank=False)
+    class Meta:
+        ordering = ['name']
+        verbose_name = 'Intro'
 
 
 class Video(Lesson):
-    body = models.TextField(blank=False)
     video_url = EmbedVideoField()
+
+    class Meta:
+        ordering = ['name']
+        verbose_name = 'Video'
 
 
 class Quiz(Lesson):
-    body = models.TextField(blank=False)
+    class Meta:
+        ordering = ['name']
+        verbose_name = 'Cuestionario'
 
 
 class Question(models.Model):
@@ -56,11 +65,16 @@ class Option(models.Model):
 
 class Article(Lesson):
     description = models.TextField(blank=False)
-    body = models.TextField(blank=False)
+
+    class Meta:
+        ordering = ['name']
+        verbose_name = 'Articulo'
 
 
 class ActivityList(Lesson):
-    pass
+    class Meta:
+        ordering = ['name']
+        verbose_name = 'Leccion'
 
 
 class Activity(models.Model):
@@ -70,4 +84,3 @@ class Activity(models.Model):
         related_name='activities')
     title = models.CharField(max_length=150)
     description = models.TextField(blank=False)
-    body = models.TextField(blank=False)
