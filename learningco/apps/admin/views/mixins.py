@@ -6,7 +6,11 @@ from ...content.models import Skill
 
 class CompanyGenericView(object):
     model = Company
-    success_url = reverse_lazy('admin:company-list')
+
+    def get_success_url(self):
+        return reverse_lazy(
+            'admin:company-detail',
+            args=(self.object.id,))
 
 
 class CompanyFormView(CompanyGenericView):
@@ -24,7 +28,11 @@ class IndustryFormView(IndustryGenericView):
 
 class SkillGenericView(object):
     model = Skill
-    success_url = reverse_lazy('admin:skill-list')
+
+    def get_success_url(self):
+        return reverse_lazy(
+            'admin:skill-detail',
+            args=(self.object.id,))
 
 
 class SkillFormView(SkillGenericView):
