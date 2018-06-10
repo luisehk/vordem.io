@@ -107,7 +107,7 @@ class Article(Lesson):
 class ActivityList(Lesson):
     class Meta:
         ordering = ['name']
-        verbose_name = 'Leccion'
+        verbose_name = 'Actividades'
 
 
 class Activity(models.Model):
