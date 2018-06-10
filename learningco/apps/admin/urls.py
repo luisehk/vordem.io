@@ -70,6 +70,6 @@ urlpatterns = [
     url(r'content/13$', Content13.as_view(), name='content-13'),
 
     url(r'^$', RedirectView.as_view(
-        url=reverse_lazy('admin:company-list')
+        url=reverse_lazy('admin:skill-list')
     ), name='index'),
 ]
