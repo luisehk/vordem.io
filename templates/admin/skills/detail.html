@@ -9,7 +9,7 @@
   <div class="competencia competencia-single">
     <div class="tab-content--item">
       <h2 class="item-title">
-        {{ object.name }}
+        {{ object.name }} <a href="{% url 'admin:skill-update' object.id %}">{% include 'admin/includes/components/edit_button.html' %}</a>
       </h2>
     </div>
   </div>
