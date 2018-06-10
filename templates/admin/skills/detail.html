@@ -40,6 +40,8 @@
         <a class="button button-small" href="{% url 'content:video-update' lesson.id %}">Editar</a>
       </div>
     </div>
+  {% empty %}
+    <p>No existe contenido para esta competencia.</p>
   {% endfor %}
 {% endblock %}
 
