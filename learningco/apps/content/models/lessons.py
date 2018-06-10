@@ -25,6 +25,9 @@ class Lesson(models.Model):
     def __str__(self):
         return self.name
 
+    def get_type(self):
+        return self._meta.verbose_name.title()
+
 
 class Intro(Lesson):
     class Meta:
