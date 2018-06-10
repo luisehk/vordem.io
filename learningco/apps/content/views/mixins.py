@@ -8,7 +8,9 @@ DEFAULT_LESSON_FIELDS = ['skill', 'name', 'body', 'default', 'thumbnail']
 
 class VideoGenericView(object):
     model = Video
-    success_url = reverse_lazy('content:video-list')
+
+    def get_success_url(self):
+        return reverse_lazy('admin:skill-detail', args=(self.object.skill.id,))
 
 
 class VideoFormView(VideoGenericView):
