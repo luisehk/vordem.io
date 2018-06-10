@@ -46,5 +46,7 @@
 {% endblock %}
 
 {% block bottom_actions %}
-  <button class="button button-add secondary-button block">Agrega contenido</button>
+  <a href="{% url 'content:video-add' %}">
+    <button class="button button-add secondary-button block">Agrega contenido</button>
+  </a>
 {% endblock %}
