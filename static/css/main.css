@@ -565,7 +565,11 @@ select {
   .content--item .content--media {
     width: 100%;
     height: auto;
-    background-color: #516173; }
+    background-color: #516173;
+    background-repeat: no-repeat;
+    background-attachment: initial;
+    background-position: center center;
+    background-size: cover; }
   .content--item .content-info {
     grid-template-columns: 1fr 1fr; }
     .content--item .content-info .item-title,

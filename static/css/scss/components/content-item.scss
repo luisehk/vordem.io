@@ -95,6 +95,10 @@
     width: 100%;
     height: auto;
     background-color: $muted-blue;
+    background-repeat: no-repeat;
+    background-attachment: initial;
+    background-position: center center;
+    background-size: cover;
   }
 
   .content-info {

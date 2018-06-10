@@ -22,7 +22,8 @@
 {% block inner_content %}
   {% for lesson in object.lessons.all %}
     <div class="content--item tab-content--item media--container">
-      <div class="content--media"><!-- Video or image --></div>
+      <div class="content--media" style="background-image: url({{ lesson.get_thumbnail }});"></div>
+
       <div class="content-info grid">
         <h3 class="item-title">{{ lesson.name }}</h3>
 

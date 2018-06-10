@@ -3,6 +3,7 @@ from versatileimagefield.image_warmer import VersatileImageFieldWarmer
 from versatileimagefield.placeholder import OnDiscPlaceholderImage
 from django.contrib.auth import get_user_model
 from embed_video.fields import EmbedVideoField
+from embed_video.backends import detect_backend
 from polymorphic.models import PolymorphicModel
 from django.db import models
 from django.conf import settings
@@ -50,6 +51,9 @@ class Lesson(PolymorphicModel):
 
         img_warmer.warm()
 
+    def get_thumbnail(self):
+        return self.thumbnail.url
+
 
 class Intro(Lesson):
     class Meta:
@@ -63,6 +67,10 @@ class Video(Lesson):
     class Meta:
         ordering = ['name']
         verbose_name = 'Video'
+
+    def get_thumbnail(self):
+        video = detect_backend(self.video_url)
+        return video.get_thumbnail_url()
 
 
 class Quiz(Lesson):
