@@ -11,6 +11,7 @@ SHOW_DEBUG_TOOLBAR = os.environ.get(
 INSTALLED_APPS = [
     'dal',
     'dal_select2',
+    'polymorphic',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

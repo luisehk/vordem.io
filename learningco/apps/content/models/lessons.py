@@ -1,5 +1,6 @@
 from django.contrib.auth import get_user_model
 from embed_video.fields import EmbedVideoField
+from polymorphic.models import PolymorphicModel
 from django.db import models
 from .skills import Skill
 
@@ -7,7 +8,7 @@ from .skills import Skill
 User = get_user_model()
 
 
-class Lesson(models.Model):
+class Lesson(PolymorphicModel):
     skill = models.ForeignKey(
         Skill, verbose_name='Competencia',
         null=False, on_delete=models.CASCADE,
