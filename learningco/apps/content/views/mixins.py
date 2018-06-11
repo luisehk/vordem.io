@@ -1,5 +1,5 @@
 from django.urls import reverse_lazy
-from ...content.models import Intro, Video, Article
+from ...content.models import Intro, Video, Article, ActivityList
 
 
 DEFAULT_LESSON_FIELDS = ['skill', 'name', 'body', 'default', 'thumbnail']
@@ -34,3 +34,15 @@ class ArticleGenericView(LessonGenericView):
 
 class ArticleFormView(ArticleGenericView):
     fields = DEFAULT_LESSON_FIELDS + ['description']
+
+
+class ActivityListGenericView(LessonGenericView):
+    model = ActivityList
+
+
+class ActivityListFormView(ActivityListGenericView):
+    fields = ['skill', 'name', 'default', 'thumbnail']
+
+
+class ActivityForm(object):
+    fields = ['title', 'description', 'body']

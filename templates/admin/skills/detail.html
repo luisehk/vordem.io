@@ -47,13 +47,16 @@
 {% endblock %}
 
 {% block bottom_actions %}
+  <a href="{% url 'content:intro-add' %}">
+    <button class="button button-add secondary-button block">Agrega intro</button>
+  </a>
   <a href="{% url 'content:video-add' %}">
     <button class="button button-add secondary-button block">Agrega video</button>
   </a>
   <a href="{% url 'content:article-add' %}">
     <button class="button button-add secondary-button block">Agrega articulo</button>
   </a>
-  <a href="{% url 'content:intro-add' %}">
-    <button class="button button-add secondary-button block">Agrega intro</button>
+  <a href="{% url 'content:activity-add' %}">
+    <button class="button button-add secondary-button block">Agrega actividades</button>
   </a>
 {% endblock %}

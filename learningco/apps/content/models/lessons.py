@@ -117,3 +117,4 @@ class Activity(models.Model):
         related_name='activities')
     title = models.CharField(max_length=150)
     description = models.TextField(blank=False)
+    body = models.TextField(blank=False, default='')

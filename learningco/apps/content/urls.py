@@ -10,6 +10,9 @@ from .views.web.intros import (
 from .views.web.articles import (
     ArticleCreate, ArticleUpdate, ArticleDelete
 )
+from .views.web.activities import (
+    ActivityListCreate, ActivityListUpdate, ActivityListDelete
+)
 
 urlpatterns = [
     url(r'^intros/add/$',
@@ -32,6 +35,13 @@ urlpatterns = [
         VideoUpdate.as_view(), name='video-update'),
     url(r'^videos/(?P<pk>[0-9]+)/delete/$',
         VideoDelete.as_view(), name='video-delete'),
+
+    url(r'^activities/add/$',
+        ActivityListCreate.as_view(), name='activity-add'),
+    url(r'^activities/(?P<pk>[0-9]+)/$',
+        ActivityListUpdate.as_view(), name='activity-update'),
+    url(r'^activities/(?P<pk>[0-9]+)/delete/$',
+        ActivityListDelete.as_view(), name='activity-delete'),
 
     url(r'^$', RedirectView.as_view(
         url=reverse_lazy('admin:skill-list')

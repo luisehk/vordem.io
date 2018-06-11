@@ -1,0 +1,14 @@
+{% extends 'admin/includes/containers/simple_form.html' %}
+{% load static %}
+
+{% block title %}Actividades{% endblock %}
+
+{% block fields %}
+  {{ form }}
+
+  <h1>Actividades</h1>
+
+  {% for inline in inlines %}
+    {{ inline }}
+  {% endfor %}
+{% endblock %}
