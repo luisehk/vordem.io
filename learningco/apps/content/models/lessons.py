@@ -55,7 +55,6 @@ class Lesson(PolymorphicModel):
     def get_thumbnail(self):
         return self.thumbnail.url
 
-
     def get_update_url(self):
         return ''
 
