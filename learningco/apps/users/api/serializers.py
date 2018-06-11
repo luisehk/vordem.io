@@ -47,8 +47,7 @@ class ProfileSerializer(serializers.ModelSerializer):
     class Meta:
         model = Profile
         fields = [
-            'avatar', 'bio', 'phone',
-            'twitter', 'facebook', 'linkedin',
+            'avatar', 'bio', 'phone'
         ]
 
 

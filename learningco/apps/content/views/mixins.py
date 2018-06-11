@@ -41,7 +41,7 @@ class ActivityListGenericView(LessonGenericView):
 
 
 class ActivityListFormView(ActivityListGenericView):
-    fields = ['skill', 'name', 'default', 'thumbnail']
+    fields = DEFAULT_LESSON_FIELDS
 
 
 class ActivityForm(object):

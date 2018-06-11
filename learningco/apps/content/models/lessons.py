@@ -5,6 +5,7 @@ from django.contrib.auth import get_user_model
 from embed_video.fields import EmbedVideoField
 from embed_video.backends import detect_backend
 from polymorphic.models import PolymorphicModel
+from django.urls import reverse_lazy
 from django.db import models
 from django.conf import settings
 from .skills import Skill
@@ -55,10 +56,19 @@ class Lesson(PolymorphicModel):
         return self.thumbnail.url
 
 
+    def get_update_url(self):
+        return ''
+
+
 class Intro(Lesson):
     class Meta:
         ordering = ['name']
         verbose_name = 'Intro'
+
+    def get_update_url(self):
+        return reverse_lazy(
+            'content:intro-update',
+            args=(self.id,))
 
 
 class Video(Lesson):
@@ -72,11 +82,21 @@ class Video(Lesson):
         video = detect_backend(self.video_url)
         return video.get_thumbnail_url()
 
+    def get_update_url(self):
+        return reverse_lazy(
+            'content:video-update',
+            args=(self.id,))
+
 
 class Quiz(Lesson):
     class Meta:
         ordering = ['name']
         verbose_name = 'Cuestionario'
+
+    def get_update_url(self):
+        return reverse_lazy(
+            'content:quiz-update',
+            args=(self.id,))
 
 
 class Question(models.Model):
@@ -103,11 +123,21 @@ class Article(Lesson):
         ordering = ['name']
         verbose_name = 'Articulo'
 
+    def get_update_url(self):
+        return reverse_lazy(
+            'content:article-update',
+            args=(self.id,))
+
 
 class ActivityList(Lesson):
     class Meta:
         ordering = ['name']
         verbose_name = 'Actividades'
+
+    def get_update_url(self):
+        return reverse_lazy(
+            'content:activity-update',
+            args=(self.id,))
 
 
 class Activity(models.Model):

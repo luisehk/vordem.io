@@ -38,7 +38,7 @@
           Mostrar por defecto
         </label>
 
-        <a class="button button-small" href="{% url 'content:video-update' lesson.id %}">Editar</a>
+        <a class="button button-small" href="{{ lesson.get_update_url }}">Editar</a>
       </div>
     </div>
   {% empty %}
