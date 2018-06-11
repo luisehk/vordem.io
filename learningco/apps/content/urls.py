@@ -13,6 +13,7 @@ from .views.web.articles import (
 from .views.web.activities import (
     ActivityListCreate, ActivityListUpdate, ActivityListDelete
 )
+from .views.rest.content import UserContent
 
 urlpatterns = [
     url(r'^intros/add/$',
@@ -42,6 +43,9 @@ urlpatterns = [
         ActivityListUpdate.as_view(), name='activity-update'),
     url(r'^activities/(?P<pk>[0-9]+)/delete/$',
         ActivityListDelete.as_view(), name='activity-delete'),
+
+    url(r'^user-content/$',
+        UserContent.as_view(), name='user-content'),
 
     url(r'^$', RedirectView.as_view(
         url=reverse_lazy('admin:skill-list')
