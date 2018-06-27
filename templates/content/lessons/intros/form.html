@@ -4,5 +4,12 @@
 {% block title %}Intros{% endblock %}
 
 {% block fields %}
-  {{ form }}
+  <label class="form-label strong block m-top--s" for="id_skill">Competencia</label>
+  {{ form.skill }}
+
+  <label class="form-label strong block m-top--s" for="id_name">Nombre</label>
+  <input class="text-input block width-100" type="text" name="name" maxlength="150" required="" id="id_name" value="{% firstof form.name.value '' %}">
+
+  <label class="form-label strong block m-top--s" for="id_body">Texto</label>
+  <textarea name="body" cols="40" rows="10" required="" id="id_body">{% firstof form.body.value '' %}</textarea>
 {% endblock %}
