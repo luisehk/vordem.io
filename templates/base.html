@@ -21,6 +21,15 @@
       <nav class="global-nav nav">
         <ul class="nav-list">
           <li class="nav-item">
+            <a href="{% url 'admin:skill-list' %}" class="nav-link">Competencias</a>
+          </li>
+          <li class="nav-item">
+            <a href="{% url 'admin:company-list' %}" class="nav-link">Compañias</a>
+          </li>
+          <li class="nav-item">
+            <a href="{% url 'admin:industry-list' %}" class="nav-link">Industrias</a>
+          </li>
+          <li class="nav-item">
             <ul class="dropdown">
               <li class="dropdown-item">
                 {{ user.email }}
