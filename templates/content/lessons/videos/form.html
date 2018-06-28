@@ -5,5 +5,8 @@
 
 {% block fields %}
   {{ block.super }}
-  {{ form }}
+
+  <label class="form-label strong block m-top--s" for="id_video_url">URL de video (Youtube)</label>
+
+  <input class="text-input block width-100" type="text" name="video_url" maxlength="150" required="" id="id_video_url" value="{% firstof form.video_url.value '' %}">
 {% endblock %}
