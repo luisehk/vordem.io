@@ -1,8 +1,9 @@
-{% extends 'admin/includes/containers/simple_form.html' %}
+{% extends 'content/includes/lesson_form.html' %}
 {% load static %}
 
 {% block title %}Articulos{% endblock %}
 
 {% block fields %}
+  {{ block.super }}
   {{ form }}
 {% endblock %}

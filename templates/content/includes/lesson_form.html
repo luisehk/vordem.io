@@ -1,0 +1,10 @@
+{% extends 'admin/includes/containers/simple_form.html' %}
+{% load static %}
+
+{% block title %}Leccion{% endblock %}
+
+{% block fields %}
+  {% include 'content/includes/fields/skill.html' %}
+  {% include 'content/includes/fields/name.html' %}
+  {% include 'content/includes/fields/body.html' %}
+{% endblock %}
