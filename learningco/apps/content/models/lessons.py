@@ -23,7 +23,7 @@ class Lesson(PolymorphicModel):
     name = models.CharField(
         verbose_name='Nombre',
         max_length=150)
-    body = models.TextField(blank=False, default='')
+    description = models.TextField(blank=False, default='')
     default = models.BooleanField(default=False)
     thumbnail = VersatileImageField(
         null=True, blank=True, ppoi_field='ppoi',
@@ -116,7 +116,7 @@ class Option(models.Model):
 
 
 class Article(Lesson):
-    description = models.TextField(blank=False)
+    full_text = models.TextField(blank=False)
 
     class Meta:
         ordering = ['name']
@@ -146,4 +146,4 @@ class Activity(models.Model):
         related_name='activities')
     title = models.CharField(max_length=150)
     description = models.TextField(blank=False)
-    body = models.TextField(blank=False, default='')
+    full_text = models.TextField(blank=False, default='')
