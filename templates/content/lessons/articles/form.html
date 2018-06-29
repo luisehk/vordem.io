@@ -4,8 +4,6 @@
 {% block title %}Articulos{% endblock %}
 
 {% block fields %}
-  {% include 'content/includes/fields/skill.html' %}
-  {% include 'content/includes/fields/name.html' %}
-  {% include 'content/includes/fields/description.html' %}
-  {% include 'content/includes/fields/body.html' %}
+  {{ block.super }}
+  {% include 'content/includes/fields/full_text.html' %}
 {% endblock %}
