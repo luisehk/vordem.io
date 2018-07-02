@@ -3,7 +3,7 @@ from rest_framework import serializers
 from ..models import Intro, Video, Article, ActivityList, Quiz
 
 
-DEFAULT_LESSON_FIELDS = ['id', 'name', 'body']
+DEFAULT_LESSON_FIELDS = ['id', 'name', 'description']
 
 
 class IntroSerializer(serializers.ModelSerializer):
@@ -21,7 +21,7 @@ class VideoSerializer(serializers.ModelSerializer):
 class ArticleSerializer(serializers.ModelSerializer):
     class Meta:
         model = Article
-        fields = DEFAULT_LESSON_FIELDS + ['description']
+        fields = DEFAULT_LESSON_FIELDS + ['full_text']
 
 
 class ActivityListSerializer(serializers.ModelSerializer):
