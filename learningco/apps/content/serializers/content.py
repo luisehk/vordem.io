@@ -3,37 +3,39 @@ from rest_framework import serializers
 from ..models import Intro, Video, Article, ActivityList, Quiz
 
 
-DEFAULT_LESSON_FIELDS = ['id', 'name', 'description']
+BASE_LESSON_FIELDS = ['id', 'name']
+FULL_LESSON_FIELDS = ['id', 'name', 'body']
+DEFAULT_LESSON_FIELDS = FULL_LESSON_FIELDS
 
 
 class IntroSerializer(serializers.ModelSerializer):
     class Meta:
         model = Intro
-        fields = DEFAULT_LESSON_FIELDS
+        fields = FULL_LESSON_FIELDS
 
 
 class VideoSerializer(serializers.ModelSerializer):
     class Meta:
         model = Video
-        fields = DEFAULT_LESSON_FIELDS + ['video_url']
+        fields = FULL_LESSON_FIELDS + ['video_url']
 
 
 class ArticleSerializer(serializers.ModelSerializer):
     class Meta:
         model = Article
-        fields = DEFAULT_LESSON_FIELDS + ['full_text']
+        fields = FULL_LESSON_FIELDS
 
 
 class ActivityListSerializer(serializers.ModelSerializer):
     class Meta:
         model = ActivityList
-        fields = DEFAULT_LESSON_FIELDS
+        fields = BASE_LESSON_FIELDS
 
 
 class QuizSerializer(serializers.ModelSerializer):
     class Meta:
         model = Quiz
-        fields = DEFAULT_LESSON_FIELDS
+        fields = BASE_LESSON_FIELDS
 
 
 class LessonPolymorphicSerializer(PolymorphicSerializer):

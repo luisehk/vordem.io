@@ -23,7 +23,7 @@ class Lesson(PolymorphicModel):
     name = models.CharField(
         verbose_name='Nombre',
         max_length=150)
-    description = models.TextField(blank=False, default='')
+    body = models.TextField(blank=False, default='')
     default = models.BooleanField(default=False)
     thumbnail = VersatileImageField(
         null=True, blank=True, ppoi_field='ppoi',
@@ -103,7 +103,7 @@ class Question(models.Model):
         Quiz, verbose_name='Cuestionario',
         null=False, on_delete=models.CASCADE,
         related_name='questions')
-    title = models.TextField(blank=False)
+    name = models.TextField(blank=False)
 
 
 class Option(models.Model):
@@ -111,13 +111,11 @@ class Option(models.Model):
         Question, verbose_name='Pregunta',
         null=False, on_delete=models.CASCADE,
         related_name='options')
-    title = models.TextField(blank=False)
+    name = models.TextField(blank=False)
     value = models.IntegerField(default=0)
 
 
 class Article(Lesson):
-    full_text = models.TextField(blank=False)
-
     class Meta:
         ordering = ['name']
         verbose_name = 'Articulo'
@@ -144,6 +142,6 @@ class Activity(models.Model):
         ActivityList, verbose_name='Lista de actividades',
         null=False, on_delete=models.CASCADE,
         related_name='activities')
-    title = models.CharField(max_length=150)
+    name = models.CharField(max_length=150)
     description = models.TextField(blank=False)
-    full_text = models.TextField(blank=False, default='')
+    body = models.TextField(blank=False, default='')

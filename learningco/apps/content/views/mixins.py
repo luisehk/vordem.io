@@ -2,7 +2,9 @@ from django.urls import reverse_lazy
 from ...content.models import Intro, Video, Article, ActivityList
 
 
-DEFAULT_LESSON_FIELDS = ['skill', 'name', 'description']
+BASE_LESSON_FIELDS = ['skill', 'name']
+FULL_LESSON_FIELDS = ['skill', 'name', 'body']
+DEFAULT_LESSON_FIELDS = FULL_LESSON_FIELDS
 
 
 class LessonGenericView(object):
@@ -25,7 +27,7 @@ class IntroGenericView(LessonGenericView):
 
 
 class IntroFormView(IntroGenericView):
-    fields = DEFAULT_LESSON_FIELDS
+    fields = FULL_LESSON_FIELDS
 
 
 class ArticleGenericView(LessonGenericView):
@@ -33,7 +35,7 @@ class ArticleGenericView(LessonGenericView):
 
 
 class ArticleFormView(ArticleGenericView):
-    fields = DEFAULT_LESSON_FIELDS + ['full_text']
+    fields = FULL_LESSON_FIELDS
 
 
 class ActivityListGenericView(LessonGenericView):
@@ -41,8 +43,8 @@ class ActivityListGenericView(LessonGenericView):
 
 
 class ActivityListFormView(ActivityListGenericView):
-    fields = DEFAULT_LESSON_FIELDS
+    fields = FULL_LESSON_FIELDS
 
 
 class ActivityForm(object):
-    fields = ['title', 'description', 'full_text']
+    fields = ['name', 'description', 'body']

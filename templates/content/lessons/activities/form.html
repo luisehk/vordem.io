@@ -4,7 +4,8 @@
 {% block title %}Actividades{% endblock %}
 
 {% block fields %}
-  {{ block.super }}
+  {% include 'content/includes/fields/skill.html' %}
+  {% include 'content/includes/fields/name.html' %}
 
   <h1>Actividades</h1>
 
