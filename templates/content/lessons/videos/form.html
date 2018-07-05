@@ -15,10 +15,13 @@
 
 
 {% block extra_css %}
+  {{ block.super }}
   <link rel="stylesheet" href="{% static 'css/youtube-preview.css' %}">
 {% endblock %}
 
 {% block scripts %}
+  {{ block.super }}
+
   <script src="{% static 'js/youtube-field.js' %}"></script>
 
   <script type="text/javascript">
