@@ -7,9 +7,138 @@
   {% include 'content/includes/fields/skill.html' %}
   {% include 'content/includes/fields/name.html' %}
 
-  <h1>Actividades</h1>
+  <h4>Actividades</h4>
 
   {% for inline in inlines %}
-    {{ inline }}
+    {{ inline.management_form }}
+
+    <div>
+      <button id="add-activity" type="button">Add</button>
+      <button id="delete-activity" type="button">Delete</button>
+    </div>
+
+    <!-- template to generate new inline elements -->
+    <script type="text/html" id="activities-template">
+      <div class="activities-fieldset-__prefix__" style="display: none;">
+        <input
+          type="hidden"
+          name="activities-__prefix__-id"
+          id="id_activities-__prefix__-id" />
+
+        <input
+          type="hidden"
+          name="activities-__prefix__-activity_list"
+          id="id_activities-__prefix__-activity_list"/>
+
+        <input
+          type="checkbox"
+          name="activities-__prefix__-DELETE"
+          id="id_activities-__prefix__-DELETE" style="display:none;" />
+
+        <label
+          class="form-label strong block m-top--s"
+          for="id_activities-__prefix__-name">Nombre</label>
+
+        <input
+          class="text-input block width-100"
+          type="text"
+          maxlength="150"
+          required=""
+          name="activities-__prefix__-name"
+          id="id_activities-__prefix__-name">
+
+        <label
+          class="form-label strong block m-top--s"
+          for="id_activities-__prefix__-description">Descripción</label>
+
+        <textarea
+          cols="40"
+          rows="10"
+          required=""
+          name="activities-__prefix__-description"
+          id="id_activities-__prefix__-description"></textarea>
+
+        <label
+          class="form-label strong block m-top--s"
+          for="id_activities-__prefix__-body">Texto</label>
+
+        <textarea
+          cols="40"
+          rows="10"
+          required=""
+          name="activities-__prefix__-body"
+          id="id_activities-__prefix__-body"></textarea>
+      </div>
+    </script>
+
+    <div id="activities-container">
+      {% for form in inline %}
+        <div class="activities-fieldset-{{ forloop.counter0 }}">
+          <input
+            type="hidden"
+            name="{{form.id.html_name}}"
+            id="{{form.id.id_for_label}}"
+            value="{% firstof form.id.value '' %}" />
+
+          <input
+            type="hidden"
+            name="{{form.activity_list.html_name}}"
+            id="{{form.activity_list.id_for_label}}"
+            value="{% firstof form.activity_list.value '' %}" />
+
+          <input
+            type="checkbox"
+            name="{{form.DELETE.html_name}}"
+            id="{{form.DELETE.id_for_label}}" style="display:none;" />
+
+          <label
+            class="form-label strong block m-top--s"
+            for="{{form.name.id_for_label}}">Nombre</label>
+
+          <input
+            class="text-input block width-100"
+            type="text"
+            maxlength="150"
+            required=""
+            name="{{form.name.html_name}}"
+            id="{{form.name.id_for_label}}"
+            value="{% firstof form.name.value '' %}">
+
+          <label
+            class="form-label strong block m-top--s"
+            for="{{form.description.id_for_label}}">Descripción</label>
+
+          <textarea
+            cols="40"
+            rows="10"
+            required=""
+            name="{{form.description.html_name}}"
+            id="{{form.description.id_for_label}}">{% firstof form.description.value '' %}</textarea>
+
+          <label
+            class="form-label strong block m-top--s"
+            for="{{form.body.id_for_label}}">Texto</label>
+
+          <textarea
+            cols="40"
+            rows="10"
+            required=""
+            name="{{form.body.html_name}}"
+            id="{{form.body.id_for_label}}">{% firstof form.body.value '' %}</textarea>
+        </div>
+      {% endfor %}
+    </div>
   {% endfor %}
+{% endblock %}
+
+{% block scripts %}
+  {{ block.super }}
+
+  <script src="{% static 'js/vendor/django-inline-form.js' %}"></script>
+  <script>
+    $('#add-activity').djangoInlineFormAdd({
+      prefix: "activities",
+      deleteButtonId: "#delete-activity"
+    });
+  </script>
 {% endblock %}

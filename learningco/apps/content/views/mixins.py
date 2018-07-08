@@ -43,7 +43,7 @@ class ActivityListGenericView(LessonGenericView):
 
 
 class ActivityListFormView(ActivityListGenericView):
-    fields = FULL_LESSON_FIELDS
+    fields = BASE_LESSON_FIELDS
 
 
 class ActivityForm(object):

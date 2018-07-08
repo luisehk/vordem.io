@@ -11,7 +11,7 @@ class ActivityInline(ActivityForm, InlineFormSet):
     factory_kwargs = {
         'can_order': True,
         'can_delete': True,
-        'extra': 1,
+        'extra': 0,
     }
 
 
