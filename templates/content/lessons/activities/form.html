@@ -14,7 +14,6 @@
 
     <div>
       <button id="add-activity" type="button">Add</button>
-      <button id="delete-activity" type="button">Delete</button>
     </div>
 
     <!-- template to generate new inline elements -->
@@ -33,7 +32,7 @@
         <input
           type="checkbox"
           name="activities-__prefix__-DELETE"
-          id="id_activities-__prefix__-DELETE" style="display:none;" />
+          id="id_activities-__prefix__-DELETE" />
 
         <label
           class="form-label strong block m-top--s"
@@ -86,11 +85,6 @@
             id="{{form.activity_list.id_for_label}}"
             value="{% firstof form.activity_list.value '' %}" />
 
-          <input
-            type="checkbox"
-            name="{{form.DELETE.html_name}}"
-            id="{{form.DELETE.id_for_label}}" style="display:none;" />
-
           <label
             class="form-label strong block m-top--s"
             for="{{form.name.id_for_label}}">Nombre</label>
@@ -125,6 +119,11 @@
             required=""
             name="{{form.body.html_name}}"
             id="{{form.body.id_for_label}}">{% firstof form.body.value '' %}</textarea>
+
+          Eliminar: <input
+            type="checkbox"
+            name="{{form.DELETE.html_name}}"
+            id="{{form.DELETE.id_for_label}}" />
         </div>
       {% endfor %}
     </div>
