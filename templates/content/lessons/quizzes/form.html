@@ -45,10 +45,6 @@
     </script>
 
     <div id="questions-container">
-      <div id="app">
-        ${ message }
-      </div>
-
       {% for form in inline %}
         <div class="questions-fieldset-{{ forloop.counter0 }} content--item tab-content--item media--container activity">
           <input
@@ -81,6 +77,10 @@
             name="{{form.name.html_name}}"
             id="{{form.name.id_for_label}}"
             value="{% firstof form.name.value '' %}">
+
+          <question-options
+            option-id="{% firstof form.id.value '' %}">
+          </question-options>
         </div>
       {% endfor %}
     </div>
@@ -111,12 +111,57 @@
     });
 
     // vue for options inlines
-    var app = new Vue({
-      el: '#app',
-      delimiters: ['${', '}'],
-      data: {
-        message: 'Hello Vue!'
+    Vue.component('options-item', {
+      props: ['option'],
+      template: '<div class="options-item">' +
+        '<input' +
+          ' class="text-input block width-100"' +
+          ' type="text"' +
+          ' :value="option.text" />' +
+        '<button' +
+          ' type="button"' +
+          ' class="delete"' +
+          ' v-on:click="emitDeleteOption">Borrar</button>' +
+      '</div>',
+      methods: {
+        emitDeleteOption: function(event) {
+          this.$emit('delete-option', this.option);
+        }
       }
+    });
+
+    Vue.component('question-options', {
+      props: ['optionId'],
+      template: '<div class="options-container">' +
+        '<h4>Opciones</h4>' +
+        '<options-item' +
+          ' v-for="option in options"' +
+          ' v-bind:key="option.id"' +
+          ' v-bind:option="option"' +
+          ' v-on:delete-option="deleteOption">' +
+        '</options-item>' +
+      '</div>',
+      data: function () {
+        return {
+          options: [
+            {id:1, questionId: 0, text:'Opcion 1'},
+            {id:2, questionId: 0, text:'Opcion 2'},
+            {id:3, questionId: 0, text:'Opcion 3'}
+          ]
+        }
+      },
+      methods: {
+        deleteOption: function (option) {
+          var index = this.options.indexOf(option);
+          this.options.splice(index, 1);
+        }
+      }
+    });
+
+    var app = new Vue({
+      el: '#questions-container',
+      delimiters: ['${', '}'],
+      data: {}
     });
   </script>
 {% endblock %}
