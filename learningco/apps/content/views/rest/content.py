@@ -4,7 +4,7 @@ from rest_framework.viewsets import ModelViewSet
 from rest_framework import status
 from ...serializers.skills import SkillSerializer
 from ...serializers.content import OptionSerializer
-from ...models import Option
+from ...models import Option, Skill
 
 
 class UserContent(APIView):
