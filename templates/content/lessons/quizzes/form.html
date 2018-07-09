@@ -79,7 +79,7 @@
             value="{% firstof form.name.value '' %}">
 
           <question-options
-            option-id="{% firstof form.id.value '' %}">
+            question-id="{% firstof form.id.value '' %}">
           </question-options>
         </div>
       {% endfor %}
@@ -92,76 +92,5 @@
 
   <script src="{% static 'js/vendor/django-inline-form.js' %}"></script>
   <script src="{% static 'js/vendor/vue.js' %}"></script>
-
-  <script>
-    // django inlines
-    $('#add-question').djangoInlineFormAdd({
-      prefix: "questions",
-      postClick: function() {
-        // wait half a second
-        setTimeout(function() {
-          var newElement = $('#questions-container').find('div:last-child');
-
-          // scroll to newly added element
-          $('html,body').animate({
-            scrollTop: newElement.offset().top
-          });
-        }, 500);
-      }
-    });
-
-    // vue for options inlines
-    Vue.component('options-item', {
-      props: ['option'],
-      template: '<div class="options-item">' +
-        '<input' +
-          ' class="text-input block width-100"' +
-          ' type="text"' +
-          ' :value="option.text" />' +
-        '<button' +
-          ' type="button"' +
-          ' class="delete"' +
-          ' v-on:click="emitDeleteOption">Borrar</button>' +
-      '</div>',
-      methods: {
-        emitDeleteOption: function(event) {
-          this.$emit('delete-option', this.option);
-        }
-      }
-    });
-
-    Vue.component('question-options', {
-      props: ['optionId'],
-      template: '<div class="options-container">' +
-        '<h4>Opciones</h4>' +
-        '<options-item' +
-          ' v-for="option in options"' +
-          ' v-bind:key="option.id"' +
-          ' v-bind:option="option"' +
-          ' v-on:delete-option="deleteOption">' +
-        '</options-item>' +
-      '</div>',
-      data: function () {
-        return {
-          options: [
-            {id:1, questionId: 0, text:'Opcion 1'},
-            {id:2, questionId: 0, text:'Opcion 2'},
-            {id:3, questionId: 0, text:'Opcion 3'}
-          ]
-        }
-      },
-      methods: {
-        deleteOption: function (option) {
-          var index = this.options.indexOf(option);
-          this.options.splice(index, 1);
-        }
-      }
-    });
-
-    var app = new Vue({
-      el: '#questions-container',
-      delimiters: ['${', '}'],
-      data: {}
-    });
-  </script>
+  <script src="{% static 'js/quiz.js' %}"></script>
 {% endblock %}
