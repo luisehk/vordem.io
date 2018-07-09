@@ -2,7 +2,7 @@ from django.views.generic.base import View, ContextMixin
 from django.shortcuts import redirect
 from ...content.models import (
     Lesson, Intro, Video, Article, ActivityList, Skill,
-    Quiz, Question)
+    Quiz)
 
 
 BASE_LESSON_FIELDS = ['skill', 'name']
@@ -110,4 +110,3 @@ class QuizFormView(QuizGenericView):
 
 class QuestionForm(object):
     fields = ['name']
-
