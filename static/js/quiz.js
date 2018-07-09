@@ -22,6 +22,7 @@ Vue.component('options-item', {
     '<input' +
       ' class="text-input block width-100"' +
       ' type="text"' +
+      ' placeholder="Ingresa una opción"' +
       ' :value="option.text" />' +
     '<button' +
       ' type="button"' +
@@ -38,27 +39,44 @@ Vue.component('options-item', {
 Vue.component('question-options', {
   props: ['questionId'],
   template: '<div class="options-container">' +
-    '<h4>Opciones <button type="button">Agregar</button></h4>' +
+    '<h4>Opciones <button type="button" v-on:click="addOption">Agregar</button></h4>' +
     '<options-item' +
-      ' v-for="option in options"' +
-      ' v-bind:key="option.id"' +
+      ' v-for="(option, index) in options"' +
+      ' v-bind:key="index"' +
       ' v-bind:option="option"' +
       ' v-on:delete-option="deleteOption">' +
     '</options-item>' +
   '</div>',
   data: function () {
     return {
-      options: [
-        {id:1, questionId: this.questionId, text:'Opcion 1'},
-        {id:2, questionId: this.questionId, text:'Opcion 2'},
-        {id:3, questionId: this.questionId, text:'Opcion 3'}
-      ]
+      options: []
     }
   },
+  created: function () {
+    this.loadOptions();
+  },
   methods: {
+    loadOptions: function() {
+      this.addNewOptionIfEmpty();
+    },
+    addOption: function(event) {
+      this.options.push({
+        id: 0,
+        questionId: this.questionId,
+        text: ''
+      });
+    },
     deleteOption: function (option) {
+      // delete option
       var index = this.options.indexOf(option);
       this.options.splice(index, 1);
+
+      // add new option if array is empty
+      this.addNewOptionIfEmpty();
+    },
+    addNewOptionIfEmpty: function() {
+      if(this.options.length <= 0)
+        this.addOption();
     }
   }
 });
