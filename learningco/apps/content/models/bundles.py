@@ -1,6 +1,6 @@
 from django.db import models
 from .skills import Skill
-from .lessons import Lesson, Intro, Video, Article, ActivityList, Quiz
+from .lessons import Intro, Video, Article, ActivityList, Quiz
 from ...users.models import Profile
 
 
