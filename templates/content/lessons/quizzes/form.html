@@ -45,6 +45,10 @@
     </script>
 
     <div id="questions-container">
+      <div id="app">
+        ${ message }
+      </div>
+
       {% for form in inline %}
         <div class="questions-fieldset-{{ forloop.counter0 }} content--item tab-content--item media--container activity">
           <input
@@ -87,7 +91,10 @@
   {{ block.super }}
 
   <script src="{% static 'js/vendor/django-inline-form.js' %}"></script>
+  <script src="{% static 'js/vendor/vue.js' %}"></script>
+
   <script>
+    // django inlines
     $('#add-question').djangoInlineFormAdd({
       prefix: "questions",
       postClick: function() {
@@ -100,6 +107,15 @@
             scrollTop: newElement.offset().top
           });
         }, 500);
+      }
+    });
+
+    // vue for options inlines
+    var app = new Vue({
+      el: '#app',
+      delimiters: ['${', '}'],
+      data: {
+        message: 'Hello Vue!'
       }
     });
   </script>
