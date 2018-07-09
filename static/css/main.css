@@ -562,6 +562,11 @@ select {
     display: grid;
     grid-template-columns: minmax(max-content, 25rem) 3fr;
     grid-column-gap: 1.6rem; }
+  .content--item.activity {
+    display: block;
+    margin-top: 1.6rem; }
+    .content--item.activity .activity-delete {
+      float: right; }
   .content--item .content--media {
     width: 100%;
     height: auto;

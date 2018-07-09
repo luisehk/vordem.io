@@ -5,18 +5,14 @@
   {% include 'content/includes/fields/skill.html' %}
   {% include 'content/includes/fields/name.html' %}
 
-  <h4>Actividades</h4>
+  <h4 class="form-label strong block m-top--s">Actividades <button id="add-activity" type="button">Agregar</button></h4>
 
   {% for inline in inlines %}
     {{ inline.management_form }}
 
-    <div>
-      <button id="add-activity" type="button">Add</button>
-    </div>
-
     <!-- template to generate new inline elements -->
     <script type="text/html" id="activities-template">
-      <div class="activities-fieldset-__prefix__ content--item tab-content--item media--container" style="display: none;">
+      <div class="activities-fieldset-__prefix__ content--item tab-content--item media--container activity" style="display: none;">
         <input
           type="hidden"
           name="activities-__prefix__-id"
@@ -27,10 +23,12 @@
           name="activities-__prefix__-activity_list"
           id="id_activities-__prefix__-activity_list"/>
 
-        <input
+        <span class="activity-delete">
+          Eliminar: <input
           type="checkbox"
           name="activities-__prefix__-DELETE"
           id="id_activities-__prefix__-DELETE" />
+        </span>
 
         <label
           class="form-label strong block m-top--s"
@@ -70,7 +68,7 @@
 
     <div id="activities-container">
       {% for form in inline %}
-        <div class="activities-fieldset-{{ forloop.counter0 }} content--item tab-content--item media--container">
+        <div class="activities-fieldset-{{ forloop.counter0 }} content--item tab-content--item media--container activity">
           <input
             type="hidden"
             name="{{form.id.html_name}}"
@@ -82,6 +80,12 @@
             name="{{form.activity_list.html_name}}"
             id="{{form.activity_list.id_for_label}}"
             value="{% firstof form.activity_list.value '' %}" />
+
+          <span class="activity-delete">Eliminar: <input
+            type="checkbox"
+            name="{{form.DELETE.html_name}}"
+            id="{{form.DELETE.id_for_label}}" />
+          </span>
 
           <label
             class="form-label strong block m-top--s"
@@ -117,11 +121,6 @@
             required=""
             name="{{form.body.html_name}}"
             id="{{form.body.id_for_label}}">{% firstof form.body.value '' %}</textarea>
-
-          Eliminar: <input
-            type="checkbox"
-            name="{{form.DELETE.html_name}}"
-            id="{{form.DELETE.id_for_label}}" />
         </div>
       {% endfor %}
     </div>
@@ -135,7 +134,17 @@
   <script>
     $('#add-activity').djangoInlineFormAdd({
       prefix: "activities",
-      deleteButtonId: "#delete-activity"
+      postClick: function() {
+        // wait half a second
+        setTimeout(function() {
+          var newElement = $('#activities-container').find('div:last-child');
+
+          // scroll to newly added element
+          $('html,body').animate({
+            scrollTop: newElement.offset().top
+          });
+        }, 500);
+      }
     });
   </script>
 {% endblock %}

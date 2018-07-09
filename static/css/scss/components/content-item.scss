@@ -91,6 +91,15 @@
     grid-column-gap: 1.6rem;
   }
 
+  &.activity {
+    display: block;
+    margin-top: 1.6rem;
+
+    .activity-delete {
+      float: right;
+    }
+  }
+
   .content--media {
     width: 100%;
     height: auto;
