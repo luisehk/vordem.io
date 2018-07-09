@@ -1,7 +1,9 @@
 from rest_polymorphic.serializers import PolymorphicSerializer
 from rest_framework import serializers
 from ..models import (
-    Intro, Video, Article, ActivityList, Activity, Quiz, Question
+    Intro, Video, Article,
+    ActivityList, Activity,
+    Quiz, Question, Option,
 )
 
 
@@ -42,10 +44,18 @@ class ActivityListSerializer(serializers.ModelSerializer):
         fields = BASE_LESSON_FIELDS + ['activities']
 
 
+class OptionSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Option
+        fields = BASE_LESSON_FIELDS
+
+
 class QuestionSerializer(serializers.ModelSerializer):
+    options = OptionSerializer(many=True)
+
     class Meta:
         model = Question
-        fields = BASE_LESSON_FIELDS
+        fields = BASE_LESSON_FIELDS + ['options']
 
 
 class QuizSerializer(serializers.ModelSerializer):
