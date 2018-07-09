@@ -1,0 +1,106 @@
+{% extends 'content/includes/lesson_form.html' %}
+{% load static %}
+
+{% block fields %}
+  {% include 'content/includes/fields/skill.html' %}
+  {% include 'content/includes/fields/name.html' %}
+
+  <h4 class="form-label strong block m-top--s">Preguntas <button id="add-question" type="button">Agregar</button></h4>
+
+  {% for inline in inlines %}
+    {{ inline.management_form }}
+
+    <!-- template to generate new inline elements -->
+    <script type="text/html" id="questions-template">
+      <div class="questions-fieldset-__prefix__ content--item tab-content--item media--container activity" style="display: none;">
+        <input
+          type="hidden"
+          name="questions-__prefix__-id"
+          id="id_questions-__prefix__-id" />
+
+        <input
+          type="hidden"
+          name="questions-__prefix__-quiz"
+          id="id_questions-__prefix__-quiz"/>
+
+        <span class="activity-delete">
+          Eliminar: <input
+          type="checkbox"
+          name="questions-__prefix__-DELETE"
+          id="id_questions-__prefix__-DELETE" />
+        </span>
+
+        <label
+          class="form-label strong block m-top--s"
+          for="id_questions-__prefix__-name">Nombre</label>
+
+        <input
+          class="text-input block width-100"
+          type="text"
+          maxlength="150"
+          required=""
+          name="questions-__prefix__-name"
+          id="id_questions-__prefix__-name">
+      </div>
+    </script>
+
+    <div id="questions-container">
+      {% for form in inline %}
+        <div class="questions-fieldset-{{ forloop.counter0 }} content--item tab-content--item media--container activity">
+          <input
+            type="hidden"
+            name="{{form.id.html_name}}"
+            id="{{form.id.id_for_label}}"
+            value="{% firstof form.id.value '' %}" />
+
+          <input
+            type="hidden"
+            name="{{form.quiz.html_name}}"
+            id="{{form.quiz.id_for_label}}"
+            value="{% firstof form.quiz.value '' %}" />
+
+          <span class="activity-delete">Eliminar: <input
+            type="checkbox"
+            name="{{form.DELETE.html_name}}"
+            id="{{form.DELETE.id_for_label}}" />
+          </span>
+
+          <label
+            class="form-label strong block m-top--s"
+            for="{{form.name.id_for_label}}">Nombre</label>
+
+          <input
+            class="text-input block width-100"
+            type="text"
+            maxlength="150"
+            required=""
+            name="{{form.name.html_name}}"
+            id="{{form.name.id_for_label}}"
+            value="{% firstof form.name.value '' %}">
+        </div>
+      {% endfor %}
+    </div>
+  {% endfor %}
+{% endblock %}
+
+{% block scripts %}
+  {{ block.super }}
+
+  <script src="{% static 'js/vendor/django-inline-form.js' %}"></script>
+  <script>
+    $('#add-question').djangoInlineFormAdd({
+      prefix: "questions",
+      postClick: function() {
+        // wait half a second
+        setTimeout(function() {
+          var newElement = $('#questions-container').find('div:last-child');
+
+          // scroll to newly added element
+          $('html,body').animate({
+            scrollTop: newElement.offset().top
+          });
+        }, 500);
+      }
+    });
+  </script>
+{% endblock %}

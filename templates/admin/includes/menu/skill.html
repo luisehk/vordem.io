@@ -17,7 +17,7 @@
       </a>
     </li>
     <li class="tab">
-      <a href="#" class="tab-link {% if 'quizes' in request.path %}is-current{% endif %}">
+      <a href="{% url 'content:quiz-get-or-create' current_skill_pk %}" class="tab-link {% if 'quizzes' in request.path %}is-current{% endif %}">
         4. Quiz
       </a>
     </li>

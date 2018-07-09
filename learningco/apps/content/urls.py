@@ -15,7 +15,11 @@ from .views.web.articles import (
 )
 from .views.web.activities import (
     ActivityListCreate, ActivityListUpdate, ActivityListDelete,
-    ActivityGetOrCreate
+    ActivityListGetOrCreate
+)
+from .views.web.quizzes import (
+    QuizCreate, QuizUpdate, QuizDelete,
+    QuizGetOrCreate
 )
 from .views.rest.content import UserContent
 
@@ -50,11 +54,20 @@ urlpatterns = [
     url(r'^activities/(?P<skill_pk>[0-9]+)/add/$',
         ActivityListCreate.as_view(), name='activity-add'),
     url(r'^activities/(?P<skill_pk>[0-9]+)/get_or_create/$',
-        ActivityGetOrCreate.as_view(), name='activity-get-or-create'),
+        ActivityListGetOrCreate.as_view(), name='activity-get-or-create'),
     url(r'^activities/(?P<pk>[0-9]+)/$',
         ActivityListUpdate.as_view(), name='activity-update'),
     url(r'^activities/(?P<pk>[0-9]+)/delete/$',
         ActivityListDelete.as_view(), name='activity-delete'),
+
+    url(r'^quizzes/(?P<skill_pk>[0-9]+)/add/$',
+        QuizCreate.as_view(), name='quiz-add'),
+    url(r'^quizzes/(?P<skill_pk>[0-9]+)/get_or_create/$',
+        QuizGetOrCreate.as_view(), name='quiz-get-or-create'),
+    url(r'^quizzes/(?P<pk>[0-9]+)/$',
+        QuizUpdate.as_view(), name='quiz-update'),
+    url(r'^quizzes/(?P<pk>[0-9]+)/delete/$',
+        QuizDelete.as_view(), name='quiz-delete'),
 
     url(r'^user-content/$',
         UserContent.as_view(), name='user-content'),

@@ -15,7 +15,7 @@ class ActivityInline(ActivityForm, InlineFormSet):
     }
 
 
-class ActivityGetOrCreate(LoginRequiredMixin, GetOrCreateBySkill):
+class ActivityListGetOrCreate(LoginRequiredMixin, GetOrCreateBySkill):
     model = ActivityList
 
 
