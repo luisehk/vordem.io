@@ -1,8 +1,10 @@
 from rest_framework.response import Response
 from rest_framework.views import APIView
+from rest_framework.viewsets import ModelViewSet
 from rest_framework import status
 from ...serializers.skills import SkillSerializer
-from ...models import Skill
+from ...serializers.content import OptionSerializer
+from ...models import Option
 
 
 class UserContent(APIView):
@@ -26,3 +28,9 @@ class UserContent(APIView):
         data = self.retrieve_data()
         serialized_data = self.serialize_data(data)
         return self.generate_response(serialized_data)
+
+
+class OptionViewSet(ModelViewSet):
+    queryset = Option.objects.all()
+    serializer_class = OptionSerializer
+    filter_fields = ('question_id',)

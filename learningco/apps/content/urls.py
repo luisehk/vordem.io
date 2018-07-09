@@ -1,5 +1,6 @@
 from django.views.generic.base import RedirectView
 from django.urls import reverse_lazy
+from rest_framework.routers import DefaultRouter
 from django.conf.urls import url
 from .views.web.videos import (
     VideoCreate, VideoUpdate, VideoDelete,
@@ -21,7 +22,7 @@ from .views.web.quizzes import (
     QuizCreate, QuizUpdate, QuizDelete,
     QuizGetOrCreate
 )
-from .views.rest.content import UserContent
+from .views.rest.content import UserContent, OptionViewSet
 
 urlpatterns = [
     url(r'^intros/(?P<skill_pk>[0-9]+)/add/$',
@@ -76,3 +77,7 @@ urlpatterns = [
         url=reverse_lazy('admin:skill-list')
     ), name='index'),
 ]
+
+router = DefaultRouter()
+router.register(r'options', OptionViewSet)
+urlpatterns += router.urls

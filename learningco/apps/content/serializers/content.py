@@ -47,7 +47,7 @@ class ActivityListSerializer(serializers.ModelSerializer):
 class OptionSerializer(serializers.ModelSerializer):
     class Meta:
         model = Option
-        fields = BASE_LESSON_FIELDS
+        fields = BASE_LESSON_FIELDS + ['question_id']
 
 
 class QuestionSerializer(serializers.ModelSerializer):

@@ -23,7 +23,7 @@ Vue.component('options-item', {
       ' class="text-input block width-100"' +
       ' type="text"' +
       ' placeholder="Ingresa una opción"' +
-      ' :value="option.text" />' +
+      ' :value="option.name" />' +
     '<button' +
       ' type="button"' +
       ' class="delete"' +
@@ -57,13 +57,49 @@ Vue.component('question-options', {
   },
   methods: {
     loadOptions: function() {
-      this.addNewOptionIfEmpty();
+      var self = this;
+
+      $.ajax({
+        url: '/content/options/?question_id=' + this.questionId,
+        type: 'GET',
+        tryCount : 0,
+        retryLimit : 3,
+        success : function(json) {
+          // load the data
+          self.loadData.call(self, json.results);
+
+          // wrap it up
+          self.addNewOptionIfEmpty.call(self);
+        },
+        error : function(xhr, textStatus, errorThrown ) {
+          this.tryCount++;
+
+          if (this.tryCount <= this.retryLimit) {
+            // try again
+            $.ajax(this);
+            return;
+          } else {
+            // handle error
+            console.error('error loading data');
+
+            // wrap it up
+            self.addNewOptionIfEmpty.call(self);
+            return;
+          }
+        }
+      });
+    },
+    loadData: function(data) {
+      var self = this;
+      data.forEach(function(element) {
+        self.options.push(element);
+      });
     },
     addOption: function(event) {
       this.options.push({
         id: 0,
-        questionId: this.questionId,
-        text: ''
+        question_id: this.questionId,
+        name: ''
       });
     },
     deleteOption: function (option) {
