@@ -6,8 +6,23 @@ from ...models import Skill
 
 
 class UserContent(APIView):
-    def get(self, request, format=None):
+    def retrieve_data(self):
         skills = Skill.objects.all()
-        serializer = SkillSerializer(data=skills, many=True)
+        skills = skills.prefetch_related(
+            'intro', 'video', 'article',
+            'quiz', 'activity_list',
+            'quiz__questions', 'activity_list__activities',)
+        return skills
+
+    def serialize_data(self, data):
+        serializer = SkillSerializer(data=data, many=True)
         serializer.is_valid()
-        return Response(serializer.data, status=status.HTTP_200_OK)
+        return serializer.data
+
+    def generate_response(self, serialized_data):
+        return Response(serialized_data, status=status.HTTP_200_OK)
+
+    def get(self, request, format=None):
+        data = self.retrieve_data()
+        serialized_data = self.serialize_data(data)
+        return self.generate_response(serialized_data)
