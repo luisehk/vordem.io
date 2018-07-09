@@ -1,8 +1,6 @@
 {% extends 'content/includes/lesson_form.html' %}
 {% load static %}
 
-{% block title %}Actividades{% endblock %}
-
 {% block fields %}
   {% include 'content/includes/fields/skill.html' %}
   {% include 'content/includes/fields/name.html' %}
@@ -18,7 +16,7 @@
 
     <!-- template to generate new inline elements -->
     <script type="text/html" id="activities-template">
-      <div class="activities-fieldset-__prefix__" style="display: none;">
+      <div class="activities-fieldset-__prefix__ content--item tab-content--item media--container" style="display: none;">
         <input
           type="hidden"
           name="activities-__prefix__-id"
@@ -72,7 +70,7 @@
 
     <div id="activities-container">
       {% for form in inline %}
-        <div class="activities-fieldset-{{ forloop.counter0 }}">
+        <div class="activities-fieldset-{{ forloop.counter0 }} content--item tab-content--item media--container">
           <input
             type="hidden"
             name="{{form.id.html_name}}"

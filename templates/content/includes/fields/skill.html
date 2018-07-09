@@ -1,5 +1,5 @@
-{% if form.skill.value or request.GET.skill %}
-    <input type="hidden" name="skill" id="id_skill" value="{% firstof form.skill.value request.GET.skill %}">
+{% if form.skill.value or request.GET.skill or skill.id %}
+    <input type="hidden" name="skill" id="id_skill" value="{% firstof form.skill.value request.GET.skill skill.id %}">
 {% else %}
     <label class="form-label strong block m-top--s" for="id_skill">Competencia</label>
     {{ form.skill }}

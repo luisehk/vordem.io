@@ -1,14 +1,19 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.views.generic import (
-    CreateView, UpdateView, DeleteView)
-from ..mixins import IntroGenericView, IntroFormView
+from django.views.generic import DeleteView
+from ..mixins import IntroGenericView, IntroFormView, GetOrCreateBySkill
+from extra_views import CreateWithInlinesView, UpdateWithInlinesView
+from ...models import Intro
 
 
-class IntroCreate(LoginRequiredMixin, IntroFormView, CreateView):
+class IntroGetOrCreate(LoginRequiredMixin, GetOrCreateBySkill):
+    model = Intro
+
+
+class IntroCreate(LoginRequiredMixin, IntroFormView, CreateWithInlinesView):
     template_name = 'content/lessons/intros/create.html'
 
 
-class IntroUpdate(LoginRequiredMixin, IntroFormView, UpdateView):
+class IntroUpdate(LoginRequiredMixin, IntroFormView, UpdateWithInlinesView):
     template_name = 'content/lessons/intros/update.html'
 
 

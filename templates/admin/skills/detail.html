@@ -43,16 +43,16 @@
 {% endblock %}
 
 {% block bottom_actions %}
-  <a href="{% url 'content:intro-add' %}?skill={{ object.id }}">
+  <a href="{% url 'content:intro-add' skill_pk=object.id %}">
     <button class="button button-add secondary-button block">Agrega intro</button>
   </a>
-  <a href="{% url 'content:video-add' %}?skill={{ object.id }}">
+  <a href="{% url 'content:video-add' skill_pk=object.id %}">
     <button class="button button-add secondary-button block">Agrega video</button>
   </a>
-  <a href="{% url 'content:article-add' %}?skill={{ object.id }}">
+  <a href="{% url 'content:article-add' skill_pk=object.id %}">
     <button class="button button-add secondary-button block">Agrega articulo</button>
   </a>
-  <a href="{% url 'content:activity-add' %}?skill={{ object.id }}">
+  <a href="{% url 'content:activity-add' skill_pk=object.id %}">
     <button class="button button-add secondary-button block">Agrega actividades</button>
   </a>
 {% endblock %}

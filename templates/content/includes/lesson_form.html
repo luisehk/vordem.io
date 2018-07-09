@@ -1,10 +1,30 @@
-{% extends 'admin/includes/containers/simple_form.html' %}
+{% extends 'base-full.html' %}
 {% load static %}
 
-{% block title %}Leccion{% endblock %}
+{% block menu %}
+  <div class="competencia competencia-single">
+    <div class="tab-content--item">
+      {% include 'content/includes/skill_header.html' %}
+    </div>
+  </div>
 
-{% block fields %}
-  {% include 'content/includes/fields/skill.html' %}
-  {% include 'content/includes/fields/name.html' %}
-  {% include 'content/includes/fields/body.html' %}
+  {{ block.super }}
+{% endblock %}
+
+{% block inner_content_classes %}relative{% endblock %}
+
+{% block inner_content %}
+  <form action="" enctype="multipart/form-data" method="post">
+    {% csrf_token %}
+
+    {% block fields %}
+      {% include 'content/includes/fields/skill.html' %}
+      {% include 'content/includes/fields/name.html' %}
+      {% include 'content/includes/fields/body.html' %}
+    {% endblock %}
+
+    <br />
+
+    <input class="button primary-button" type="submit" value="{% block submit_title %}Guardar{% endblock %}" />
+  </form>
 {% endblock %}

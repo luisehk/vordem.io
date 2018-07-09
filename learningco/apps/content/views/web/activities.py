@@ -2,7 +2,7 @@ from extra_views import (
     InlineFormSet, CreateWithInlinesView, UpdateWithInlinesView)
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import DeleteView
-from ..mixins import ActivityListFormView, ActivityForm
+from ..mixins import ActivityListFormView, ActivityForm, GetOrCreateBySkill
 from ...models import ActivityList, Activity
 
 
@@ -13,6 +13,10 @@ class ActivityInline(ActivityForm, InlineFormSet):
         'can_delete': True,
         'extra': 0,
     }
+
+
+class ActivityGetOrCreate(LoginRequiredMixin, GetOrCreateBySkill):
+    model = ActivityList
 
 
 class ActivityListCreate(LoginRequiredMixin, ActivityListFormView, CreateWithInlinesView):  # noqa

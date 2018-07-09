@@ -58,6 +58,12 @@ class Lesson(PolymorphicModel):
     def get_update_url(self):
         return ''
 
+    def get_create_url(self, skill):
+        return ''
+
+    def get_skill_attribute_name(self):
+        return ''
+
 
 class Intro(Lesson):
     class Meta:
@@ -68,6 +74,16 @@ class Intro(Lesson):
         return reverse_lazy(
             'content:intro-update',
             args=(self.id,))
+
+    def get_create_url(self, skill):
+        return reverse_lazy(
+            'content:intro-add',
+            kwargs={
+                'skill_pk': skill.id
+            })
+
+    def get_skill_attribute_name(self):
+        return 'intro'
 
 
 class Video(Lesson):
@@ -86,6 +102,16 @@ class Video(Lesson):
             'content:video-update',
             args=(self.id,))
 
+    def get_create_url(self, skill):
+        return reverse_lazy(
+            'content:video-add',
+            kwargs={
+                'skill_pk': skill.id
+            })
+
+    def get_skill_attribute_name(self):
+        return 'video'
+
 
 class Quiz(Lesson):
     class Meta:
@@ -96,6 +122,16 @@ class Quiz(Lesson):
         return reverse_lazy(
             'content:quiz-update',
             args=(self.id,))
+
+    def get_create_url(self, skill):
+        return reverse_lazy(
+            'content:quiz-add',
+            kwargs={
+                'skill_pk': skill.id
+            })
+
+    def get_skill_attribute_name(self):
+        return 'quiz'
 
 
 class Question(models.Model):
@@ -125,6 +161,16 @@ class Article(Lesson):
             'content:article-update',
             args=(self.id,))
 
+    def get_create_url(self, skill):
+        return reverse_lazy(
+            'content:article-add',
+            kwargs={
+                'skill_pk': skill.id
+            })
+
+    def get_skill_attribute_name(self):
+        return 'article'
+
 
 class ActivityList(Lesson):
     class Meta:
@@ -135,6 +181,16 @@ class ActivityList(Lesson):
         return reverse_lazy(
             'content:activity-update',
             args=(self.id,))
+
+    def get_create_url(self, skill):
+        return reverse_lazy(
+            'content:activity-add',
+            kwargs={
+                'skill_pk': skill.id
+            })
+
+    def get_skill_attribute_name(self):
+        return 'activity_list'
 
 
 class Activity(models.Model):

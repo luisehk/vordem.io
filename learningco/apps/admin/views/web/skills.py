@@ -1,6 +1,7 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import (
     CreateView, UpdateView, DeleteView, ListView, DetailView)
+from django.shortcuts import redirect
 from ..mixins import SkillGenericView, SkillFormView
 from ....content.models import Skill
 
@@ -20,6 +21,9 @@ class SkillDelete(LoginRequiredMixin, SkillGenericView, DeleteView):
 class SkillDetail(LoginRequiredMixin, DetailView):
     template_name = 'admin/skills/detail.html'
     queryset = Skill.objects.all()
+
+    def get(self, request, *args, **kwargs):
+        return redirect('content:intro-get-or-create', kwargs['pk'])
 
 
 class SkillList(LoginRequiredMixin, ListView):
