@@ -24,7 +24,6 @@ class Lesson(PolymorphicModel):
         verbose_name='Nombre',
         max_length=150)
     body = models.TextField(blank=False, default='')
-    default = models.BooleanField(default=False)
     thumbnail = VersatileImageField(
         null=True, blank=True, ppoi_field='ppoi',
         placeholder_image=OnDiscPlaceholderImage(
