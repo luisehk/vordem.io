@@ -6,6 +6,8 @@ from ..mixins import (
     LessonGenericView, BASE_LESSON_FIELDS,
     GetOrCreateBySkill)
 from ...models import Quiz, Question
+import json
+import types
 
 
 class QuizGenericView(LessonGenericView):
@@ -43,6 +45,22 @@ class QuizUpdate(LoginRequiredMixin, QuizFormView, UpdateWithInlinesView):  # no
     model = Quiz
     inlines = [QuestionInline]
     template_name = 'content/lessons/quizzes/update.html'
+
+    def parse_options_json(self, options_json):
+        options = json.loads(options_json)
+        return isinstance(options, list), options
+
+    def process_question_options(self, options):
+        print('OPTIONS', options)
+
+    def post(self, request, *args, **kwargs):
+        if 'options-json' in request.POST:
+            is_list, options = self.parse_options_json(request.POST['options-json'])
+
+            if is_list:
+                self.process_question_options(options)
+
+        return super().post(request, *args, **kwargs)
 
 
 class QuizDelete(LoginRequiredMixin, QuizFormView, DeleteView):  # noqa
