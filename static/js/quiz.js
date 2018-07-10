@@ -38,7 +38,7 @@ Vue.component('options-item', {
 
 Vue.component('question-options', {
   props: ['questionId'],
-  template: '<div class="options-container">' +
+  template: '<div v-if="questionId" class="options-container">' +
     '<h4>Opciones <button type="button" v-on:click="addNewOption">Agregar</button></h4>' +
     '<options-item' +
       ' v-for="(option, index) in options"' +
@@ -53,7 +53,8 @@ Vue.component('question-options', {
     }
   },
   created: function () {
-    this.loadOptions();
+    if(this.questionId)
+      this.loadOptions();
   },
   methods: {
     loadOptions: function() {
