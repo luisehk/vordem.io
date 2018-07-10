@@ -7,7 +7,6 @@ from ..mixins import (
     GetOrCreateBySkill)
 from ...models import Quiz, Question
 import json
-import types
 
 
 class QuizGenericView(LessonGenericView):
@@ -55,7 +54,8 @@ class QuizUpdate(LoginRequiredMixin, QuizFormView, UpdateWithInlinesView):  # no
 
     def post(self, request, *args, **kwargs):
         if 'options-json' in request.POST:
-            is_list, options = self.parse_options_json(request.POST['options-json'])
+            is_list, options = self.parse_options_json(
+                request.POST['options-json'])
 
             if is_list:
                 self.process_question_options(options)
