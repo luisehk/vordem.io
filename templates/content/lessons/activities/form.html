@@ -38,7 +38,6 @@
           class="text-input block width-100"
           type="text"
           maxlength="150"
-          required=""
           name="activities-__prefix__-name"
           id="id_activities-__prefix__-name">
 
@@ -49,7 +48,6 @@
         <textarea
           cols="40"
           rows="10"
-          required=""
           name="activities-__prefix__-description"
           id="id_activities-__prefix__-description"></textarea>
 
@@ -60,7 +58,6 @@
         <textarea
           cols="40"
           rows="10"
-          required=""
           name="activities-__prefix__-body"
           id="id_activities-__prefix__-body"></textarea>
       </div>
@@ -95,7 +92,6 @@
             class="text-input block width-100"
             type="text"
             maxlength="150"
-            required=""
             name="{{form.name.html_name}}"
             id="{{form.name.id_for_label}}"
             value="{% firstof form.name.value '' %}">
@@ -107,7 +103,6 @@
           <textarea
             cols="40"
             rows="10"
-            required=""
             name="{{form.description.html_name}}"
             id="{{form.description.id_for_label}}">{% firstof form.description.value '' %}</textarea>
 
@@ -118,7 +113,6 @@
           <textarea
             cols="40"
             rows="10"
-            required=""
             name="{{form.body.html_name}}"
             id="{{form.body.id_for_label}}">{% firstof form.body.value '' %}</textarea>
         </div>

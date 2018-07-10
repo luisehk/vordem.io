@@ -20,13 +20,12 @@ class ActivityForm(object):
     fields = ['name', 'description', 'body']
 
 
-
 class ActivityInline(ActivityForm, InlineFormSet):
     model = Activity
     factory_kwargs = {
         'can_order': True,
         'can_delete': True,
-        'extra': 0,
+        'extra': 1,
     }
 
 

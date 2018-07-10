@@ -25,7 +25,7 @@ class QuestionInline(QuestionForm, InlineFormSet):
     factory_kwargs = {
         'can_order': True,
         'can_delete': True,
-        'extra': 0,
+        'extra': 1,
     }
 
 
