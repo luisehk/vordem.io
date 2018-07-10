@@ -1,8 +1,18 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import DeleteView
-from ..mixins import VideoGenericView, VideoFormView, GetOrCreateBySkill
+from ..mixins import (
+    DEFAULT_LESSON_FIELDS, LessonGenericView,
+    GetOrCreateBySkill)
 from extra_views import CreateWithInlinesView, UpdateWithInlinesView
 from ...models import Video
+
+
+class VideoGenericView(LessonGenericView):
+    model = Video
+
+
+class VideoFormView(VideoGenericView):
+    fields = DEFAULT_LESSON_FIELDS + ['video_url']
 
 
 class VideoGetOrCreate(LoginRequiredMixin, GetOrCreateBySkill):

@@ -1,8 +1,18 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import DeleteView
-from ..mixins import ArticleGenericView, ArticleFormView, GetOrCreateBySkill
+from ..mixins import (
+    LessonGenericView, FULL_LESSON_FIELDS,
+    GetOrCreateBySkill)
 from extra_views import CreateWithInlinesView, UpdateWithInlinesView
 from ...models import Article
+
+
+class ArticleGenericView(LessonGenericView):
+    model = Article
+
+
+class ArticleFormView(ArticleGenericView):
+    fields = FULL_LESSON_FIELDS
 
 
 class ArticleGetOrCreate(LoginRequiredMixin, GetOrCreateBySkill):

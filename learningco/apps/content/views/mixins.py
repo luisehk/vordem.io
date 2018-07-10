@@ -1,8 +1,6 @@
 from django.views.generic.base import View, ContextMixin
 from django.shortcuts import redirect
-from ...content.models import (
-    Lesson, Intro, Video, Article, ActivityList, Skill,
-    Quiz)
+from ...content.models import Lesson, Skill
 
 
 BASE_LESSON_FIELDS = ['skill', 'name']
@@ -62,51 +60,3 @@ class GetOrCreateBySkill(LessonGenericView, View):
         url = self.get_or_create_url(skill)
 
         return redirect(url)
-
-
-class VideoGenericView(LessonGenericView):
-    model = Video
-
-
-class VideoFormView(VideoGenericView):
-    fields = DEFAULT_LESSON_FIELDS + ['video_url']
-
-
-class IntroGenericView(LessonGenericView):
-    model = Intro
-
-
-class IntroFormView(IntroGenericView):
-    fields = FULL_LESSON_FIELDS
-
-
-class ArticleGenericView(LessonGenericView):
-    model = Article
-
-
-class ArticleFormView(ArticleGenericView):
-    fields = FULL_LESSON_FIELDS
-
-
-class ActivityListGenericView(LessonGenericView):
-    model = ActivityList
-
-
-class ActivityListFormView(ActivityListGenericView):
-    fields = BASE_LESSON_FIELDS
-
-
-class ActivityForm(object):
-    fields = ['name', 'description', 'body']
-
-
-class QuizGenericView(LessonGenericView):
-    model = Quiz
-
-
-class QuizFormView(QuizGenericView):
-    fields = BASE_LESSON_FIELDS
-
-
-class QuestionForm(object):
-    fields = ['name']

@@ -2,8 +2,23 @@ from extra_views import (
     InlineFormSet, CreateWithInlinesView, UpdateWithInlinesView)
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import DeleteView
-from ..mixins import ActivityListFormView, ActivityForm, GetOrCreateBySkill
+from ..mixins import (
+    LessonGenericView, BASE_LESSON_FIELDS,
+    GetOrCreateBySkill)
 from ...models import ActivityList, Activity
+
+
+class ActivityListGenericView(LessonGenericView):
+    model = ActivityList
+
+
+class ActivityListFormView(ActivityListGenericView):
+    fields = BASE_LESSON_FIELDS
+
+
+class ActivityForm(object):
+    fields = ['name', 'description', 'body']
+
 
 
 class ActivityInline(ActivityForm, InlineFormSet):

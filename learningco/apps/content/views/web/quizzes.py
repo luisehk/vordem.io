@@ -2,8 +2,22 @@ from extra_views import (
     InlineFormSet, CreateWithInlinesView, UpdateWithInlinesView)
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import DeleteView
-from ..mixins import QuizFormView, QuestionForm, GetOrCreateBySkill
+from ..mixins import (
+    LessonGenericView, BASE_LESSON_FIELDS,
+    GetOrCreateBySkill)
 from ...models import Quiz, Question
+
+
+class QuizGenericView(LessonGenericView):
+    model = Quiz
+
+
+class QuizFormView(QuizGenericView):
+    fields = BASE_LESSON_FIELDS
+
+
+class QuestionForm(object):
+    fields = ['name']
 
 
 class QuestionInline(QuestionForm, InlineFormSet):
