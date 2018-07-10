@@ -97,6 +97,7 @@ Vue.component('question-options', {
     },
     addOption: function(option) {
       this.options.push(option);
+      app.allOptions.push(option);
     },
     addNewOption: function(event) {
       this.addOption({
@@ -109,6 +110,10 @@ Vue.component('question-options', {
       // delete option
       var index = this.options.indexOf(option);
       this.options.splice(index, 1);
+
+      // delete option from general array too
+      index = app.allOptions.indexOf(option);
+      app.allOptions.splice(index, 1);
 
       // add new option if array is empty
       this.addNewOptionIfEmpty();
@@ -123,5 +128,7 @@ Vue.component('question-options', {
 var app = new Vue({
   el: '#questions-container',
   delimiters: ['${', '}'],
-  data: {}
+  data: {
+    allOptions: []
+  }
 });
