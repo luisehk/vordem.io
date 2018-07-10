@@ -23,7 +23,7 @@ Vue.component('options-item', {
       ' class="text-input block width-100"' +
       ' type="text"' +
       ' placeholder="Ingresa una opción"' +
-      ' :value="option.name" />' +
+      ' v-model="option.name" />' +
     '<button' +
       ' type="button"' +
       ' class="delete"' +
@@ -39,7 +39,7 @@ Vue.component('options-item', {
 Vue.component('question-options', {
   props: ['questionId'],
   template: '<div class="options-container">' +
-    '<h4>Opciones <button type="button" v-on:click="addOption">Agregar</button></h4>' +
+    '<h4>Opciones <button type="button" v-on:click="addNewOption">Agregar</button></h4>' +
     '<options-item' +
       ' v-for="(option, index) in options"' +
       ' v-bind:key="index"' +
@@ -92,11 +92,14 @@ Vue.component('question-options', {
     loadData: function(data) {
       var self = this;
       data.forEach(function(element) {
-        self.options.push(element);
+        self.addOption.call(self, element);
       });
     },
-    addOption: function(event) {
-      this.options.push({
+    addOption: function(option) {
+      this.options.push(option);
+    },
+    addNewOption: function(event) {
+      this.addOption({
         id: 0,
         question_id: this.questionId,
         name: ''
@@ -112,7 +115,7 @@ Vue.component('question-options', {
     },
     addNewOptionIfEmpty: function() {
       if(this.options.length <= 0)
-        this.addOption();
+        this.addNewOption();
     }
   }
 });
