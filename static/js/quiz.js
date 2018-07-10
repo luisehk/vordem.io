@@ -96,8 +96,14 @@ Vue.component('question-options', {
       });
     },
     addOption: function(option) {
+      // add to component array
       this.options.push(option);
+
+      // add to general array too
       app.allOptions.push(option);
+
+      // sync json
+      this.sync();
     },
     addNewOption: function(event) {
       this.addOption({
@@ -117,10 +123,16 @@ Vue.component('question-options', {
 
       // add new option if array is empty
       this.addNewOptionIfEmpty();
+
+      // sync json
+      this.sync();
     },
     addNewOptionIfEmpty: function() {
       if(this.options.length <= 0)
         this.addNewOption();
+    },
+    sync: function() {
+      app.optionsJson = JSON.stringify(app.allOptions);
     }
   }
 });
@@ -129,6 +141,7 @@ var app = new Vue({
   el: '#questions-container',
   delimiters: ['${', '}'],
   data: {
-    allOptions: []
+    allOptions: [],
+    optionsJson: ''
   }
 });
