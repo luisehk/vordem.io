@@ -1,22 +1,5 @@
 {% load static %}
 
-<label class="form-label strong block m-top--s" for="id_body">Texto</label>
-
-<input name="body" id="id_body" type="hidden" value="" />
-
-<div id="scrolling-container">
-  <div id="editor-container">
-    {{ form.body.value|default:''|safe }}
-  </div>
-</div>
-
-{% block extra_css %}
-  <link rel="stylesheet" href="{% static 'css/vendor/quill.snow.css' %}" />
-  <link rel="stylesheet" href="{% static 'css/text-editor.css' %}" />
-{% endblock %}
-
-
-{% block scripts %}
-  <script src="{% static 'js/vendor/quill.min.js' %}"></script>
-  <script src="{% static 'js/text-editor.js' %}"></script>
-{% endblock %}
+{% with field_name='body' field_label='Texto' field_value=form.body.value|default:''|safe %}
+  {% include 'content/includes/fields/rich_text.html' %}
+{% endwith %}

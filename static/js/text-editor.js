@@ -1,21 +1,25 @@
-var quill = new Quill('#editor-container', {
-  modules: {
-    toolbar: [
-      ['bold', 'italic', 'strike', 'underline'],
-      ['link', 'blockquote', 'image'],
-      [{ list: 'ordered' }, { list: 'bullet' }]
-    ]
-  },
-  theme: 'snow'
-});
+var initQuill = function(fieldName) {
+  var quill = new Quill(
+    '#' + fieldName + '-editor-container', {
+    modules: {
+      toolbar: [
+        ['bold', 'italic', 'strike', 'underline'],
+        ['link', 'blockquote', 'image'],
+        [{ list: 'ordered' }, { list: 'bullet' }]
+      ]
+    },
+    theme: 'snow'
+  });
 
-var form = document.querySelector('form');
+  var form = document.querySelector('form');
 
-form.onsubmit = function() {
-  // Populate hidden form on submit
-  var body = document.querySelector('input[name=body]');
-  body.value = quill.root.innerHTML;
-  return true;
-};
+  form.onsubmit = function() {
+    // Populate hidden form on submit
+    var field = document.querySelector(
+      'input[name=' + fieldName + ']');
+    field.value = quill.root.innerHTML;
+    return true;
+  };
 
-form.onsubmit();
+  form.onsubmit();
+}
