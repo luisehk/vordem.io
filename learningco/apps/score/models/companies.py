@@ -11,7 +11,7 @@ class CompanyScore(models.Model):
     company = models.OneToOneField(
         Company,
         on_delete=models.CASCADE,
-        related_name='score')
+        related_name='company_score')
     score_before = models.IntegerField(default=0)
     score_now = models.IntegerField(default=0)
 
