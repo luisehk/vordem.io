@@ -2,12 +2,10 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework.viewsets import ModelViewSet
 from rest_framework import status
-from ...serializers.skills import SkillSerializer, SkillWithScoreSerializer
+from ...serializers.skills import SkillWithScoreSerializer
 from ...serializers.content import OptionSerializer
 from ...models import Option, Skill
 from ....score.models import LeaderSkillScore, CompanySkillScore
-from ....score.serializers.scores import (
-    LeaderSkillScoreSerializer, CompanySkillScoreSerializer)
 
 
 class UserContent(APIView):
