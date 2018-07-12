@@ -29,7 +29,8 @@ class IntroSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Intro
-        fields = FULL_LESSON_FIELDS + ['leader_lesson_completion']
+        fields = FULL_LESSON_FIELDS + [
+            'leader_lesson_completion']
 
     def get_leader_lesson_completion(self, obj):
         return _get_leader_lesson_completion(obj)
@@ -40,7 +41,9 @@ class VideoSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Video
-        fields = FULL_LESSON_FIELDS + ['video_url'] + ['leader_lesson_completion']
+        fields = FULL_LESSON_FIELDS + [
+            'video_url'
+        ] + ['leader_lesson_completion']
 
     def get_leader_lesson_completion(self, obj):
         return _get_leader_lesson_completion(obj)
@@ -51,7 +54,8 @@ class ArticleSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Article
-        fields = FULL_LESSON_FIELDS + ['leader_lesson_completion']
+        fields = FULL_LESSON_FIELDS + [
+            'leader_lesson_completion']
 
     def get_leader_lesson_completion(self, obj):
         return _get_leader_lesson_completion(obj)
@@ -69,7 +73,9 @@ class ActivityListSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = ActivityList
-        fields = BASE_LESSON_FIELDS + ['activities'] + ['leader_lesson_completion']
+        fields = BASE_LESSON_FIELDS + [
+            'activities'
+        ] + ['leader_lesson_completion']
 
     def get_leader_lesson_completion(self, obj):
         return _get_leader_lesson_completion(obj)
@@ -95,7 +101,9 @@ class QuizSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Quiz
-        fields = BASE_LESSON_FIELDS + ['questions'] + ['leader_lesson_completion']
+        fields = BASE_LESSON_FIELDS + [
+            'questions'
+        ] + ['leader_lesson_completion']
 
     def get_leader_lesson_completion(self, obj):
         return _get_leader_lesson_completion(obj)
