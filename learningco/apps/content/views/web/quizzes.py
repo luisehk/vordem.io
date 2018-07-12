@@ -52,28 +52,37 @@ class QuizUpdate(LoginRequiredMixin, QuizFormView, UpdateWithInlinesView):  # no
 
     # only support options for existing questions
     def process_question_options(self, options):
+        # split new and existing options into two lists
         new_options = [{
             'question_id': o['question_id'],
             'name': o['name']
         } for o in options if not o['id'] and o['name']]
         existing_options = [o for o in options if o['id']]
 
+        # we will store all affected ids (new and existing)
+        affected_ids = [o['id'] for o in existing_options]
+
         # create new options first
         for option in new_options:
-            Option.objects.create(**option)
+            obj = Option.objects.create(**option)
+            affected_ids.append(obj.id)
 
         # now update existing options with their
         for option in existing_options:
             Option.objects.filter(id=option['id']).update(**option)
 
-        # retrieve the quizz
-        # pass
+        # now do some cleanup
+        if options:
+            # retrieve the quiz
+            quiz = Quiz.objects.get(questions__id=options[0]['question_id'])
 
-        # delete options with empty text
-        Option.objects.filter(name__exact='').delete()
+            # delete removed questions from this quiz
+            Option.objects.filter(
+                question__quiz__id=quiz.id
+            ).exclude(id__in=affected_ids).delete()
 
-        # and finally, delete removed questions
-        # Option.objects
+            # delete options with empty text
+            Option.objects.filter(name__exact='').delete()
 
     def post(self, request, *args, **kwargs):
         with transaction.atomic():
