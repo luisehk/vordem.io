@@ -4,6 +4,7 @@ from django.contrib.auth import get_user_model
 from fcm.utils import get_device_model
 from rest_framework import serializers
 from ..models import Profile
+from ...score.serializers.scores import LeaderScoreSerializer
 from ...companies.serializers.companies import CompanySerializer
 from django.db.models import Q
 
@@ -61,11 +62,12 @@ class ProfileSerializer(serializers.ModelSerializer):
 class UserSerializer(serializers.ModelSerializer):
     profile = ProfileSerializer(read_only=True)
     leader_companies = CompanySerializer(many=True)
+    leader_score = LeaderScoreSerializer(read_only=True)
 
     class Meta:
         model = User
         fields = [
             'id', 'email', 'first_name', 'last_name',
-            'profile', 'leader_companies'
+            'profile', 'leader_companies', 'leader_score',
         ]
         read_only_fields = ['email']
