@@ -1,5 +1,5 @@
 from django.contrib.auth import get_user_model
-from ...content.models import Skill, Lesson
+from ...content.models import Skill
 from django.db import models
 
 
@@ -24,7 +24,9 @@ class LeaderSkillScore(models.Model):
         on_delete=models.CASCADE)
     score_before = models.IntegerField(default=0)
     score_now = models.IntegerField(default=0)
-    lessons = models.ManyToManyField(Lesson)
+
+    class Meta:
+        unique_together = (('leader', 'skill'),)
 
 
 class LeaderSkillQuestion(models.Model):

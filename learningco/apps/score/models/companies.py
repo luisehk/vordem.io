@@ -25,3 +25,6 @@ class CompanySkillScore(models.Model):
         on_delete=models.CASCADE)
     score_before = models.IntegerField(default=0)
     score_now = models.IntegerField(default=0)
+
+    class Meta:
+        unique_together = (('company', 'skill'),)
