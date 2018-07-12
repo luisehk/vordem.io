@@ -5,6 +5,8 @@ from .content import (
     ActivityListSerializer, QuizSerializer)
 from ...score.serializers.scores import (
     LeaderSkillScoreSerializer, CompanySkillScoreSerializer)
+from ...progress.serializers.completion import (
+    SkillCompletionSerializer,)
 
 
 class SkillSerializer(serializers.ModelSerializer):
@@ -17,7 +19,7 @@ class SkillSerializer(serializers.ModelSerializer):
     class Meta:
         model = Skill
         fields = [
-            'name', 'intro', 'video', 'article',
+            'id', 'name', 'intro', 'video', 'article',
             'activity_list', 'quiz'
         ]
 
@@ -26,3 +28,4 @@ class SkillWithScoreSerializer(serializers.Serializer):
     skill = SkillSerializer()
     leader_score = LeaderSkillScoreSerializer()
     company_score = CompanySkillScoreSerializer()
+    leader_skill_completion = SkillCompletionSerializer()

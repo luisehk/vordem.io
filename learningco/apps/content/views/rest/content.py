@@ -6,6 +6,7 @@ from ...serializers.skills import SkillWithScoreSerializer
 from ...serializers.content import OptionSerializer
 from ...models import Option, Skill
 from ....score.models import LeaderSkillScore, CompanySkillScore
+from ....progress.models import SkillCompletion
 
 
 class UserContent(APIView):
@@ -17,7 +18,7 @@ class UserContent(APIView):
             'quiz', 'activity_list',
             'quiz__questions', 'activity_list__activities',)
 
-        # scores
+        # scores and progress
         leader = request.user
         company = leader.leader_companies.first()
 
@@ -28,7 +29,10 @@ class UserContent(APIView):
             ),
             'company_score': CompanySkillScore.objects.get(
                 company=company, skill=skill
-            )
+            ),
+            'leader_skill_completion': SkillCompletion.objects.filter(
+                leader=leader, skill=skill
+            ).first()
         } for skill in skills]
 
         return data
