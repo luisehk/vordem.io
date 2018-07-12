@@ -23,6 +23,7 @@ Vue.component('options-item', {
       ' class="text-input block width-100"' +
       ' type="text"' +
       ' placeholder="Ingresa una opción"' +
+      ' v-on:change="emitUpdateOption"' +
       ' v-model="option.name" />' +
     '<button' +
       ' type="button"' +
@@ -32,6 +33,9 @@ Vue.component('options-item', {
   methods: {
     emitDeleteOption: function(event) {
       this.$emit('delete-option', this.option);
+    },
+    emitUpdateOption: function(event) {
+      this.$emit('update-option', this.option);
     }
   }
 });
@@ -44,7 +48,8 @@ Vue.component('question-options', {
       ' v-for="(option, index) in options"' +
       ' v-bind:key="index"' +
       ' v-bind:option="option"' +
-      ' v-on:delete-option="deleteOption">' +
+      ' v-on:delete-option="deleteOption"' +
+      ' v-on:update-option="updateOption">' +
     '</options-item>' +
   '</div>',
   data: function () {
@@ -61,7 +66,7 @@ Vue.component('question-options', {
       var self = this;
 
       $.ajax({
-        url: '/content/options/?question_id=' + this.questionId,
+        url: '/content/options/?ordering=id&question_id=' + this.questionId,
         type: 'GET',
         tryCount : 0,
         retryLimit : 3,
@@ -112,6 +117,11 @@ Vue.component('question-options', {
         question_id: this.questionId,
         name: ''
       });
+    },
+    updateOption: function(option) {
+      // dont actually need to update manually
+      // because options are added by reference
+      this.sync();
     },
     deleteOption: function (option) {
       // delete option

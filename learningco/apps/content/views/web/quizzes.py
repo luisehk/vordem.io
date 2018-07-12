@@ -2,10 +2,11 @@ from extra_views import (
     InlineFormSet, CreateWithInlinesView, UpdateWithInlinesView)
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import DeleteView
+from django.db import transaction
 from ..mixins import (
     LessonGenericView, BASE_LESSON_FIELDS,
     GetOrCreateBySkill)
-from ...models import Quiz, Question
+from ...models import Quiz, Question, Option
 import json
 
 
@@ -49,16 +50,39 @@ class QuizUpdate(LoginRequiredMixin, QuizFormView, UpdateWithInlinesView):  # no
         options = json.loads(options_json)
         return isinstance(options, list), options
 
+    # only support options for existing questions
     def process_question_options(self, options):
-        print('OPTIONS', options)
+        new_options = [{
+            'question_id': o['question_id'],
+            'name': o['name']
+        } for o in options if not o['id'] and o['name']]
+        existing_options = [o for o in options if o['id']]
+
+        # create new options first
+        for option in new_options:
+            Option.objects.create(**option)
+
+        # now update existing options with their
+        for option in existing_options:
+            Option.objects.filter(id=option['id']).update(**option)
+
+        # retrieve the quizz
+        # pass
+
+        # delete options with empty text
+        Option.objects.filter(name__exact='').delete()
+
+        # and finally, delete removed questions
+        # Option.objects
 
     def post(self, request, *args, **kwargs):
-        if 'options-json' in request.POST:
-            is_list, options = self.parse_options_json(
-                request.POST['options-json'])
+        with transaction.atomic():
+            if 'options-json' in request.POST:
+                is_list, options = self.parse_options_json(
+                    request.POST['options-json'])
 
-            if is_list:
-                self.process_question_options(options)
+                if is_list:
+                    self.process_question_options(options)
 
         return super().post(request, *args, **kwargs)
 
