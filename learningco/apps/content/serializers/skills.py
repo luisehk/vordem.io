@@ -3,6 +3,8 @@ from ..models import Skill
 from .content import (
     IntroSerializer, VideoSerializer, ArticleSerializer,
     ActivityListSerializer, QuizSerializer)
+from ...score.serializers.scores import (
+    LeaderSkillScoreSerializer, CompanySkillScoreSerializer)
 
 
 class SkillSerializer(serializers.ModelSerializer):
@@ -18,3 +20,9 @@ class SkillSerializer(serializers.ModelSerializer):
             'name', 'intro', 'video', 'article',
             'activity_list', 'quiz'
         ]
+
+
+class SkillWithScoreSerializer(serializers.Serializer):
+    skill = SkillSerializer()
+    leader_score = LeaderSkillScoreSerializer()
+    company_score = CompanySkillScoreSerializer()

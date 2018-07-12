@@ -2,22 +2,41 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework.viewsets import ModelViewSet
 from rest_framework import status
-from ...serializers.skills import SkillSerializer
+from ...serializers.skills import SkillSerializer, SkillWithScoreSerializer
 from ...serializers.content import OptionSerializer
 from ...models import Option, Skill
+from ....score.models import LeaderSkillScore, CompanySkillScore
+from ....score.serializers.scores import (
+    LeaderSkillScoreSerializer, CompanySkillScoreSerializer)
 
 
 class UserContent(APIView):
-    def retrieve_data(self):
+    def retrieve_data(self, request):
+        # skills
         skills = Skill.objects.all()
         skills = skills.prefetch_related(
             'intro', 'video', 'article',
             'quiz', 'activity_list',
             'quiz__questions', 'activity_list__activities',)
-        return skills
+
+        # scores
+        leader = request.user
+        company = leader.leader_companies.first()
+
+        data = [{
+            'skill': skill,
+            'leader_score': LeaderSkillScore.objects.get(
+                leader=leader, skill=skill
+            ),
+            'company_score': CompanySkillScore.objects.get(
+                company=company, skill=skill
+            )
+        } for skill in skills]
+
+        return data
 
     def serialize_data(self, data):
-        serializer = SkillSerializer(data=data, many=True)
+        serializer = SkillWithScoreSerializer(data=data, many=True)
         serializer.is_valid()
         return serializer.data
 
@@ -25,7 +44,7 @@ class UserContent(APIView):
         return Response(serialized_data, status=status.HTTP_200_OK)
 
     def get(self, request, format=None):
-        data = self.retrieve_data()
+        data = self.retrieve_data(request)
         serialized_data = self.serialize_data(data)
         return self.generate_response(serialized_data)
 
