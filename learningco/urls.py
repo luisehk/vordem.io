@@ -32,6 +32,8 @@ urlpatterns = [
         'learningco.apps.content.urls', namespace='content')),
     url(r'^companies/', include(
         'learningco.apps.companies.urls', namespace='companies')),
+    url(r'^progress/', include(
+        'learningco.apps.progress.urls', namespace='progress')),
     url(r'^users/', include(
         'learningco.apps.users.urls', namespace='users')),
 
