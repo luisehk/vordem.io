@@ -60,6 +60,7 @@ class Profile(models.Model):
     level_of_hierarchy = models.CharField(
         max_length=3, choices=LEVELS_OF_HIERARCHY,
         default=OPERATION_LEVEL_EMPLOYEE)
+    position = models.CharField(max_length=250, blank=True)
 
     def __str__(self):
         return self.get_full_name() or self.user.email

@@ -4,6 +4,7 @@ from django.contrib.auth import get_user_model
 from fcm.utils import get_device_model
 from rest_framework import serializers
 from ..models import Profile
+from ...companies.serializers.companies import CompanySerializer
 from django.db.models import Q
 
 
@@ -40,24 +41,31 @@ class MobileLoginSerializer(LoginSerializer):
 
 
 class ProfileSerializer(serializers.ModelSerializer):
-    avatar = VersatileImageFieldSerializer(
-        sizes='profile_avatar'
-    )
+    avatar = VersatileImageFieldSerializer(sizes='profile_avatar')
+    generation = serializers.SerializerMethodField()
+    level_of_hierarchy = serializers.SerializerMethodField()
 
     class Meta:
         model = Profile
         fields = [
-            'avatar', 'bio', 'phone'
+            'id', 'avatar', 'position', 'generation', 'level_of_hierarchy'
         ]
+
+    def get_generation(self, obj):
+        return obj.get_generation_display()
+
+    def get_level_of_hierarchy(self, obj):
+        return obj.get_level_of_hierarchy_display()
 
 
 class UserSerializer(serializers.ModelSerializer):
     profile = ProfileSerializer(read_only=True)
+    leader_companies = CompanySerializer(many=True)
 
     class Meta:
         model = User
         fields = [
             'id', 'email', 'first_name', 'last_name',
-            'profile'
+            'profile', 'leader_companies'
         ]
         read_only_fields = ['email']
