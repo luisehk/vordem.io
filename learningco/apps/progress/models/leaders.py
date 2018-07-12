@@ -16,6 +16,9 @@ class LessonCompletion(models.Model):
     completed = models.BooleanField(default=False)
     score = models.IntegerField(default=0)
 
+    class Meta:
+        unique_together = (('lesson', 'leader'),)
+
 
 class QuizCompletion(LessonCompletion):
     quiz_score = models.IntegerField(default=0)
@@ -52,3 +55,6 @@ class SkillCompletion(models.Model):
     completed = models.BooleanField(default=False)
     score = models.IntegerField(default=0)
     comment = models.TextField()
+
+    class Meta:
+        unique_together = (('skill', 'leader'),)
