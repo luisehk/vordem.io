@@ -7,8 +7,8 @@ from ..models import (
 )
 
 
-BASE_LESSON_FIELDS = ['id', 'name']
-FULL_LESSON_FIELDS = ['id', 'name', 'body']
+BASE_LESSON_FIELDS = ['id', 'lesson_ptr_id', 'name']
+FULL_LESSON_FIELDS = BASE_LESSON_FIELDS + ['body']
 DEFAULT_LESSON_FIELDS = FULL_LESSON_FIELDS
 
 
@@ -33,7 +33,7 @@ class ArticleSerializer(serializers.ModelSerializer):
 class ActivitySerializer(serializers.ModelSerializer):
     class Meta:
         model = Activity
-        fields = FULL_LESSON_FIELDS
+        fields = ['id', 'name', 'body']
 
 
 class ActivityListSerializer(serializers.ModelSerializer):
@@ -47,7 +47,7 @@ class ActivityListSerializer(serializers.ModelSerializer):
 class OptionSerializer(serializers.ModelSerializer):
     class Meta:
         model = Option
-        fields = BASE_LESSON_FIELDS + ['question_id']
+        fields = ['id', 'name', 'question_id']
 
 
 class QuestionSerializer(serializers.ModelSerializer):
@@ -55,7 +55,7 @@ class QuestionSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Question
-        fields = BASE_LESSON_FIELDS + ['options']
+        fields = ['id', 'name', 'options']
 
 
 class QuizSerializer(serializers.ModelSerializer):
