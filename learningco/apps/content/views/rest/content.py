@@ -24,15 +24,15 @@ class UserContent(APIView):
 
         data = [{
             'skill': skill,
-            'leader_score': LeaderSkillScore.objects.filter(
+            'leader_score': LeaderSkillScore.objects.get_or_create(
                 leader=leader, skill=skill
-            ).first(),
-            'company_score': CompanySkillScore.objects.filter(
+            )[0],
+            'company_score': CompanySkillScore.objects.get_or_create(
                 company=company, skill=skill
-            ).first(),
-            'leader_skill_completion': SkillCompletion.objects.filter(
+            )[0],
+            'leader_skill_completion': SkillCompletion.objects.get_or_create(
                 leader=leader, skill=skill
-            ).first()
+            )[0]
         } for skill in skills]
 
         return data
