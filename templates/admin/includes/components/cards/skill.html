@@ -1,10 +1,12 @@
-<div class="competencia tab-content--item grid">
-  <a href="#" class="tab-content--item-link">
-    <h3 class="item-title">
-      Comunicación
-    </h3>
-  </a>
-  <span class="score-number">
-    <a href="#" class="edit-link">{% include 'admin/includes/components/edit_button.html' %}</a> 20%
-  </span>
-</div>
+{% for obj in skill_scores %}
+  <div class="competencia tab-content--item grid">
+    <span href="#" class="tab-content--item-link">
+      <h3 class="item-title">
+        {{ obj.skill.name }}
+      </h3>
+    </span>
+    <span class="score-number">
+      <a href="#" class="edit-link">{% include 'admin/includes/components/edit_button.html' %}</a> {{ obj.score_now }}%
+    </span>
+  </div>
+{% endfor %}

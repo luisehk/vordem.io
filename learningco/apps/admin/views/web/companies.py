@@ -22,6 +22,13 @@ class CompanyDetail(LoginRequiredMixin, DetailView):
     template_name = 'admin/companies/detail.html'
     queryset = Company.objects.all()
 
+    def get_context_data(self, **kwargs):
+        ctx = super().get_context_data(**kwargs)
+        obj = self.object
+        skl = obj.company_skill_scores.prefetch_related('skill').all()
+        ctx['skill_scores'] = skl
+        return ctx
+
 
 class CompanyList(LoginRequiredMixin, ListView):
     template_name = 'admin/companies/list.html'
