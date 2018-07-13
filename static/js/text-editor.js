@@ -3,6 +3,7 @@ var initQuill = function(fieldName) {
     '#' + fieldName + '-editor-container', {
     modules: {
       toolbar: [
+        [{ header: [1, 2, 3, 4, false] }],
         ['bold', 'italic', 'strike', 'underline'],
         ['link', 'blockquote', 'image'],
         [{ list: 'ordered' }, { list: 'bullet' }]
