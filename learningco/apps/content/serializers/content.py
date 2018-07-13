@@ -64,7 +64,7 @@ class ArticleSerializer(serializers.ModelSerializer):
 class ActivitySerializer(serializers.ModelSerializer):
     class Meta:
         model = Activity
-        fields = ['id', 'name', 'body']
+        fields = ['id', 'name', 'description', 'body']
 
 
 class ActivityListSerializer(serializers.ModelSerializer):
