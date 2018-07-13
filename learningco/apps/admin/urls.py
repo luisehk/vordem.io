@@ -4,7 +4,7 @@ from django.conf.urls import url
 from .views.rest.companies import AddHumanResourcesToCompany
 from .views.web.companies import (
     CompanyCreate, CompanyUpdate, CompanyDelete,
-    CompanyDetail, CompanyList
+    CompanyDetail, CompanyList, CompanyLeaders
 )
 from .views.web.industries import (
     IndustryCreate, IndustryUpdate, IndustryDelete, IndustryList,
@@ -26,6 +26,8 @@ urlpatterns = [
         CompanyCreate.as_view(), name='company-add'),
     url(r'^companies/detail/(?P<pk>[0-9]+)/$',
         CompanyDetail.as_view(), name='company-detail'),
+    url(r'^companies/leaders/(?P<pk>[0-9]+)/$',
+        CompanyLeaders.as_view(), name='company-leaders'),
     url(r'^companies/(?P<pk>[0-9]+)/$',
         CompanyUpdate.as_view(), name='company-update'),
     url(r'^companies/(?P<pk>[0-9]+)/delete/$',

@@ -30,6 +30,18 @@ class CompanyDetail(LoginRequiredMixin, DetailView):
         return ctx
 
 
+class CompanyLeaders(LoginRequiredMixin, DetailView):
+    template_name = 'admin/companies/leaders.html'
+    queryset = Company.objects.all()
+
+    def get_context_data(self, **kwargs):
+        ctx = super().get_context_data(**kwargs)
+        obj = self.object
+        leaders = obj.leaders.prefetch_related('profile').all()
+        ctx['leaders'] = leaders
+        return ctx
+
+
 class CompanyList(LoginRequiredMixin, ListView):
     template_name = 'admin/companies/list.html'
     queryset = Company.objects.all()
