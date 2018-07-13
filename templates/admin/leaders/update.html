@@ -1,0 +1,4 @@
+{% extends 'admin/leaders/form.html' %}
+{% load static %}
+
+{% block title %}{% firstof object.get_full_name object.email %}{% endblock %}

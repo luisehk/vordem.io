@@ -1,8 +1,11 @@
+from extra_views import (
+    InlineFormSet, UpdateWithInlinesView)
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import (
-    UpdateView, DeleteView, DetailView)
+    DeleteView, DetailView)
 from django.urls import reverse_lazy
 from django.contrib.auth import get_user_model
+from ....users.models import Profile
 
 
 User = get_user_model()
@@ -17,11 +20,21 @@ class LeaderGenericView(object):
             args=(self.object.id,))
 
 
+class ProfileForm(object):
+    fields = ['position', 'generation', 'level_of_hierarchy']
+
+
+class ProfileInline(ProfileForm, InlineFormSet):
+    model = Profile
+
+
 class LeaderFormView(LeaderGenericView):
     fields = ['first_name', 'last_name']
 
 
-class LeaderUpdate(LoginRequiredMixin, LeaderFormView, UpdateView):
+class LeaderUpdate(LoginRequiredMixin, LeaderFormView, UpdateWithInlinesView):
+    model = User
+    inlines = [ProfileInline]
     template_name = 'admin/leaders/update.html'
 
 
