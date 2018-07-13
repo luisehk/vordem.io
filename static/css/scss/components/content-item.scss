@@ -27,6 +27,11 @@
         color: $dark-green;
         opacity: 1;
       }
+
+      img {
+        float: left;
+        margin-right: 15px;
+      }
     }
 
     .score-number {

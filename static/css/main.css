@@ -522,6 +522,9 @@ select {
       .tab-content--item-link:hover {
         color: #246250;
         opacity: 1; }
+      .tab-content--item-link img {
+        float: left;
+        margin-right: 15px; }
     .tab-content--item .score-number {
       font-size: 3.2rem;
       margin-right: 1.6rem; }
