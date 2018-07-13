@@ -1,4 +1,3 @@
-from versatileimagefield.serializers import VersatileImageFieldSerializer
 from rest_auth.serializers import LoginSerializer
 from django.contrib.auth import get_user_model
 from fcm.utils import get_device_model
@@ -7,6 +6,7 @@ from ..models import Profile
 from ...score.serializers.scores import LeaderScoreSerializer
 from ...companies.serializers.companies import CompanySerializer
 from django.db.models import Q
+from ...utils.serializers import BetterVersatileImageFieldSerializer
 
 
 Device = get_device_model()
@@ -42,7 +42,7 @@ class MobileLoginSerializer(LoginSerializer):
 
 
 class ProfileSerializer(serializers.ModelSerializer):
-    avatar = VersatileImageFieldSerializer(sizes='profile_avatar')
+    avatar = BetterVersatileImageFieldSerializer(sizes='profile_avatar')
     generation = serializers.SerializerMethodField()
     level_of_hierarchy = serializers.SerializerMethodField()
 
