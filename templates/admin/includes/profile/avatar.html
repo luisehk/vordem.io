@@ -33,7 +33,7 @@
       );
 
       $.ajax({
-        url: '/companies/companies/2/',
+        url: '{{ object.get_avatar_update_url }}',
         data: formData,
         type: 'PATCH',
         contentType: false,

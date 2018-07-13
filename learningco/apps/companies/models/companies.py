@@ -63,3 +63,6 @@ class Company(models.Model):
             image_attr='avatar')
 
         img_warmer.warm()
+
+    def get_avatar_update_url(self):
+        return '/companies/companies/{}/'.format(self.id)
