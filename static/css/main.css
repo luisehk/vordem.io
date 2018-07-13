@@ -423,6 +423,7 @@ select {
     .modal-inside-content input + .page-subtitle {
       margin-top: 1.6rem; }
     .modal-inside-content .primary-button {
+      width: 100%;
       margin-top: 0; }
 
 .modal-link {
