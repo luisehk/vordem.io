@@ -59,7 +59,7 @@ coverage: &app
   script:
     - python manage.py migrate
     - coverage run --source='.' --omit='venv/*' manage.py test
-    - coverage report -m --fail-under=80
+    - coverage report -m --fail-under=60
 
 test:
   <<: *app
