@@ -18,18 +18,44 @@
     var container = $('#id_avatar_container');
 
     reader.onload = function(){
+      // show preloader
       preview.hide();
       preloader.show();
       container.css('cursor', 'auto');
       container.attr('for', 'none');
 
-      setTimeout(function() {
-        preview.attr('src', reader.result);
-        preview.show();
-        preloader.hide();
-        container.css('cursor', 'pointer');
-        container.attr('for', 'id_avatar_change');
-      }, 1500);
+      // send image to API
+      var csrftoken = getCookie('csrftoken');
+      var formData = new FormData();
+      formData.append(
+        'avatar',
+        $('#id_avatar_change')[0].files[0]
+      );
+
+      $.ajax({
+        url: '/companies/companies/2/',
+        data: formData,
+        type: 'PATCH',
+        contentType: false,
+        processData: false,
+        headers: {
+          'X-CSRFToken': csrftoken
+        },
+        success: function(data) {
+          preview.attr(
+            'src',
+            data.avatar.crop__400x400);
+        },
+        error: function(error) {
+          console.log('error changing avatar', error);
+        },
+        complete: function() {
+          preview.show();
+          preloader.hide();
+          container.css('cursor', 'pointer');
+          container.attr('for', 'id_avatar_change');
+        }
+      });
     };
 
     reader.readAsDataURL(event.target.files[0]);
