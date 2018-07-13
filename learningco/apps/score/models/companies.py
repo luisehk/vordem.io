@@ -19,7 +19,8 @@ class CompanyScore(models.Model):
 class CompanySkillScore(models.Model):
     company = models.ForeignKey(
         Company,
-        on_delete=models.CASCADE)
+        on_delete=models.CASCADE,
+        related_name='company_skill_scores')
     skill = models.ForeignKey(
         Skill,
         on_delete=models.CASCADE)
