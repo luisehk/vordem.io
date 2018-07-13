@@ -23,8 +23,8 @@ class UserContent(APIView):
         company = leader.leader_companies.first()
 
         # what to do if user doesnt have a company?
-        # should we create a new ghost company or forbid them
-        # from using the app?
+        # should we create a new ghost company, forbid them
+        # from using the app, or return company_score as None?
         data = [{
             'skill': skill,
             'leader_score': LeaderSkillScore.objects.get_or_create(
@@ -32,7 +32,7 @@ class UserContent(APIView):
             )[0],
             'company_score': CompanySkillScore.objects.get_or_create(
                 company=company, skill=skill
-            )[0],
+            )[0] if company else None,
             'leader_skill_completion': SkillCompletion.objects.get_or_create(
                 leader=leader, skill=skill
             )[0]
