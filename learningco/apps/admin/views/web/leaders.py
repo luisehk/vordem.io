@@ -32,3 +32,10 @@ class LeaderDelete(LoginRequiredMixin, LeaderGenericView, DeleteView):
 class LeaderDetail(LoginRequiredMixin, DetailView):
     template_name = 'admin/leaders/detail.html'
     queryset = User.objects.all()
+
+    def get_context_data(self, **kwargs):
+        ctx = super().get_context_data(**kwargs)
+        obj = self.object
+        skl = obj.leader_skill_score.prefetch_related('skill').all()
+        ctx['skill_scores'] = skl
+        return ctx

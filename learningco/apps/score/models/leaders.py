@@ -18,7 +18,8 @@ class LeaderScore(models.Model):
 class LeaderSkillScore(models.Model):
     leader = models.ForeignKey(
         User,
-        on_delete=models.CASCADE)
+        on_delete=models.CASCADE,
+        related_name='leader_skill_score')
     skill = models.ForeignKey(
         Skill,
         on_delete=models.CASCADE)

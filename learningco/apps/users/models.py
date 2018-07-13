@@ -11,6 +11,19 @@ import os
 User = get_user_model()
 
 
+def get_avatar_update_url(self):
+    return '/api/profile/{}/'.format(self.profile.id)
+
+
+@property
+def avatar(self):
+    return self.profile.avatar
+
+
+User.add_to_class('get_avatar_update_url', get_avatar_update_url)
+User.add_to_class('avatar', avatar)
+
+
 class Profile(models.Model):
     GENERATION_Z = 'GZ'
     MILLENIALS = 'GY'
