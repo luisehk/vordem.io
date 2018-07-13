@@ -1,7 +1,8 @@
 from django.views.generic.base import RedirectView
 from django.urls import reverse_lazy
 from django.conf.urls import url
-from .views.rest.companies import AddHumanResourcesToCompany
+from .views.rest.companies import (
+    AddHumanResourcesToCompany, AddLeaderToCompany)
 from .views.web.companies import (
     CompanyCreate, CompanyUpdate, CompanyDelete,
     CompanyDetail, CompanyList, CompanyLeaders
@@ -34,6 +35,8 @@ urlpatterns = [
         CompanyDelete.as_view(), name='company-delete'),
     url(r'^companies/add-hr/$',
         AddHumanResourcesToCompany.as_view(), name='company-add-hr'),
+    url(r'^companies/add-leader/$',
+        AddLeaderToCompany.as_view(), name='company-add-leader'),
 
     url(r'^industries$',
         IndustryList.as_view(), name="industry-list"),
