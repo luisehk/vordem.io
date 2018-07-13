@@ -8,11 +8,11 @@
 {% block inner_content %}
   {% for leader in leaders %}
     <div class="competencia tab-content--item grid">
-      <span href="#" class="tab-content--item-link">
+      <a href="{% url 'admin:leader-detail' leader.pk %}" class="tab-content--item-link">
         <img src="{{ leader.profile.avatar.crop.44x44 }}" />
         <h3 class="item-title">{% firstof leader.get_full_name leader.email %}</h3>
         <span class="content-tag">{% firstof leader.profile.position leader.profile.get_level_of_hierarchy_display %}</span>
-      </span>
+      </a>
       <span class="score-number">
         <a href="#" class="edit-link">{% include 'admin/includes/components/edit_button.html' %}</a> {{ leader.leader_score.score_now }}%
       </span>
