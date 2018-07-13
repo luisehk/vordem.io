@@ -22,6 +22,9 @@ class UserContent(APIView):
         leader = request.user
         company = leader.leader_companies.first()
 
+        # what to do if user doesnt have a company?
+        # should we create a new ghost company or forbid them
+        # from using the app?
         data = [{
             'skill': skill,
             'leader_score': LeaderSkillScore.objects.get_or_create(
