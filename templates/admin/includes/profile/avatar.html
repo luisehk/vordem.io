@@ -1,1 +1,37 @@
-<img class="featured-img" src="{{ object.avatar.crop.400x400 }}">
+<label id="id_avatar_container" for="id_avatar_change" class="featured-img center-children" style="cursor: pointer">
+  <img id="id_avatar_preview" class="featured-img" src="{{ object.avatar.crop.400x400 }}">
+  <div id="id_avatar_preloader" class="lds-dual-ring" style="display: none;"></div>
+</label>
+
+<input
+  id="id_avatar_change"
+  type="file"
+  accept="image/*"
+  onchange="loadAvatarFile(event);"
+  style="display: none;" />
+
+<script>
+  var loadAvatarFile = function (event) {
+    var reader = new FileReader();
+    var preview = $('#id_avatar_preview');
+    var preloader = $('#id_avatar_preloader');
+    var container = $('#id_avatar_container');
+
+    reader.onload = function(){
+      preview.hide();
+      preloader.show();
+      container.css('cursor', 'auto');
+      container.attr('for', 'none');
+
+      setTimeout(function() {
+        preview.attr('src', reader.result);
+        preview.show();
+        preloader.hide();
+        container.css('cursor', 'pointer');
+        container.attr('for', 'id_avatar_change');
+      }, 1500);
+    };
+
+    reader.readAsDataURL(event.target.files[0]);
+  };
+</script>
