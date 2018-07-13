@@ -10,6 +10,13 @@
         Lideres
       </a>
     </li>
+    {% if 'leaders' in request.path %}
+      <button
+        id="addLeaderButton"
+        type="button"
+        class="button uppercase secondary-button button-small modal-open"
+        style="float: right;">Agregar nuevo lider</button>
+    {% endif %}
     <!--
       <li class="tab">
         <a href="#" class="tab-link {% if 'human-resources' in request.path %}is-current{% endif %}">
@@ -17,5 +24,6 @@
         </a>
       </li>
     -->
+
   </ul>
 </nav>

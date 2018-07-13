@@ -20,8 +20,6 @@
 
   {% endfor %}
 
-  <button id="addLeaderButton" type="button" class="button uppercase secondary-button button-small width-100 modal-open">Agregar nuevo lider</button>
-
   <div class="modal-inside">
     <div class="modal-inside-content">
       <span class="close">&times;</span>
@@ -32,6 +30,8 @@
   </div>
 
 {% endblock %}
+
+{% block menu_extras %}{% endblock %}
 
 {% block scripts %}
   {{ block.super }}
