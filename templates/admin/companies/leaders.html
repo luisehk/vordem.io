@@ -3,6 +3,10 @@
 
 {% block profile_header %}
   {% include 'admin/includes/profile/header/company.html' %}
+
+  {% with object.company_score as score %}
+    {% include 'admin/includes/profile/score.html' %}
+  {% endwith %}
 {% endblock %}
 
 {% block inner_content %}
