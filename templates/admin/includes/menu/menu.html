@@ -1,5 +1,5 @@
 {% if 'content' in request.path or request.resolver_match.url_name == 'skill-detail' %}
   {% include 'admin/includes/menu/skill.html' %}
-{% elif 'admin/companies' in request.path %}
+{% elif request.resolver_match.url_name == 'company-detail' or request.resolver_match.url_name == 'company-leaders' %}
   {% include 'admin/includes/menu/company.html' %}
 {% endif %}
