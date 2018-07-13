@@ -18,6 +18,8 @@
       </span>
     </div>
 
+  {% empty %}
+    <p>Esta compañía aún no tiene líderes registrados.</p>
   {% endfor %}
 
   <div class="modal-inside">
@@ -28,7 +30,6 @@
       <button id="modal-submit" type="button" class="button primary-button">Crear cuenta</button>
     </div>
   </div>
-
 {% endblock %}
 
 {% block menu_extras %}{% endblock %}
