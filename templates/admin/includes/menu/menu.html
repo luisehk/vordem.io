@@ -2,4 +2,6 @@
   {% include 'admin/includes/menu/skill.html' %}
 {% elif request.resolver_match.url_name == 'company-detail' or request.resolver_match.url_name == 'company-leaders' %}
   {% include 'admin/includes/menu/company.html' %}
+{% elif request.resolver_match.url_name == 'leader-detail' or request.resolver_match.url_name == 'leader-questions' %}
+  {% include 'admin/includes/menu/leader.html' %}
 {% endif %}
