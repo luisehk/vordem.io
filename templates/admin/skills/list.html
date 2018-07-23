@@ -25,8 +25,17 @@
             General
           </a>
         </li>
-        <li>Directivos</li>
-        <li>Operativos millenials</li>
+
+        {% for bundle in skill.bundles.all %}
+         <li>
+            <a href="#">
+              {{ bundle.name }}
+            </a>
+          </li>
+        {% endfor %}
+        <a class="new-bundle" href="#">
+          Agregar nuevo
+        </a>
       </ul>
     </div>
   {% empty %}

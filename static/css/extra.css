@@ -32,6 +32,19 @@
 
 .skill-collections li {
     list-style: disc;
+    font-weight: bold;
+    color: dimgrey;
+}
+
+.skill-collections li a {
+    color: dimgrey;
+    text-decoration: none;
+}
+
+.skill-collections .new-bundle {
+    color: #4f929a;
+    font-weight: bold;
+    text-decoration: none;
 }
 
 .right-actions {

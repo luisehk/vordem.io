@@ -29,3 +29,6 @@ class SkillDetail(LoginRequiredMixin, DetailView):
 class SkillList(LoginRequiredMixin, ListView):
     template_name = 'admin/skills/list.html'
     queryset = Skill.objects.all()
+
+    def get_queryset(self):
+        return super().get_queryset().prefetch_related('bundles')
