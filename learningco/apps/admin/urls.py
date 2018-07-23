@@ -13,6 +13,8 @@ from .views.web.industries import (
     IndustryDetail)
 from .views.web.skills import (
     SkillCreate, SkillUpdate, SkillDelete, SkillList, SkillDetail)
+from .views.web.bundles import (
+    BundleCreate, BundleUpdate, BundleDelete, BundleDetail)
 from .views.web.content import (
     Content01, Content02, Content03, Content04, Content05, Content06,
     Content07, Content08, Content09, Content10, Content11, Content12,
@@ -64,6 +66,15 @@ urlpatterns = [
         SkillUpdate.as_view(), name='skill-update'),
     url(r'^skills/(?P<pk>[0-9]+)/delete/$',
         SkillDelete.as_view(), name='skill-delete'),
+
+    url(r'^bundles/add/$',
+        BundleCreate.as_view(), name='bundle-add'),
+    url(r'^bundles/detail/(?P<pk>[0-9]+)/$',
+        BundleDetail.as_view(), name='bundle-detail'),
+    url(r'^bundles/(?P<pk>[0-9]+)/$',
+        BundleUpdate.as_view(), name='bundle-update'),
+    url(r'^bundles/(?P<pk>[0-9]+)/delete/$',
+        BundleDelete.as_view(), name='bundle-delete'),
 
     url(r'content/01$', Content01.as_view(), name='content-01'),
     url(r'content/02$', Content02.as_view(), name='content-02'),
