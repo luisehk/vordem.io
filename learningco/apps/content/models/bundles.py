@@ -5,6 +5,16 @@ from ...users.models import Profile
 
 
 class Bundle(models.Model):
+    SCORE_LOW = 'L'
+    SCORE_AVERAGE = 'A'
+    SCORE_HIGH = 'H'
+
+    SCORE_OPTIONS = (
+        (SCORE_LOW, 'Bajo',),
+        (SCORE_AVERAGE, 'Medio',),
+        (SCORE_HIGH, 'Alta',),
+    )
+
     skill = models.ForeignKey(
         Skill, verbose_name='Competencia',
         null=False, on_delete=models.CASCADE,
@@ -32,8 +42,11 @@ class Bundle(models.Model):
     level_of_hierarchy = models.CharField(
         max_length=3, choices=Profile.LEVELS_OF_HIERARCHY,
         default=Profile.OPERATION_LEVEL_EMPLOYEE)
+    score_range = models.CharField(
+        max_length=1, choices=SCORE_OPTIONS,
+        default=SCORE_LOW)
 
     class Meta:
         unique_together = (
-            ('skill', 'generation', 'level_of_hierarchy'),
+            ('skill', 'generation', 'level_of_hierarchy', 'score_range',),
         )
