@@ -2,8 +2,21 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import (
     CreateView, UpdateView, DeleteView, ListView, DetailView)
 from django.shortcuts import redirect
-from ..mixins import SkillGenericView, SkillFormView
+from django.urls import reverse_lazy
 from ....content.models import Skill
+
+
+class SkillGenericView(object):
+    model = Skill
+
+    def get_success_url(self):
+        return reverse_lazy(
+            'admin:skill-detail',
+            args=(self.object.id,))
+
+
+class SkillFormView(SkillGenericView):
+    fields = ['name']
 
 
 class SkillCreate(LoginRequiredMixin, SkillFormView, CreateView):
