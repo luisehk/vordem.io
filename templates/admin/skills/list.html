@@ -28,12 +28,16 @@
 
         {% for bundle in skill.bundles.all %}
          <li>
-            <a href="#">
+            <a href="{% url 'admin:bundle-update' bundle.id %}">
               {{ bundle.name }}
             </a>
+            <span>
+              <p>Generación: {{ bundle.get_generation_display }}</p>
+              <p>Nivel jerárquico: {{ bundle.get_level_of_hierarchy_display }}</p>
+            </span>
           </li>
         {% endfor %}
-        <a class="new-bundle" href="#">
+        <a class="new-bundle" href="{% url 'admin:bundle-add' %}">
           Agregar nuevo
         </a>
       </ul>

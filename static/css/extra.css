@@ -25,12 +25,13 @@
 .skill-collections {
     padding: 1.6rem;
     padding-top: 0;
-    padding-left: 3.2rem;
+    padding-left: 6rem;
     font-size: small;
     list-style: disc;
 }
 
 .skill-collections li {
+    margin-bottom: .5rem;
     list-style: disc;
     font-weight: bold;
     color: dimgrey;
@@ -39,6 +40,11 @@
 .skill-collections li a {
     color: dimgrey;
     text-decoration: none;
+}
+
+.skill-collections li span p {
+    font-weight: normal;
+    margin-left: 1.6rem;
 }
 
 .skill-collections .new-bundle {
