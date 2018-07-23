@@ -37,16 +37,21 @@ class Bundle(models.Model):
         related_name='quiz_bundles')
 
     generation = models.CharField(
+        verbose_name='Generación',
         max_length=2, choices=Profile.GENERATIONS,
         default=Profile.MILLENIALS)
     level_of_hierarchy = models.CharField(
+        verbose_name='Nivel jerárquico',
         max_length=3, choices=Profile.LEVELS_OF_HIERARCHY,
         default=Profile.OPERATION_LEVEL_EMPLOYEE)
     score_range = models.CharField(
+        verbose_name='Calificación',
         max_length=1, choices=SCORE_OPTIONS,
         default=SCORE_LOW)
 
     class Meta:
+        verbose_name = 'Colección'
+
         unique_together = (
             ('skill', 'generation', 'level_of_hierarchy', 'score_range',),
         )
