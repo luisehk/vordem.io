@@ -6,9 +6,17 @@
 {% block inner_content %}
   {% for skill in object_list %}
     <div class="competencia tab-content--item">
-      <a href="{% url 'admin:skill-detail' skill.id %}" class="tab-content--item-link block">
-        <h3 class="item-title">{{ skill.name }}</h3>
+      <a href="{% url 'admin:skill-detail' skill.id %}" class="tab-content--item-link block skill-card">
+        <img src="{% static 'imgs/expand-more.svg' %}" />
+        <h3 class="item-title">
+          {{ skill.name }}
+        </h3>
       </a>
+      <ul class="skill-collections">
+        <li>General</li>
+        <li>Directivos</li>
+        <li>Operativos millenials</li>
+      </ul>
     </div>
   {% empty %}
     <p>No existe ninguna competencia.</p>

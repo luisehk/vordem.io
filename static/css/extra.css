@@ -11,3 +11,25 @@
     height: fit-content;
     margin: 15px;
 }
+
+.skill-card {
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+}
+
+.skill-expand {
+
+}
+
+.skill-collections {
+    padding: 1.6rem;
+    padding-top: 0;
+    padding-left: 3.2rem;
+    font-size: small;
+    list-style: disc;
+}
+
+.skill-collections li {
+    list-style: disc;
+}
