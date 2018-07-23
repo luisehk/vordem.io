@@ -15,10 +15,6 @@ from .views.web.skills import (
     SkillCreate, SkillUpdate, SkillDelete, SkillList, SkillDetail)
 from .views.web.bundles import (
     BundleCreate, BundleUpdate, BundleDelete, BundleDetail)
-from .views.web.content import (
-    Content01, Content02, Content03, Content04, Content05, Content06,
-    Content07, Content08, Content09, Content10, Content11, Content12,
-    Content13,)
 
 urlpatterns = [
     url(r'^companies$',
@@ -75,20 +71,6 @@ urlpatterns = [
         BundleUpdate.as_view(), name='bundle-update'),
     url(r'^bundles/(?P<pk>[0-9]+)/delete/$',
         BundleDelete.as_view(), name='bundle-delete'),
-
-    url(r'content/01$', Content01.as_view(), name='content-01'),
-    url(r'content/02$', Content02.as_view(), name='content-02'),
-    url(r'content/03$', Content03.as_view(), name='content-03'),
-    url(r'content/04$', Content04.as_view(), name='content-04'),
-    url(r'content/05$', Content05.as_view(), name='content-05'),
-    url(r'content/06$', Content06.as_view(), name='content-06'),
-    url(r'content/07$', Content07.as_view(), name='content-07'),
-    url(r'content/08$', Content08.as_view(), name='content-08'),
-    url(r'content/09$', Content09.as_view(), name='content-09'),
-    url(r'content/10$', Content10.as_view(), name='content-10'),
-    url(r'content/11$', Content11.as_view(), name='content-11'),
-    url(r'content/12$', Content12.as_view(), name='content-12'),
-    url(r'content/13$', Content13.as_view(), name='content-13'),
 
     url(r'^$', RedirectView.as_view(
         url=reverse_lazy('admin:skill-list')
