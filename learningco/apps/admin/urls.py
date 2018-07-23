@@ -63,7 +63,7 @@ urlpatterns = [
     url(r'^skills/(?P<pk>[0-9]+)/delete/$',
         SkillDelete.as_view(), name='skill-delete'),
 
-    url(r'^bundles/add/$',
+    url(r'^bundles/(?P<skill_pk>[0-9]+)/add/$',
         BundleCreate.as_view(), name='bundle-add'),
     url(r'^bundles/detail/(?P<pk>[0-9]+)/$',
         BundleDetail.as_view(), name='bundle-detail'),
