@@ -16,7 +16,7 @@ class BundleGenericView(object):
 
 
 class BundleFormView(BundleGenericView):
-    fields = ['name']
+    fields = ['skill', 'name', 'generation', 'level_of_hierarchy']
 
 
 class BundleCreate(LoginRequiredMixin, BundleFormView, CreateView):
