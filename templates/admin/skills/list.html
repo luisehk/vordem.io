@@ -6,6 +6,10 @@
 {% block inner_content %}
   {% for skill in object_list %}
     <div class="competencia tab-content--item">
+      <span class="right-actions">
+        <a href="{% url 'admin:skill-detail' skill.id %}" class="button button-small" type="button">Editar</a>
+      </span>
+
       <a href="#" class="tab-content--item-link block skill-card">
         <img class="skill-expand" src="{% static 'imgs/expand-more.svg' %}" />
         <img class="skill-expand" src="{% static 'imgs/expand-less.svg' %}" style="display: none;" />
@@ -14,6 +18,7 @@
           {{ skill.name }}
         </h3>
       </a>
+
       <ul class="skill-collections" style="display: none;">
         <li>
           <a href="{% url 'admin:skill-detail' skill.id %}">
