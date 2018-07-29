@@ -6,7 +6,7 @@ services:
 
 variables:
   PIP_CACHE_DIR: "$CI_PROJECT_DIR/.cache"
-  POSTGRES_DB: learningco
+  POSTGRES_DB: sealedair
 
 cache:
   paths:
@@ -70,7 +70,7 @@ test:
 deploy_dev: &deploy
   stage: deploy_dev
   variables:
-    HEROKU_APP: "learningco-dev"
+    HEROKU_APP: "sealedair-dev"
   script:
     - dpl --provider=heroku --app=$HEROKU_APP --api-key=$HEROKU_API_KEY
     - heroku run --exit-code --app $HEROKU_APP python manage.py migrate
@@ -81,7 +81,7 @@ deploy_staging:
   <<: *deploy
   stage: deploy_staging
   variables:
-    HEROKU_APP: "learningco-staging"
+    HEROKU_APP: "sealedair-staging"
   only:
     - staging
 
@@ -89,6 +89,6 @@ deploy_production:
   <<: *deploy
   stage: deploy_production
   variables:
-    HEROKU_APP: "learningco-prod"
+    HEROKU_APP: "sealedair-production"
   only:
     - production

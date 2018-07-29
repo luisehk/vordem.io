@@ -3,8 +3,8 @@
         "model": "sites.site",
         "pk": 1,
         "fields": {
-            "domain": "learningco.io",
-            "name": "learningco.io"
+            "domain": "sealedair.io",
+            "name": "sealedair.io"
         }
     }
 ]

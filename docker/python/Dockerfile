@@ -26,4 +26,4 @@ RUN apt-get install -y postgresql-client
 
 EXPOSE 8000
 
-CMD ["gunicorn", "-b", "0.0.0.0:8000", "learningco.wsgi:application", "--reload", "--enable-stdio-inheritance"]
+CMD ["gunicorn", "-b", "0.0.0.0:8000", "sealedair.wsgi:application", "--reload", "--enable-stdio-inheritance"]
