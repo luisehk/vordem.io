@@ -36,7 +36,7 @@ class Profile(models.Model):
         placeholder_image=OnDiscPlaceholderImage(
             path=os.path.join(
                 settings.BASE_DIR,
-                'static/imgs/profile-neutral.png'
+                'static/img/avatar.png'
             )))
     ppoi = PPOIField('Image PPOI', default=(0.5, 0.5))
 
