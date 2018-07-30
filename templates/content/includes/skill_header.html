@@ -1,9 +1,0 @@
-{% if skill %}
-  <h2 class="item-title">
-    {{ skill.name }} <a href="{% url 'admin:skill-update' skill.id %}">{% include 'admin/includes/components/edit_button.html' %}</a>
-  </h2>
-{% elif object.skill %}
-  <h2 class="item-title">
-    {{ object.skill.name }} <a href="{% url 'admin:skill-update' object.skill.id %}">{% include 'admin/includes/components/edit_button.html' %}</a>
-  </h2>
-{% endif %}

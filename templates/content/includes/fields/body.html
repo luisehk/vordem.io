@@ -1,5 +1,0 @@
-{% load static %}
-
-{% with field_name='body' field_label='Texto' field_value=form.body.value|default:''|safe %}
-  {% include 'content/includes/fields/rich_text.html' %}
-{% endwith %}
