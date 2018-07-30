@@ -2,6 +2,10 @@
 {% load static %}
 {% load i18n %}
 
+{% block splash_description %}
+  Por favor ingresa tus datos de acceso.
+{% endblock %}
+
 {% block content %}
   <form action="{% url 'account_login' %}" method="POST">
     {% csrf_token %}

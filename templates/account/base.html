@@ -27,7 +27,10 @@
             <div class="card card-border-color card-border-color-primary">
               <div class="card-header">
                 <img src="{% static 'img/logo.png' %}" alt="logo" width="102" class="logo-img">
-                <span class="splash-description">Por favor ingresa tus datos de acceso.</span>
+                <span class="splash-description">
+                  {% block splash_description %}
+                  {% endblock %}
+                </span>
               </div>
 
               <div class="card-body">
