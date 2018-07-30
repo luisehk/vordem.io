@@ -32,13 +32,13 @@
             <ul class="nav navbar-nav float-right be-user-nav">
               <li class="nav-item dropdown">
                 <a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle">
-                  <img src="{% static 'img/avatar4.png' %}" alt="Avatar">
-                  <span class="user-name">Miguel Mejia</span>
+                  <img src="{{ user.profile.avatar.crop.128x128 }}" alt="Avatar">
+                  <span class="user-name">{% firstof user.get_full_name user.email %}</span>
                 </a>
 
                 <div role="menu" class="dropdown-menu">
                   <div class="user-info">
-                    <div class="user-name">Miguel Mejia</div>
+                    <div class="user-name">{% firstof user.get_full_name user.email %}</div>
                   </div>
                   <a href="#" class="dropdown-item">
                     <span class="icon mdi mdi-face"></span> Mi cuenta
