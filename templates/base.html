@@ -30,12 +30,25 @@
           </div>
           <div class="be-right-navbar">
             <ul class="nav navbar-nav float-right be-user-nav">
-              <li class="nav-item dropdown"><a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle"><img src="{% static 'img/avatar4.png' %}" alt="Avatar"><span class="user-name">Miguel Mejia</span></a>
+              <li class="nav-item dropdown">
+                <a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle">
+                  <img src="{% static 'img/avatar4.png' %}" alt="Avatar">
+                  <span class="user-name">Miguel Mejia</span>
+                </a>
+
                 <div role="menu" class="dropdown-menu">
                   <div class="user-info">
                     <div class="user-name">Miguel Mejia</div>
-                  </div><a href="#" class="dropdown-item"><span class="icon mdi mdi-face"></span> Mi cuenta</a>
-                  <a href="#tab1" role="button" aria-expanded="false" class="dropdown-item be-toggle-right-sidebar"><span class="icon mdi mdi-settings"></span> Ajustes</a><a href="pages-login.html" class="dropdown-item"><span class="icon mdi mdi-power"></span> Cerrar sesión</a>
+                  </div>
+                  <a href="#" class="dropdown-item">
+                    <span class="icon mdi mdi-face"></span> Mi cuenta
+                  </a>
+                  <a href="#tab1" role="button" aria-expanded="false" class="dropdown-item be-toggle-right-sidebar">
+                    <span class="icon mdi mdi-settings"></span> Ajustes
+                  </a>
+                  <a href="{% url 'account_logout' %}" onclick="return confirm('¿Estás seguro de querer cerrar sesión?');" class="dropdown-item">
+                    <span class="icon mdi mdi-power"></span> Cerrar sesión
+                  </a>
                 </div>
               </li>
             </ul>
