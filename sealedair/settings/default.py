@@ -50,11 +50,9 @@ INSTALLED_APPS = [
 
     'sealedair.apps.admin',
     'sealedair.apps.content',
-    'sealedair.apps.companies',
     'sealedair.apps.messaging.email',
     'sealedair.apps.messaging.firebase',
     'sealedair.apps.progress',
-    'sealedair.apps.score',
     'sealedair.apps.users',
     'storages',
 ]
