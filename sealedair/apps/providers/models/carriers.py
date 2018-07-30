@@ -18,6 +18,8 @@ class Carrier(models.Model):
         default='#FF0000')
 
     class Meta:
+        verbose_name = 'carrier'
+        verbose_name_plural = 'carriers'
         ordering = ['name']
 
     def __str__(self):
@@ -34,6 +36,8 @@ class Truck(models.Model):
         max_length=4)
 
     class Meta:
+        verbose_name = 'camión'
+        verbose_name_plural = 'camiones'
         ordering = ['code']
 
     def __str__(self):

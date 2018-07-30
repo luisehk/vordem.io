@@ -49,6 +49,8 @@ class Shipment(models.Model):
         max_length=3, choices=DELAY_REASONS)
 
     class Meta:
+        verbose_name = 'embarque'
+        verbose_name_plural = 'embarques'
         ordering = ['start_datetime']
 
 
@@ -67,6 +69,10 @@ class Comment(models.Model):
         verbose_name='Fecha y hora',
         auto_now_add=True)
     body = models.TextField()
+
+    class Meta:
+        verbose_name = 'comentario'
+        verbose_name_plural = 'comentarios'
 
 
 class Status(models.Model):
@@ -113,3 +119,7 @@ class Status(models.Model):
     end_datetime = models.DateTimeField(
         verbose_name='Fin',
         null=True)
+
+    class Meta:
+        verbose_name = 'estatus'
+        verbose_name_plural = 'estatus'

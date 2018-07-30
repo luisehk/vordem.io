@@ -27,6 +27,10 @@ class UserNotificationsConfig(models.Model):
         verbose_name='Por SMS',
         default=False)
 
+    class Meta:
+        verbose_name = 'Configuración de alertas'
+        verbose_name_plural = 'Configuraciones de alertas'
+
 
 class Notification(models.Model):
     NEW_SHIPMENT = 'NSH'
@@ -64,6 +68,8 @@ class Notification(models.Model):
         default=False)
 
     class Meta:
+        verbose_name = 'notificacion'
+        verbose_name_plural = 'notificaciones'
         ordering = ['datetime']
 
     def __str__(self):

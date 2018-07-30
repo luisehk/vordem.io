@@ -43,6 +43,10 @@ class Profile(models.Model):
     # contact info
     phone = models.CharField(_('Phone'), max_length=100, blank=True)
 
+    class Meta:
+        verbose_name = 'perfil'
+        verbose_name_plural = 'perfiles'
+
     def __str__(self):
         return self.get_full_name() or self.user.email
 

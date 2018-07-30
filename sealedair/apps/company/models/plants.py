@@ -18,6 +18,8 @@ class Plant(models.Model):
         default='#FF0000')
 
     class Meta:
+        verbose_name = 'planta'
+        verbose_name_plural = 'plantas'
         ordering = ['name']
 
     def __str__(self):
