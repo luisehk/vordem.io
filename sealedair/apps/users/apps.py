@@ -5,6 +5,7 @@ from django.apps import AppConfig
 class UsersConfig(AppConfig):
     name = 'sealedair.apps.users'
     label = 'sealedair_users'
+    verbose_name = 'Usuarios'
 
     def ready(self):
         from django.contrib.auth import get_user_model
