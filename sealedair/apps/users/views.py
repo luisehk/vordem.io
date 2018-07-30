@@ -7,4 +7,4 @@ class UserHome(LoginRequiredMixin, RedirectView):
     query_string = True
 
     def get_redirect_url(self, *args, **kwargs):
-        return '/company/'
+        return '/shipments/'

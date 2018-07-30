@@ -1,7 +1,7 @@
 from extra_views import CreateWithInlinesView, UpdateWithInlinesView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import ListView, DeleteView
-from django.views.generic.base import ContextMixin
+from django.views.generic.base import ContextMixin, TemplateView
 from ...models import Shipment
 
 
@@ -11,6 +11,14 @@ class ShipmentGenericView(LoginRequiredMixin, ContextMixin):
 
 class ShipmentFormView(ShipmentGenericView):
     fields = ['name', 'code', 'color']
+
+
+class Dashboard(ShipmentGenericView, TemplateView):
+    template_name = 'shipments/dashboard.html'
+
+    def get_context_data(self, **kwargs):
+        ctx = super().get_context_data(**kwargs)
+        return ctx
 
 
 class ShipmentCreate(ShipmentFormView, CreateWithInlinesView):  # noqa

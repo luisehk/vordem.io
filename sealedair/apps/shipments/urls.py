@@ -2,9 +2,12 @@ from django.views.generic.base import RedirectView
 from django.urls import reverse_lazy
 from django.conf.urls import url
 from .views.web.shipments import (
-    ShipmentList, ShipmentCreate, ShipmentUpdate, ShipmentDelete)
+    Dashboard, ShipmentList, ShipmentCreate,
+    ShipmentUpdate, ShipmentDelete)
 
 urlpatterns = [
+    url(r'^dashboard$',
+        Dashboard.as_view(), name="dashboard"),
     url(r'^shipments$',
         ShipmentList.as_view(), name="shipment-list"),
     url(r'^shipments/add/$',
@@ -15,6 +18,6 @@ urlpatterns = [
         ShipmentDelete.as_view(), name='shipment-delete'),
 
     url(r'^$', RedirectView.as_view(
-        url=reverse_lazy('shipments:shipment-list')
+        url=reverse_lazy('shipments:dashboard')
     ), name='index'),
 ]
