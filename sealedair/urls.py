@@ -5,9 +5,13 @@ from django.conf.urls import url, include
 from allauth.account.views import confirm_email
 from sealedair.apps.users.views import UserHome
 from django.conf import settings
+from . import admin
 
 
 urlpatterns = [
+    # admin platform
+    url(r'^admin/', admin.site.urls),
+
     # django defaults
     url(r'^accounts/', include('allauth.urls')),
 
