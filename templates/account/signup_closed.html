@@ -1,11 +1,11 @@
 {% extends "account/base.html" %}
 
-{% load i18n %}
-
-{% block head_title %}{% trans "Sign Up Closed" %}{% endblock %}
-
 {% block content %}
-<h1>{% trans "Sign Up Closed" %}</h1>
+  <p>Lo sentimos. El registro de nuevas cuentas se encuentra deshabilitado.</p>
 
-<p>{% trans "We are sorry, but the sign up is currently closed." %}</p>
+  <div class="form-group login-submit">
+    <a href="/">
+      <button data-dismiss="modal" type="submit" class="btn btn-primary btn-xl">Regresar</button>
+    </a>
+  </div>
 {% endblock %}

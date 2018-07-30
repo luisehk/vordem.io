@@ -5,4 +5,5 @@ User = get_user_model()
 
 
 class AccountAdapter(DefaultAccountAdapter):
-    pass
+    def is_open_for_signup(self, request):
+        return False
