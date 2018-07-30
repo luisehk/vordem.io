@@ -66,25 +66,5 @@ VERSATILEIMAGEFIELD_RENDITION_KEY_SETS = {
         ('crop__128x128', 'crop__128x128'),
         ('crop__44x44', 'crop__44x44'),
         ('crop__42x42', 'crop__42x42'),
-    ],
-    'company_avatar': [
-        ('full_size', 'url'),
-        ('crop__400x400', 'crop__400x400'),
-        ('crop__280x280', 'crop__280x280'),
-        ('crop__128x128', 'crop__128x128'),
-        ('crop__44x44', 'crop__44x44'),
-        ('crop__42x42', 'crop__42x42'),
-    ],
-    'lesson_thumbnail': [
-        ('full_size', 'url'),
-        ('crop__1100x680', 'crop__1100x680'),
-        ('crop__550x340', 'crop__550x340'),
-        ('crop__275x170', 'crop__275x170'),
-        ('crop__137x85', 'crop__137x85'),
     ]
 }
-
-EMBED_VIDEO_BACKENDS = (
-    'embed_video.backends.YoutubeBackend',
-    'embed_video.backends.VimeoBackend',
-)
