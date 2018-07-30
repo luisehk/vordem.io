@@ -39,7 +39,7 @@ stages:
 pep8:
   stage: pep8
   script:
-    - flake8 --exclude='.git,venv,*migrations*,webapps/canvas' .
+    - flake8 --exclude='.git,venv,*migrations*,webapps/canvas,static/lib' .
 
 radon:
   stage: radon
