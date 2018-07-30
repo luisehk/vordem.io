@@ -11,7 +11,6 @@ SHOW_DEBUG_TOOLBAR = os.environ.get(
 INSTALLED_APPS = [
     'dal',
     'dal_select2',
-    'polymorphic',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -33,26 +32,20 @@ INSTALLED_APPS = [
     'rest_framework_swagger',
 
     'django_filters',
-    'django_comments',
     'taggit',
     'taggit_templatetags2',
 
-    'ckeditor',
     'colorfield',
     'versatileimagefield',
-    'embed_video',
 
     'djcelery_email',
-    'fcm',
     'corsheaders',
 
-    'notifications',
-
-    'sealedair.apps.admin',
-    'sealedair.apps.content',
+    'sealedair.apps.company',
+    'sealedair.apps.providers',
+    'sealedair.apps.shipments',
     'sealedair.apps.messaging.email',
-    'sealedair.apps.messaging.firebase',
-    'sealedair.apps.progress',
+    'sealedair.apps.notifications',
     'sealedair.apps.users',
     'storages',
 ]

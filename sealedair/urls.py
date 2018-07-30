@@ -21,19 +21,15 @@ urlpatterns = [
 
     # api
     url(r'^api/', include(
-        'sealedair.apps.messaging.firebase.api.urls')),
-    url(r'^api/', include(
         'sealedair.apps.users.api.urls')),
 
     # web application
-    url(r'^admin/', include(
-        'sealedair.apps.admin.urls', namespace='admin')),
-    url(r'^content/', include(
-        'sealedair.apps.content.urls', namespace='content')),
-    url(r'^companies/', include(
-        'sealedair.apps.companies.urls', namespace='companies')),
-    url(r'^progress/', include(
-        'sealedair.apps.progress.urls', namespace='progress')),
+    url(r'^company/', include(
+        'sealedair.apps.company.urls', namespace='company')),
+    url(r'^providers/', include(
+        'sealedair.apps.providers.urls', namespace='providers')),
+    url(r'^shipments/', include(
+        'sealedair.apps.shipments.urls', namespace='shipments')),
     url(r'^users/', include(
         'sealedair.apps.users.urls', namespace='users')),
 

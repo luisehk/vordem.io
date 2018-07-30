@@ -40,8 +40,3 @@ if os.environ.get('EMAIL_HOST_USER', ''):
     EMAIL_TIMEOUT = int(os.environ.get('EMAIL_TIMEOUT', '30'))
     EMAIL_USE_TLS = os.environ.get('EMAIL_USE_TLS', 'True').lower() == 'true'
     EMAIL_USE_SSL = os.environ.get('EMAIL_USE_SSL', 'False').lower() == 'true'
-
-# push notifications
-FCM_APIKEY = os.environ.get('FCM_APIKEY', '')
-FCM_DEVICE_MODEL = 'sealedair_firebase.CustomDevice'
-FCM_MAX_RECIPIENTS = 1000
