@@ -60,6 +60,9 @@ class Shipment(models.Model):
         verbose_name_plural = 'embarques'
         ordering = ['start_datetime']
 
+    def __str__(self):
+        return self.carrier.code + self.code
+
 
 class Comment(models.Model):
     shipment = models.ForeignKey(
@@ -131,3 +134,6 @@ class Status(models.Model):
     class Meta:
         verbose_name = 'estatus'
         verbose_name_plural = 'estatus'
+
+    def __str__(self):
+        return str(self.shipment) + ' - ' + self.get_checkpoint_display()
