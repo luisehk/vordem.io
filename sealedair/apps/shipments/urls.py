@@ -1,9 +1,11 @@
 from django.views.generic.base import RedirectView
+from rest_framework.routers import DefaultRouter
 from django.urls import reverse_lazy
 from django.conf.urls import url
 from .views.web.shipments import (
     Dashboard, ShipmentList, ShipmentCreate,
     ShipmentUpdate, ShipmentDelete)
+from .views.rest.shipments import ShipmentViewSet
 
 urlpatterns = [
     url(r'^dashboard$',
@@ -21,3 +23,7 @@ urlpatterns = [
         url=reverse_lazy('shipments:dashboard')
     ), name='index'),
 ]
+
+router = DefaultRouter()
+router.register(r'api/shipments', ShipmentViewSet)
+urlpatterns += router.urls
