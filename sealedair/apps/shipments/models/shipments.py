@@ -1,6 +1,6 @@
 from django.contrib.auth import get_user_model
 from django.db import models
-from ...providers.models import Carrier
+from ...providers.models import Truck
 from ...company.models import Plant
 
 
@@ -17,15 +17,15 @@ class Shipment(models.Model):
         (DELAY_CARRIER, 'Problema con carrier',),
     )
 
-    carrier = models.ForeignKey(
-        Carrier,
-        verbose_name='Carrier',
-        on_delete=models.CASCADE,
-        related_name='shipments')
+    truck = models.ForeignKey(
+        Truck,
+        verbose_name='Trailer',
+        on_delete=models.PROTECT,
+        related_name='shipments',)
     plant = models.ForeignKey(
         Plant,
         verbose_name='Planta destino',
-        on_delete=models.CASCADE,
+        on_delete=models.PROTECT,
         related_name='shipments')
     code = models.CharField(
         verbose_name='Código',
@@ -61,7 +61,7 @@ class Shipment(models.Model):
         ordering = ['start_datetime']
 
     def __str__(self):
-        return self.carrier.code + self.code
+        return self.truck.carrier.code + self.code
 
 
 class Comment(models.Model):

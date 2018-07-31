@@ -33,7 +33,7 @@ class Truck(models.Model):
         on_delete=models.CASCADE)
     code = models.CharField(
         verbose_name='Código',
-        max_length=4)
+        max_length=15)
 
     class Meta:
         verbose_name = 'camión'
