@@ -5,19 +5,19 @@ Vue.component('shipment-card', {
     '<div class="card-body padding-5">' +
       '<div class="row no-margin shipment-title">' +
         '<div class="col-12 no-padding">' +
-          '<span class="badge badge-carrier badge-ipt" style="background-color: ${shipment.plant.color};">' +
+          '<span class="badge badge-carrier badge-ipt" :style="plantStyle">' +
           ' ${shipment.plant.code}</span>' +
           ' <strong>#${shipment.code}</strong>' +
         '</div>' +
       '</div>' +
       '<div class="row no-margin">' +
-        '<div class="col-12 no-padding" style="color: ${shipment.truck.carrier.color}">' +
+        '<div class="col-12 no-padding" :style="carrierStyle">' +
           '<span class="icon mdi mdi-account"></span>' +
           ' ${shipment.truck.carrier.code}' +
         '</div>' +
       '</div>' +
       '<div class="row no-margin">' +
-        '<div class="col-12 no-padding" style="color: ${shipment.truck.carrier.color}">' +
+        '<div class="col-12 no-padding" :style="carrierStyle">' +
           '<span class="icon mdi mdi-truck"></span>' +
           ' ${shipment.truck.code} <br />' +
         '</div>' +
@@ -31,7 +31,17 @@ Vue.component('shipment-card', {
         '</div>' +
       '</div>' +
     '</div>' +
-  '</div>'
+  '</div>',
+  data: function() {
+    return {
+      plantStyle: {
+        color: shipment.plant.color
+      },
+      carrierStyle: {
+        color: shipment.truck.carrier.color
+      }
+    }
+  }
 });
 
 Vue.component('shipments-column', {
@@ -50,28 +60,31 @@ Vue.component('shipments-column', {
     }
   },
   created: function () {
-    this.loadShipments();
+    this.loadShipmentsInLoop();
   },
   methods: {
+    loadShipmentsInLoop: function() {
+      var self = this;
+
+      // load it the first time
+      this.loadShipments();
+
+      // load every 5 seconds
+      setInterval(function() {
+        self.loadShipments.call(self);
+      }, 5000);
+    },
     loadShipments: function() {
       var self = this;
 
       $.ajax({
         url: '/shipments/api/shipments/?current_status__checkpoint=' + this.checkpoint,
         type: 'GET',
-        tryCount : 0,
-        retryLimit : 3,
         success : function(json) {
-          // load the data
           self.loadData.call(self, json.results);
         },
         error : function(xhr, textStatus, errorThrown ) {
-          this.tryCount++;
-
-          if (this.tryCount <= this.retryLimit)
-            $.ajax(this); // try again
-          else
-            console.error('error loading data'); // handle error
+          console.error('error loading data');
         }
       });
     },
