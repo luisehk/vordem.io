@@ -1,2 +1,134 @@
 {% extends 'base.html' %}
 {% load static %}
+
+
+{% block content %}
+  <div class="page-head">
+    <h2 class="page-head-title">Embarques</h2>
+    <nav aria-label="breadcrumb" role="navigation">
+      <ol class="breadcrumb page-head-nav">
+        <li class="breadcrumb-item"><a href="#">Inicio</a></li>
+        <li class="breadcrumb-item active">Embarques</li>
+      </ol>
+    </nav>
+  </div>
+
+  <div id="shipments-dashboard" class="main-content container-fluid">
+    <div class="row">
+      <div class="col-12 col-lg-4 col-xl-4">
+                  <div class="widget widget-tile">
+                    <div id="spark1" class="chart sparkline"></div>
+                    <div class="data-info">
+                      <div class="desc">Embarques</div>
+                      <div class="value"><span class="indicator indicator-positive mdi mdi-chevron-up"></span><span data-toggle="counter" data-end="113" class="number">0</span>
+                      </div>
+                    </div>
+                  </div>
+      </div>
+      <div class="col-12 col-lg-4 col-xl-4">
+                  <div class="widget widget-tile">
+                    <div id="spark2" class="chart sparkline"></div>
+                    <div class="data-info">
+                      <div class="desc">Retrasados</div>
+                      <div class="value"><span class="indicator indicator-negative mdi mdi-chevron-up"></span><span data-toggle="counter" data-end="21" class="number">0</span>
+                      </div>
+                    </div>
+                  </div>
+      </div>
+      <div class="col-12 col-lg-4 col-xl-4">
+                  <div class="widget widget-tile">
+                    <div id="spark3" class="chart sparkline"></div>
+                    <div class="data-info">
+                      <div class="desc">A tiempo</div>
+                      <div class="value"><span class="indicator indicator-positive mdi mdi-chevron-up"></span><span data-toggle="counter" data-end="92" class="number">0</span>
+                      </div>
+                    </div>
+                  </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-12 col-lg-4 col-xl-4">
+        <div class="card card-border card-contrast">
+          <div class="card-header card-header-contrast">México</div>
+          <div class="card-body">
+
+            <div class="row">
+              <div class="col-6">
+                <h5 class="text-center"><strong>En tránsito</strong></h5>
+
+                <shipments-column checkpoint="MTR">
+                </shipments-column>
+              </div>
+
+              <div class="col-6">
+                <h5 class="text-center"><strong>Carrier mexicano</strong></h5>
+
+                <shipments-column checkpoint="MCA">
+                </shipments-column>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 col-lg-4 col-xl-4">
+        <div class="card card-border card-contrast">
+          <div class="card-header card-header-contrast">Laredo</div>
+          <div class="card-body">
+
+            <div class="row">
+              <div class="col-6">
+                <h5 class="text-center"><strong>Cruzando</strong></h5>
+
+                <shipments-column checkpoint="BCR">
+                </shipments-column>
+              </div>
+
+              <div class="col-6">
+                <h5 class="text-center"><strong>US Carrier</strong></h5>
+
+                <shipments-column checkpoint="BCA">
+                </shipments-column>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 col-lg-4 col-xl-4">
+
+        <div class="card card-border card-contrast">
+          <div class="card-header card-header-contrast">Destino</div>
+          <div class="card-body">
+
+            <div class="row">
+              <div class="col-6">
+                <h5 class="text-center"><strong>En tránsito</strong></h5>
+
+                <shipments-column checkpoint="UTR">
+                </shipments-column>
+              </div>
+
+              <div class="col-6">
+                <h5 class="text-center"><strong>Entregado</strong></h5>
+
+                <shipments-column checkpoint="UDE" class="delivered">
+                </shipments-column>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
+
+{% block extra_scripts %}
+  <script src="{% static 'lib/vue/vue.js' %}" type="text/javascript"></script>
+  <script src="{% static 'js/dashboard.js' %}" type="text/javascript"></script>
+{% endblock %}
