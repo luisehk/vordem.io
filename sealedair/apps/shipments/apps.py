@@ -13,5 +13,5 @@ class ShipmentsConfig(AppConfig):
         from sealedair.apps.shipments.signals import (
             create_shipment_status, set_status_as_current)
 
-        post_save.connect(set_status_as_current, sender=Shipment)
-        post_save.connect(create_shipment_status, sender=Status)
+        post_save.connect(set_status_as_current, sender=Status)
+        post_save.connect(create_shipment_status, sender=Shipment)
