@@ -17,9 +17,10 @@ def set_status_as_current(sender, **kwargs):
         shipment = status.shipment
 
         # set previous status arrival time
-        previous_status = shipment.current_status
-        previous_status.end_datetime = timezone.now()
-        previous_status.save()
+        if shipment.current_status:
+            previous_status = shipment.current_status
+            previous_status.end_datetime = timezone.now()
+            previous_status.save()
 
         # set new status as current
         shipment.current_status = status
