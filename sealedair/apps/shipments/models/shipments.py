@@ -134,6 +134,7 @@ class Status(models.Model):
     class Meta:
         verbose_name = 'estatus'
         verbose_name_plural = 'estatus'
+        unique_together = ('shipment', 'checkpoint')
 
     def __str__(self):
         return str(self.shipment) + ' - ' + self.get_checkpoint_display()
