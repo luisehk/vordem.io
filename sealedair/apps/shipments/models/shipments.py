@@ -125,7 +125,8 @@ class Status(models.Model):
         auto_now_add=True)
     end_datetime = models.DateTimeField(
         verbose_name='Fin',
-        null=True)
+        null=True,
+        blank=True)
 
     class Meta:
         verbose_name = 'estatus'
