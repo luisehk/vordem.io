@@ -32,15 +32,14 @@ Vue.component('shipment-card', {
       '</div>' +
     '</div>' +
   '</div>',
-  data: function() {
-    return {
-      plantStyle: {
-        color: shipment.plant.color
-      },
-      carrierStyle: {
-        color: shipment.truck.carrier.color
-      }
-    }
+
+  computed: {
+    plantStyle: function() {
+      return 'background-color: ' + this.shipment.plant.color;
+    },
+    carrierStyle: function() {
+      return 'color: ' + this.shipment.truck.carrier.color;
+    },
   }
 });
 
