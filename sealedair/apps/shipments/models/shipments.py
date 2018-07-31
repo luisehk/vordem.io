@@ -34,19 +34,26 @@ class Shipment(models.Model):
         'Status',
         verbose_name='Estado actual',
         on_delete=models.PROTECT,
-        related_name='current_status_shipments')
+        related_name='current_status_shipments',
+        null=True,
+        blank=True)
     start_datetime = models.DateTimeField(
         verbose_name='Salida',
         auto_now_add=True)
     arrival_datetime = models.DateTimeField(
         verbose_name='Llegada',
-        null=True)
+        null=True,
+        blank=True)
     estimated_arrival_datetime = models.DateTimeField(
         verbose_name='ETA',
-        null=True)
+        null=True,
+        blank=True)
     delay_reason = models.CharField(
         verbose_name='Razón de retraso',
-        max_length=3, choices=DELAY_REASONS)
+        max_length=3,
+        choices=DELAY_REASONS,
+        null=True,
+        blank=True)
 
     class Meta:
         verbose_name = 'embarque'
