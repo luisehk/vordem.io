@@ -28,6 +28,7 @@ node_modules/
 
 # dont ignore node dist
 !webapps/canvas/dist/
+!static/lib/
 
 # PyInstaller
 #  Usually these files are written by a python script from a template
