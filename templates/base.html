@@ -102,7 +102,7 @@
                 <ul class="sidebar-elements">
                   <li class="divider">Menu</li>
                   <li class="{% if request.resolver_match.url_name == 'dashboard' %}active{% endif %}">
-                    <a href="{% url 'shipments:dashboard' %}"><i class="icon mdi mdi-home"></i><span>Dashboard</span></a>
+                    <a href="{% url 'shipments:dashboard' %}" title="Dashboard"><i class="icon mdi mdi-home"></i><span>Dashboard</span></a>
                   </li>
                   <li class="{% if request.resolver_match.url_name == 'shipment-listar' %}active{% endif %}">
                     <a href="{% url 'shipments:shipment-listar' %}" title="Embarques"><i class="icon mdi mdi-truck"></i><span>Embarques</span>
