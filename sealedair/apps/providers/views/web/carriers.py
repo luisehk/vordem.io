@@ -4,6 +4,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import ListView, DeleteView
 from django.views.generic.base import ContextMixin
 from ...models import Carrier
+from django import forms
 
 
 class CarrierGenericView(LoginRequiredMixin, ContextMixin):

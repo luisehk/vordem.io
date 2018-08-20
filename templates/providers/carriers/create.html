@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load widget_tweaks %}
 {% load static %}
 
 {% block content %}
@@ -20,11 +21,28 @@
                 <div class="card-body">
                     <form method="POST" data-parsley-validate="" novalidate="">
                         {% csrf_token %}
-                        {{form.as_p}}
-                        <div class="col-sm-6 pl-0">
+                        <div class="form-group pt-2">
+                            <label for="{{ field.id_for_name }}">{{ form.name.label_tag }} *</label>
+                            {% render_field form.name class="form-control" placeholder="Introduzca un nombre para el carrier" %}
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="{{ field.id_for_code }}">{{ form.code.label_tag }} *</label>
+                            {% render_field form.code class="form-control" placeholder="Introduzca un código para el carrier" %}
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="{{ field.id_for_color }}">{{ form.color.label_tag }}</label>
+                            {{ form.color }}
+                        </div>
+                        <br>
+                        <div class="col-sm-12 pl-0">
+                            <p class="text-left info">
+                                (*) campos requeridos
+                            </p>
                             <p class="text-right">
+                                <a href="{% url 'providers:carrier-list' %}" class="btn btn-space btn-secondary"> Cancelar</a>
                                 <button type="submit" class="btn btn-space btn-primary">Guardar</button>
-                                <button class="btn btn-space btn-secondary">Cancelar</button>
                             </p>
                         </div>
                     </form>
@@ -33,4 +51,9 @@
         </div>
     </div>
 </div>
+{% endblock %}
+{% block extra_scripts %}
+<script>
+  $("#id_color").addClass('form-control');
+</script>
 {% endblock %}

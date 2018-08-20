@@ -1,3 +1,8 @@
+.info {
+    font-style: italic;
+    font-size: 12px;
+}
+
 .dataTables_length select {
     width: 50px !important;
 }
