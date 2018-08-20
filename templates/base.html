@@ -19,6 +19,7 @@
     <link rel="stylesheet" type="text/css" href="{% static 'lib/jquery.vectormap/jquery-jvectormap-1.2.2.css' %}"/>
     <link rel="stylesheet" type="text/css" href="{% static 'lib/jqvmap/jqvmap.min.css' %}"/>
     <link rel="stylesheet" type="text/css" href="{% static 'lib/datetimepicker/css/bootstrap-datetimepicker.min.css' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'lib/datatables/datatables.net-bs4/css/dataTables.bootstrap4.css' %}"/>
     <link rel="stylesheet" href="{% static 'css/app.css' %}" type="text/css"/>
   </head>
   <body>
@@ -99,7 +100,12 @@
               <div class="left-sidebar-content">
                 <ul class="sidebar-elements">
                   <li class="divider">Menu</li>
-                  <li class="active"><a href="index.html"><i class="icon mdi mdi-truck"></i><span>Embarques</span></a>
+                  <li class="{% if request.resolver_match.url_name == 'dashboard' %}active{% endif %}">
+                    <a href="{% url 'shipments:dashboard' %}"><i class="icon mdi mdi-home"></i><span>Dashboard</span></a>
+                  </li>
+                  <li class="{% if request.resolver_match.url_name == 'shipment-listar' %}active{% endif %}">
+                    <a href="{% url 'shipments:shipment-listar' %}" title="Embarques"><i class="icon mdi mdi-truck"></i><span>Embarques</span>
+                    </a>
                   </li>
                   <li><a href="#"><i class="icon mdi mdi-pin"></i><span>Destinos</span></a>
                   </li>
@@ -194,8 +200,8 @@
       $(document).ready(function(){
       	//initialize the javascript
       	App.init();
-      	App.dashboard();
-
+        App.dashboard();
+        
       });
     </script>
   </body>
