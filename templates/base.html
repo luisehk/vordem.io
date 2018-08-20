@@ -106,7 +106,7 @@
                     <a href="{% url 'shipments:dashboard' %}" title="Dashboard"><i class="icon mdi mdi-home"></i><span>Dashboard</span></a>
                   </li>
                   <li class="{% if request.resolver_match.url_name == 'shipment-listar' %}active{% endif %}">
-                    <a href="{% url 'shipments:shipment-listar' %}" title="Embarques"><i class="fas fa-shipping-fast"></i></i><span>Embarques</span>
+                    <a href="{% url 'shipments:shipment-listar' %}" title="Embarques"><i class="fas fa-shipping-fast"></i><span>Embarques</span>
                     </a>
                   </li>
                   <li class="{% if request.resolver_match.url_name == 'carrier-list' %}active{% endif %}"><a href="{% url 'providers:carrier-list' %}" title="Carriers"><i class="icon mdi mdi-truck"></i><span>Carriers</span></a>
@@ -196,6 +196,8 @@
     <script src="{% static 'lib/jquery-ui/jquery-ui.min.js' %}" type="text/javascript"></script>
     <script src="{% static 'lib/jqvmap/jquery.vmap.min.js' %}" type="text/javascript"></script>
     <script src="{% static 'lib/jqvmap/maps/jquery.vmap.world.js' %}" type="text/javascript"></script>
+    <script src="{% static 'lib/parsley/parsley.min.js' %}" type="text/javascript"></script>
+    <script src="{% static 'lib/parsley/i18n/es.js' %}"></script>
     <script src="{% static 'js/app-dashboard.js' %}" type="text/javascript"></script>
     <script src="{% static 'js/jscolor.js' %}" type="text/javascript"></script>
     {% block extra_scripts %}{% endblock %}

@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="page-head">
+    <h2 class="page-head-title">Carriers </h2>
+    <nav aria-label="breadcrumb" role="navigation">
+        <ol class="breadcrumb page-head-nav">
+            <li class="breadcrumb-item"><a href="#">Inicio</a></li>
+            <li class="breadcrumb-item active">Nuevo carrier</li>
+        </ol>
+    </nav>
+</div>
+<div class="main-content container-fluid">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card card-border-color card-border-color-primary">
+                <div class="card-header card-header-divider">Agregar nuevo carrier<span class="card-subtitle"></div>
+
+                <div class="card-body">
+                    <form method="POST" data-parsley-validate="" novalidate="">
+                        {% csrf_token %}
+                        {{form.as_p}}
+                        <div class="col-sm-6 pl-0">
+                            <p class="text-right">
+                                <button type="submit" class="btn btn-space btn-primary">Guardar</button>
+                                <button class="btn btn-space btn-secondary">Cancelar</button>
+                            </p>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
