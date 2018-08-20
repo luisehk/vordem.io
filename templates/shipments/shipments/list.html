@@ -31,6 +31,7 @@
                   <th>Planta</th>
                   <th>Código</th>
                   <th>Estatus</th>
+                  <th>Checkpoint</th>
                   <th>Salida</th>
                   <th>Llegada</th>
                 </tr>
@@ -42,6 +43,7 @@
                     <td>{{shipment.plant}}</td>
                     <td>{{shipment.code}}</td>
                     <td>{{shipment.current_status.get_time_status_display}}</td>
+                    <td>{{shipment.current_status.get_checkpoint_display}}</td>
                     <td class="center">{{shipment.start_datetime}}</td>
                     {% if shipment.arrival_datetime is None %}
                       <td class="center">---</td> 
