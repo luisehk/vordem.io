@@ -14,7 +14,5 @@ urlpatterns = [
     url(r'^plants/(?P<pk>[0-9]+)/delete/$',
         PlantDelete.as_view(), name='plant-delete'),
 
-    url(r'^$', RedirectView.as_view(
-        url=reverse_lazy('company:plant-list')
-    ), name='index'),
+
 ]

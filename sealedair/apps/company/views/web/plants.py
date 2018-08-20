@@ -13,11 +13,11 @@ class PlantFormView(PlantGenericView):
     fields = ['name', 'code', 'color']
 
 
-class PlantCreate(PlantFormView, CreateWithInlinesView):  # noqa
+class PlantCreate(PlantFormView, CreateWithInlinesView):
     template_name = 'company/plants/create.html'
 
 
-class PlantUpdate(PlantFormView, UpdateWithInlinesView):  # noqa
+class PlantUpdate(PlantFormView, UpdateWithInlinesView):
     template_name = 'company/plants/update.html'
 
 
@@ -27,4 +27,4 @@ class PlantDelete(PlantGenericView, DeleteView):
 
 class PlantList(PlantGenericView, ListView):
     template_name = 'company/plants/list.html'
-    queryset = Plant.objects.all()
+    queryset = Plant.objects.all().order_by('pk')
