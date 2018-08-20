@@ -2,17 +2,17 @@
     width: 50px !important;
 }
 
-#table_list_shipment_length label {
+.dataTables_length label {
     padding-left: 20px;
 }
 
-#table_list_shipment_filter label {
+.dataTables_filter label {
     padding-right: 20px;
 }
 
-#table_list_shipment_paginate .pagination {
+.dataTables_paginate .pagination {
     padding: 20px 20px 20px 0;
 }
-#table_list_shipment_info {
+.dataTables_info {
     padding: 20px 0 0 20px;
 }
