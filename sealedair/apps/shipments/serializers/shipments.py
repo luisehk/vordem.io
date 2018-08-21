@@ -1,8 +1,11 @@
 from rest_framework import serializers
+from django.db import transaction
 from ..models import Shipment, Comment, Status
 from ...users.api.serializers import UserSerializer
-from ...providers.serializers.carriers import TruckSerializer
+from ...providers.serializers.carriers import (
+    TruckSerializer, TruckCreationSerializer)
 from ...company.serializers.plants import PlantSerializer
+from ...providers.models import Truck
 
 
 class CommentSerializer(serializers.ModelSerializer):
@@ -43,7 +46,7 @@ class ShipmentSerializer(serializers.ModelSerializer):
 
 
 class ShipmentCreationSerializer(serializers.ModelSerializer):
-    truck = TruckSerializer()
+    truck = TruckCreationSerializer()
 
     class Meta:
         model = Shipment
@@ -51,3 +54,17 @@ class ShipmentCreationSerializer(serializers.ModelSerializer):
             'id', 'code',
             'truck', 'plant',
         ]
+
+    def create(self, validated_data):
+        truck = validated_data.pop('truck')
+
+        with transaction.atomic():
+            # create truck first
+            truck, _ = Truck.objects.get_or_create(
+                code=truck['code'],
+                carrier=truck['carrier'])
+
+            # now add it back to data
+            return Shipment.objects.create(
+                **{**validated_data, **{'truck_id': truck.id}}  # noqa
+            )
