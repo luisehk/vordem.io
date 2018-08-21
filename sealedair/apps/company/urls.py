@@ -17,5 +17,5 @@ urlpatterns = [
 ]
 
 router = DefaultRouter()
-router.register(r'api/plants', PlantViewSet)
+router.register(r'^api/plants$', PlantViewSet)
 urlpatterns += router.urls
