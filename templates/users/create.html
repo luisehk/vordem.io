@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+{% load widget_tweaks %}
+{% load static %}
+
+{% block content %}
+<div class="page-head">
+    <h2 class="page-head-title">Usuarios </h2>
+    <nav aria-label="breadcrumb" role="navigation">
+        <ol class="breadcrumb page-head-nav">
+            <li class="breadcrumb-item"><a href="#">Inicio</a></li>
+            <li class="breadcrumb-item active">Nuevo usuario</li>
+        </ol>
+    </nav>
+</div>
+<div class="main-content container-fluid">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card card-border-color card-border-color-primary">
+                <div class="card-header card-header-divider">Agregar nuevo usuario<span class="card-subtitle"></div>
+
+                <div class="card-body">
+                    <form method="POST" data-parsley-validate="" novalidate="">
+                        {% csrf_token %}
+                        <div class="form-group pt-2">
+                            <label for="{{ field.id_for_first_name }}">{{ form.first_name.label_tag }} *</label>
+                            {% render_field form.first_name class="form-control" placeholder="Introduzca un nombre" %}
+                        </div>
+
+                        <div class="form-group pt-2">
+                            <label for="{{ field.id_for_last_name }}">{{ form.last_name.label_tag }} *</label>
+                            {% render_field form.last_name class="form-control" placeholder="Introduzca los apellidos" %}
+                        </div>
+
+                        <div class="form-group pt-2">
+                            <label for="{{ field.id_for_email }}">{{ form.email.label_tag }} *</label>
+                            {% render_field form.email class="form-control" placeholder="Introduzca un email" %}
+                        </div>
+
+                        <div class="form-group pt-2">
+                            <label for="{{ field.id_for_password1 }}">{{ form.password1.label_tag }} *</label>
+                            {% render_field form.password1 class="form-control" placeholder="Introduzca una contraseña" %}
+                        </div>
+
+                        <div class="form-group pt-2">
+                            <label for="{{ field.id_for_password2 }}">{{ form.password2.label_tag }} *</label>
+                            {% render_field form.password2 class="form-control" placeholder="Para verificar, introduzca la misma contraseña anterior." %}
+                        </div>
+                        
+                        <br>
+                        <div class="col-sm-12 pl-0">
+                            <p class="text-left info">
+                                (*) campos requeridos
+                            </p>
+                            <p class="text-right">
+                                <a href="{% url 'company:plant-list' %}" class="btn btn-space btn-secondary"> Cancelar</a>
+                                <button type="submit" class="btn btn-space btn-primary">Guardar</button>
+                            </p>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+{% block extra_scripts %}
+<script>
+  $("#id_color").addClass('form-control');
+</script>
+{% endblock %}
