@@ -6,6 +6,9 @@
   <div class="page-head">
     <h2 class="page-head-title">Embarques</h2>
     <nav aria-label="breadcrumb" role="navigation">
+      <button class="btn btn-space btn-primary btn-lg float-right"  data-toggle="modal" data-target="#new-shipment">
+        <i class="icon icon-left mdi mdi-plus"></i> Nuevo embarque
+      </button>
       <ol class="breadcrumb page-head-nav">
         <li class="breadcrumb-item"><a href="#">Inicio</a></li>
         <li class="breadcrumb-item active">Embarques</li>
@@ -13,17 +16,77 @@
     </nav>
   </div>
 
-  <div id="form-bp1" tabindex="-1" role="dialog" class="modal fade colored-header colored-header-primary">
+  <!-- shipment modal -->
+  <div id="new-shipment" tabindex="-1" role="dialog" class="modal fade colored-header colored-header-primary">
     <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header modal-header-colored">
+          <h3 class="modal-title">Nuevo embarque</h3>
+          <button type="button" data-dismiss="modal" aria-hidden="true" class="close md-close"><span class="mdi mdi-close">       </span></button>
+        </div>
+
+        <div class="modal-body">
+          <div class="form-group row">
+            <label for="id_plant" class="col-12 col-sm-3 col-form-label text-sm-right">Planta destino</label>
+            <div class="col-12 col-sm-8 col-lg-8">
+              <select id="id_plant" class="form-control">
+                <option value="AUR">Aurora, CO</option>
+                <option value="DUN">Duncan, SC</option>
+                <option value="IPT" selected="">Iowa Park, TX</option>
+                <option value="SJO">Saint Joe, MO</option>
+                <option value="STU">Sturtevant, WI</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <label for="id_code" class="col-12 col-sm-3 col-form-label text-sm-right">Embarque</label>
+            <div class="col-12 col-sm-8 col-lg-8">
+              <input id="id_code" type="text" placeholder="Introduce el número de embarque" class="form-control">
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <label for="id_carrier" class="col-12 col-sm-3 col-form-label text-sm-right">Carrier</label>
+            <div class="col-12 col-sm-8 col-lg-8">
+              <select id="id_carrier" class="form-control">
+                <option value="1" selected="">KLLM</option>
+                <option value="2">CRE</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <label for="id_trailer" class="col-12 col-sm-3 col-form-label text-sm-right">Trailer</label>
+            <div class="col-12 col-sm-8 col-lg-8">
+              <input id="id_trailer" type="text" placeholder="Introduce el código de trailer" class="form-control">
+            </div>
+          </div>
+
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" data-dismiss="modal" class="btn btn-secondary md-close">Cancelar</button>
+          <button type="button" data-dismiss="modal" class="btn btn-primary md-close">Agregar embarque</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- shipment modal -->
+  <div id="form-bp1" tabindex="-1" role="dialog" class="modal fade colored-header colored-header-primary">
+    <div class="modal-dialog full-width">
       <div class="modal-content">
         <div class="modal-header modal-header-colored">
           <h3 class="modal-title">Embarque #124912</h3>
           <button type="button" data-dismiss="modal" aria-hidden="true" class="close md-close"><span class="mdi mdi-close">       </span></button>
         </div>
         <div class="modal-body">
-          <div class="form-group">
-            <label>Número de embarque</label>
-            <input type="text" value="u124912" class="form-control">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label>Número de embarque</label>
+              <input type="text" value="u124912" class="form-control">
+            </div>
           </div>
 
           <div class="main-content container-fluid">
