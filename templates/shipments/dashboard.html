@@ -279,7 +279,8 @@
 
 {% block extra_scripts %}
   <script src="{% static 'lib/vue/vue.js' %}" type="text/javascript"></script>
-  <script src="{% static 'js/dashboard.js' %}" type="text/javascript"></script>
+  <script src="{% static 'js/vue/shipments/dashboard.js' %}" type="text/javascript"></script>
+  <script src="{% static 'js/vue/shipments/create-shipment.js' %}" type="text/javascript"></script>
   <script type="text/javascript">
     $('.modal').on('show.bs.modal', function(){
       $("html").addClass('be-modal-open');
