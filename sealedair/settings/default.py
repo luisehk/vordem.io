@@ -48,6 +48,8 @@ INSTALLED_APPS = [
     'sealedair.apps.notifications',
     'sealedair.apps.users',
     'storages',
+
+    'widget_tweaks',
 ]
 
 MIDDLEWARE = [

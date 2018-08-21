@@ -1,0 +1,23 @@
+.info {
+    font-style: italic;
+    font-size: 12px;
+}
+
+.dataTables_length select {
+    width: 50px !important;
+}
+
+.dataTables_length label {
+    padding-left: 20px;
+}
+
+.dataTables_filter label {
+    padding-right: 20px;
+}
+
+.dataTables_paginate .pagination {
+    padding: 20px 20px 20px 0;
+}
+.dataTables_info {
+    padding: 20px 0 0 20px;
+}

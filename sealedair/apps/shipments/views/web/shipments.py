@@ -21,11 +21,11 @@ class Dashboard(ShipmentGenericView, TemplateView):
         return ctx
 
 
-class ShipmentCreate(ShipmentFormView, CreateWithInlinesView):  # noqa
+class ShipmentCreate(ShipmentFormView, CreateWithInlinesView):
     template_name = 'shipments/shipments/create.html'
 
 
-class ShipmentUpdate(ShipmentFormView, UpdateWithInlinesView):  # noqa
+class ShipmentUpdate(ShipmentFormView, UpdateWithInlinesView):
     template_name = 'shipments/shipments/update.html'
 
 
