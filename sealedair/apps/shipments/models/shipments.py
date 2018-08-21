@@ -1,5 +1,6 @@
 from django.contrib.auth import get_user_model
 from django.db import models
+from django.utils import timezone
 from ...providers.models import Truck
 from ...company.models import Plant
 
@@ -62,6 +63,14 @@ class Shipment(models.Model):
 
     def __str__(self):
         return self.truck.carrier.code + self.code
+
+    def next_checkpoint(self):
+        next_checkpoint = self.current_status.get_next_checkpoint()
+
+        if next_checkpoint:
+            Status.objects.create(
+                shipment=self,
+                checkpoint=next_checkpoint)
 
 
 class Comment(models.Model):
@@ -138,3 +147,26 @@ class Status(models.Model):
 
     def __str__(self):
         return str(self.shipment) + ' - ' + self.get_checkpoint_display()
+
+    def get_hours_since_start(self):
+        delta = timezone.now() - self.start_datetime
+        return int(delta.total_seconds() // 3600)
+
+    def get_next_checkpoint(self):
+        if self.MEX_TRANSIT:
+            return self.MEX_CARRIER
+
+        if self.MEX_CARRIER:
+            return self.BORDER_CROSSING
+
+        if self.BORDER_CROSSING:
+            return self.BORDER_CARRIER
+
+        if self.BORDER_CARRIER:
+            return self.USA_TRANSIT
+
+        if self.USA_TRANSIT:
+            return self.USA_DELIVERED
+
+        if self.USA_DELIVERED:
+            return None

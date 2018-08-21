@@ -27,7 +27,7 @@ Vue.component('shipment-card', {
           '<span class="icon mdi mdi-hourglass-alt"></span> ${shipment.current_status.hours_since_start} hora(s)' +
         '</div>' +
         '<div class="col-2 no-padding">' +
-          '<span class="badge badge-success float-right">OK</span>' +
+          '<span class="badge float-right" v-bind:class="timeStatusClass">${timeStatusLabel}</span>' +
         '</div>' +
       '</div>' +
     '</div>' +
@@ -40,6 +40,30 @@ Vue.component('shipment-card', {
     carrierStyle: function() {
       return 'color: ' + this.shipment.truck.carrier.color;
     },
+    timeStatusClass: function() {
+      status = this.shipment.current_status.time_status;
+
+      if(status == 'TOT')
+        return 'badge-success';
+      else if(status == 'TDE')
+        return 'badge-warning';
+      else if(status == 'TLA')
+        return 'badge-danger';
+      else
+        return 'badge-success'
+    },
+    timeStatusLabel: function() {
+      status = this.shipment.current_status.time_status;
+
+      if(status == 'TOT')
+        return 'OK';
+      else if(status == 'TDE')
+        return 'DL';
+      else if(status == 'TLA')
+        return 'LT';
+      else
+        return 'OK'
+    }
   },
 
   methods: {
