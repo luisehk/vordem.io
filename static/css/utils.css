@@ -19,9 +19,9 @@
     padding: 20px 20px 20px 0;
 }
 .dataTables_info {
-    padding: 20px 0 0 20px;
+    padding: 25px 0 0 20px !important;
 }
 
-.font-size-icon-action-table {
+.font-size-icon-table {
     font-size: 20px;
 }

@@ -4,11 +4,11 @@
 
 {% block content %}
 <div class="page-head">
-    <h2 class="page-head-title">Carriers </h2> 
+    <h2 class="page-head-title">Plantas </h2> 
     <nav aria-label="breadcrumb" role="navigation">
         <ol class="breadcrumb page-head-nav">
             <li class="breadcrumb-item"><a href="#">Inicio</a></li>
-            <li class="breadcrumb-item active">Todos los carriers</li>
+            <li class="breadcrumb-item active">Todas las plantas</li>
         </ol>
     </nav>
 </div>
@@ -16,7 +16,7 @@
     <div class="row">
       <div class="col-12">
         <div class="card card-table">
-          <div class="card-header">Agregar nuevo <a href="{% url 'providers:carrier-add' %}"><span class="mdi mdi-plus-circle-o"></span></a>
+          <div class="card-header">Agregar nuevo <a href="{% url 'company:plant-add' %}"><span class="mdi mdi-plus-circle-o"></span></a>
           </div>
           <div class="card-body">
             <table id="table_carriers" class="table table-striped table-hover table-fw-widget">
@@ -29,13 +29,13 @@
                 </tr>
               </thead>
               <tbody>
-                {% for carrier in object_list %}
+                {% for plant in object_list %}
                 <tr>
-                    <td>{{carrier.name}}</td>
-                    <td>{{carrier.code}}</td>
-                    <td><span style='background-image: none; background-color:{{carrier.color}};'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+                    <td>{{plant.name}}</td>
+                    <td>{{plant.code}}</td>
+                    <td><span style='background-image: none; background-color:{{plant.color}};'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
                     <td class="font-size-icon-table"> 
-                      <a href="{% url 'providers:carrier-update' carrier.pk %}" title="Editar carrier"><span class="mdi mdi-edit"></span></a> &nbsp;&nbsp;| &nbsp;&nbsp;<a href="{% url 'providers:carrier-delete' carrier.pk %}" title="Eliminar carrier"><span class="mdi mdi-delete"></span></a>
+                      <a href="{% url 'company:plant-update' plant.pk %}" title="Editar planta"><span class="mdi mdi-edit"></span></a> &nbsp;&nbsp;| &nbsp;&nbsp;<a href="{% url 'company:plant-delete' plant.pk %}" title="Eliminar planta"><span class="mdi mdi-delete"></span></a>
                     </td>
                   </tr>
                 {% empty %}

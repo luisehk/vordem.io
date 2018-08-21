@@ -1,5 +1,4 @@
 from rest_framework import serializers
-from django.db import transaction
 from ..models import Shipment, Comment, Status
 from ...users.api.serializers import UserSerializer
 from ...providers.serializers.carriers import (
