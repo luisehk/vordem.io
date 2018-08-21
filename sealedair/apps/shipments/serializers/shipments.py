@@ -57,7 +57,6 @@ class ShipmentCreationSerializer(serializers.ModelSerializer):
         truck = validated_data.pop('truck')
 
         with transaction.atomic():
-            print('truck', truck)
             # create truck first
             truck, _ = Truck.objects.get_or_create(
                 code=truck['code'],
