@@ -1,8 +1,10 @@
 from django.views.generic.base import RedirectView
 from django.urls import reverse_lazy
 from django.conf.urls import url
+from rest_framework.routers import DefaultRouter
 from .views.web.carriers import (
     CarrierList, CarrierCreate, CarrierUpdate, CarrierDelete)
+from .views.rest.carriers import CarrierViewSet
 
 urlpatterns = [
     url(r'^carriers$',
@@ -18,3 +20,8 @@ urlpatterns = [
         url=reverse_lazy('providers:carrier-list')
     ), name='index'),
 ]
+
+router = DefaultRouter()
+router.register(r'api/carriers', CarrierViewSet)
+urlpatterns += router.urls
+
