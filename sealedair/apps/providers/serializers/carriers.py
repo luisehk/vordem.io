@@ -18,3 +18,11 @@ class TruckSerializer(serializers.ModelSerializer):
         fields = [
             'id', 'code', 'carrier'
         ]
+
+
+class TruckCreationSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Truck
+        fields = [
+            'id', 'code', 'carrier'
+        ]
