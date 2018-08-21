@@ -103,7 +103,7 @@ Vue.component('shipments-column', {
       // load every 5 seconds
       setInterval(function() {
         self.loadShipments.call(self);
-      }, 5000);
+      }, 2000);
     },
     loadShipments: function() {
       var self = this;
