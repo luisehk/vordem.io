@@ -21,8 +21,9 @@
                 <div class="card-body">
                     <form method="post">
                         {% csrf_token %}
-                        <h3 class="text-info-delete">¿Estás seguro que quieres borrar este carrier: "{{ object }}"?</h3>
+                        <h3 class="text-info-delete">¿Estás seguro que quieres borrar este carrier: <b>{{ object }}</b> ?</h3>
                         <br>
+                        <a href="{% url 'providers:carrier-list' %}" class="btn btn-space btn-secondary"> Cancelar</a>
                         <button type="submit" class="btn btn-space btn-danger active"><i class="icon icon-left mdi mdi-alert-circle"></i> Sí, borrar</button>
                     </form>
                 </div>

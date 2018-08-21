@@ -33,8 +33,8 @@
                 <tr>
                     <td>{{carrier.name}}</td>
                     <td>{{carrier.code}}</td>
-                    <td><span style='background-image: none; background-color:{{carrier.color}};'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
-                    <td> 
+                    <td class="font-size-icon-table"><span style='background-image: none; background-color:{{carrier.color}};'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+                    <td class="font-size-icon-table"> 
                       <a href="{% url 'providers:carrier-update' carrier.pk %}" title="Editar carrier"><span class="mdi mdi-edit"></span></a> &nbsp;&nbsp;| &nbsp;&nbsp;<a href="{% url 'providers:carrier-delete' carrier.pk %}" title="Eliminar carrier"><span class="mdi mdi-delete"></span></a>
                     </td>
                   </tr>
