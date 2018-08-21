@@ -52,6 +52,6 @@ def set_shipments_time_status():
         status = shipment.current_status
         hours_spent = status.get_hours_since_start()
 
-        if hours_spent > 8:
+        if hours_spent > 16:
             status.time_status = Status.TIME_LATE
             status.save()
