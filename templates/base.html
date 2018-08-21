@@ -36,13 +36,13 @@
             <ul class="nav navbar-nav float-right be-user-nav">
               <li class="nav-item dropdown">
                 <a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle">
-                  <img src="{{ user.profile.avatar.crop.128x128 }}" alt="Avatar">
-                  <span class="user-name">{% firstof user.get_full_name user.email %}</span>
+                  <img src="{{ request.user.profile.avatar.crop.128x128 }}" alt="Avatar">
+                  <span class="user-name">{% firstof request.user.get_full_name request.user.email %}</span>
                 </a>
 
                 <div role="menu" class="dropdown-menu">
                   <div class="user-info">
-                    <div class="user-name">{% firstof user.get_full_name user.email %}</div>
+                    <div class="user-name">{% firstof request.user.get_full_name request.user.email %}</div>
                   </div>
                   <a href="#tab1" role="button" aria-expanded="false" class="dropdown-item be-toggle-right-sidebar">
                     <span class="icon mdi mdi-settings"></span> Ajustes
