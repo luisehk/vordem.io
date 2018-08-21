@@ -34,7 +34,7 @@ var updateShipmentApp = new Vue({
       return this._formatDate(this.shipment.start_datetime);
      },
     startTime: function() {
-      return '5:00 PM';
+      return this._formatTime(this.shipment.start_datetime);
     }
   },
   created: function() {

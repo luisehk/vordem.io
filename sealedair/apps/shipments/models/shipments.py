@@ -68,9 +68,18 @@ class Shipment(models.Model):
         next_checkpoint = self.current_status.get_next_checkpoint()
 
         if next_checkpoint:
-            Status.objects.create(
+            return Status.objects.create(
                 shipment=self,
                 checkpoint=next_checkpoint)
+
+    def previous_status(self):
+        previous_checkpoint = self.current_status.get_previous_checkpoint()
+
+        if previous_checkpoint:
+            return Status.objects.filter(
+                shipment=self,
+                checkpoint=previous_checkpoint
+            ).first()
 
 
 class Comment(models.Model):
@@ -141,6 +150,7 @@ class Status(models.Model):
         blank=True)
 
     class Meta:
+        ordering = ('-start_datetime',)
         verbose_name = 'estatus'
         verbose_name_plural = 'estatus'
         unique_together = ('shipment', 'checkpoint')
@@ -149,7 +159,8 @@ class Status(models.Model):
         return str(self.shipment) + ' - ' + self.get_checkpoint_display()
 
     def get_hours_since_start(self):
-        delta = timezone.now() - self.start_datetime
+        time = self.end_datetime or timezone.now()
+        delta = time - self.start_datetime
         return int(delta.total_seconds() // 3600)
 
     def get_next_checkpoint(self):
@@ -170,3 +181,22 @@ class Status(models.Model):
 
         if self.USA_DELIVERED:
             return None
+
+    def get_previous_checkpoint(self):
+        if self.MEX_TRANSIT:
+            return None
+
+        if self.MEX_CARRIER:
+            return self.MEX_TRANSIT
+
+        if self.BORDER_CROSSING:
+            return self.MEX_CARRIER
+
+        if self.BORDER_CARRIER:
+            return self.BORDER_CROSSING
+
+        if self.USA_TRANSIT:
+            return self.BORDER_CARRIER
+
+        if self.USA_DELIVERED:
+            return self.USA_TRANSIT

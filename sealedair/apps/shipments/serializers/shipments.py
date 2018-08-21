@@ -20,16 +20,21 @@ class CommentSerializer(serializers.ModelSerializer):
 
 class StatusSerializer(serializers.ModelSerializer):
     hours_since_start = serializers.SerializerMethodField()
+    checkpoint_display = serializers.SerializerMethodField()
 
     class Meta:
         model = Status
         fields = [
-            'id', 'checkpoint', 'time_status',
+            'id', 'checkpoint', 'checkpoint_display',
+            'time_status',
             'start_datetime', 'end_datetime',
             'hours_since_start']
 
     def get_hours_since_start(self, obj):
         return obj.get_hours_since_start()
+
+    def get_checkpoint_display(self, obj):
+        return obj.get_checkpoint_display()
 
 
 class ShipmentSerializer(serializers.ModelSerializer):
