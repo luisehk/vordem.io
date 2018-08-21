@@ -1,11 +1,11 @@
 from django.conf.urls import url
-from .views import UsersList
+from .views import UsersList, UserCreate
 
 urlpatterns = [
     url(r'^list$',
         UsersList.as_view(), name="users-list"),
-    # url(r'^carriers/add/$',
-    #     CarrierCreate.as_view(), name='carrier-add'),
+    url(r'^users/add/$',
+        UserCreate.as_view(), name='users-add'),
     # url(r'^carriers/(?P<pk>[0-9]+)/$',
     #     CarrierUpdate.as_view(), name='carrier-update'),
     # url(r'^carriers/(?P<pk>[0-9]+)/delete/$',
