@@ -80,89 +80,129 @@
   </div>
 
   <!-- shipment update modal -->
-  <div id="form-bp1" tabindex="-1" role="dialog" class="modal fade colored-header colored-header-primary">
+  <div id="update-shipment" tabindex="-1" role="dialog" class="modal fade colored-header colored-header-primary">
     <div class="modal-dialog full-width">
-      <div class="modal-content">
+      <div class="modal-content be-loading" v-bind:class="{ 'be-loading-active' : loading }">
         <div class="modal-header modal-header-colored">
-          <h3 class="modal-title">Embarque #124912</h3>
+          <h3 class="modal-title">Embarque #${shipment.code}</h3>
           <button type="button" data-dismiss="modal" aria-hidden="true" class="close md-close"><span class="mdi mdi-close">       </span></button>
         </div>
+
         <div class="modal-body">
-          <div class="col-md-6">
-            <div class="form-group">
-              <label>Número de embarque</label>
-              <input type="text" value="u124912" class="form-control">
+          <div class="form-group row">
+            <label for="id_update_plant" class="col-12 col-sm-3 col-form-label text-sm-right">Planta destino</label>
+            <div class="col-12 col-sm-8 col-lg-8">
+              <select id="id_update_plant" v-model="shipment.plant" class="form-control">
+                <option v-for="plant in plants" v-bind:value="plant">
+                  ${ plant.name }
+                </option>
+              </select>
             </div>
           </div>
 
-          <div class="main-content container-fluid">
-          <div class="row">
-            <div class="col-12">
-              <ul class="timeline">
-                <li class="timeline-item">
-                  <div class="timeline-date"><span>September 16, 2016</span></div>
-                  <div class="timeline-content">
-                    <div class="timeline-avatar"><img src="{% static 'img/avatar6.png' %}" alt="Avatar" class="circle"></div>
-                    <div class="timeline-header"><span class="timeline-time">4:34 PM</span><span class="timeline-autor">Penelope Thornton</span>
-                      <p class="timeline-activity">Pellentesque imperdiet sit <a href="#">Amet nisl sed mattis</a>.</p>
-                    </div>
-                  </div>
-                </li>
-                <li class="timeline-item timeline-item-detailed">
-                  <div class="timeline-date"><span>September 13, 2016</span></div>
-                  <div class="timeline-content">
-                    <div class="timeline-avatar"><img src="{% static 'img/avatar.png' %}" alt="Avatar" class="circle"></div>
-                    <div class="timeline-header"><span class="timeline-time">9:54 AM</span><span class="timeline-autor">Kristopher Donny  </span>
-                      <p class="timeline-activity">Mauris condimentum est <a href="#">Viverra erat fermentum</a>.</p>
-                      <div class="timeline-summary">
-                        <p>Suspendisse ac libero sed mauris tempor vehicula porttitor non sapien. Aliquam viver... </p>
-                      </div>
-                    </div>
-                  </div>
-                </li>
-                <li class="timeline-item timeline-item-detailed">
-                  <div class="timeline-date"><span>August 6, 2016</span></div>
-                  <div class="timeline-content">
-                    <div class="timeline-avatar"><img src="{% static 'img/avatar4.png' %}" alt="Avatar" class="circle"></div>
-                    <div class="timeline-header"><span class="timeline-time">7:15 PM</span><span class="timeline-autor">Benji Harper </span>
-                      <p class="timeline-activity">Mauris condimentum est <a href="#">Vestibulum justo neque</a>.</p>
-                      <div class="timeline-summary">
-                        <p>Quisque condimentum enim nec porttitor egestas. Morbi fermentum in ante volutpat... </p>
-                      </div>
-                    </div>
-                  </div>
-                </li>
-                <li class="timeline-item">
-                  <div class="timeline-date"><span>August 4, 2016</span></div>
-                  <div class="timeline-content">
-                    <div class="timeline-avatar"><img src="{% static 'img/avatar5.png' %}" alt="Avatar" class="circle"></div>
-                    <div class="timeline-header"><span class="timeline-time">12:02 PM</span><span class="timeline-autor">Justine Myranda </span>
-                      <p class="timeline-activity">Pellentesque imperdiet sit <a href="#">Amet nisl sed mattiss</a>.</p>
-                    </div>
-                  </div>
-                </li>
-                <li class="timeline-item timeline-item-detailed">
-                  <div class="timeline-date"><span>June 11, 2016</span></div>
-                  <div class="timeline-content">
-                    <div class="timeline-avatar"><img src="{% static 'img/avatar3.png' %}" alt="Avatar" class="circle"></div>
-                    <div class="timeline-header"><span class="timeline-time">6:25 AM</span><span class="timeline-autor">Sherwood Clifford </span>
-                      <p class="timeline-activity">pellentesque tortor <a href="#">Aliquam viverra</a>.</p>
-                      <blockquote class="blockquote timeline-blockquote mb-0">
-                        <p>Quisque condimentum enim nec porttitor egestas. </p>
-                        <footer class="blockquote-footer">Aliquam viverra ornare dolor.</footer>
-                      </blockquote>
-                    </div>
-                  </div>
-                </li>
-                <li class="timeline-item timeline-loadmore"><a href="#" class="load-more-btn">Load more</a></li>
-              </ul>
+          <div class="form-group row">
+            <label for="id_update_code" class="col-12 col-sm-3 col-form-label text-sm-right">Embarque</label>
+            <div class="col-12 col-sm-8 col-lg-8">
+              <input id="id_update_code" v-model="shipment.code" type="text" placeholder="Introduce el número de embarque" class="form-control">
             </div>
           </div>
+
+          <div class="form-group row">
+            <label for="id_update_carrier" class="col-12 col-sm-3 col-form-label text-sm-right">Carrier</label>
+            <div class="col-12 col-sm-8 col-lg-8">
+              <select id="id_update_carrier" v-model="shipment.truck.carrier" class="form-control">
+                <option v-for="carrier in carriers" v-bind:value="carrier">
+                  ${ carrier.name }
+                </option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <label for="id_update_trailer" class="col-12 col-sm-3 col-form-label text-sm-right">Trailer</label>
+            <div class="col-12 col-sm-8 col-lg-8">
+              <input id="id_update_trailer" v-model="shipment.truck.code" type="text" placeholder="Introduce el código de trailer" class="form-control">
+            </div>
+          </div>
+
+          <!-- timeline -->
+          <div class="main-content container-fluid">
+            <div class="row">
+              <div class="col-12">
+                <ul class="timeline">
+                  <li class="timeline-item">
+                    <div class="timeline-date"><span>September 16, 2016</span></div>
+                    <div class="timeline-content">
+                      <div class="timeline-avatar"><img src="{% static 'img/avatar6.png' %}" alt="Avatar" class="circle"></div>
+                      <div class="timeline-header"><span class="timeline-time">4:34 PM</span><span class="timeline-autor">Penelope Thornton</span>
+                        <p class="timeline-activity">Pellentesque imperdiet sit <a href="#">Amet nisl sed mattis</a>.</p>
+                      </div>
+                    </div>
+                  </li>
+                  <li class="timeline-item timeline-item-detailed">
+                    <div class="timeline-date"><span>September 13, 2016</span></div>
+                    <div class="timeline-content">
+                      <div class="timeline-avatar"><img src="{% static 'img/avatar.png' %}" alt="Avatar" class="circle"></div>
+                      <div class="timeline-header"><span class="timeline-time">9:54 AM</span><span class="timeline-autor">Kristopher Donny  </span>
+                        <p class="timeline-activity">Mauris condimentum est <a href="#">Viverra erat fermentum</a>.</p>
+                        <div class="timeline-summary">
+                          <p>Suspendisse ac libero sed mauris tempor vehicula porttitor non sapien. Aliquam viver... </p>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                  <li class="timeline-item timeline-item-detailed">
+                    <div class="timeline-date"><span>August 6, 2016</span></div>
+                    <div class="timeline-content">
+                      <div class="timeline-avatar"><img src="{% static 'img/avatar4.png' %}" alt="Avatar" class="circle"></div>
+                      <div class="timeline-header"><span class="timeline-time">7:15 PM</span><span class="timeline-autor">Benji Harper </span>
+                        <p class="timeline-activity">Mauris condimentum est <a href="#">Vestibulum justo neque</a>.</p>
+                        <div class="timeline-summary">
+                          <p>Quisque condimentum enim nec porttitor egestas. Morbi fermentum in ante volutpat... </p>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                  <li class="timeline-item">
+                    <div class="timeline-date"><span>August 4, 2016</span></div>
+                    <div class="timeline-content">
+                      <div class="timeline-avatar"><img src="{% static 'img/avatar5.png' %}" alt="Avatar" class="circle"></div>
+                      <div class="timeline-header"><span class="timeline-time">12:02 PM</span><span class="timeline-autor">Justine Myranda </span>
+                        <p class="timeline-activity">Pellentesque imperdiet sit <a href="#">Amet nisl sed mattiss</a>.</p>
+                      </div>
+                    </div>
+                  </li>
+                  <li class="timeline-item timeline-item-detailed">
+                    <div class="timeline-date"><span>June 11, 2016</span></div>
+                    <div class="timeline-content">
+                      <div class="timeline-avatar"><img src="{% static 'img/avatar3.png' %}" alt="Avatar" class="circle"></div>
+                      <div class="timeline-header"><span class="timeline-time">6:25 AM</span><span class="timeline-autor">Sherwood Clifford </span>
+                        <p class="timeline-activity">pellentesque tortor <a href="#">Aliquam viverra</a>.</p>
+                        <blockquote class="blockquote timeline-blockquote mb-0">
+                          <p>Quisque condimentum enim nec porttitor egestas. </p>
+                          <footer class="blockquote-footer">Aliquam viverra ornare dolor.</footer>
+                        </blockquote>
+                      </div>
+                    </div>
+                  </li>
+                  <li class="timeline-item timeline-loadmore"><a href="#" class="load-more-btn">Load more</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
         </div>
-        </div>
+
         <div class="modal-footer">
-          <button type="button" data-dismiss="modal" class="btn btn-secondary md-close">Cancel</button>
-          <button type="button" data-dismiss="modal" class="btn btn-primary md-close">Proceed</button>
+          <button type="button" data-dismiss="modal" class="btn btn-secondary md-close">Cancelar</button>
+
+          <button type="button" class="btn btn-primary" v-on:click="submit" v-bind:class="{ 'disabled' : !formIsValid }">Agregar embarque</button>
+        </div>
+
+        <div class="be-spinner">
+          <svg width="40px" height="40px" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
+            <circle fill="none" stroke-width="4" stroke-linecap="round" cx="33" cy="33" r="30" class="circle"></circle>
+          </svg>
         </div>
       </div>
     </div>
@@ -287,6 +327,7 @@
   <script src="{% static 'lib/vue/vue.js' %}" type="text/javascript"></script>
   <script src="{% static 'js/vue/shipments/dashboard.js' %}" type="text/javascript"></script>
   <script src="{% static 'js/vue/shipments/create-shipment.js' %}" type="text/javascript"></script>
+  <script src="{% static 'js/vue/shipments/update-shipment.js' %}" type="text/javascript"></script>
   <script type="text/javascript">
     $('.modal').on('show.bs.modal', function(){
       $("html").addClass('be-modal-open');

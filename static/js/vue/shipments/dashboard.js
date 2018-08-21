@@ -1,7 +1,7 @@
 Vue.component('shipment-card', {
   props: ['shipment'],
   delimiters: ['${', '}'],
-  template: '<div class="card card-border card-shipment" v-on:click="showModal" data-toggle="modal" data-target="#form-bp1">' +
+  template: '<div class="card card-border card-shipment" v-on:click="showUpdateModal">' +
     '<div class="card-body padding-5">' +
       '<div class="row no-margin shipment-title">' +
         '<div class="col-12 no-padding">' +
@@ -67,8 +67,10 @@ Vue.component('shipment-card', {
   },
 
   methods: {
-    showModal: function() {
-
+    showUpdateModal: function() {
+      window.updateShipmentApp.open(
+        JSON.parse(JSON.stringify(this.shipment))
+      );
     }
   }
 });
