@@ -4,6 +4,10 @@ var updateShipmentApp = new Vue({
   data: {
     shipment: {
       code: '',
+      current_status: {
+        checkpoint_display: '',
+        time_status_display: ''
+      },
       truck: {
         code: '',
         carrier: {
@@ -29,6 +33,24 @@ var updateShipmentApp = new Vue({
         this.shipment.truck.code &&
         this.shipment.truck.carrier &&
         true;
+    },
+    startDate: function() {
+      return this._formatDate(this.shipment.start_datetime);
+     },
+    startTime: function() {
+      return this._formatTime(this.shipment.start_datetime);
+    },
+    timeStatusClass: function() {
+      var timeStatus = this.shipment.current_status.time_status;
+
+      if(timeStatus == 'TOT')
+        return 'text-success';
+      else if(timeStatus == 'TDE')
+        return 'text-warning';
+      else if(timeStatus == 'TLA')
+        return 'text-danger';
+      else
+        return 'text-success';
     }
   },
   created: function() {
@@ -36,6 +58,41 @@ var updateShipmentApp = new Vue({
     this.loadCarriers();
   },
   methods: {
+    _formatDate: function(date) {
+      var date = new Date(date);
+      var monthNames = [
+        "Enero", "Febrero", "Marzo",
+        "Abril", "Mayo", "Junio", "Julio",
+        "Agosto", "Septiembre", "Octubre",
+        "Noviembre", "Diciembre"
+      ];
+
+      var day = date.getDate();
+      var monthIndex = date.getMonth();
+      var year = date.getFullYear();
+
+      return day + ' de ' + monthNames[monthIndex] + ', ' + year;
+    },
+
+    _formatTime: function(date) {
+      var time = new Date(date);
+      var hr = time.getHours();
+      var min = time.getMinutes();
+
+      // add initial zero to minute
+      if (min < 10)
+          min = "0" + min;
+
+      // set AM or PM
+      var ampm = "am";
+      if( hr > 12 ) {
+          hr -= 12;
+          ampm = "pm";
+      }
+
+      return hr + ":" + min + ampm;
+    },
+
     _get: function(url, success, error) {
       $.ajax({
         url: url,
