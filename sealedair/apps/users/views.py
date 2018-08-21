@@ -1,6 +1,5 @@
 from django.contrib.auth import get_user_model
 from django.core.urlresolvers import reverse_lazy
-from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic.base import RedirectView
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView

@@ -23,7 +23,7 @@ class UserRegistroForm(UserCreationForm):
                     'required': True}),
             'email': TextInput(
                 attrs={
-                    'required': True})      
+                    'required': True})
         }
 
 
@@ -41,6 +41,5 @@ class UserUpdateForm(ModelForm):
                     'required': True}),
             'last_name': TextInput(
                 attrs={
-                    'required': True}),   
+                    'required': True})
         }
-       
