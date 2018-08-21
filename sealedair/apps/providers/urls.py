@@ -22,5 +22,5 @@ urlpatterns = [
 ]
 
 router = DefaultRouter()
-router.register(r'^api/carriers$', CarrierViewSet)
+router.register(r'api/carriers', CarrierViewSet, base_name='carrier-api')
 urlpatterns += router.urls
