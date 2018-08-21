@@ -82,8 +82,13 @@ Vue.component('shipments-column', {
     loadShipments: function() {
       var self = this;
 
+      // limit to 5 in delivered category
+      url = '/shipments/api/shipments/?current_status__checkpoint=' + this.checkpoint;
+      if(this.checkpoint == 'UDE')
+        url += '&limit=5'
+
       $.ajax({
-        url: '/shipments/api/shipments/?current_status__checkpoint=' + this.checkpoint,
+        url: url,
         type: 'GET',
         success : function(json) {
           self.loadData.call(self, json.results);
