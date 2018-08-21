@@ -4,6 +4,10 @@ var updateShipmentApp = new Vue({
   data: {
     shipment: {
       code: '',
+      current_status: {
+        checkpoint_display: '',
+        time_status_display: ''
+      },
       truck: {
         code: '',
         carrier: {
@@ -35,6 +39,18 @@ var updateShipmentApp = new Vue({
      },
     startTime: function() {
       return this._formatTime(this.shipment.start_datetime);
+    },
+    timeStatusClass: function() {
+      var timeStatus = this.shipment.current_status.time_status;
+
+      if(timeStatus == 'TOT')
+        return 'text-success';
+      else if(timeStatus == 'TDE')
+        return 'text-warning';
+      else if(timeStatus == 'TLA')
+        return 'text-danger';
+      else
+        return 'text-success';
     }
   },
   created: function() {

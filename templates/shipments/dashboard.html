@@ -89,39 +89,69 @@
         </div>
 
         <div class="modal-body">
-          <div class="form-group row">
-            <label for="id_update_plant" class="col-12 col-sm-3 col-form-label text-sm-right">Planta destino</label>
-            <div class="col-12 col-sm-8 col-lg-8">
-              <select id="id_update_plant" v-model="shipment.plant" class="form-control">
-                <option v-for="plant in plants" v-bind:value="plant">
-                  ${ plant.name }
-                </option>
-              </select>
-            </div>
-          </div>
 
-          <div class="form-group row">
-            <label for="id_update_code" class="col-12 col-sm-3 col-form-label text-sm-right">Embarque</label>
-            <div class="col-12 col-sm-8 col-lg-8">
-              <input id="id_update_code" v-model="shipment.code" type="text" placeholder="Introduce el número de embarque" class="form-control">
-            </div>
-          </div>
+          <!-- shipment info -->
+          <div class="main-content container-fluid">
+            <div class="row">
+              <div class="col-6">
+                <div class="form-group row">
+                  <label for="id_update_plant" class="col-12 col-sm-3 col-form-label text-sm-right">Planta destino</label>
+                  <div class="col-12 col-sm-8 col-lg-8">
+                    <select id="id_update_plant" v-model="shipment.plant" class="form-control" disabled>
+                      <option v-for="plant in plants" v-bind:value="plant">
+                        ${ plant.name }
+                      </option>
+                    </select>
+                  </div>
+                </div>
 
-          <div class="form-group row">
-            <label for="id_update_carrier" class="col-12 col-sm-3 col-form-label text-sm-right">Carrier</label>
-            <div class="col-12 col-sm-8 col-lg-8">
-              <select id="id_update_carrier" v-model="shipment.truck.carrier" class="form-control">
-                <option v-for="carrier in carriers" v-bind:value="carrier">
-                  ${ carrier.name }
-                </option>
-              </select>
-            </div>
-          </div>
+                <div class="form-group row">
+                  <label for="id_update_code" class="col-12 col-sm-3 col-form-label text-sm-right">Embarque</label>
+                  <div class="col-12 col-sm-8 col-lg-8">
+                    <input id="id_update_code" v-model="shipment.code" type="text" placeholder="Introduce el número de embarque" class="form-control" disabled>
+                  </div>
+                </div>
 
-          <div class="form-group row">
-            <label for="id_update_trailer" class="col-12 col-sm-3 col-form-label text-sm-right">Trailer</label>
-            <div class="col-12 col-sm-8 col-lg-8">
-              <input id="id_update_trailer" v-model="shipment.truck.code" type="text" placeholder="Introduce el código de trailer" class="form-control">
+                <div class="form-group row">
+                  <label for="id_update_carrier" class="col-12 col-sm-3 col-form-label text-sm-right">Carrier</label>
+                  <div class="col-12 col-sm-8 col-lg-8">
+                    <select id="id_update_carrier" v-model="shipment.truck.carrier" class="form-control" disabled>
+                      <option v-for="carrier in carriers" v-bind:value="carrier">
+                        ${ carrier.name }
+                      </option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="form-group row">
+                  <label for="id_update_trailer" class="col-12 col-sm-3 col-form-label text-sm-right">Trailer</label>
+                  <div class="col-12 col-sm-8 col-lg-8">
+                    <input id="id_update_trailer" v-model="shipment.truck.code" type="text" placeholder="Introduce el código de trailer" class="form-control" disabled>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-6 shipment-status-center">
+                <h3>
+                  Actualmente se encuentra en
+                  <br />
+                  <strong>
+                    ${shipment.current_status.checkpoint_display}
+                  </strong>
+                  <br />
+                  y su traslado va
+                  <br />
+                  <strong class="shipment-status-time" v-bind:class="timeStatusClass">
+                    ${shipment.current_status.time_status_display}
+                  </strong>
+                </h3>
+
+                <p class="shipment-actions">
+                  <button class="btn btn-space btn-success btn-lg"><i class="icon icon-left mdi mdi-check-circle"></i> Ya llegó</button>
+
+                  <button class="btn btn-space btn-primary btn-lg"><i class="icon icon-left mdi mdi-phone"></i> Contactar carrier</button>
+                </p>
+              </div>
             </div>
           </div>
 
@@ -178,9 +208,7 @@
         </div>
 
         <div class="modal-footer">
-          <button type="button" data-dismiss="modal" class="btn btn-secondary md-close">Cancelar</button>
-
-          <button type="button" class="btn btn-primary" v-on:click="submit" v-bind:class="{ 'disabled' : !formIsValid }">Agregar embarque</button>
+          <button type="button" data-dismiss="modal" class="btn btn-secondary md-close">Cerrar</button>
         </div>
 
         <div class="be-spinner">
@@ -229,7 +257,9 @@
     <div class="row">
       <div class="col-12 col-lg-4 col-xl-4">
         <div class="card card-border card-contrast">
-          <div class="card-header card-header-contrast">México</div>
+          <div class="card-header card-header-contrast">
+            <img src="{% static 'img/flags/mexico.svg' %}" style="width: 25px;" /> México
+          </div>
           <div class="card-body">
 
             <div class="row">
@@ -252,46 +282,36 @@
         </div>
       </div>
 
-      <div class="col-12 col-lg-4 col-xl-4">
+      <div class="col-12 col-lg-8 col-xl-8">
         <div class="card card-border card-contrast">
-          <div class="card-header card-header-contrast">Laredo</div>
+          <div class="card-header card-header-contrast">
+            <img src="{% static 'img/flags/united-states.svg' %}" style="width: 25px;" /> Estados Unidos
+          </div>
           <div class="card-body">
 
             <div class="row">
-              <div class="col-6">
+              <div class="col-3">
                 <h5 class="text-center"><strong>Cruzando</strong></h5>
 
                 <shipments-column checkpoint="BCR">
                 </shipments-column>
               </div>
 
-              <div class="col-6">
+              <div class="col-3">
                 <h5 class="text-center"><strong>US Carrier</strong></h5>
 
                 <shipments-column checkpoint="BCA">
                 </shipments-column>
               </div>
-            </div>
 
-          </div>
-        </div>
-      </div>
-
-      <div class="col-12 col-lg-4 col-xl-4">
-
-        <div class="card card-border card-contrast">
-          <div class="card-header card-header-contrast">Destino</div>
-          <div class="card-body">
-
-            <div class="row">
-              <div class="col-6">
+              <div class="col-3">
                 <h5 class="text-center"><strong>En tránsito</strong></h5>
 
                 <shipments-column checkpoint="UTR">
                 </shipments-column>
               </div>
 
-              <div class="col-6">
+              <div class="col-3">
                 <h5 class="text-center"><strong>Entregado</strong></h5>
 
                 <shipments-column checkpoint="UDE" class="delivered">

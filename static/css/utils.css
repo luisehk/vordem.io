@@ -29,3 +29,17 @@
 .timeline-header {
     padding-left: 0;
 }
+
+.shipment-status-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    flex-direction: column;
+}
+
+.shipment-actions {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+}
