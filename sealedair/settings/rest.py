@@ -21,7 +21,7 @@ REST_FRAMEWORK = {
         'rest_framework.pagination'
         '.LimitOffsetPagination'
     ),
-    'PAGE_SIZE': 10
+    'PAGE_SIZE': 100000
 }
 
 SWAGGER_SETTINGS = {
