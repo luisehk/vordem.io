@@ -161,37 +161,35 @@ var updateShipmentApp = new Vue({
       );
     },
 
-    submit: function() {
-      var self = this;
+    nextCheckpoint: function() {
+      if(confirm('¿Estás seguro de querer realizar esta acción?')) {
+        var self = this;
 
-      this.loading = true;
+        this.loading = true;
 
-      this._post(
-        '/shipments/api/shipments/',
-        this.shipment,
-        function(json) {
-          self.loading = false;
-          self.success.call(self, json);
-        },
-        function(xhr, status, error) {
-          self.loading = false;
-          self.success.call(self, xhr, status, error);
-        }
-      );
+        this._post(
+          '/shipments/shipments/' + this.shipment.id + '/next/',
+          {},
+          function(json) {
+            self.loading = false;
+            self.success.call(self, json);
+          },
+          function(xhr, status, error) {
+            self.loading = false;
+            self.success.call(self, xhr, status, error);
+          }
+        );
+      }
     },
 
     success: function(json) {
-      // reset values
-      this.shipment.code = '';
-      this.shipment.truck.code = '';
-
       // close modal
       $(this.$el).modal('toggle');
 
       // notification
       $.gritter.add({
         title: 'Éxito',
-        text: 'El embarque #' + json.code + ' ha sido creado exitosamente.',
+        text: 'El embarque se ha movido al siguiente checkpoint.',
         class_name: 'color success'
       });
     },
@@ -199,8 +197,8 @@ var updateShipmentApp = new Vue({
     error: function(xhr, status, error) {
       // notification
       $.gritter.add({
-        title: 'Éxito',
-        text: 'Hubo un error al crear el embarque.',
+        title: 'Error',
+        text: 'Hubo un error al mover el embarque de checkpoint.',
         class_name: 'color danger'
       });
     }

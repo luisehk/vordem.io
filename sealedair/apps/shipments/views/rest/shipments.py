@@ -1,4 +1,8 @@
 from rest_framework.viewsets import ModelViewSet
+from django.http import Http404
+from rest_framework.views import APIView
+from rest_framework import status
+from rest_framework.response import Response
 from ...serializers.shipments import (
     ShipmentCreationSerializer, ShipmentSerializer)
 from ...models import Shipment
@@ -19,3 +23,19 @@ class ShipmentViewSet(ModelViewSet):
             return ShipmentSerializer
         else:
             return ShipmentSerializer
+
+
+class ShipmentNextCheckpoint(APIView):
+    def get_object(self, pk):
+        try:
+            return Shipment.objects.get(pk=pk)
+        except Shipment.DoesNotExist():
+            raise Http404
+
+    def post(self, request, pk):
+        shipment = self.get_object(pk)
+        shipment.next_checkpoint()
+
+        return Response(
+            {'success': "success"},
+            status=status.HTTP_200_OK)

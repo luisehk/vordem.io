@@ -68,6 +68,10 @@ class Shipment(models.Model):
         next_checkpoint = self.current_status.get_next_checkpoint()
 
         if next_checkpoint:
+            print(
+                'NUEVO CHECKPOINT',
+                self.current_status.checkpoint,
+                next_checkpoint)
             return Status.objects.create(
                 shipment=self,
                 checkpoint=next_checkpoint)
@@ -164,39 +168,39 @@ class Status(models.Model):
         return int(delta.total_seconds() // 3600)
 
     def get_next_checkpoint(self):
-        if self.MEX_TRANSIT:
+        if self.checkpoint == self.MEX_TRANSIT:
             return self.MEX_CARRIER
 
-        if self.MEX_CARRIER:
+        if self.checkpoint == self.MEX_CARRIER:
             return self.BORDER_CROSSING
 
-        if self.BORDER_CROSSING:
+        if self.checkpoint == self.BORDER_CROSSING:
             return self.BORDER_CARRIER
 
-        if self.BORDER_CARRIER:
+        if self.checkpoint == self.BORDER_CARRIER:
             return self.USA_TRANSIT
 
-        if self.USA_TRANSIT:
+        if self.checkpoint == self.USA_TRANSIT:
             return self.USA_DELIVERED
 
-        if self.USA_DELIVERED:
+        if self.checkpoint == self.USA_DELIVERED:
             return None
 
     def get_previous_checkpoint(self):
-        if self.MEX_TRANSIT:
+        if self.checkpoint == self.MEX_TRANSIT:
             return None
 
-        if self.MEX_CARRIER:
+        if self.checkpoint == self.MEX_CARRIER:
             return self.MEX_TRANSIT
 
-        if self.BORDER_CROSSING:
+        if self.checkpoint == self.BORDER_CROSSING:
             return self.MEX_CARRIER
 
-        if self.BORDER_CARRIER:
+        if self.checkpoint == self.BORDER_CARRIER:
             return self.BORDER_CROSSING
 
-        if self.USA_TRANSIT:
+        if self.checkpoint == self.USA_TRANSIT:
             return self.BORDER_CARRIER
 
-        if self.USA_DELIVERED:
+        if self.checkpoint == self.USA_DELIVERED:
             return self.USA_TRANSIT

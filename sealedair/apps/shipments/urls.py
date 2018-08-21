@@ -5,7 +5,7 @@ from django.conf.urls import url
 from .views.web.shipments import (
     Dashboard, ShipmentList, ShipmentCreate,
     ShipmentUpdate, ShipmentDelete)
-from .views.rest.shipments import ShipmentViewSet
+from .views.rest.shipments import ShipmentViewSet, ShipmentNextCheckpoint
 
 urlpatterns = [
     url(r'^dashboard$',
@@ -18,6 +18,8 @@ urlpatterns = [
         ShipmentUpdate.as_view(), name='shipment-update'),
     url(r'^shipments/(?P<pk>[0-9]+)/delete/$',
         ShipmentDelete.as_view(), name='shipment-delete'),
+    url(r'^shipments/(?P<pk>[0-9]+)/next/$',
+        ShipmentNextCheckpoint.as_view(), name='shipment-next'),
 
     url(r'^$', RedirectView.as_view(
         url=reverse_lazy('shipments:dashboard')
