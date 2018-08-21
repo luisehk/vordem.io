@@ -1,5 +1,3 @@
-from django.views.generic.base import RedirectView
-from django.urls import reverse_lazy
 from django.conf.urls import url
 from .views.web.plants import (
     PlantList, PlantCreate, PlantUpdate, PlantDelete)
