@@ -19,33 +19,39 @@
                 <div class="card-header card-header-divider">Agregar nuevo usuario<span class="card-subtitle"></div>
 
                 <div class="card-body">
-                    <form method="POST" data-parsley-validate="" novalidate="">
+                    <form method="POST" data-parsley-validate id="user_form">
                         {% csrf_token %}
-                        <div class="form-group pt-2">
-                            <label for="{{ field.id_for_first_name }}">{{ form.first_name.label_tag }} *</label>
-                            {% render_field form.first_name class="form-control" placeholder="Introduzca un nombre" %}
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group pt-2">
+                                    <label for="{{ field.id_for_first_name }}">{{ form.first_name.label_tag }} *</label>
+                                    {% render_field form.first_name class="form-control" placeholder="Introduzca un nombre" onkeypress="return Solo_Texto(event);" %}
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-6">
+                                <div class="form-group pt-2">
+                                    <label for="{{ field.id_for_last_name }}">{{ form.last_name.label_tag }} *</label>
+                                    {% render_field form.last_name class="form-control" placeholder="Introduzca los apellidos" onkeypress="return Solo_Texto(event);" %}
+                                </div>
+                            </div>
                         </div>
-
-                        <div class="form-group pt-2">
-                            <label for="{{ field.id_for_last_name }}">{{ form.last_name.label_tag }} *</label>
-                            {% render_field form.last_name class="form-control" placeholder="Introduzca los apellidos" %}
-                        </div>
-
+                        
                         <div class="form-group pt-2">
                             <label for="{{ field.id_for_email }}">{{ form.email.label_tag }} *</label>
-                            {% render_field form.email class="form-control" placeholder="Introduzca un email" %}
+                            {% render_field form.email class="form-control" placeholder="Introduzca un email" data-parsley-trigger="keyup" %}
                         </div>
 
                         <div class="form-group pt-2">
                             <label for="{{ field.id_for_password1 }}">{{ form.password1.label_tag }} *</label>
-                            {% render_field form.password1 class="form-control" placeholder="Introduzca una contraseña" %}
+                            {% render_field form.password1 class="form-control" placeholder="Introduzca una contraseña" data-parsley-trigger="keyup" data-parsley-minlength=8 data-parsley-minlength-message="La longitud mínima de la contraseña es de 8 caracteres."%}
                         </div>
 
                         <div class="form-group pt-2">
                             <label for="{{ field.id_for_password2 }}">{{ form.password2.label_tag }} *</label>
-                            {% render_field form.password2 class="form-control" placeholder="Confirme su contraseña" %}
+                            {% render_field form.password2 class="form-control" placeholder="Confirme su contraseña" data-parsley-trigger="keyup" data-parsley-equalto="#id_password1" data-parsley-equalto-message="Las contraseñas no coinciden."%}
                         </div>
-                        
+
                         <br>
                         <div class="col-sm-12 pl-0">
                             <p class="text-left info">
@@ -65,6 +71,15 @@
 {% endblock %}
 {% block extra_scripts %}
 <script>
-  $("#id_color").addClass('form-control');
+    function Solo_Texto(e) {
+        var code;
+        if (!e) var e = window.event;
+        if (e.keyCode) code = e.keyCode;
+        else if (e.which) code = e.which;
+        var character = String.fromCharCode(code);
+        var AllowRegex  = /^[\ba-zA-Z\s-]$/;
+        if (AllowRegex.test(character)) return true;     
+        return false; 
+    }
 </script>
 {% endblock %}

@@ -23,6 +23,7 @@ class UserRegistroForm(UserCreationForm):
                     'required': True}),
             'email': TextInput(
                 attrs={
+                    'type': 'email',
                     'required': True})
         }
 
