@@ -24,4 +24,3 @@ urlpatterns = [
 router = DefaultRouter()
 router.register(r'api/carriers', CarrierViewSet)
 urlpatterns += router.urls
-
