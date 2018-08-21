@@ -24,7 +24,7 @@ Vue.component('shipment-card', {
       '</div>' +
       '<div class="row no-margin">' +
         '<div class="col-10 no-padding">' +
-          '<span class="icon mdi mdi-hourglass-alt"></span> 3 horas' +
+          '<span class="icon mdi mdi-hourglass-alt"></span> ${shipment.current_status.hours_since_start} hora(s)' +
         '</div>' +
         '<div class="col-2 no-padding">' +
           '<span class="badge badge-success float-right">OK</span>' +

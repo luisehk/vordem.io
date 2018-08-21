@@ -1,5 +1,6 @@
 from rest_framework import serializers
 from django.db import transaction
+from django.utils import timezone
 from ..models import Shipment, Comment, Status
 from ...users.api.serializers import UserSerializer
 from ...providers.serializers.carriers import (
@@ -19,12 +20,18 @@ class CommentSerializer(serializers.ModelSerializer):
 
 
 class StatusSerializer(serializers.ModelSerializer):
+    hours_since_start = serializers.SerializerMethodField()
+
     class Meta:
         model = Status
         fields = [
             'id', 'checkpoint', 'time_status',
-            'start_datetime', 'end_datetime'
-        ]
+            'start_datetime', 'end_datetime',
+            'hours_since_start']
+
+    def get_hours_since_start(self, obj):
+        delta = timezone.now() - obj.start_datetime
+        return int(delta.total_seconds() // 3600)
 
 
 class ShipmentSerializer(serializers.ModelSerializer):
