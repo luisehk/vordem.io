@@ -29,7 +29,7 @@
       <nav class="navbar navbar-expand fixed-top be-top-header">
         <div class="container-fluid">
           <div class="be-navbar-header">
-            <a href="index.html" class="navbar-brand"></a>
+            <a href="{% url 'shipments:dashboard' %}" class="navbar-brand"></a>
           </div>
           <div class="be-right-navbar">
             <ul class="nav navbar-nav float-right be-user-nav">
@@ -110,11 +110,11 @@
                   </li>
                   <li class="{% if request.resolver_match.url_name == 'plant-list' %}active{% endif %}"><a href="{% url 'company:plant-list' %}" title="Plantas"><i class="fas fa-building pr-3"></i><span>Plantas</span></a>
                   </li>
+                  <li><a href=""><i class="icon mdi mdi-accounts-alt"></i><span>Usuarios</span></a>
+                  </li>
                   <li><a href="#"><i class="icon mdi mdi-pin"></i><span>Destinos</span></a>
                   </li>
-                  <li><a href="#"><i class="icon mdi mdi-accounts-alt"></i><span>Usuarios</span></a>
-                  </li>
-                  
+
               </div>
             </div>
           </div>
