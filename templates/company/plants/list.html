@@ -33,9 +33,9 @@
                 <tr>
                     <td>{{plant.name}}</td>
                     <td>{{plant.code}}</td>
-                    <td><span style='background-image: none; background-color:{{carrier.color}};'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
-                    <td> 
-                      <a href="" title="Editar carrier"><span class="mdi mdi-edit"></span></a> &nbsp;&nbsp;| &nbsp;&nbsp;<a href="" title="Eliminar carrier"><span class="mdi mdi-delete"></span></a>
+                    <td><span style='background-image: none; background-color:{{plant.color}};'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+                    <td class="font-size-icon-table"> 
+                      <a href="{% url 'company:plant-update' plant.pk %}" title="Editar planta"><span class="mdi mdi-edit"></span></a> &nbsp;&nbsp;| &nbsp;&nbsp;<a href="{% url 'company:plant-delete' plant.pk %}" title="Eliminar planta"><span class="mdi mdi-delete"></span></a>
                     </td>
                   </tr>
                 {% empty %}

@@ -43,9 +43,6 @@
                   <div class="user-info">
                     <div class="user-name">{% firstof user.get_full_name user.email %}</div>
                   </div>
-                  <a href="#" class="dropdown-item">
-                    <span class="icon mdi mdi-face"></span> Mi cuenta
-                  </a>
                   <a href="#tab1" role="button" aria-expanded="false" class="dropdown-item be-toggle-right-sidebar">
                     <span class="icon mdi mdi-settings"></span> Ajustes
                   </a>
@@ -106,17 +103,18 @@
                     <a href="{% url 'shipments:dashboard' %}" title="Dashboard"><i class="icon mdi mdi-home"></i><span>Dashboard</span></a>
                   </li>
                   <li class="{% if request.resolver_match.url_name == 'shipment-listar' %}active{% endif %}">
-                    <a href="{% url 'shipments:shipment-listar' %}" title="Embarques"><i class="fas fa-shipping-fast"></i><span>Embarques</span>
+                    <a href="{% url 'shipments:shipment-listar' %}" title="Embarques"><i class="fas fa-shipping-fast pr-2"></i><span>Embarques</span>
                     </a>
                   </li>
                   <li class="{% if request.resolver_match.url_name == 'carrier-list' %}active{% endif %}"><a href="{% url 'providers:carrier-list' %}" title="Carriers"><i class="icon mdi mdi-truck"></i><span>Carriers</span></a>
+                  </li>
+                  <li class="{% if request.resolver_match.url_name == 'plant-list' %}active{% endif %}"><a href="{% url 'company:plant-list' %}" title="Plantas"><i class="fas fa-building pr-3"></i><span>Plantas</span></a>
                   </li>
                   <li><a href="#"><i class="icon mdi mdi-pin"></i><span>Destinos</span></a>
                   </li>
                   <li><a href="#"><i class="icon mdi mdi-accounts-alt"></i><span>Usuarios</span></a>
                   </li>
-                  <li><a href="{% url 'company:plant-list' %}" title="Plantas"><i class="mdi mdi-store"></i><span>Plantas</span></a>
-                  </li>
+                  
               </div>
             </div>
           </div>

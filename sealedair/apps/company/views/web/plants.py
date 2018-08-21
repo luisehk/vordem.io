@@ -1,4 +1,5 @@
 from extra_views import CreateWithInlinesView, UpdateWithInlinesView
+from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import ListView, DeleteView
 from django.views.generic.base import ContextMixin
@@ -7,6 +8,10 @@ from ...models import Plant
 
 class PlantGenericView(LoginRequiredMixin, ContextMixin):
     model = Plant
+
+    def get_success_url(self):
+        return reverse_lazy(
+            'company:plant-list')
 
 
 class PlantFormView(PlantGenericView):
