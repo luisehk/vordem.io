@@ -10,17 +10,8 @@ var newShipmentApp = new Vue({
       },
       plant: 1
     },
-    plants: [
-      {value: 1, text: 'Aurora, CO'},
-      {value: 2, text: 'Duncan, SC'},
-      {value: 3, text: 'Iowa Park, TX'},
-      {value: 4, text: 'Saint Joe, MO'},
-      {value: 5, text: 'Sturtevant, WI'},
-    ],
-    carriers: [
-      {value: 1, text: 'KLLM'},
-      {value: 2, text: 'CRE'},
-    ],
+    plants: [],
+    carriers: [],
     loading: false
   },
   computed: {
@@ -32,30 +23,80 @@ var newShipmentApp = new Vue({
         true;
     }
   },
+  created: function() {
+    this.loadPlants();
+    this.loadCarriers();
+  },
   methods: {
-    submit: function() {
-      var self = this;
-
-      this.loading = true;
-
+    _get: function(url, success, error) {
       $.ajax({
-        url: '/shipments/api/shipments/',
+        url: url,
+        type: 'GET',
+        success : success,
+        error : error
+      });
+    },
+
+    _post: function(url, data, success, error) {
+      $.ajax({
+        url: url,
         type: 'POST',
-        data: JSON.stringify(this.shipment),
         dataType: 'json',
         contentType: 'application/json',
         headers: {
           'X-CSRFToken': getCookie('csrftoken')
         },
-        success : function(json) {
+        data: JSON.stringify(data),
+        success : success,
+        error : error
+      });
+    },
+
+    loadPlants: function() {
+      var self = this;
+
+      this._get(
+        '/company/api/plants/',
+        function(json) {
+          self.plants = json.results;
+        },
+        function(xhr, textStatus, errorThrown ) {
+          console.error('error loading data');
+        }
+      );
+    },
+
+    loadCarriers: function() {
+      var self = this;
+
+      this._get(
+        '/providers/api/carriers/',
+        function(json) {
+          self.carriers = json.results;
+        },
+        function(xhr, textStatus, errorThrown ) {
+          console.error('error loading data');
+        }
+      );
+    },
+
+    submit: function() {
+      var self = this;
+
+      this.loading = true;
+
+      this._post(
+        '/shipments/api/shipments/',
+        this.shipment,
+        function(json) {
           self.loading = false;
           self.success.call(self, json);
         },
-        error : function(xhr, status, error) {
+        function(xhr, status, error) {
           self.loading = false;
           self.success.call(self, xhr, status, error);
         }
-      });
+      );
     },
 
     success: function(json) {

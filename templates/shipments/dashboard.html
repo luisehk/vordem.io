@@ -30,8 +30,8 @@
             <label for="id_plant" class="col-12 col-sm-3 col-form-label text-sm-right">Planta destino</label>
             <div class="col-12 col-sm-8 col-lg-8">
               <select id="id_plant" v-model="shipment.plant" class="form-control">
-                <option v-for="plant in plants" v-bind:value="plant.value">
-                  ${ plant.text }
+                <option v-for="plant in plants" v-bind:value="plant.id">
+                  ${ plant.name }
                 </option>
               </select>
             </div>
@@ -48,8 +48,8 @@
             <label for="id_carrier" class="col-12 col-sm-3 col-form-label text-sm-right">Carrier</label>
             <div class="col-12 col-sm-8 col-lg-8">
               <select id="id_carrier" v-model="shipment.truck.carrier" class="form-control">
-                <option v-for="carrier in carriers" v-bind:value="carrier.value">
-                  ${ carrier.text }
+                <option v-for="carrier in carriers" v-bind:value="carrier.id">
+                  ${ carrier.name }
                 </option>
               </select>
             </div>
