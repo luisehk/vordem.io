@@ -11,7 +11,7 @@ urlpatterns = [
     url(r'^dashboard$',
         Dashboard.as_view(), name="dashboard"),
     url(r'^shipments$',
-        ShipmentList.as_view(), name="shipment-list"),
+        ShipmentList.as_view(), name="shipment-listar"),
     url(r'^shipments/add/$',
         ShipmentCreate.as_view(), name='shipment-add'),
     url(r'^shipments/(?P<pk>[0-9]+)/$',
