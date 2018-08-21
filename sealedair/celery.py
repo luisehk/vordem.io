@@ -17,7 +17,17 @@ def setup_periodic_tasks(sender, **kwargs):
         do_nothing.s(),
         name='Do nothing every week')
 
+    sender.add_periodic_task(
+        30.0,
+        set_shipments_time_status.s(),
+        name='Update shipments time status')
+
 
 @app.task
 def do_nothing():
     pass
+
+
+@app.task
+def set_shipments_time_status():
+    print('shipments status')
