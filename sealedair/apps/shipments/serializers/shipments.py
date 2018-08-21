@@ -1,4 +1,5 @@
 from rest_framework import serializers
+from django.db import transaction
 from ..models import Shipment, Comment, Status
 from ...users.api.serializers import UserSerializer
 from ...providers.serializers.carriers import TruckSerializer
@@ -39,4 +40,15 @@ class ShipmentSerializer(serializers.ModelSerializer):
             'estimated_arrival_datetime', 'delay_reason',
             'truck', 'plant',
             'comments', 'status_history'
+        ]
+
+
+class ShipmentCreationSerializer(serializers.ModelSerializer):
+    truck = TruckSerializer()
+
+    class Meta:
+        model = Shipment
+        fields = [
+            'id', 'code',
+            'truck', 'plant',
         ]
