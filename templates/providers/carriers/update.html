@@ -22,12 +22,12 @@
                     <form method="POST" data-parsley-validate="" novalidate="">
                         {% csrf_token %}
                         <div class="form-group pt-2">
-                            <label for="{{ field.id_for_name }}">{{ form.name.label_tag }}*</label>
+                            <label for="{{ field.id_for_name }}">{{ form.name.label_tag }} *</label>
                             {% render_field form.name class="form-control" placeholder="Introduzca un nombre para el carrier" %}
                         </div>
                         
                         <div class="form-group">
-                            <label for="{{ field.id_for_code }}">{{ form.code.label_tag }}*</label>
+                            <label for="{{ field.id_for_code }}">{{ form.code.label_tag }} *</label>
                             {% render_field form.code class="form-control" placeholder="Introduzca un código para el carrier" %}
                         </div>
                         
