@@ -88,10 +88,10 @@
           <button type="button" data-dismiss="modal" aria-hidden="true" class="close md-close"><span class="mdi mdi-close">       </span></button>
         </div>
 
-        <div class="modal-body">
+        <div class="modal-body" style="padding: 0">
 
           <!-- shipment info -->
-          <div class="main-content container-fluid">
+          <div class="main-content container-fluid shipment-modal-header">
             <div class="row">
               <div class="col-6">
                 <div class="form-group row">
@@ -147,7 +147,7 @@
                 </h3>
 
                 <p class="shipment-actions">
-                  <button class="btn btn-space btn-success btn-lg"><i class="icon icon-left mdi mdi-check-circle"></i> Ya llegó</button>
+                  <button v-on:click="nextCheckpoint" class="btn btn-space btn-success btn-lg"><i class="icon icon-left mdi mdi-check-circle"></i> Ya llegó</button>
 
                   <button class="btn btn-space btn-primary btn-lg"><i class="icon icon-left mdi mdi-phone"></i> Contactar carrier</button>
                 </p>
