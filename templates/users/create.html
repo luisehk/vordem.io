@@ -58,13 +58,6 @@
                             <p class="text-left info">
                                 (*) campos requeridos
                             </p>
-                            {% if messages %}
-                            <ul class="messages">
-                                {% for message in messages %}
-                                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-                                {% endfor %}
-                            </ul>
-                            {% endif %}
                             <p class="text-right">
                                 <a href="{% url 'users:users-list' %}" class="btn btn-space btn-secondary"> Cancelar</a>
                                 <button type="submit" class="btn btn-space btn-primary">Guardar</button>
@@ -80,7 +73,11 @@
 {% block extra_scripts %}
 <script>
     {% if messages %}
-        notifEmailInvalid();
+        {% for message in messages %}
+            {% if message.tags == 'error' %}
+                notifEmailInvalid();
+            {% endif %}
+        {% endfor %}
     {% endif %}
 
     function Solo_Texto(e) {
