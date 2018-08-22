@@ -25,31 +25,32 @@
                             <div class="col-md-6">
                                 <div class="form-group pt-2">
                                     <label for="{{ field.id_for_first_name }}">{{ form.first_name.label_tag }} *</label>
-                                    {% render_field form.first_name class="form-control" placeholder="Introduzca un nombre" onkeypress="return Solo_Texto(event);" %}
+                                    {% render_field form.first_name class="form-control" placeholder="Introduzca su(s) nombre(s)" onkeypress="return Solo_Texto(event);" %}
                                 </div>
                             </div>
                             
                             <div class="col-md-6">
                                 <div class="form-group pt-2">
-                                    <label for="{{ field.id_for_last_name }}">{{ form.last_name.label_tag }} *</label>
-                                    {% render_field form.last_name class="form-control" placeholder="Introduzca los apellidos" onkeypress="return Solo_Texto(event);" %}
+                                    <label for="{{ field.id_for_last_name }}" style="padding-bottom:8px;"> Apellido(s): *</label>
+                                    {% render_field form.last_name class="form-control" placeholder="Introduzca su(s) apellido(s)" onkeypress="return Solo_Texto(event);" %}
                                 </div>
                             </div>
                         </div>
                         
                         <div class="form-group pt-2">
                             <label for="{{ field.id_for_email }}">{{ form.email.label_tag }} *</label>
-                            {% render_field form.email class="form-control" placeholder="Introduzca un email" data-parsley-trigger="keyup" %}
+                            {% render_field form.email class="form-control" placeholder="Introduzca su email" data-parsley-trigger="keyup" %}
                         </div>
 
                         <div class="form-group pt-2">
                             <label for="{{ field.id_for_password1 }}">{{ form.password1.label_tag }} *</label>
-                            {% render_field form.password1 class="form-control" placeholder="Introduzca una contraseña" data-parsley-trigger="keyup" data-parsley-minlength=8 data-parsley-minlength-message="La longitud mínima de la contraseña es de 8 caracteres."%}
+                            <a title="Requiere 8 caracteres"><span class='mdi mdi-info'></span> </a>
+                            {% render_field form.password1 class="form-control" placeholder="Introduzca una contraseña" data-parsley-trigger="keyup" data-parsley-minlength=8 data-parsley-minlength-message="Contraseña requiere mínimo 8 caracteres."%}
                         </div>
 
                         <div class="form-group pt-2">
                             <label for="{{ field.id_for_password2 }}">{{ form.password2.label_tag }} *</label>
-                            {% render_field form.password2 class="form-control" placeholder="Confirme su contraseña" data-parsley-trigger="keyup" data-parsley-equalto="#id_password1" data-parsley-equalto-message="Las contraseñas no coinciden."%}
+                            {% render_field form.password2 class="form-control" placeholder="Confirme la contraseña" data-parsley-trigger="keyup" data-parsley-equalto="#id_password1" data-parsley-equalto-message="Las contraseñas no coinciden."%}
                         </div>
 
                         <br>
@@ -57,8 +58,15 @@
                             <p class="text-left info">
                                 (*) campos requeridos
                             </p>
+                            {% if messages %}
+                            <ul class="messages">
+                                {% for message in messages %}
+                                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                                {% endfor %}
+                            </ul>
+                            {% endif %}
                             <p class="text-right">
-                                <a href="{% url 'company:plant-list' %}" class="btn btn-space btn-secondary"> Cancelar</a>
+                                <a href="{% url 'users:users-list' %}" class="btn btn-space btn-secondary"> Cancelar</a>
                                 <button type="submit" class="btn btn-space btn-primary">Guardar</button>
                             </p>
                         </div>
@@ -71,6 +79,10 @@
 {% endblock %}
 {% block extra_scripts %}
 <script>
+    {% if messages %}
+        notifEmailInvalid();
+    {% endif %}
+
     function Solo_Texto(e) {
         var code;
         if (!e) var e = window.event;
@@ -81,5 +93,18 @@
         if (AllowRegex.test(character)) return true;     
         return false; 
     }
+
+    function notifEmailInvalid(){
+        var user = $('#id_email').val();
+        $.gritter.add({
+            title: 'Email Inválido',
+            text: 'Este email ' + user + ' ya fue registrado por otro usuario.',
+            class_name: 'color danger',
+            position: 'bottom-right'
+          });
+        $('#id_email').val("");
+        $('#id_email').focus();
+    }
+ 
 </script>
 {% endblock %}

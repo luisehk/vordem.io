@@ -43,3 +43,12 @@
     flex-direction: column;
     margin-top: 20px;
 }
+
+/* Avatar form edit profile user */
+.mask-profile > input {
+    display: none;
+}
+#output {
+    cursor: pointer;
+    width: 220px !important;
+}

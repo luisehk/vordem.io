@@ -19,17 +19,35 @@
                 <div class="card-header card-header-divider">Editar usuario<span class="card-subtitle"></div>
 
                 <div class="card-body">
-                    <form method="POST" data-parsley-validate="" novalidate="">
+                    <form method="POST" data-parsley-validate enctype="multipart/form-data" >
                         {% csrf_token %}
-                        <div class="form-group pt-2">
-                            <label for="{{ field.id_for_first_name }}">{{ form.first_name.label_tag }} *</label>
-                            {% render_field form.first_name class="form-control" placeholder="Introduzca un nombre" %}
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group pt-2">
+                                    <label for="{{ field.id_for_user.first_name }}">{{ form.user.first_name.label_tag }} *</label>
+                                    {% render_field form.user.first_name class="form-control" placeholder="Introduzca un nombre" %}
+                                </div>
+        
+                                <div class="form-group pt-2">
+                                    <label for="{{ field.id_for_user.last_name }}">{{ form.user.last_name.label_tag }} *</label>
+                                    {% render_field form.user.last_name class="form-control" placeholder="Introduzca los apellidos" %}
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="content">
+                                    <div class="text-center">
+                                        <div class="mask-profile">            
+                                            <div class="bg-img"></div>            
+                                            <label for="id_profile-avatar_0">                
+                                            <img id="output" src="{{ user.profile.avatar.url }}" alt="" class="img-thumbnail">            
+                                            </label>            
+                                            <input id="id_profile-avatar_0" type="file" accept="image/*" onchange="loadFile(event)" name="profile-avatar_0"/>       
+                                        </div> 
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-
-                        <div class="form-group pt-2">
-                            <label for="{{ field.id_for_last_name }}">{{ form.last_name.label_tag }} *</label>
-                            {% render_field form.last_name class="form-control" placeholder="Introduzca los apellidos" %}
-                        </div>
+                        
 
                         <br>
 
@@ -37,6 +55,7 @@
                             <p class="text-left info">
                                 (*) campos requeridos
                             </p>
+                            <hr>
                             <p class="text-right">
                                 <a href="{% url 'users:users-list' %}" class="btn btn-space btn-secondary"> Cancelar</a>
                                 <button type="submit" class="btn btn-space btn-primary">Guardar</button>
@@ -51,6 +70,13 @@
 {% endblock %}
 {% block extra_scripts %}
 <script>
-  $("#id_color").addClass('form-control');
+    var loadFile = function (event) {
+        var reader = new FileReader();
+        reader.onload = function () {
+            var output = document.getElementById('output');
+            output.src = reader.result;
+        };
+        reader.readAsDataURL(event.target.files[0]);
+    }; 
 </script>
 {% endblock %}

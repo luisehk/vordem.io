@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     'storages',
 
     'widget_tweaks',
+    'betterforms',
 ]
 
 MIDDLEWARE = [
