@@ -8,16 +8,20 @@ from ...company.models import Plant
 User = get_user_model()
 
 
-class Shipment(models.Model):
-    DELAY_HOLIDAYS = 'HOL'
-    DELAY_APPOINTMENT = 'APP'
-    DELAY_CARRIER = 'CARR'
-    DELAY_REASONS = (
-        (DELAY_HOLIDAYS, 'Día festivo',),
-        (DELAY_APPOINTMENT, 'Falta de cita',),
-        (DELAY_CARRIER, 'Problema con carrier',),
-    )
+class DelayReason(models.Model):
+    reason = models.CharField(
+        verbose_name='Razón de retraso',
+        max_length=100)
 
+    class Meta:
+        verbose_name = 'Razón de retraso'
+        verbose_name_plural = 'Razones de retraso'
+
+    def __str__(self):
+        return self.reason
+
+
+class Shipment(models.Model):
     truck = models.ForeignKey(
         Truck,
         verbose_name='Trailer',
@@ -49,10 +53,10 @@ class Shipment(models.Model):
         verbose_name='ETA',
         null=True,
         blank=True)
-    delay_reason = models.CharField(
-        verbose_name='Razón de retraso',
-        max_length=3,
-        choices=DELAY_REASONS,
+    delay_reason = models.ForeignKey(
+        DelayReason,
+        on_delete=models.PROTECT,
+        related_name='delay_reason_shipments',
         null=True,
         blank=True)
 

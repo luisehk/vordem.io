@@ -1,1 +1,1 @@
-from .shipments import Shipment, Comment, Status  # noqa
+from .shipments import Shipment, Comment, Status, DelayReason  # noqa
