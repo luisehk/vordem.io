@@ -1,6 +1,8 @@
 from django.contrib.auth import get_user_model
 from django.contrib.auth.forms import UserCreationForm
 from django.forms import ModelForm, TextInput
+from .models import Profile
+from betterforms.multiform import MultiModelForm
 
 User = get_user_model()
 
@@ -23,14 +25,15 @@ class UserRegistroForm(UserCreationForm):
                     'required': True}),
             'email': TextInput(
                 attrs={
+                    'type': 'email',
                     'required': True})
         }
 
 
-class UserUpdateForm(ModelForm):
+class UserForm(ModelForm):
     class Meta:
         model = User
-        fields = ['first_name', 'last_name']
+        fields = ('first_name', 'last_name')
         labels = {
             'first_name': "Nombre(s)",
             'last_name': "Apellidos",
@@ -43,3 +46,16 @@ class UserUpdateForm(ModelForm):
                 attrs={
                     'required': True})
         }
+
+
+class ProfileForm(ModelForm):
+    class Meta:
+        model = Profile
+        fields = ('avatar',)
+
+
+class UserProfileForm(MultiModelForm):
+    form_classes = {
+        'user': UserForm,
+        'profile': ProfileForm,
+    }

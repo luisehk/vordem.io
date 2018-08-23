@@ -44,6 +44,16 @@
     margin-top: 20px;
 }
 
+
+/* Avatar form edit profile user */
+.mask-profile > input {
+    display: none;
+}
+#output {
+    cursor: pointer;
+    width: 220px !important;
+}
+
 .shipment-modal-header {
     background-image: url(https://sealedair.com/sites/default/files/01.1-1_imageFood_1440x460.jpg);
     background-blend-mode: soft-light;

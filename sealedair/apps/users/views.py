@@ -1,9 +1,11 @@
 from django.contrib.auth import get_user_model
+from django.contrib import messages
 from django.core.urlresolvers import reverse_lazy
+from django.core.exceptions import ObjectDoesNotExist
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic.base import RedirectView
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView
-from .forms import UserRegistroForm, UserUpdateForm
+from .forms import UserRegistroForm, UserProfileForm
 
 
 User = get_user_model()
@@ -20,6 +22,7 @@ class UserHome(LoginRequiredMixin, RedirectView):
 class UsersList(LoginRequiredMixin, ListView):
     model = User
     template_name = "users/list.html"
+    ordering = ['pk']
 
 
 class UserCreate(LoginRequiredMixin, CreateView):
@@ -28,12 +31,35 @@ class UserCreate(LoginRequiredMixin, CreateView):
     form_class = UserRegistroForm
     success_url = reverse_lazy('users:users-list')
 
+    def form_invalid(self, form):
+        messages.error(
+            self.request, "Ese email ya fue registrado.")
+        return self.render_to_response(
+            self.get_context_data(request=self.request, form=form))
+
+    def form_valid(self, form):
+        email = form.cleaned_data['email']
+        try:
+            user = User.objects.get(email=email)
+            print("Ya existe el email.", user)
+            return self.form_invalid(form)
+        except ObjectDoesNotExist:
+            return super().form_valid(form)
+
 
 class UserUpdate(LoginRequiredMixin, UpdateView):
     model = User
     template_name = "users/update.html"
-    form_class = UserUpdateForm
+    form_class = UserProfileForm
     success_url = reverse_lazy('users:users-list')
+
+    def get_form_kwargs(self):
+        kwargs = super().get_form_kwargs()
+        kwargs.update(instance={
+            'user': self.object,
+            'profile': self.object.profile,
+        })
+        return kwargs
 
 
 class UserDelete(LoginRequiredMixin, DeleteView):
