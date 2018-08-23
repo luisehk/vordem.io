@@ -3,8 +3,10 @@ from rest_framework.viewsets import ModelViewSet
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
-from ..api.serializers import UserSerializer, ProfileSerializer
+from ..api.serializers import (
+    UserSerializer, ProfileSerializer, UserNotificationsConfigSerializer)
 from ..models import Profile
+from ...notifications.models.notifications import UserNotificationsConfig
 
 
 class ProfileViewSet(ModelViewSet):
@@ -32,3 +34,10 @@ class MyselfView(APIView):
         return Response(
             UserSerializer(self.get_queryset().first(), many=False).data
         )
+
+
+class UserNotificationsConfigViewSet(ModelViewSet):
+    queryset = UserNotificationsConfig.objects.all()
+    serializer_class = UserNotificationsConfigSerializer
+    # filter_fields = UserNotificationsConfigSerializer.filter_fields
+    lookup_field = 'user'
