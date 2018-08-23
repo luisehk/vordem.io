@@ -23,6 +23,13 @@
                         {% csrf_token %}
                         <div class="row">
                             <div class="col-md-6">
+                                {% if form.user.email.value == request.user.email%}
+                                    <div class="form-group pt-2">
+                                        <label for="{{ field.id_for_user.email }}">{{ form.user.email.label_tag }} *</label>
+                                        {% render_field form.user.email class="form-control" placeholder="Introduzca un email" %}
+                                    </div>
+                                {% endif %}
+
                                 <div class="form-group pt-2">
                                     <label for="{{ field.id_for_user.first_name }}">{{ form.user.first_name.label_tag }} *</label>
                                     {% render_field form.user.first_name class="form-control" placeholder="Introduzca un nombre" %}
@@ -70,6 +77,14 @@
 {% endblock %}
 {% block extra_scripts %}
 <script>
+    {% if messages %}
+        {% for message in messages %}
+            {% if message.tags == 'error' %}
+                notifEmailInvalid();
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+
     var loadFile = function (event) {
         var reader = new FileReader();
         reader.onload = function () {
@@ -78,5 +93,17 @@
         };
         reader.readAsDataURL(event.target.files[0]);
     }; 
+
+    function notifEmailInvalid(){
+        var user = $('#id_email').val();
+        $.gritter.add({
+            title: 'Email Inválido',
+            text: 'Este email ' + user + ' ya fue registrado por otro usuario.',
+            class_name: 'color danger',
+            position: 'bottom-right'
+          });
+        $('#id_email').val("");
+        $('#id_email').focus();
+    }
 </script>
 {% endblock %}

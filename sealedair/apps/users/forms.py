@@ -33,12 +33,15 @@ class UserRegistroForm(UserCreationForm):
 class UserForm(ModelForm):
     class Meta:
         model = User
-        fields = ('first_name', 'last_name')
+        fields = ('email', 'first_name', 'last_name')
         labels = {
             'first_name': "Nombre(s)",
             'last_name': "Apellidos",
         }
         widgets = {
+            'email': TextInput(
+                attrs={
+                    'required': True}),
             'first_name': TextInput(
                 attrs={
                     'required': True}),
