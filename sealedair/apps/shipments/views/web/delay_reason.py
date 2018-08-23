@@ -2,7 +2,7 @@ from extra_views import CreateWithInlinesView, UpdateWithInlinesView
 from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import ListView, DeleteView
-from django.views.generic.base import ContextMixin, TemplateView
+from django.views.generic.base import ContextMixin
 from ...models import DelayReason
 
 
