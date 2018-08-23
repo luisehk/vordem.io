@@ -113,10 +113,8 @@
                   </li>
                   <li class="{% if request.resolver_match.url_name == 'users-list' %}active{% endif %}"><a href="{% url 'users:users-list' %}"><i class="icon mdi mdi-accounts-alt" title="Usuarios"></i><span>Usuarios</span></a>
                   </li>
-                  <!--
-                  <li><a href="#"><i class="icon mdi mdi-pin"></i><span>Destinos</span></a>
+                  <li><a href="{% url 'shipments:delay-reason-list' %}" title="Razones de retraso"><i class="mdi mdi-labels"></i><span>Razones de retraso</span></a>
                   </li>
-                  -->
               </div>
             </div>
           </div>
