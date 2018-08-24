@@ -1,5 +1,10 @@
 from django.utils import timezone
+from django.contrib.auth import get_user_model
+from ..messaging.email.helpers import send_email
+from ..notifications.models.notifications import UserNotificationsConfig
 from .models import Status
+
+User = get_user_model()
 
 
 def _get_relevant_data(kwargs):
@@ -42,3 +47,18 @@ def create_shipment_status(sender, **kwargs):
     if shipment.current_status is None:
         status = Status(shipment=shipment)
         status.save()
+
+    if created:
+        for user in User.objects.filter(
+                notifications_config__new_shipment=True):
+                send_email(
+                    subject='Nuevo embarque creado',
+                    to_email=[user.email],
+                    template='emails/shipments/new_shipment.html',
+                    ctx={
+                        'user': user.first_name,
+                        'shipment': shipment,
+                        'truck': shipment.truck,
+                        'plant': shipment.plant,
+                        'carrier': shipment.truck.carrier.name
+                    })
