@@ -50,6 +50,7 @@ def create_shipment_status(sender, **kwargs):
     if created:
         # create new shipment
         for user in User.objects.filter(
+                notifications_config__email=True,
                 notifications_config__new_shipment=True):
                 send_email(
                     subject='Nuevo embarque creado',
@@ -66,6 +67,7 @@ def create_shipment_status(sender, **kwargs):
         # modified shipment 'Destino: Entregado'
         if shipment.current_status.checkpoint == 'UDE':
             for user in User.objects.filter(
+                    notifications_config__email=True,
                     notifications_config__delivered_shipment=True):
                 send_email(
                     subject='Embarque entregado',
