@@ -1,7 +1,6 @@
 from django.utils import timezone
 from django.contrib.auth import get_user_model
 from ..messaging.email.helpers import send_email
-from ..notifications.models.notifications import UserNotificationsConfig
 from .models import Status
 
 User = get_user_model()
