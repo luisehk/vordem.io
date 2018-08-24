@@ -2,6 +2,7 @@ from rest_auth.serializers import LoginSerializer
 from django.contrib.auth import get_user_model
 from rest_framework import serializers
 from ..models import Profile
+from ...notifications.models.notifications import UserNotificationsConfig
 from ...utils.serializers import BetterVersatileImageFieldSerializer
 
 User = get_user_model()
@@ -31,3 +32,13 @@ class UserSerializer(serializers.ModelSerializer):
             'profile',
         ]
         read_only_fields = ['email']
+
+
+class UserNotificationsConfigSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = UserNotificationsConfig
+        fields = [
+            'id', 'user_id', 'new_shipment', 'late_shipment',
+            'delivered_shipment', 'email', 'sms',
+        ]

@@ -25,7 +25,7 @@
     <link rel="stylesheet" href="{% static 'css/app.css' %}" type="text/css"/>
     <link rel="stylesheet" href="{% static 'css/utils.css' %}" type="text/css"/>
   </head>
-  <body>
+  <body onLoad="UserNotificationsConfig()">
     <div class="be-wrapper be-collapsible-sidebar be-collapsible-sidebar-collapsed">
       <nav class="navbar navbar-expand fixed-top be-top-header">
         <div class="container-fluid">
@@ -44,8 +44,8 @@
                   <div class="user-info">
                     <div class="user-name">{% firstof request.user.get_full_name request.user.email %}</div>
                   </div>
-                  <a href="#tab1" role="button" aria-expanded="false" class="dropdown-item be-toggle-right-sidebar">
-                    <span class="icon mdi mdi-settings"></span> Ajustes
+                  <!-- <a href="#tab1" role="button" aria-expanded="false" class="dropdown-item be-toggle-right-sidebar">
+                    <span class="icon mdi mdi-settings"></span> Ajustes -->
                   </a>
                   <a href="{% url 'account_logout' %}" onclick="return confirm('¿Estás seguro de querer cerrar sesión?');" class="dropdown-item">
                     <span class="icon mdi mdi-power"></span> Cerrar sesión
@@ -140,35 +140,37 @@
                   <div class="be-scroller"><span class="category-title">Notificaciones</span>
                     <ul class="settings-list">
                       <li>
-                        <div class="switch-button switch-button-sm">
-                          <input type="checkbox" checked="" name="st1" id="st1"><span>
-                            <label for="st1"></label></span>
+                        <div class="switch-button switch-button-sm switch-button-success">
+                          <input type="checkbox" checked="" name="new_shipments" id="id_new_shipments"><span>
+                            <label for="id_new_shipments"></label></span>
                         </div><span class="name">Nuevos embarques</span>
                       </li>
                       <li>
-                        <div class="switch-button switch-button-sm">
-                          <input type="checkbox" checked="" name="st2" id="st2"><span>
-                            <label for="st2"></label></span>
+                        <div class="switch-button switch-button-sm switch-button-success">
+                          <input type="checkbox" checked="" name="late_shipment" id="id_late_shipment"><span>
+                            <label for="id_late_shipment"></label></span>
                         </div><span class="name">Retrasos</span>
                       </li>
                       <li>
-                        <div class="switch-button switch-button-sm">
-                          <input type="checkbox" checked="" name="st3" id="st3"><span>
-                            <label for="st3"></label></span>
+                        <div class="switch-button switch-button-sm switch-button-success">
+                          <input type="checkbox" checked="" name="delivered_shipment" id="id_delivered_shipment"><span>
+                            <label for="id_delivered_shipment"></label></span>
                         </div><span class="name">Entregas</span>
                       </li>
-                    </ul><span class="category-title">Recibir por</span>
+                    </ul>
+                    <span class="category-title">Recibir por</span>
+                    
                     <ul class="settings-list">
                       <li>
-                        <div class="switch-button switch-button-sm">
-                          <input type="checkbox" checked="" name="st4" id="st4"><span>
-                            <label for="st4"></label></span>
+                        <div class="switch-button switch-button-sm switch-button-success">
+                          <input type="checkbox" checked="" name="email" id="id_email"><span>
+                            <label for="id_email"></label></span>
                         </div><span class="name">Por correo</span>
                       </li>
                       <li>
-                        <div class="switch-button switch-button-sm">
-                          <input type="checkbox" name="st5" id="st5"><span>
-                            <label for="st5"></label></span>
+                        <div class="switch-button switch-button-sm switch-button-success">
+                          <input type="checkbox" name="sms" id="id_sms"><span>
+                            <label for="id_sms"></label></span>
                         </div><span class="name">Por SMS</span>
                       </li>
                     </ul>
@@ -210,6 +212,78 @@
         App.dashboard();
 
       });
+      
+      var user_id = {{request.user.pk}}
+
+      function UserNotificationsConfig(){
+        var url = "/api/user-notifications/" + user_id
+        $.getJSON(url, function (data) {
+            $("#id_new_shipments").prop("checked", data.new_shipment);
+            $("#id_late_shipment").prop("checked", data.late_shipment);
+            $("#id_delivered_shipment").prop("checked", data.delivered_shipment);
+            $("#id_email").prop("checked", data.email);
+            $("#id_sms").prop("checked", data.sms);
+        });
+      }
+
+      function ChangeNotificationsUser(user, key_obj, status) {
+        data = {}
+        data[key_obj] = status
+        $.ajax({
+          type: 'PATCH',
+          headers: {
+            'X-CSRFToken': getCookie('csrftoken')
+          },
+          url: "/api/user-notifications/" + user + "/",
+          data: data,
+          success: function (data) {},
+          error: function (error) {
+            console.log(error);
+          }
+        });
+      }
+
+      $("#id_new_shipments").change(function(){
+        
+        if(this.checked != true){
+          ChangeNotificationsUser(user_id, 'new_shipment', false);
+        } else {
+          ChangeNotificationsUser(user_id, 'new_shipment', true);
+        }
+      })
+      
+      $("#id_late_shipment").change(function(){
+        if(this.checked != true){
+          ChangeNotificationsUser(user_id, 'late_shipment', false);
+        } else {
+          ChangeNotificationsUser(user_id, 'late_shipment', true);
+        }
+      })
+
+      $("#id_delivered_shipment").change(function(){
+        if(this.checked != true){
+          ChangeNotificationsUser(user_id, 'delivered_shipment', false);
+        } else {
+          ChangeNotificationsUser(user_id, 'delivered_shipment', true);
+        }
+      })
+      
+      $("#id_email").change(function(){
+        if(this.checked != true){
+          ChangeNotificationsUser(user_id, 'email', false);
+        } else {
+          ChangeNotificationsUser(user_id, 'email', true);
+        }
+      })
+
+      $("#id_sms").change(function(){
+        if(this.checked != true){
+          ChangeNotificationsUser(user_id, 'sms', false);
+        } else {
+          ChangeNotificationsUser(user_id, 'sms', true);
+        }
+      })
+      
     </script>
   </body>
 </html>
