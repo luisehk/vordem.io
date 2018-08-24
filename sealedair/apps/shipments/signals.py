@@ -42,12 +42,13 @@ def set_status_as_current(sender, **kwargs):
 
 def create_shipment_status(sender, **kwargs):
     shipment, created = _get_relevant_data(kwargs)
-
+    # create status
     if shipment.current_status is None:
         status = Status(shipment=shipment)
         status.save()
 
     if created:
+        # create new shipment
         for user in User.objects.filter(
                 notifications_config__new_shipment=True):
                 send_email(
@@ -60,4 +61,21 @@ def create_shipment_status(sender, **kwargs):
                         'truck': shipment.truck,
                         'plant': shipment.plant,
                         'carrier': shipment.truck.carrier.name
+                    })
+    else:
+        # modified shipment 'Destino: Entregado'
+        if shipment.current_status.checkpoint == 'UDE':
+            for user in User.objects.filter(
+                    notifications_config__delivered_shipment=True):
+                send_email(
+                    subject='Embarque entregado',
+                    to_email=[user.email],
+                    template='emails/shipments/delivered_shipment.html',
+                    ctx={
+                        'user': user.first_name,
+                        'shipment': shipment,
+                        'truck': shipment.truck,
+                        'plant': shipment.plant,
+                        'carrier': shipment.truck.carrier.name,
+                        'status': shipment.current_status.get_checkpoint_display  # noqa
                     })
