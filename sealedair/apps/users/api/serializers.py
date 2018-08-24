@@ -41,4 +41,4 @@ class UserNotificationsConfigSerializer(serializers.ModelSerializer):
         fields = [
             'id', 'user_id', 'new_shipment', 'late_shipment',
             'delivered_shipment', 'email', 'sms',
-        ]     
+        ]
