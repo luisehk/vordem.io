@@ -218,7 +218,6 @@
       function UserNotificationsConfig(){
         var url = "/api/user-notifications/" + user_id
         $.getJSON(url, function (data) {
-          console.log(data)
             $("#id_new_shipments").prop("checked", data.new_shipment);
             $("#id_late_shipment").prop("checked", data.late_shipment);
             $("#id_delivered_shipment").prop("checked", data.delivered_shipment);
@@ -227,14 +226,63 @@
         });
       }
 
+      function ChangeNotificationsUser(user, key_obj, status) {
+        data = {}
+        data[key_obj] = status
+        $.ajax({
+          type: 'PATCH',
+          headers: {
+            'X-CSRFToken': getCookie('csrftoken')
+          },
+          url: "/api/user-notifications/" + user + "/",
+          data: data,
+          success: function (data) {},
+          error: function (error) {
+            console.log(error);
+          }
+        });
+      }
+
       $("#id_new_shipments").change(function(){
+        
         if(this.checked != true){
-          alert("No esta checado")
+          ChangeNotificationsUser(user_id, 'new_shipment', false)
         } else {
-          alert("ESTÁ checado")
+          ChangeNotificationsUser(user_id, 'new_shipment', true)
         }
       })
       
+      $("#id_late_shipment").change(function(){
+        if(this.checked != true){
+          ChangeNotificationsUser(user_id, 'late_shipment', false)
+        } else {
+          ChangeNotificationsUser(user_id, 'late_shipment', true)
+        }
+      })
+
+      $("#id_delivered_shipment").change(function(){
+        if(this.checked != true){
+          ChangeNotificationsUser(user_id, 'delivered_shipment', false)
+        } else {
+          ChangeNotificationsUser(user_id, 'delivered_shipment', true)
+        }
+      })
+      
+      $("#id_email").change(function(){
+        if(this.checked != true){
+          ChangeNotificationsUser(user_id, 'email', false)
+        } else {
+          ChangeNotificationsUser(user_id, 'email', true)
+        }
+      })
+
+      $("#id_sms").change(function(){
+        if(this.checked != true){
+          ChangeNotificationsUser(user_id, 'sms', false)
+        } else {
+          ChangeNotificationsUser(user_id, 'sms', true)
+        }
+      })
       
     </script>
   </body>

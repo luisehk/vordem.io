@@ -35,12 +35,10 @@ class UserSerializer(serializers.ModelSerializer):
 
 
 class UserNotificationsConfigSerializer(serializers.ModelSerializer):
-    user = UserSerializer()
-    filter_fields = ('user',)
 
     class Meta:
         model = UserNotificationsConfig
         fields = [
-            'id', 'user_id', 'user', 'new_shipment', 'late_shipment',
+            'id', 'user_id', 'new_shipment', 'late_shipment',
             'delivered_shipment', 'email', 'sms',
         ]     

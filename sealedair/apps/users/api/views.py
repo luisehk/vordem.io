@@ -39,5 +39,4 @@ class MyselfView(APIView):
 class UserNotificationsConfigViewSet(ModelViewSet):
     queryset = UserNotificationsConfig.objects.all()
     serializer_class = UserNotificationsConfigSerializer
-    # filter_fields = UserNotificationsConfigSerializer.filter_fields
     lookup_field = 'user'
