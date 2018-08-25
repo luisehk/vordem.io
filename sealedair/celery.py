@@ -41,17 +41,19 @@ def set_shipments_time_status():
         current_status__time_status=Status.TIME_DELAYED)
 
     for shipment in on_time_shipments:
-        status = shipment.current_status
-        hours_spent = status.get_hours_since_start()
+        Status.change_to_delayed(shipment)
+        # status = shipment.current_status
+        # hours_spent = status.get_hours_since_start()
 
-        if hours_spent > 8:
-            status.time_status = Status.TIME_DELAYED
-            status.save()
+        # if hours_spent > 8:
+        #     status.time_status = Status.TIME_DELAYED
+        #     status.save()
 
     for shipment in delayed_shipments:
-        status = shipment.current_status
-        hours_spent = status.get_hours_since_start()
+        Status.change_to_late(shipment)
+        # status = shipment.current_status
+        # hours_spent = status.get_hours_since_start()
 
-        if hours_spent > 16:
-            status.time_status = Status.TIME_LATE
-            status.save()
+        # if hours_spent > 16:
+        #     status.time_status = Status.TIME_LATE
+        #     status.save()

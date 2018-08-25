@@ -1,6 +1,7 @@
 from django.contrib.auth import get_user_model
 from django.db import models
 from django.utils import timezone
+from ...messaging.email.helpers import send_email
 from ...providers.models import Truck
 from ...company.models import Plant
 
@@ -208,3 +209,49 @@ class Status(models.Model):
 
         if self.checkpoint == self.USA_DELIVERED:
             return self.USA_TRANSIT
+
+    def change_to_delayed(self):
+        status = self.current_status
+        print(status)
+        hours_spent = status.get_hours_since_start()
+        print("Here!")
+        print("Hour", hours_spent)
+        if hours_spent > 8:
+            status.time_status = Status.TIME_DELAYED
+            status.save()
+            for user in User.objects.filter(
+                        notifications_config__email=True,
+                        notifications_config__late_shipment=True):
+                send_email(
+                    subject='Embarque en riesgo',
+                    to_email=[user.email],
+                    template='emails/shipments/shipment_at_risk.html',
+                    ctx={
+                        'user': user.first_name,
+                        'shipment': self,
+                        'truck': self.truck,
+                        'plant': self.plant,
+                        'carrier': self.truck.carrier.name
+                    })
+
+    def change_to_late(self):
+        status = self.current_status
+        hours_spent = status.get_hours_since_start()
+
+        if hours_spent > 16:
+            status.time_status = Status.TIME_LATE
+            status.save()
+            for user in User.objects.filter(
+                        notifications_config__email=True,
+                        notifications_config__late_shipment=True):
+                send_email(
+                    subject='Embarque retrasado',
+                    to_email=[user.email],
+                    template='emails/shipments/late_shipment.html',
+                    ctx={
+                        'user': user.first_name,
+                        'shipment': self,
+                        'truck': self.truck,
+                        'plant': self.plant,
+                        'carrier': self.truck.carrier.name
+                    })
