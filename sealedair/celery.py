@@ -1,5 +1,6 @@
 from celery import Celery
 from celery.schedules import crontab
+from django.db.models import Q
 import os
 
 os.environ.setdefault(
@@ -32,9 +33,8 @@ def do_nothing():
 def set_shipments_time_status():
     from sealedair.apps.shipments.models import Shipment, Status
 
-    shipments = Shipment.objects.exclude(
-        current_status__isnull=True,
-        current_status__checkpoint=Status.USA_DELIVERED)
+    shipments = Shipment.objects.exclude(Q(current_status__isnull=True) | Q(
+        current_status__checkpoint=Status.USA_DELIVERED))
     on_time_shipments = shipments.filter(
         current_status__time_status=Status.TIME_ONTIME)
     delayed_shipments = shipments.filter(
