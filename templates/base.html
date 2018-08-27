@@ -47,6 +47,9 @@
                   <!-- <a href="#tab1" role="button" aria-expanded="false" class="dropdown-item be-toggle-right-sidebar">
                     <span class="icon mdi mdi-settings"></span> Ajustes -->
                   </a>
+                  <a href="{% url 'account_change_password' %}" class="dropdown-item">
+                    <span class="icon mdi mdi-key"></span> Cambiar contraseña
+                  </a>
                   <a href="{% url 'account_logout' %}" onclick="return confirm('¿Estás seguro de querer cerrar sesión?');" class="dropdown-item">
                     <span class="icon mdi mdi-power"></span> Cerrar sesión
                   </a>

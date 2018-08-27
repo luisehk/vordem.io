@@ -3,9 +3,11 @@ from django.contrib import messages
 from django.core.urlresolvers import reverse_lazy
 from django.core.exceptions import ObjectDoesNotExist
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.decorators import login_required
 from django.views.generic.base import RedirectView
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 from .forms import UserRegistroForm, UserProfileForm
+from allauth.account.views import PasswordChangeView
 
 
 User = get_user_model()
@@ -66,3 +68,16 @@ class UserDelete(LoginRequiredMixin, DeleteView):
     model = User
     template_name = "users/delete.html"
     success_url = reverse_lazy('users:users-list')
+
+
+class LoginAfterPasswordChangeView(PasswordChangeView):
+    """
+    Custom class to override the password change view.
+    """
+    @property
+    def success_url(self):
+        return reverse_lazy('shipments:dashboard')
+
+
+login_after_password_change = login_required(
+    LoginAfterPasswordChangeView.as_view())
