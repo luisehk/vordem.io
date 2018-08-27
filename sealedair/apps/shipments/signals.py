@@ -1,6 +1,5 @@
 from django.utils import timezone
 from django.contrib.auth import get_user_model
-from ..messaging.email.helpers import send_email
 from .models import Status
 
 User = get_user_model()
@@ -52,32 +51,12 @@ def create_shipment_status(sender, **kwargs):
         for user in User.objects.filter(
                 notifications_config__email=True,
                 notifications_config__new_shipment=True):
-                send_email(
-                    subject='Nuevo embarque creado',
-                    to_email=[user.email],
-                    template='emails/shipments/new_shipment.html',
-                    ctx={
-                        'user': user.first_name,
-                        'shipment': shipment,
-                        'truck': shipment.truck,
-                        'plant': shipment.plant,
-                        'carrier': shipment.truck.carrier.name
-                    })
+                shipment.notification_create_new_shipment(user)
+
     else:
         # modified shipment 'Destino: Entregado'
         if shipment.current_status.checkpoint == 'UDE':
             for user in User.objects.filter(
                     notifications_config__email=True,
                     notifications_config__delivered_shipment=True):
-                send_email(
-                    subject='Embarque entregado',
-                    to_email=[user.email],
-                    template='emails/shipments/delivered_shipment.html',
-                    ctx={
-                        'user': user.first_name,
-                        'shipment': shipment,
-                        'truck': shipment.truck,
-                        'plant': shipment.plant,
-                        'carrier': shipment.truck.carrier.name,
-                        'status': shipment.current_status.get_checkpoint_display  # noqa
-                    })
+                shipment.notification_delivered_shipment(user)
