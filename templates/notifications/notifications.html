@@ -1,0 +1,28 @@
+<ul>
+    {% for notification in notifications  %}
+        <li class="notification notification-unread">
+        <a href="#">
+            <div class="image"><img src="{{notification.user.profile.avatar.url}}" alt="Avatar"></div>
+            <div class="notification-info">
+                <div class="text"><span class="user-name">{{notification.user.first_name}}</span>
+                {% if notification.reason == 'NSH' %} 
+                    creó el embarque {{notification.shipment }} con destino hacia {{notification.shipment.plant}}.</div>
+                {% endif %}
+                
+                <span class="date">Hace 2 minutos</span>
+            </div>
+        </a>
+        </li>
+    {% empty %}
+    
+    {% endfor %}
+
+    <li class="notification notification-unread">
+        <a href="#">
+        <div class="image"><img src="" alt="Avatar"></div>
+        <div class="notification-info">
+            <div class="text"><span class="user-name">Jessica Caruso</span> creó el embarque #54378 con destino hacia Iowa Park.</div><span class="date">Hace 2 minutos</span>
+        </div>
+        </a>
+    </li>
+</ul>

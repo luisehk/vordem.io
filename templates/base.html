@@ -1,5 +1,5 @@
 {% load static %}
-
+{% load shipment_notifications_tags %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -63,9 +63,12 @@
                 <ul class="dropdown-menu be-notifications">
                   <li>
                     <div class="title">Notificaciones<span class="badge badge-pill">1</span></div>
+
                     <div class="list">
                       <div class="be-scroller">
                         <div class="content">
+                          {% all_notifications %}
+                          <!-- 
                           <ul>
                             {% for notification in notifications  %}
                               <li class="notification notification-unread">
@@ -106,6 +109,7 @@
                                 <div class="image"><img src="{% static 'img/avatar5.png' %}" alt="Avatar"></div>
                                 <div class="notification-info"><span class="text"><span class="user-name">Emily Carter</span> creó el embarque #54378 con destino hacia Saint Joe.</span><span class="date">Hace 5 días</span></div></a></li>
                           </ul>
+                          -->
                         </div>
                       </div>
                     </div>
