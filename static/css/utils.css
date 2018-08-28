@@ -65,3 +65,13 @@
 .shipment-modal-header label {
     color: white;
 }
+
+.errors-description {
+    padding-top: 10px;
+    font-size: 13px !important;
+    color: #5a5a5a;
+}
+
+.errors-description li {
+    list-style: none;
+}

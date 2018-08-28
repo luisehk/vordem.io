@@ -6,6 +6,7 @@ from allauth.account.views import confirm_email
 from sealedair.apps.users.views import UserHome
 from django.conf import settings
 from . import admin
+from .apps.users import views
 
 
 urlpatterns = [
@@ -13,6 +14,8 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
 
     # django defaults
+    url(r'^accounts/password/change/$',
+        views.login_after_password_change, name='account_change_password'),
     url(r'^accounts/', include('allauth.urls')),
 
     # REST framework and authentication
