@@ -5,5 +5,5 @@ register = template.Library()
 
 @register.inclusion_tag('notifications/notifications.html')
 def all_notifications():
-    notifications = Notification.objects.all()
+    notifications = Notification.objects.all().order_by('-pk')
     return {'notifications': notifications}

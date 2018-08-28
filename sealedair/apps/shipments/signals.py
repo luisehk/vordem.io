@@ -51,12 +51,10 @@ def create_shipment_status(sender, **kwargs):
 
     if created:
         # create new shipment
-        message = "{0} creo el embarque {1} con destino a {2}".format(
-            user_request.first_name, shipment, shipment.plant)
         Notification.objects.create(
             user=user_request,
             shipment=shipment,
-            message=message,
+            message="Nuevo Envío",
             reason=Notification.NEW_SHIPMENT)
 
         for user in User.objects.filter(
@@ -67,6 +65,12 @@ def create_shipment_status(sender, **kwargs):
     else:
         # modified shipment 'Destino: Entregado'
         if shipment.current_status.checkpoint == 'UDE':
+            Notification.objects.create(
+                user=user_request,
+                shipment=shipment,
+                message="Envío entregado",
+                reason=Notification.DELIVERED_SHIPMENT)
+
             for user in User.objects.filter(
                     notifications_config__email=True,
                     notifications_config__delivered_shipment=True):
