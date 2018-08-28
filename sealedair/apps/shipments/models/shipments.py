@@ -90,7 +90,7 @@ class Shipment(models.Model):
                 checkpoint=previous_checkpoint
             ).first()
 
-    def notification_create_new_shipment(self, user):
+    def email_notification_create_new_shipment(self, user):
         send_email(
             subject='Nuevo embarque creado',
             to_email=[user.email],
@@ -102,7 +102,7 @@ class Shipment(models.Model):
                 'plant': self.plant,
                 'carrier': self.truck.carrier.name})
 
-    def notification_delivered_shipment(self, user):
+    def email_notification_delivered_shipment(self, user):
         send_email(
             subject='Embarque entregado',
             to_email=[user.email],

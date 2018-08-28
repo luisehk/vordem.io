@@ -3,6 +3,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import ListView, DeleteView
 from django.views.generic.base import ContextMixin, TemplateView
 from ...models import Shipment
+from ....notifications.models.notifications import Notification
 
 
 class ShipmentGenericView(LoginRequiredMixin, ContextMixin):
@@ -18,6 +19,7 @@ class Dashboard(ShipmentGenericView, TemplateView):
 
     def get_context_data(self, **kwargs):
         ctx = super().get_context_data(**kwargs)
+        ctx['notifications'] = Notification.objects.all()
         return ctx
 
 
