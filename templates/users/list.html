@@ -37,9 +37,12 @@
                     </td>
                     <td>{{user.last_name}}</td>
                     <td>{{user.email}}</td>
+                    {% if request.user == user.email %}
                     <td class="font-size-icon-table"> 
                       <a href="{% url 'users:users-update' user.pk %}" title="Editar usuario"><span class="mdi mdi-edit"></span></a> &nbsp;&nbsp;| &nbsp;&nbsp;<a href="{% url 'users:users-delete' user.pk %}" title="Eliminar usuario"><span class="mdi mdi-delete"></span></a>
-                    </td>
+                    </td>  
+                    {% endif %}
+                    
                   </tr>
                 {% empty %}
                 <tr>

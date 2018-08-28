@@ -7,7 +7,7 @@ from betterforms.multiform import MultiModelForm
 User = get_user_model()
 
 
-class UserRegistroForm(UserCreationForm):
+class UserRegistroForm(ModelForm):
     class Meta:
         model = User
         fields = ['first_name', 'last_name', 'email']
