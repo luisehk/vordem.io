@@ -4,6 +4,7 @@ from django.core.urlresolvers import reverse_lazy
 from django.core.exceptions import ObjectDoesNotExist
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
+from django.http import Http404, HttpResponseRedirect
 from django.views.generic.base import RedirectView
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 from .forms import UserRegistroForm, UserProfileForm
@@ -62,6 +63,12 @@ class UserUpdate(LoginRequiredMixin, UpdateView):
             'profile': self.object.profile,
         })
         return kwargs
+
+    def get(self, request, *args, **kwargs):
+        if self.request.user == self.get_object():
+            return super().get(request, *args, **kwargs)
+        else:
+            return HttpResponseRedirect('/users/list')
 
 
 class UserDelete(LoginRequiredMixin, DeleteView):
