@@ -222,43 +222,50 @@
 
   <div id="shipments-dashboard" class="main-content container-fluid">
     <div class="row">
-      <div class="col-12 col-lg-4 col-xl-4">
-                  <div class="widget widget-tile">
-                    <div id="spark1" class="chart sparkline"></div>
-                    <div class="data-info">
-                      <div class="desc">Embarques</div>
-                      <div class="value"><span class="indicator indicator-positive mdi mdi-chevron-up"></span><span data-toggle="counter" data-end="113" class="number">0</span>
-                      </div>
-                    </div>
+      {% for plant in plants %}
+        <div class="col">
+                <div class="card card-border-color card-contrast text-center" style="border-top-color: {{plant.color}}">
+                  <div class="card-header">
+                    <strong>{{ plant.code }}</strong>
                   </div>
-      </div>
-      <div class="col-12 col-lg-4 col-xl-4">
-                  <div class="widget widget-tile">
-                    <div id="spark2" class="chart sparkline"></div>
-                    <div class="data-info">
-                      <div class="desc">Retrasados</div>
-                      <div class="value"><span class="indicator indicator-negative mdi mdi-chevron-up"></span><span data-toggle="counter" data-end="21" class="number">0</span>
-                      </div>
-                    </div>
+                  <div class="card-body">
+                    <table class="table">
+                      <thead>
+                        <tr>
+                          <th style="width:40%;"></th>
+                          <th class="text-center">Goal</th>
+                          <th class="text-center">YTD</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>AVG. Transit time</td>
+                          <td class="text-center">
+                            <span class="badge badge-pill">1.25</span></td>
+                          <td class="text-center">
+                            <span class="badge badge-pill {{ badges|random }}">1.27</span></td>
+                        </tr>
+                        <tr>
+                          <td>Shipments</td>
+                          <td class="text-center">
+                            <span class="badge badge-pill">503</span></td>
+                          <td class="text-center">
+                            <span class="badge badge-pill">442</span></td>
+                        </tr>
+                      </tbody>
+                    </table>
                   </div>
-      </div>
-      <div class="col-12 col-lg-4 col-xl-4">
-                  <div class="widget widget-tile">
-                    <div id="spark3" class="chart sparkline"></div>
-                    <div class="data-info">
-                      <div class="desc">A tiempo</div>
-                      <div class="value"><span class="indicator indicator-positive mdi mdi-chevron-up"></span><span data-toggle="counter" data-end="92" class="number">0</span>
-                      </div>
-                    </div>
-                  </div>
-      </div>
+                </div>
+        </div>
+      {% endfor %}
     </div>
 
     <div class="row">
       <div class="col-12 col-lg-4 col-xl-4">
         <div class="card card-border card-contrast">
           <div class="card-header card-header-contrast">
-            <img src="{% static 'img/flags/mexico.svg' %}" style="width: 25px;" /> México
+            <img src="{% static 'img/flags/mexico.svg' %}" style="width: 25px;" />
+            <strong>México</strong>
           </div>
           <div class="card-body">
 
@@ -285,7 +292,8 @@
       <div class="col-12 col-lg-8 col-xl-8">
         <div class="card card-border card-contrast">
           <div class="card-header card-header-contrast">
-            <img src="{% static 'img/flags/united-states.svg' %}" style="width: 25px;" /> Estados Unidos
+            <img src="{% static 'img/flags/united-states.svg' %}" style="width: 25px;" />
+            <strong>Estados Unidos</strong>
           </div>
           <div class="card-body">
 
