@@ -1,5 +1,7 @@
 from django.utils import timezone
 from django.contrib.auth import get_user_model
+from crum import get_current_user
+from sealedair.apps.notifications.models import Notification
 from .models import Status
 
 User = get_user_model()
@@ -41,6 +43,7 @@ def set_status_as_current(sender, **kwargs):
 
 def create_shipment_status(sender, **kwargs):
     shipment, created = _get_relevant_data(kwargs)
+    user_request = get_current_user()  # user logged in
     # create status
     if shipment.current_status is None:
         status = Status(shipment=shipment)
@@ -48,15 +51,27 @@ def create_shipment_status(sender, **kwargs):
 
     if created:
         # create new shipment
+        Notification.objects.create(
+            user=user_request,
+            shipment=shipment,
+            message="Nuevo Envío",
+            reason=Notification.NEW_SHIPMENT)
+
         for user in User.objects.filter(
                 notifications_config__email=True,
                 notifications_config__new_shipment=True):
-                shipment.notification_create_new_shipment(user)
+            shipment.email_notification_create_new_shipment(user)
 
     else:
         # modified shipment 'Destino: Entregado'
         if shipment.current_status.checkpoint == 'UDE':
+            Notification.objects.create(
+                user=user_request,
+                shipment=shipment,
+                message="Envío entregado",
+                reason=Notification.DELIVERED_SHIPMENT)
+
             for user in User.objects.filter(
                     notifications_config__email=True,
                     notifications_config__delivered_shipment=True):
-                shipment.notification_delivered_shipment(user)
+                shipment.email_notification_delivered_shipment(user)
