@@ -57,13 +57,17 @@
               </li>
             </ul>
             <div class="page-title"><span>Embarques</span></div>
+            {% count_notifications as total_notifications %}
             <ul class="nav navbar-nav float-right be-icons-nav">
               <li class="nav-item dropdown"><a href="#" role="button" aria-expanded="false" class="nav-link be-toggle-right-sidebar"><span class="icon mdi mdi-settings"></span></a></li>
-              <li class="nav-item dropdown"><a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle"><span class="icon mdi mdi-notifications"></span><span class="indicator"></span></a>
+              <li class="nav-item dropdown"><a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle"><span class="icon mdi mdi-notifications"></span>{% if total_notifications > 0 %}<span class="indicator"></span>{% endif %}</a>
                 <ul class="dropdown-menu be-notifications">
                   <li>
-                    <div class="title">Notificaciones<span class="badge badge-pill">1</span></div>
-
+                      <div class="title">Notificaciones  
+                        {% if total_notifications > 0 %}
+                        <span class="badge badge-pill">{{total_notifications}}</span>
+                        {% endif %}
+                      </div>
                     <div class="list">
                       <div class="be-scroller">
                         <div class="content">
@@ -194,7 +198,7 @@
                             <label for="id_email"></label></span>
                         </div><span class="name">Por correo</span>
                       </li>
-                      <li>
+                      <li style="display:none;">
                         <div class="switch-button switch-button-sm switch-button-success">
                           <input type="checkbox" name="sms" id="id_sms"><span>
                             <label for="id_sms"></label></span>

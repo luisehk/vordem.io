@@ -1,4 +1,5 @@
 from django.contrib.auth import get_user_model
+from crum import get_current_request
 from django.db import models
 from django.utils import timezone
 from ...messaging.email.helpers import send_email
@@ -100,7 +101,8 @@ class Shipment(models.Model):
                 'shipment': self,
                 'truck': self.truck,
                 'plant': self.plant,
-                'carrier': self.truck.carrier.name})
+                'carrier': self.truck.carrier.name,
+                'request': get_current_request()})
 
     def email_notification_delivered_shipment(self, user):
         send_email(
@@ -113,7 +115,8 @@ class Shipment(models.Model):
                 'truck': self.truck,
                 'plant': self.plant,
                 'carrier': self.truck.carrier.name,
-                'status': self.current_status.get_checkpoint_display})
+                'status': self.current_status.get_checkpoint_display,
+                'request': get_current_request()})
 
     def notification_risk_shipment(self, user):
         send_email(
@@ -125,7 +128,8 @@ class Shipment(models.Model):
                 'shipment': self,
                 'truck': self.truck,
                 'plant': self.plant,
-                'carrier': self.truck.carrier.name})
+                'carrier': self.truck.carrier.name,
+                'request': get_current_request()})
 
     def notification_late_shipment(self, user):
         send_email(
@@ -137,7 +141,8 @@ class Shipment(models.Model):
                 'shipment': self,
                 'truck': self.truck,
                 'plant': self.plant,
-                'carrier': self.truck.carrier.name})
+                'carrier': self.truck.carrier.name,
+                'request': get_current_request()})
 
     def change_to_delayed(self):
         status = self.current_status
