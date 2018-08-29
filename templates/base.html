@@ -1,5 +1,5 @@
 {% load static %}
-
+{% load shipment_notifications_tags %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -63,15 +63,38 @@
                 <ul class="dropdown-menu be-notifications">
                   <li>
                     <div class="title">Notificaciones<span class="badge badge-pill">1</span></div>
+
                     <div class="list">
                       <div class="be-scroller">
                         <div class="content">
+                          {% all_notifications %}
+                          <!-- 
                           <ul>
-                            <li class="notification notification-unread"><a href="#">
+                            {% for notification in notifications  %}
+                              <li class="notification notification-unread">
+                                <a href="#">
+                                  <div class="image"><img src="{% static 'img/avatar2.png' %}" alt="Avatar"></div>
+                                  <div class="notification-info">
+                                      <div class="text"><span class="user-name">{{notification.user.first_name}}</span>
+                                        {% if notification.reason == 'NSH' %} 
+                                          creó el embarque {{notification.shipment }} con destino hacia {{notification.shipment.plant}}.</div>
+                                        {% endif %}
+                                        <span class="date">Hace 2 minutos</span>
+                                  </div>
+                                </a>
+                              </li>
+                            {% empty %}
+                            
+                            {% endfor %}
+
+                            <li class="notification notification-unread">
+                              <a href="#">
                                 <div class="image"><img src="{% static 'img/avatar2.png' %}" alt="Avatar"></div>
                                 <div class="notification-info">
                                   <div class="text"><span class="user-name">Jessica Caruso</span> creó el embarque #54378 con destino hacia Iowa Park.</div><span class="date">Hace 2 minutos</span>
-                                </div></a></li>
+                                </div>
+                              </a>
+                            </li>
                             <li class="notification"><a href="#">
                                 <div class="image"><img src="{% static 'img/avatar3.png' %}" alt="Avatar"></div>
                                 <div class="notification-info">
@@ -86,6 +109,7 @@
                                 <div class="image"><img src="{% static 'img/avatar5.png' %}" alt="Avatar"></div>
                                 <div class="notification-info"><span class="text"><span class="user-name">Emily Carter</span> creó el embarque #54378 con destino hacia Saint Joe.</span><span class="date">Hace 5 días</span></div></a></li>
                           </ul>
+                          -->
                         </div>
                       </div>
                     </div>
