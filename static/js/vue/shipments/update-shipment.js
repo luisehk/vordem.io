@@ -93,6 +93,30 @@ var updateShipmentApp = new Vue({
       return hr + ":" + min + ampm;
     },
 
+    _timelineItemStatusStyle: function(status) {
+      var timeStatus = status.time_status;
+      var color = '#ffffff';
+
+      if(timeStatus == 'TOT')
+        color = '#ffffff'; //'#ebffeb';
+      else if(timeStatus == 'TDE')
+        color = '#fff1d9';
+      else if(timeStatus == 'TLA')
+        color = '#fff2f2';
+
+      return {
+        'background-color': color
+      };
+    },
+
+    _isDelivered: function(status) {
+      return status.checkpoint == 'UDE';
+    },
+
+    _isCurrentStatus: function(status) {
+      return status.id == this.shipment.current_status.id;
+    },
+
     _get: function(url, success, error) {
       $.ajax({
         url: url,

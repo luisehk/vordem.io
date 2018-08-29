@@ -131,7 +131,7 @@
                 </div>
               </div>
 
-              <div class="col-6 shipment-status-center">
+              <div v-if="!_isDelivered(shipment.current_status)" class="col-6 shipment-status-center">
                 <h3>
                   Actualmente se encuentra en
                   <br />
@@ -152,6 +152,17 @@
                   <button class="btn btn-space btn-primary btn-lg"><i class="icon icon-left mdi mdi-phone"></i> Contactar carrier</button>
                 </p>
               </div>
+
+              <div v-else class="col-6 shipment-status-center">
+                <h3>
+                  El embarque fue
+                  <br />
+                  <strong>entregado</strong>
+                  <br />
+                  exitosamente.
+                </h3>
+              </div>
+
             </div>
           </div>
 
@@ -171,10 +182,27 @@
 
                       <span class="timeline-time">${ _formatTime(status.start_datetime) }</span>
                     </div>
-                    <div class="timeline-content">
+
+                    <div v-if="!_isDelivered(status)" class="timeline-content" v-bind:style="_timelineItemStatusStyle(status)">
                       <div class="timeline-header">
                         <p class="timeline-activity">
-                          El embarque fue marcado como <strong>"${ status.checkpoint_display }"</strong>. Estuvo en este estado <strong>${ status.hours_since_start } horas</strong>.
+                          El embarque fue marcado como <strong>"${ status.checkpoint_display }"</strong>.
+                          <br />
+                          <template v-if="_isCurrentStatus(status)">
+                            Lleva
+                          </template>
+                          <template v-else>
+                            Estuvo
+                          </template>
+                          en este estado <strong>${ status.hours_since_start } hora(s)</strong>.
+                        </p>
+                      </div>
+                    </div>
+
+                    <div v-else class="timeline-content">
+                      <div class="timeline-header">
+                        <p class="timeline-activity">
+                          El embarque llegó exitosamente a <strong>"${ shipment.plant.name }"</strong>.
                         </p>
                       </div>
                     </div>
