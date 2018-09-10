@@ -169,8 +169,10 @@
           <!-- timeline -->
           <div class="main-content container-fluid">
             <div class="row">
-              <div class="col-12">
-                <ul class="timeline">
+              <div class="col-6">
+                <h1 class="text-center">Eventos</h1>
+                <br />
+                <ul class="timeline modal-scroll-panel">
 
                   <li
                     v-for="(status, index) in shipment.status_history"
@@ -229,6 +231,48 @@
                     Inicio</a>
                   </li>
                 </ul>
+              </div>
+
+              <div class="col-6">
+                <h1 class="text-center">Comentarios</h1>
+                <br />
+
+                <div class="modal-scroll-panel scroll-panel-comments ">
+                  <div class="timeline-content">
+                    <div class="timeline-avatar avatar-margin-right"><img src="{% static 'img/avatar3.png' %}" alt="Avatar" class="circle"></div>
+                    <div class="timeline-header">
+                      <span class="timeline-time">9:54 AM</span>
+                      <span class="timeline-autor">Roberto Jimenez</span>
+                      <div class="timeline-summary">
+                        <p>El tráfico hacia Nuevo Laredo estaba lento por un accidente.</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="timeline-content">
+                    <div class="timeline-avatar avatar-margin-right"><img src="{% static 'img/avatar4.png' %}" alt="Avatar" class="circle"></div>
+                    <div class="timeline-header">
+                      <span class="timeline-time">11:05 AM</span>
+                      <span class="timeline-autor">Luis Herrada</span>
+                      <div class="timeline-summary">
+                        <p>El tráfico ya se desatoró. Ya llegó con el carrier mexicano.</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="timeline-content">
+                    <div class="timeline-avatar avatar-margin-right"><img src="{% static 'img/avatar2.png' %}" alt="Avatar" class="circle"></div>
+                    <div class="timeline-header">
+                      <span class="timeline-time">16:05 PM</span>
+                      <span class="timeline-autor">Roberto Jimenez</span>
+                      <div class="timeline-summary">
+                        <p>Todo en órden ya.</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <input type="text" placeholder="Introduce tu comentario" class="form-control">
               </div>
             </div>
           </div>

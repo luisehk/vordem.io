@@ -75,3 +75,18 @@
 .errors-description li {
     list-style: none;
 }
+
+.modal-scroll-panel {
+    min-height: 450px;
+    max-height: 450px;
+    overflow-y: scroll;
+}
+
+.avatar-margin-right {
+    margin-right: 20px;
+}
+
+.scroll-panel-comments {
+    min-height: calc(450px - 3.692rem);
+    max-height: calc(450px - 3.692rem);
+}
