@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load l10n %}
 
 
 {% block content %}
@@ -318,31 +319,45 @@
               <strong>{{ plant.name }}</strong>
             </div>
             <div class="card-body">
-              <table class="table">
-                <thead>
-                  <tr>
-                    <th style="width:40%;"></th>
-                    <th class="text-center">Goal</th>
-                    <th class="text-center">YTD</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>AVG. Transit time</td>
-                    <td class="text-center">
-                      <span class="badge badge-pill">1.25</span></td>
-                    <td class="text-center">
-                      <span class="badge badge-pill {{ badges|random }}">1.27</span></td>
-                  </tr>
-                  <tr>
-                    <td>Shipments</td>
-                    <td class="text-center">
-                      <span class="badge badge-pill">503</span></td>
-                    <td class="text-center">
-                      <span class="badge badge-pill">442</span></td>
-                  </tr>
-                </tbody>
-              </table>
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th style="width:40%;"></th>
+                      <th class="text-center">YTD</th>
+                      <th class="text-center">Goal</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>AVG. Transit time (in days)</td>
+                      <td class="text-center">
+                        <span class="badge badge-pill {{ badges|random }}">
+                          {{ plant.current_year_metrics.average_duration | floatformat:'2' }}</span></td>
+                      <td class="text-center">
+                        <span class="badge badge-pill">
+                          {{ plant.previous_year_metrics.average_duration | floatformat:'2' }}</span></td>
+                    </tr>
+                  </tbody>
+                </table>
+
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th style="width:40%;"></th>
+                      <th class="text-center">YTD</th>
+                      <th class="text-center">%</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Total shipments</td>
+                      <td class="text-center">
+                        <span class="badge badge-pill">{{ plant.current_year_metrics.count }}</span></td>
+                      <td class="text-center">
+                        <span class="badge badge-pill">{{ plant.current_year_metrics.percentage }}%</span></td>
+                    </tr>
+                  </tbody>
+                </table>
             </div>
           </div>
         </div>

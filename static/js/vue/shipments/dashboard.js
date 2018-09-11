@@ -24,7 +24,7 @@ Vue.component('shipment-card', {
       '</div>' +
       '<div class="row no-margin">' +
         '<div class="col-10 no-padding">' +
-          '<span class="icon mdi mdi-hourglass-alt"></span> ${shipment.current_status.hours_since_start} hora(s)' +
+          '<span class="icon mdi mdi-hourglass-alt"></span> ${timeSinceStatusStart}' +
         '</div>' +
         '<div class="col-2 no-padding">' +
           '<span class="badge float-right" v-bind:class="timeStatusClass">${timeStatusLabel}</span>' +
@@ -63,6 +63,16 @@ Vue.component('shipment-card', {
         return 'LT';
       else
         return 'OK'
+    },
+    timeSinceStatusStart: function() {
+      var hours = this.shipment.current_status.hours_since_start;
+
+      if(hours >= 24) {
+        var days = hours / 24;
+        return days.toFixed(1) + ' dia(s)';
+      } else {
+        return hours + ' hora(s)';
+      }
     }
   },
 
