@@ -296,38 +296,38 @@
     <div class="row">
       {% for plant in plants %}
         <div class="col">
-                <div class="card card-border-color card-contrast text-center" style="border-top-color: {{plant.color}}">
-                  <div class="card-header">
-                    <strong>{{ plant.name }}</strong>
-                  </div>
-                  <div class="card-body">
-                    <table class="table">
-                      <thead>
-                        <tr>
-                          <th style="width:40%;"></th>
-                          <th class="text-center">Goal</th>
-                          <th class="text-center">YTD</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <td>AVG. Transit time</td>
-                          <td class="text-center">
-                            <span class="badge badge-pill">1.25</span></td>
-                          <td class="text-center">
-                            <span class="badge badge-pill {{ badges|random }}">1.27</span></td>
-                        </tr>
-                        <tr>
-                          <td>Shipments</td>
-                          <td class="text-center">
-                            <span class="badge badge-pill">503</span></td>
-                          <td class="text-center">
-                            <span class="badge badge-pill">442</span></td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
+          <div class="card card-border-color card-contrast text-center" style="border-top-color: {{plant.color}}">
+            <div class="card-header">
+              <strong>{{ plant.name }}</strong>
+            </div>
+            <div class="card-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width:40%;"></th>
+                    <th class="text-center">Goal</th>
+                    <th class="text-center">YTD</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>AVG. Transit time</td>
+                    <td class="text-center">
+                      <span class="badge badge-pill">1.25</span></td>
+                    <td class="text-center">
+                      <span class="badge badge-pill {{ badges|random }}">1.27</span></td>
+                  </tr>
+                  <tr>
+                    <td>Shipments</td>
+                    <td class="text-center">
+                      <span class="badge badge-pill">503</span></td>
+                    <td class="text-center">
+                      <span class="badge badge-pill">442</span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
         </div>
       {% endfor %}
     </div>
