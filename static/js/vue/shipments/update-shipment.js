@@ -20,7 +20,8 @@ var updateShipmentApp = new Vue({
         id: 1,
         name: '',
         code: ''
-      }
+      },
+      estimated_arrival_datetime: new Date()
     },
     plants: [],
     carriers: [],
@@ -51,6 +52,17 @@ var updateShipmentApp = new Vue({
         return 'text-danger';
       else
         return 'text-success';
+    },
+    etaDate: function() {
+      return this._etaStringValue(0);
+    },
+    etaTime: function() {
+      if(this.shipment.estimated_arrival_datetime)
+        return this._formatTimeForInput(
+          this.shipment.estimated_arrival_datetime
+        );
+      else
+        return null;
     }
   },
   created: function() {
@@ -58,6 +70,12 @@ var updateShipmentApp = new Vue({
     this.loadCarriers();
   },
   methods: {
+    _etaStringValue: function(index) {
+      if(this.shipment.estimated_arrival_datetime)
+        return this.shipment.estimated_arrival_datetime.toISOString().split('T')[index];
+      else
+        return null;
+    },
     _formatDate: function(date) {
       var date = new Date(date);
       var monthNames = [
@@ -91,6 +109,22 @@ var updateShipmentApp = new Vue({
       }
 
       return hr + ":" + min + ampm;
+    },
+
+    _formatTimeForInput: function(date) {
+      var time = new Date(date);
+      var hr = time.getHours();
+      var min = time.getMinutes();
+
+      // add initial zero to minute
+      if (hr < 10)
+          hr = "0" + hr;
+
+      // add initial zero to minute
+      if (min < 10)
+          min = "0" + min;
+
+      return hr + ":" + min;
     },
 
     _timelineItemStatusStyle: function(status) {
@@ -204,6 +238,28 @@ var updateShipmentApp = new Vue({
           }
         );
       }
+    },
+
+    _get_current_eta: function() {
+      if(!this.shipment.estimated_arrival_datetime)
+        this.shipment.estimated_arrival_datetime = new Date();
+
+      return this.shipment.estimated_arrival_datetime;
+    },
+
+    changeEtaDate: function(date) {
+      var eta = this._get_current_eta();
+
+      eta.setDate(date.getDate());
+      eta.setMonth(date.getMonth());
+      eta.setFullYear(date.getFullYear());
+    },
+
+    changeEtaTime: function(time) {
+      var eta = this._get_current_eta();
+
+      eta.setHours(time.getHours());
+      eta.setMinutes(time.getMinutes());
     },
 
     success: function(json) {
