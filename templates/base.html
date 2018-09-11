@@ -63,7 +63,7 @@
               <li class="nav-item dropdown"><a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle"><span class="icon mdi mdi-notifications"></span>{% if total_notifications > 0 %}<span class="indicator"></span>{% endif %}</a>
                 <ul class="dropdown-menu be-notifications">
                   <li>
-                      <div class="title">Notificaciones  
+                      <div class="title">Notificaciones
                         {% if total_notifications > 0 %}
                         <span class="badge badge-pill">{{total_notifications}}</span>
                         {% endif %}
@@ -72,7 +72,7 @@
                       <div class="be-scroller">
                         <div class="content">
                           {% all_notifications %}
-                          <!-- 
+                          <!--
                           <ul>
                             {% for notification in notifications  %}
                               <li class="notification notification-unread">
@@ -80,7 +80,7 @@
                                   <div class="image"><img src="{% static 'img/avatar2.png' %}" alt="Avatar"></div>
                                   <div class="notification-info">
                                       <div class="text"><span class="user-name">{{notification.user.first_name}}</span>
-                                        {% if notification.reason == 'NSH' %} 
+                                        {% if notification.reason == 'NSH' %}
                                           creó el embarque {{notification.shipment }} con destino hacia {{notification.shipment.plant}}.</div>
                                         {% endif %}
                                         <span class="date">Hace 2 minutos</span>
@@ -88,7 +88,7 @@
                                 </a>
                               </li>
                             {% empty %}
-                            
+
                             {% endfor %}
 
                             <li class="notification notification-unread">
@@ -190,7 +190,7 @@
                       </li>
                     </ul>
                     <span class="category-title">Recibir por</span>
-                    
+
                     <ul class="settings-list">
                       <li>
                         <div class="switch-button switch-button-sm switch-button-success">
@@ -232,6 +232,10 @@
     <script src="{% static 'lib/parsley/parsley.min.js' %}" type="text/javascript"></script>
     <script src="{% static 'lib/jquery.gritter/js/jquery.gritter.js' %}" type="text/javascript"></script>
     <script src="{% static 'lib/parsley/i18n/es.js' %}"></script>
+    <script src="{% static 'lib/jquery-ui/jquery-ui.min.js' %}" type="text/javascript"></script>
+    <script src="{% static 'lib/jquery.nestable/jquery.nestable.js' %}" type="text/javascript"></script>
+    <script src="{% static 'lib/moment.js/min/moment.min.js' %}" type="text/javascript"></script>
+    <script src="{% static 'lib/datetimepicker/js/bootstrap-datetimepicker.min.js' %}" type="text/javascript"></script>
     <script src="{% static 'js/app-dashboard.js' %}" type="text/javascript"></script>
     <script src="{% static 'js/jscolor.js' %}" type="text/javascript"></script>
     <script src="{% static 'js/base.js' %}" type="text/javascript"></script>
@@ -243,7 +247,7 @@
         App.dashboard();
 
       });
-      
+
       var user_id = {{request.user.pk}}
 
       function UserNotificationsConfig(){
@@ -275,14 +279,14 @@
       }
 
       $("#id_new_shipments").change(function(){
-        
+
         if(this.checked != true){
           ChangeNotificationsUser(user_id, 'new_shipment', false);
         } else {
           ChangeNotificationsUser(user_id, 'new_shipment', true);
         }
       })
-      
+
       $("#id_late_shipment").change(function(){
         if(this.checked != true){
           ChangeNotificationsUser(user_id, 'late_shipment', false);
@@ -298,7 +302,7 @@
           ChangeNotificationsUser(user_id, 'delivered_shipment', true);
         }
       })
-      
+
       $("#id_email").change(function(){
         if(this.checked != true){
           ChangeNotificationsUser(user_id, 'email', false);
@@ -314,7 +318,7 @@
           ChangeNotificationsUser(user_id, 'sms', true);
         }
       })
-      
+
     </script>
   </body>
 </html>
