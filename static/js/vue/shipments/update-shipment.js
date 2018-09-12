@@ -71,8 +71,17 @@ var updateShipmentApp = new Vue({
   },
   methods: {
     _etaStringValue: function(index) {
-      if(this.shipment.estimated_arrival_datetime)
-        return this.shipment.estimated_arrival_datetime.toISOString().split('T')[index];
+      var eta = this.shipment.estimated_arrival_datetime;
+
+      if(eta) {
+        // convert from string to date if necessary
+        if(typeof(eta) == "string") {
+          this.shipment.estimated_arrival_datetime = new Date(eta);
+          eta = this.shipment.estimated_arrival_datetime;
+        }
+
+        return eta.toISOString().split('T')[index];
+      }
       else
         return null;
     },
@@ -160,10 +169,10 @@ var updateShipmentApp = new Vue({
       });
     },
 
-    _post: function(url, data, success, error) {
+    _do_request: function(url, method, data, success, error) {
       $.ajax({
         url: url,
-        type: 'POST',
+        type: method,
         dataType: 'json',
         contentType: 'application/json',
         headers: {
@@ -173,6 +182,14 @@ var updateShipmentApp = new Vue({
         success : success,
         error : error
       });
+    },
+
+    _post: function(url, data, success, error) {
+      this._do_request(url, 'POST', data, success, error);
+    },
+
+    _patch: function(url, data, success, error) {
+      this._do_request(url, 'PATCH', data, success, error);
     },
 
     _getCarrierById: function(id) {
@@ -234,7 +251,6 @@ var updateShipmentApp = new Vue({
           },
           function(xhr, status, error) {
             self.loading = false;
-            self.success.call(self, xhr, status, error);
           }
         );
       }
@@ -247,19 +263,56 @@ var updateShipmentApp = new Vue({
       return this.shipment.estimated_arrival_datetime;
     },
 
+    _showEta: function() {
+      var c = this.shipment.current_status.checkpoint;
+      var checkpoints = ['BCA', 'UTR', 'UDE'];
+      return checkpoints.join(',').indexOf(c) > -1;
+    },
+
+    _saveEta: function() {
+      var self = this;
+
+      this._patch(
+        '/shipments/api/shipments/' + this.shipment.id + '/',
+        {
+          'estimated_arrival_datetime': this.shipment.estimated_arrival_datetime.toISOString()
+        },
+        function(json) {
+          // notification
+          $.gritter.add({
+            title: 'Éxito',
+            text: 'Se cambió el ETA exitosamente.',
+            class_name: 'color success'
+          });
+        },
+        function(xhr, status, error) {
+          // notification
+          $.gritter.add({
+            title: 'Error',
+            text: 'Hubo un error actualizando el ETA.',
+            class_name: 'color danger'
+          });
+        }
+      );
+    },
+
     changeEtaDate: function(date) {
       var eta = this._get_current_eta();
 
-      eta.setDate(date.getDate());
-      eta.setMonth(date.getMonth());
-      eta.setFullYear(date.getFullYear());
+      eta.setDate(date.getUTCDate() + 1);
+      eta.setMonth(date.getUTCMonth());
+      eta.setFullYear(date.getUTCFullYear());
+
+      this._saveEta();
     },
 
     changeEtaTime: function(time) {
       var eta = this._get_current_eta();
 
-      eta.setHours(time.getHours());
-      eta.setMinutes(time.getMinutes());
+      eta.setHours(time.getUTCHours() + 1);
+      eta.setMinutes(time.getUTCMinutes());
+
+      this._saveEta();
     },
 
     success: function(json) {
