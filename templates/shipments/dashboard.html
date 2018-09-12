@@ -91,103 +91,47 @@
 
         <div class="modal-body" style="padding: 0">
 
-          <!-- shipment info -->
-          <div class="main-content container-fluid shipment-modal-header">
+          <!-- shipment history -->
+          <div class="main-content container-fluid">
+
+
             <div class="row">
-              <div class="col-6">
-                <div class="form-group row">
-                  <label for="id_update_plant" class="col-12 col-sm-3 col-form-label text-sm-right">Planta destino</label>
-                  <div class="col-12 col-sm-8 col-lg-8">
-                    <select id="id_update_plant" v-model="shipment.plant" class="form-control" disabled>
-                      <option v-for="plant in plants" v-bind:value="plant">
-                        ${ plant.name }
-                      </option>
-                    </select>
-                  </div>
-                </div>
-
-                <div class="form-group row">
-                  <label for="id_update_code" class="col-12 col-sm-3 col-form-label text-sm-right">Embarque</label>
-                  <div class="col-12 col-sm-8 col-lg-8">
-                    <input id="id_update_code" v-model="shipment.code" type="text" placeholder="Introduce el número de embarque" class="form-control" disabled>
-                  </div>
-                </div>
-
-                <div class="form-group row">
-                  <label for="id_update_carrier" class="col-12 col-sm-3 col-form-label text-sm-right">Carrier</label>
-                  <div class="col-12 col-sm-8 col-lg-8">
-                    <select id="id_update_carrier" v-model="shipment.truck.carrier" class="form-control" disabled>
-                      <option v-for="carrier in carriers" v-bind:value="carrier">
-                        ${ carrier.name }
-                      </option>
-                    </select>
-                  </div>
-                </div>
-
-                <div class="form-group row">
-                  <label for="id_update_trailer" class="col-12 col-sm-3 col-form-label text-sm-right">Trailer</label>
-                  <div class="col-12 col-sm-8 col-lg-8">
-                    <input id="id_update_trailer" v-model="shipment.truck.code" type="text" placeholder="Introduce el código de trailer" class="form-control" disabled>
-                  </div>
-                </div>
-
-                <div v-if="_showEta()" class="form-group row">
-                  <label class="col-12 col-sm-3 col-form-label text-sm-right">Estimated Time of Arrival</label>
-
-                  <div class="col-12 col-sm-8 col-lg-8">
-                    <div class="row">
-                      <div class="col">
-                        <input type="date" class="form-control" :value="etaDate"
-                     @input="changeEtaDate($event.target.valueAsDate)" />
-                      </div>
-                      <div class="col">
-                        <input type="time" class="form-control" :value="etaTime"
-                     @input="changeEtaTime($event.target.valueAsDate)"  />
-                      </div>
+              <div class="col-12">
+                <br />
+                <div class="flex-parent">
+                  <div class="timeline-input-flex-container">
+                    <div class="timeline-input">
+                      <span data-year="10:00am" data-info="México (en tránsito)"></span>
+                    </div>
+                    <div class="timeline-input">
+                      <span data-year="12:00pm" data-info="Carrier mexicano"></span>
+                    </div>
+                    <div class="timeline-input active">
+                      <span data-year="03:45pm" data-info="Cruzando"></span>
+                    </div>
+                    <div class="timeline-input">
+                      <span data-year="11:18pm" data-info="US Carrier"></span>
+                    </div>
+                    <div class="timeline-input">
+                      <span data-year="10:15am" data-info="USA (en tránsito)"></span>
+                    </div>
+                    <div class="timeline-input">
+                      <span data-year="07:22pm" data-info="Entregado"></span>
                     </div>
                   </div>
+
+                  <div class="description-flex-container">
+                    <p>El embarqué salió a las 4:00pm</p>
+                    <p>El embarqué salió a las 4:00pm</p>
+                    <p class="active">El embarqué salió a las 4:00pm</p>
+                    <p>El embarqué salió a las 4:00pm</p>
+                    <p>El embarqué salió a las 4:00pm</p>
+                    <p>El embarqué salió a las 4:00pm</p>
+                  </div>
                 </div>
-              </div>
 
-              <div v-if="!_isDelivered(shipment.current_status)" class="col-6 shipment-status-center">
-                <h3>
-                  Actualmente se encuentra en
-                  <br />
-                  <strong>
-                    ${shipment.current_status.checkpoint_display}
-                  </strong>
-                  <br />
-                  y su traslado va
-                  <br />
-                  <strong class="shipment-status-time" v-bind:class="timeStatusClass">
-                    ${shipment.current_status.time_status_display}
-                  </strong>
-                </h3>
+                <!-- OLD
 
-                <p class="shipment-actions">
-                  <button v-on:click="nextCheckpoint" class="btn btn-space btn-success btn-lg"><i class="icon icon-left mdi mdi-check-circle"></i> Ya llegó</button>
-
-                  <button class="btn btn-space btn-primary btn-lg"><i class="icon icon-left mdi mdi-phone"></i> Contactar carrier</button>
-                </p>
-              </div>
-
-              <div v-else class="col-6 shipment-status-center">
-                <h3>
-                  El embarque fue
-                  <br />
-                  <strong>entregado</strong>
-                  <br />
-                  exitosamente.
-                </h3>
-              </div>
-
-            </div>
-          </div>
-
-          <!-- timeline -->
-          <div class="main-content container-fluid">
-            <div class="row">
-              <div class="col-6">
                 <h1 class="text-center">Eventos</h1>
                 <br />
                 <ul class="timeline modal-scroll-panel">
@@ -249,6 +193,103 @@
                     Inicio</a>
                   </li>
                 </ul>
+
+              -->
+              </div>
+            </div>
+          </div>
+
+          <!-- shipment info -->
+          <div class="main-content container-fluid shipment-modal-header">
+            <div class="row">
+              <div class="col-6">
+                <h1 class="text-center">Embarque</h1>
+                <br />
+
+                <div v-if="!_isDelivered(shipment.current_status)" class="col-12 shipment-status-center">
+                  <h3>
+                    Actualmente se encuentra en
+                    <br />
+                    <strong>
+                      ${shipment.current_status.checkpoint_display}
+                    </strong>
+                    <br />
+                    y su traslado va
+                    <br />
+                    <strong class="shipment-status-time" v-bind:class="timeStatusClass">
+                      ${shipment.current_status.time_status_display}
+                    </strong>
+                  </h3>
+
+                  <p class="shipment-actions">
+                    <button v-on:click="nextCheckpoint" class="btn btn-space btn-success btn-lg"><i class="icon icon-left mdi mdi-check-circle"></i> Ya llegó</button>
+
+                    <button class="btn btn-space btn-primary btn-lg"><i class="icon icon-left mdi mdi-phone"></i> Contactar carrier</button>
+                  </p>
+                </div>
+
+                <div v-else class="col-12 shipment-status-center">
+                  <h3>
+                    El embarque fue
+                    <br />
+                    <strong>entregado</strong>
+                    <br />
+                    exitosamente.
+                  </h3>
+                </div>
+
+                <div v-if="_showEta()" class="form-group row">
+                  <label class="col-12 col-sm-3 col-form-label text-sm-right">Estimated Time of Arrival</label>
+
+                  <div class="col-12 col-sm-8 col-lg-8">
+                    <div class="row">
+                      <div class="col">
+                        <input type="date" class="form-control" :value="etaDate"
+                     @input="changeEtaDate($event.target.valueAsDate)" />
+                      </div>
+                      <div class="col">
+                        <input type="time" class="form-control" :value="etaTime"
+                     @input="changeEtaTime($event.target.valueAsDate)"  />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-group row">
+                  <label for="id_update_plant" class="col-12 col-sm-3 col-form-label text-sm-right">Planta destino</label>
+                  <div class="col-12 col-sm-8 col-lg-8">
+                    <select id="id_update_plant" v-model="shipment.plant" class="form-control" disabled>
+                      <option v-for="plant in plants" v-bind:value="plant">
+                        ${ plant.name }
+                      </option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="form-group row">
+                  <label for="id_update_code" class="col-12 col-sm-3 col-form-label text-sm-right">Embarque</label>
+                  <div class="col-12 col-sm-8 col-lg-8">
+                    <input id="id_update_code" v-model="shipment.code" type="text" placeholder="Introduce el número de embarque" class="form-control" disabled>
+                  </div>
+                </div>
+
+                <div class="form-group row">
+                  <label for="id_update_carrier" class="col-12 col-sm-3 col-form-label text-sm-right">Carrier</label>
+                  <div class="col-12 col-sm-8 col-lg-8">
+                    <select id="id_update_carrier" v-model="shipment.truck.carrier" class="form-control" disabled>
+                      <option v-for="carrier in carriers" v-bind:value="carrier">
+                        ${ carrier.name }
+                      </option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="form-group row">
+                  <label for="id_update_trailer" class="col-12 col-sm-3 col-form-label text-sm-right">Trailer</label>
+                  <div class="col-12 col-sm-8 col-lg-8">
+                    <input id="id_update_trailer" v-model="shipment.truck.code" type="text" placeholder="Introduce el código de trailer" class="form-control" disabled>
+                  </div>
+                </div>
               </div>
 
               <div class="col-6">
@@ -443,6 +484,7 @@
 
 {% block extra_css %}
   {{ block.super }}
+    <link rel="stylesheet" href="{% static 'css/timeline.css' %}" type="text/css"/>
 {% endblock %}
 
 {% block extra_scripts %}
@@ -450,6 +492,7 @@
   <script src="{% static 'js/vue/shipments/dashboard.js' %}" type="text/javascript"></script>
   <script src="{% static 'js/vue/shipments/create-shipment.js' %}" type="text/javascript"></script>
   <script src="{% static 'js/vue/shipments/update-shipment.js' %}" type="text/javascript"></script>
+  <script src="{% static 'js/timeline.js' %}" type="text/javascript"></script>
   <script type="text/javascript">
     $('.modal').on('show.bs.modal', function(){
       $("html").addClass('be-modal-open');
