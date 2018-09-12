@@ -7,7 +7,8 @@ from .views.web.shipments import (
     ShipmentUpdate, ShipmentDelete)
 from .views.web.delay_reason import (
     DelayReasonList, DelayReasonCreate, DelayReasonUpdate, DelayReasonDelete)
-from .views.rest.shipments import ShipmentViewSet, ShipmentNextCheckpoint
+from .views.rest.shipments import (
+    ShipmentViewSet, ShipmentNextCheckpoint, ShipmentMetricsPerPlant)
 
 urlpatterns = [
     url(r'^dashboard$',
@@ -22,6 +23,8 @@ urlpatterns = [
         ShipmentDelete.as_view(), name='shipment-delete'),
     url(r'^shipments/(?P<pk>[0-9]+)/next/$',
         ShipmentNextCheckpoint.as_view(), name='shipment-next'),
+    url(r'^shipments/metrics-per-plant/$',
+        ShipmentMetricsPerPlant.as_view(), name='shipment-plant-metrics'),
 
     url(r'^delay-reason$',
         DelayReasonList.as_view(), name="delay-reason-list"),

@@ -6,6 +6,7 @@ from rest_framework.response import Response
 from ...serializers.shipments import (
     ShipmentCreationSerializer, ShipmentSerializer)
 from ...models import Shipment
+from ...helpers import get_all_plants_metrics
 
 
 class ShipmentViewSet(ModelViewSet):
@@ -23,6 +24,13 @@ class ShipmentViewSet(ModelViewSet):
             return ShipmentSerializer
         else:
             return ShipmentSerializer
+
+
+class ShipmentMetricsPerPlant(APIView):
+    def get(self, request):
+        return Response(
+            get_all_plants_metrics(),
+            status=status.HTTP_200_OK)
 
 
 class ShipmentNextCheckpoint(APIView):
