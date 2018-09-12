@@ -59,6 +59,9 @@ def get_all_plants_metrics():
     # todo:
     # - optimize
     # - do it using subqueries
-    return [
+    return sorted([
         get_plant_metrics(p)
-        for p in Plant.objects.all()]
+        for p in Plant.objects.all()],
+        key=lambda x: x['current_year_metrics']['count'],
+        reverse=True
+    )
