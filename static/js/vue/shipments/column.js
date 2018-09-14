@@ -1,13 +1,7 @@
 Vue.component('shipments-column', {
   props: ['checkpoint'],
   delimiters: ['${', '}'],
-  template: '<div class="card-holder">' +
-    '<shipment-card' +
-      ' v-for="(shipment, index) in shipments"' +
-      ' v-bind:key="index"' +
-      ' v-bind:shipment="shipment">' +
-    '</shipment-card>' +
-  '</div>',
+  template: '#shipment-column',
   data: function () {
     return {
       shipments: []

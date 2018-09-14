@@ -17,12 +17,13 @@
     </nav>
   </div>
 
-  {% include 'shipments/dashboard/create-shipment-modal.html' %}
-  {% include 'shipments/dashboard/update-shipment-modal.html' %}
-
+  {% include 'shipments/dashboard/create.html' %}
+  {% include 'shipments/dashboard/update.html' %}
+  {% include 'shipments/dashboard/column.html' %}
+  {% include 'shipments/dashboard/card.html' %}
 
   <div id="shipments-dashboard" class="main-content container-fluid">
-    {% include 'shipments/dashboard/plants-metrics.html' %}
+    {% include 'shipments/dashboard/metrics.html' %}
     {% include 'shipments/dashboard/checkpoints.html' %}
     </div>
   </div>
@@ -35,11 +36,11 @@
 
 {% block extra_scripts %}
   <script src="{% static 'lib/vue/vue.js' %}" type="text/javascript"></script>
-  <script src="{% static 'js/vue/shipments/shipment-card.js' %}" type="text/javascript"></script>
-  <script src="{% static 'js/vue/shipments/shipment-column.js' %}" type="text/javascript"></script>
+  <script src="{% static 'js/vue/shipments/card.js' %}" type="text/javascript"></script>
+  <script src="{% static 'js/vue/shipments/column.js' %}" type="text/javascript"></script>
   <script src="{% static 'js/vue/shipments/dashboard.js' %}" type="text/javascript"></script>
-  <script src="{% static 'js/vue/shipments/create-shipment.js' %}" type="text/javascript"></script>
-  <script src="{% static 'js/vue/shipments/update-shipment.js' %}" type="text/javascript"></script>
+  <script src="{% static 'js/vue/shipments/create.js' %}" type="text/javascript"></script>
+  <script src="{% static 'js/vue/shipments/update.js' %}" type="text/javascript"></script>
   <script src="{% static 'js/timeline.js' %}" type="text/javascript"></script>
   <script type="text/javascript">
     $('.modal').on('show.bs.modal', function(){
