@@ -33,7 +33,7 @@
 
                         <div class="form-group">
                           <label for="{{ field.id_for_transit_time_go }}">{{ form.transit_time_go.label_tag }} </label>
-                          {% render_field form.transit_time_go class="form-control" placeholder="0,00" %}
+                          {% render_field form.transit_time_go class="form-control" placeholder="0,00" type="text" %}
                         </div>
 
                         <div class="form-group">
@@ -60,5 +60,13 @@
 {% block extra_scripts %}
 <script>
   $("#id_color").addClass('form-control');
+
+  $(function() {
+    new AutoNumeric('#id_transit_time_go', {
+      minimumValue: '0',
+      maximumValue: '100',
+      decimalPlacesOverride: '2'
+    });
+  });
 </script>
 {% endblock %}
