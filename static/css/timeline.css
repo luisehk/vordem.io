@@ -2,7 +2,7 @@
     justify-content: center;
     align-items: center;
     margin-top: 40px;
-    margin-bottom: 30px;
+    margin-bottom: 50px;
     height: 3px;
     background: #2C3E50;
 }
@@ -14,11 +14,11 @@
 }
 
 .sa-timeline .start {
-    margin-right: -50px;
+    margin-right: -75px;
 }
 
 .sa-timeline .end {
-    margin-left: -50px;
+    margin-left: -75px;
 }
 
 .sa-timeline .bullet {
@@ -29,8 +29,8 @@
     position: relative;
     border-radius: 50%;
     padding: 10px;
-    margin-right: 50px;
-    margin-left: 50px;
+    margin-right: 75px;
+    margin-left: 75px;
 }
 
 .sa-timeline .bullet.small {
@@ -42,20 +42,44 @@
     width: 95px;
     height: 1px;
     position: absolute;
-    top: -35px;
     left: -35px;
     text-align: center;
 }
 
-.sa-timeline .bullet span::before {
+.sa-timeline .bullet .title {
+    top: -35px;
+}
+
+.sa-timeline .bullet .time {
+    top: 35px;
+}
+
+.sa-timeline .bullet .time span {
+    width: 180px;
+}
+
+.sa-timeline .bullet .time .arrival {
+    color: green;
+}
+
+.sa-timeline .bullet .time .departure {
+    color: red;
+}
+
+.sa-timeline .bullet .time .duration {
+    color: blue;
+}
+
+.sa-timeline .bullet .title::before {
     content: attr(data-title);
     top: -35px;
     left: -35px;
     width: 70px;
     font-size: 12px;
     text-align: center;
+    font-weight: bold;
 }
 
-.sa-timeline .bullet span::after {
+.sa-timeline .bullet .title::after {
 
 }
