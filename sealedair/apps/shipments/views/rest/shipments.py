@@ -4,8 +4,8 @@ from rest_framework.views import APIView
 from rest_framework import status
 from rest_framework.response import Response
 from ...serializers.shipments import (
-    ShipmentCreationSerializer, ShipmentSerializer)
-from ...models import Shipment
+    ShipmentCreationSerializer, ShipmentSerializer, CommentSerializer)
+from ...models import Shipment, Comment
 from ...helpers import get_all_plants_metrics
 
 
@@ -47,3 +47,8 @@ class ShipmentNextCheckpoint(APIView):
         return Response(
             {'success': "success"},
             status=status.HTTP_200_OK)
+
+
+class CommentViewSet(ModelViewSet):
+    queryset = Comment.objects.all()
+    serializer_class = CommentSerializer

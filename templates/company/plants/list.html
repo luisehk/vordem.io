@@ -4,7 +4,7 @@
 
 {% block content %}
 <div class="page-head">
-    <h2 class="page-head-title">Plantas </h2> 
+    <h2 class="page-head-title">Plantas </h2>
     <nav aria-label="breadcrumb" role="navigation">
         <ol class="breadcrumb page-head-nav">
             <li class="breadcrumb-item"><a href="#">Inicio</a></li>
@@ -24,8 +24,9 @@
                 <tr>
                   <th>Nombre</th>
                   <th>Código</th>
+                  <th>Tiempo de tránsito</th>
                   <th>Color</th>
-                  <th>Acción</th>   
+                  <th>Acción</th>
                 </tr>
               </thead>
               <tbody>
@@ -33,8 +34,9 @@
                 <tr>
                     <td>{{plant.name}}</td>
                     <td>{{plant.code}}</td>
+                    <td>{{plant.transit_time_go}}</td>
                     <td><span style='background-image: none; background-color:{{plant.color}};'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
-                    <td class="font-size-icon-table"> 
+                    <td class="font-size-icon-table">
                       <a href="{% url 'company:plant-update' plant.pk %}" title="Editar planta"><span class="mdi mdi-edit"></span></a> &nbsp;&nbsp;| &nbsp;&nbsp;<a href="{% url 'company:plant-delete' plant.pk %}" title="Eliminar planta"><span class="mdi mdi-delete"></span></a>
                     </td>
                   </tr>
