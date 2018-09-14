@@ -15,7 +15,7 @@ class ShipmentFormView(ShipmentGenericView):
 
 
 class Dashboard(ShipmentGenericView, TemplateView):
-    template_name = 'shipments/dashboard.html'
+    template_name = 'shipments/dashboard/dashboard.html'
 
     def get_context_data(self, **kwargs):
         ctx = super().get_context_data(**kwargs)

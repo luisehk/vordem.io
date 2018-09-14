@@ -1,0 +1,63 @@
+{% load static %}
+
+<div id="new-shipment" tabindex="-1" role="dialog" class="modal fade colored-header colored-header-primary">
+  <div class="modal-dialog">
+    <div class="modal-content be-loading" v-bind:class="{ 'be-loading-active' : loading }">
+      <div class="modal-header modal-header-colored">
+        <h3 class="modal-title">Nuevo embarque</h3>
+        <button type="button" data-dismiss="modal" aria-hidden="true" class="close md-close"><span class="mdi mdi-close">       </span></button>
+      </div>
+
+      <div class="modal-body">
+        <div class="form-group row">
+          <label for="id_plant" class="col-12 col-sm-3 col-form-label text-sm-right">Planta destino</label>
+          <div class="col-12 col-sm-8 col-lg-8">
+            <select id="id_plant" v-model="shipment.plant" class="form-control">
+              <option v-for="plant in plants" v-bind:value="plant.id">
+                ${ plant.name }
+              </option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label for="id_code" class="col-12 col-sm-3 col-form-label text-sm-right">Embarque</label>
+          <div class="col-12 col-sm-8 col-lg-8">
+            <input id="id_code" v-model="shipment.code" type="text" placeholder="Introduce el número de embarque" class="form-control">
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label for="id_carrier" class="col-12 col-sm-3 col-form-label text-sm-right">Carrier</label>
+          <div class="col-12 col-sm-8 col-lg-8">
+            <select id="id_carrier" v-model="shipment.truck.carrier" class="form-control">
+              <option v-for="carrier in carriers" v-bind:value="carrier.id">
+                ${ carrier.name }
+              </option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label for="id_trailer" class="col-12 col-sm-3 col-form-label text-sm-right">Trailer</label>
+          <div class="col-12 col-sm-8 col-lg-8">
+            <input id="id_trailer" v-model="shipment.truck.code" type="text" placeholder="Introduce el código de trailer" class="form-control">
+          </div>
+        </div>
+
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" data-dismiss="modal" class="btn btn-secondary md-close">Cancelar</button>
+
+        <button type="button" class="btn btn-primary" v-on:click="submit" v-bind:class="{ 'disabled' : !formIsValid }">Agregar embarque</button>
+      </div>
+
+      <div class="be-spinner">
+        <svg width="40px" height="40px" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
+          <circle fill="none" stroke-width="4" stroke-linecap="round" cx="33" cy="33" r="30" class="circle"></circle>
+        </svg>
+      </div>
+    </div>
+  </div>
+</div>
