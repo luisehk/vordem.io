@@ -21,6 +21,14 @@
     margin-left: -75px;
 }
 
+.sa-timeline .inactive-line {
+    background: #d0cfcf;
+    margin-left: -75px;
+    margin-right: -75px;
+    width: 150px;
+    flex: initial;
+}
+
 .sa-timeline .bullet {
     text-align: center;
     width: 25px;
@@ -33,7 +41,16 @@
     margin-left: 75px;
 }
 
-.sa-timeline .bullet.small {
+.sa-timeline .bullet.inactive-bullet {
+    background-color: #d0cfcf;
+}
+
+.sa-timeline .bullet.inactive-bullet .title::before {
+    font-weight: bold;
+    color: gray;
+}
+
+.sa-timeline .bullet.transit {
     width: 10px;
     height: 10px;
 }
@@ -52,6 +69,7 @@
 
 .sa-timeline .bullet .time {
     top: 35px;
+    left: -40px;
 }
 
 .sa-timeline .bullet .time span {
