@@ -8,7 +8,8 @@ from .views.web.shipments import (
 from .views.web.delay_reason import (
     DelayReasonList, DelayReasonCreate, DelayReasonUpdate, DelayReasonDelete)
 from .views.rest.shipments import (
-    ShipmentViewSet, ShipmentNextCheckpoint, ShipmentMetricsPerPlant)
+    ShipmentViewSet, ShipmentNextCheckpoint, ShipmentMetricsPerPlant,
+    CommentViewSet)
 
 urlpatterns = [
     url(r'^dashboard$',
@@ -42,4 +43,5 @@ urlpatterns = [
 
 router = DefaultRouter()
 router.register(r'api/shipments', ShipmentViewSet)
+router.register(r'api/comments', CommentViewSet)
 urlpatterns += router.urls

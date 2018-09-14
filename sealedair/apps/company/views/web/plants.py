@@ -15,7 +15,7 @@ class PlantGenericView(LoginRequiredMixin, ContextMixin):
 
 
 class PlantFormView(PlantGenericView):
-    fields = ['name', 'code', 'color']
+    fields = ['name', 'code', 'color', 'transit_time_go']
 
 
 class PlantCreate(PlantFormView, CreateWithInlinesView):
