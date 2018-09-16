@@ -3,6 +3,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import ListView, DeleteView
 from django.views.generic.base import ContextMixin, TemplateView
 from ...models import Shipment
+from ...helpers import get_all_plants_metrics
 
 
 class ShipmentGenericView(LoginRequiredMixin, ContextMixin):
@@ -14,10 +15,12 @@ class ShipmentFormView(ShipmentGenericView):
 
 
 class Dashboard(ShipmentGenericView, TemplateView):
-    template_name = 'shipments/dashboard.html'
+    template_name = 'shipments/dashboard/dashboard.html'
 
     def get_context_data(self, **kwargs):
         ctx = super().get_context_data(**kwargs)
+        ctx['plants'] = get_all_plants_metrics()
+        ctx['badges'] = ['badge-danger', 'badge-warning', 'badge-success']
         return ctx
 
 

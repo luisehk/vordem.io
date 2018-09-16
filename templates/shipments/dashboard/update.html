@@ -1,0 +1,316 @@
+{% load static %}
+
+<!-- shipment update modal -->
+<div id="update-shipment" tabindex="-1" role="dialog" class="modal fade colored-header colored-header-primary">
+  <div class="modal-dialog full-width">
+    <div class="modal-content be-loading" v-bind:class="{ 'be-loading-active' : loading }">
+      <div class="modal-header modal-header-colored">
+        <h3 class="modal-title">Embarque #${shipment.code}</h3>
+        <button type="button" data-dismiss="modal" aria-hidden="true" class="close md-close"><span class="mdi mdi-close">       </span></button>
+      </div>
+
+      <div class="modal-body" style="padding: 0">
+
+        <!-- shipment history -->
+        <div class="main-content container-fluid">
+          <div class="row">
+            <div class="col-12">
+              <br />
+              <div class="sa-timeline row">
+                <div class="empty start"></div>
+                <div class="bullet">
+                  <span class="title" data-title="CPM"></span>
+                  <span class="time">
+                    <span class="departure">
+                      🡺 13 sept, 11:00am
+                    </span>
+                  </span>
+                </div>
+                <div class="bullet transit">
+                  <span class="title" data-title="Tránsito MX"></span>
+                  <span class="time">
+                    <span class="duration">
+                      🕓 3 hora(s)
+                    </span>
+                  </span>
+                </div>
+                <div class="bullet">
+                  <span class="title" data-title="Carrier MX"></span>
+                  <span class="time">
+                    <span class="arrival">
+                      🡻 13 sept, 02:00pm
+                    </span>
+
+                    <br />
+
+                    <span class="duration">
+                      🕓 1.33 hora(s)
+                    </span>
+
+                    <br />
+
+                    <span class="departure">
+                      🡺 13 sept, 03:20pm
+                    </span>
+                  </span>
+                </div>
+                <div class="bullet transit">
+                  <span class="title" data-title="En cruce"></span>
+                  <span class="time">
+                    <span class="duration">
+                      🕓 0.5 hora(s)
+                    </span>
+                  </span>
+                </div>
+                <div class="bullet">
+                  <span class="title" data-title="Carrier US"></span>
+                  <span class="time">
+                    <span class="arrival">
+                      🡻 13 sept, 03:50pm
+                    </span>
+
+                    <br />
+
+                    <span class="duration">
+                      🕓 14 hora(s)
+                    </span>
+
+                    <br />
+
+                    <span class="departure">
+                      🡺 14 sept, 05:50am
+                    </span>
+                  </span>
+                </div>
+                <div class="bullet transit">
+                  <span class="title" data-title="Tránsito US"></span>
+                  <span class="time">
+                    <span class="duration">
+                      🕓 7 hora(s)
+                    </span>
+                  </span>
+                </div>
+                <div class="empty inactive-line"></div>
+                <div class="bullet inactive-bullet">
+                  <span class="title" data-title="Entregado"></span>
+                  <span class="time">
+                  </span>
+                </div>
+                <div class="empty end"></div>
+              </div>
+
+              <!-- OLD
+
+              <h1 class="text-center">Eventos</h1>
+              <br />
+              <ul class="timeline modal-scroll-panel">
+
+                <li
+                  v-for="(status, index) in shipment.status_history"
+                  v-bind:key="index"
+                  v-bind:status="status"
+                  class="timeline-item">
+                  <div class="timeline-date">
+                    <span>${ _formatDate(status.start_datetime) }</span> <br />
+
+                    <span class="timeline-time">${ _formatTime(status.start_datetime) }</span>
+                  </div>
+
+                  <div v-if="!_isDelivered(status)" class="timeline-content" v-bind:style="_timelineItemStatusStyle(status)">
+                    <div class="timeline-header">
+                      <p class="timeline-activity">
+                        El embarque fue marcado como <strong>"${ status.checkpoint_display }"</strong>.
+                        <br />
+                        <template v-if="_isCurrentStatus(status)">
+                          Lleva
+                        </template>
+                        <template v-else>
+                          Estuvo
+                        </template>
+                        en este estado <strong>${ status.hours_since_start } hora(s)</strong>.
+                      </p>
+                    </div>
+                  </div>
+
+                  <div v-else class="timeline-content">
+                    <div class="timeline-header">
+                      <p class="timeline-activity">
+                        El embarque llegó exitosamente a <strong>"${ shipment.plant.name }"</strong>.
+                      </p>
+                    </div>
+                  </div>
+                </li>
+
+                <li class="timeline-item">
+                  <div class="timeline-date">
+                    <span>${startDate}</span>
+                    <br />
+                    <span class="timeline-time">${startTime}</span>
+                  </div>
+                  <div class="timeline-content">
+                    <div class="timeline-header">
+                      <p class="timeline-activity">
+                        El embarque fue creado con destino hacia <strong>"${ shipment.plant.name }"</strong>
+                      </p>
+                    </div>
+                  </div>
+                </li>
+
+
+              <li class="timeline-item timeline-loadmore">
+                <a href="#" class="load-more-btn">
+                  Inicio</a>
+                </li>
+              </ul>
+
+            -->
+            </div>
+          </div>
+        </div>
+
+        <!-- shipment info -->
+        <div class="main-content container-fluid shipment-modal-header">
+          <div class="row">
+            <div class="col-6">
+
+              <div v-if="!_isDelivered(shipment.current_status)" class="col-12 shipment-status-center">
+                <h3>
+                  Actualmente se encuentra en
+                  <br />
+                  <strong>
+                    ${shipment.current_status.checkpoint_display}
+                  </strong>
+                  <br />
+                  y su traslado va
+                  <br />
+                  <strong class="shipment-status-time" v-bind:class="timeStatusClass">
+                    ${shipment.current_status.time_status_display}
+                  </strong>
+                </h3>
+
+                <p class="shipment-actions">
+                  <button v-on:click="nextCheckpoint" class="btn btn-space btn-success btn-lg"><i class="icon icon-left mdi mdi-check-circle"></i> Ya llegó</button>
+
+                  <button class="btn btn-space btn-primary btn-lg"><i class="icon icon-left mdi mdi-phone"></i> Contactar carrier</button>
+                </p>
+              </div>
+
+              <div v-else class="col-12 shipment-status-center">
+                <h3>
+                  El embarque fue
+                  <br />
+                  <strong>entregado</strong>
+                  <br />
+                  exitosamente.
+                </h3>
+              </div>
+
+              <div v-if="_showEta()" class="form-group row">
+                <label class="col-12 col-sm-3 col-form-label text-sm-right">Estimated Time of Arrival</label>
+
+                <div class="col-12 col-sm-8 col-lg-8">
+                  <div class="row">
+                    <div class="col">
+                      <input type="date" class="form-control" :value="etaDate"
+                   @input="changeEtaDate($event.target.valueAsDate)" />
+                    </div>
+                    <div class="col">
+                      <input type="time" class="form-control" :value="etaTime"
+                   @input="changeEtaTime($event.target.valueAsDate)"  />
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <label for="id_update_plant" class="col-12 col-sm-3 col-form-label text-sm-right">Planta destino</label>
+                <div class="col-12 col-sm-8 col-lg-8">
+                  <select id="id_update_plant" v-model="shipment.plant" class="form-control" disabled>
+                    <option v-for="plant in plants" v-bind:value="plant">
+                      ${ plant.name }
+                    </option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <label for="id_update_code" class="col-12 col-sm-3 col-form-label text-sm-right">Embarque</label>
+                <div class="col-12 col-sm-8 col-lg-8">
+                  <input id="id_update_code" v-model="shipment.code" type="text" placeholder="Introduce el número de embarque" class="form-control" disabled>
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <label for="id_update_carrier" class="col-12 col-sm-3 col-form-label text-sm-right">Carrier</label>
+                <div class="col-12 col-sm-8 col-lg-8">
+                  <select id="id_update_carrier" v-model="shipment.truck.carrier" class="form-control" disabled>
+                    <option v-for="carrier in carriers" v-bind:value="carrier">
+                      ${ carrier.name }
+                    </option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <label for="id_update_trailer" class="col-12 col-sm-3 col-form-label text-sm-right">Trailer</label>
+                <div class="col-12 col-sm-8 col-lg-8">
+                  <input id="id_update_trailer" v-model="shipment.truck.code" type="text" placeholder="Introduce el código de trailer" class="form-control" disabled>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-6">
+              <div class="modal-scroll-panel scroll-panel-comments ">
+                <div class="timeline-content">
+                  <div class="timeline-avatar avatar-margin-right"><img src="{% static 'img/avatar3.png' %}" alt="Avatar" class="circle"></div>
+                  <div class="timeline-header">
+                    <span class="timeline-time">9:54 AM</span>
+                    <span class="timeline-autor">Roberto Jimenez</span>
+                    <div class="timeline-summary">
+                      <p>El tráfico hacia Nuevo Laredo estaba lento por un accidente.</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="timeline-content">
+                  <div class="timeline-avatar avatar-margin-right"><img src="{% static 'img/avatar4.png' %}" alt="Avatar" class="circle"></div>
+                  <div class="timeline-header">
+                    <span class="timeline-time">11:05 AM</span>
+                    <span class="timeline-autor">Luis Herrada</span>
+                    <div class="timeline-summary">
+                      <p>El tráfico ya se desatoró. Ya llegó con el carrier mexicano.</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="timeline-content">
+                  <div class="timeline-avatar avatar-margin-right"><img src="{% static 'img/avatar2.png' %}" alt="Avatar" class="circle"></div>
+                  <div class="timeline-header">
+                    <span class="timeline-time">16:05 PM</span>
+                    <span class="timeline-autor">Roberto Jimenez</span>
+                    <div class="timeline-summary">
+                      <p>Todo en órden ya.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <input type="text" placeholder="Introduce tu comentario" class="form-control">
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" data-dismiss="modal" class="btn btn-secondary md-close">Cerrar</button>
+      </div>
+
+      <div class="be-spinner">
+        <svg width="40px" height="40px" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
+          <circle fill="none" stroke-width="4" stroke-linecap="round" cx="33" cy="33" r="30" class="circle"></circle>
+        </svg>
+      </div>
+    </div>
+  </div>
+</div>

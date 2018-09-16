@@ -55,13 +55,38 @@
 }
 
 .shipment-modal-header {
-    background-image: url(https://sealedair.com/sites/default/files/01.1-1_imageFood_1440x460.jpg);
+    /*background-image: url(https://sealedair.com/sites/default/files/01.1-1_imageFood_1440x460.jpg);*/
     background-blend-mode: soft-light;
-    background-color: #1f2b17cc;
+    /*background-color: #1f2b17cc;*/
     background-size: cover;
-    color: white;
+    /*color: white;*/
 }
 
 .shipment-modal-header label {
-    color: white;
+    /*color: white;*/
+}
+
+.errors-description {
+    padding-top: 10px;
+    font-size: 13px !important;
+    color: #5a5a5a;
+}
+
+.errors-description li {
+    list-style: none;
+}
+
+.modal-scroll-panel {
+    min-height: 540px;
+    max-height: 540px;
+    overflow-y: scroll;
+}
+
+.avatar-margin-right {
+    margin-right: 20px;
+}
+
+.scroll-panel-comments {
+    min-height: calc(540px - 3.692rem);
+    max-height: calc(540px - 3.692rem);
 }

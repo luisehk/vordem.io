@@ -4,6 +4,7 @@ from django.db.models.signals import post_save
 from crum import get_current_request
 from ..messaging.email.helpers import send_email
 from .models import Profile
+from ..notifications.models import UserNotificationsConfig
 
 
 User = get_user_model()
@@ -66,3 +67,10 @@ def notify_user_creation(sender, **kwargs):
                 'password': password,
                 'request': get_current_request()
             })
+
+
+def create_user_notifications_config(sender, **kwargs):
+    u = kwargs['instance']
+
+    if not UserNotificationsConfig.objects.filter(user=u).exists():
+        UserNotificationsConfig.objects.create(user=u)

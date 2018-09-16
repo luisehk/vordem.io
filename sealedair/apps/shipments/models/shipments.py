@@ -1,6 +1,8 @@
 from django.contrib.auth import get_user_model
+from crum import get_current_request
 from django.db import models
 from django.utils import timezone
+from ...messaging.email.helpers import send_email
 from ...providers.models import Truck
 from ...company.models import Plant
 
@@ -88,6 +90,82 @@ class Shipment(models.Model):
                 shipment=self,
                 checkpoint=previous_checkpoint
             ).first()
+
+    def email_notification_create_new_shipment(self, user):
+        send_email(
+            subject='Nuevo embarque creado',
+            to_email=[user.email],
+            template='emails/shipments/new_shipment.html',
+            ctx={
+                'user': user.first_name,
+                'shipment': self,
+                'truck': self.truck,
+                'plant': self.plant,
+                'carrier': self.truck.carrier.name,
+                'request': get_current_request()})
+
+    def email_notification_delivered_shipment(self, user):
+        send_email(
+            subject='Embarque entregado',
+            to_email=[user.email],
+            template='emails/shipments/delivered_shipment.html',
+            ctx={
+                'user': user.first_name,
+                'shipment': self,
+                'truck': self.truck,
+                'plant': self.plant,
+                'carrier': self.truck.carrier.name,
+                'status': self.current_status.get_checkpoint_display,
+                'request': get_current_request()})
+
+    def notification_risk_shipment(self, user):
+        send_email(
+            subject='Embarque en riesgo',
+            to_email=[user.email],
+            template='emails/shipments/shipment_at_risk.html',
+            ctx={
+                'user': user.first_name,
+                'shipment': self,
+                'truck': self.truck,
+                'plant': self.plant,
+                'carrier': self.truck.carrier.name,
+                'request': get_current_request()})
+
+    def notification_late_shipment(self, user):
+        send_email(
+            subject='Embarque retrasado',
+            to_email=[user.email],
+            template='emails/shipments/late_shipment.html',
+            ctx={
+                'user': user.first_name,
+                'shipment': self,
+                'truck': self.truck,
+                'plant': self.plant,
+                'carrier': self.truck.carrier.name,
+                'request': get_current_request()})
+
+    def change_to_delayed(self):
+        status = self.current_status
+        hours_spent = status.get_hours_since_start()
+        if hours_spent > 8:
+            status.time_status = Status.TIME_DELAYED
+            status.save()
+            for user in User.objects.filter(
+                        notifications_config__email=True,
+                        notifications_config__late_shipment=True):
+                    self.notification_late_shipment(user)
+
+    def change_to_late(self):
+        status = self.current_status
+        hours_spent = status.get_hours_since_start()
+
+        if hours_spent > 16:
+            status.time_status = Status.TIME_LATE
+            status.save()
+            for user in User.objects.filter(
+                        notifications_config__email=True,
+                        notifications_config__late_shipment=True):
+                    self.notification_late_shipment(user)
 
 
 class Comment(models.Model):

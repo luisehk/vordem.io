@@ -5,6 +5,7 @@ from . import views
 router = DefaultRouter()
 router.register(r'user', views.UserViewSet)
 router.register(r'profile', views.ProfileViewSet)
+router.register(r'user-notifications', views.UserNotificationsConfigViewSet)
 
 urlpatterns = [
     url(r'^me/$', views.MyselfView.as_view()),

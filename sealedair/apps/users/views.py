@@ -3,9 +3,12 @@ from django.contrib import messages
 from django.core.urlresolvers import reverse_lazy
 from django.core.exceptions import ObjectDoesNotExist
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.decorators import login_required
+from django.http import HttpResponseRedirect
 from django.views.generic.base import RedirectView
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 from .forms import UserRegistroForm, UserProfileForm
+from allauth.account.views import PasswordChangeView
 
 
 User = get_user_model()
@@ -61,6 +64,12 @@ class UserUpdate(LoginRequiredMixin, UpdateView):
         })
         return kwargs
 
+    def get(self, request, *args, **kwargs):
+        if self.request.user == self.get_object():
+            return super().get(request, *args, **kwargs)
+        else:
+            return HttpResponseRedirect('/users/list')
+
     def form_invalid(self, form):
         messages.error(
             self.request, "Ese email ya fue registrado.")
@@ -69,18 +78,34 @@ class UserUpdate(LoginRequiredMixin, UpdateView):
 
     def form_valid(self, form):
         email = form['user'].cleaned_data['email']
-        print(email)
-        user = User.objects.filter(email=email)
+        print("Este es el email", email)
+        user = User.objects.get(pk=self.object.pk)
         print(user)
-        if user.count() > 2:
-            print("Ya existe el email.", user)
-            # return self.form_invalid(form)
+        if email != user.email:
+            email_exists = User.objects.filter(email=email).exclude(
+                id=user.id).exists()
+            if email_exists:
+                return self.form_invalid(form)
+            else:
+                return super().form_valid(form)
         else:
-            print("No existe este email.")
-            # return super().form_valid(form)
+            return super().form_valid(form)
 
 
 class UserDelete(LoginRequiredMixin, DeleteView):
     model = User
     template_name = "users/delete.html"
     success_url = reverse_lazy('users:users-list')
+
+
+class LoginAfterPasswordChangeView(PasswordChangeView):
+    """
+    Custom class to override the password change view.
+    """
+    @property
+    def success_url(self):
+        return reverse_lazy('shipments:dashboard')
+
+
+login_after_password_change = login_required(
+    LoginAfterPasswordChangeView.as_view())

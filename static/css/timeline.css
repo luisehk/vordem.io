@@ -1,0 +1,103 @@
+.sa-timeline {
+    justify-content: center;
+    align-items: center;
+    margin-top: 40px;
+    margin-bottom: 50px;
+    height: 3px;
+    background: #2C3E50;
+}
+
+.sa-timeline .empty {
+    background: #fff;
+    height: 100%;
+    flex: 1;
+}
+
+.sa-timeline .start {
+    margin-right: -75px;
+}
+
+.sa-timeline .end {
+    margin-left: -75px;
+}
+
+.sa-timeline .inactive-line {
+    background: #d0cfcf;
+    margin-left: -75px;
+    margin-right: -75px;
+    width: 150px;
+    flex: initial;
+}
+
+.sa-timeline .bullet {
+    text-align: center;
+    width: 25px;
+    height: 25px;
+    background-color: #2C3E50;
+    position: relative;
+    border-radius: 50%;
+    padding: 10px;
+    margin-right: 75px;
+    margin-left: 75px;
+}
+
+.sa-timeline .bullet.inactive-bullet {
+    background-color: #d0cfcf;
+}
+
+.sa-timeline .bullet.inactive-bullet .title::before {
+    font-weight: bold;
+    color: gray;
+}
+
+.sa-timeline .bullet.transit {
+    width: 10px;
+    height: 10px;
+}
+
+.sa-timeline .bullet span {
+    width: 95px;
+    height: 1px;
+    position: absolute;
+    left: -35px;
+    text-align: center;
+}
+
+.sa-timeline .bullet .title {
+    top: -35px;
+}
+
+.sa-timeline .bullet .time {
+    top: 35px;
+    left: -40px;
+}
+
+.sa-timeline .bullet .time span {
+    width: 180px;
+}
+
+.sa-timeline .bullet .time .arrival {
+    color: green;
+}
+
+.sa-timeline .bullet .time .departure {
+    color: red;
+}
+
+.sa-timeline .bullet .time .duration {
+    color: blue;
+}
+
+.sa-timeline .bullet .title::before {
+    content: attr(data-title);
+    top: -35px;
+    left: -35px;
+    width: 70px;
+    font-size: 12px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.sa-timeline .bullet .title::after {
+
+}

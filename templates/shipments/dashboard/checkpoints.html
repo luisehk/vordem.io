@@ -1,0 +1,72 @@
+{% load static %}
+
+<div class="row">
+  <div class="col-12 col-lg-4 col-xl-4">
+    <div class="card card-border card-contrast">
+      <div class="card-header card-header-contrast">
+        <img src="{% static 'img/flags/mexico.svg' %}" style="width: 25px;" />
+        <strong>México</strong>
+      </div>
+      <div class="card-body">
+
+        <div class="row">
+          <div class="col-6">
+            <h5 class="text-center"><strong>En tránsito</strong></h5>
+
+            <shipments-column checkpoint="MTR">
+            </shipments-column>
+          </div>
+
+          <div class="col-6">
+            <h5 class="text-center"><strong>Carrier mexicano</strong></h5>
+
+            <shipments-column checkpoint="MCA">
+            </shipments-column>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="col-12 col-lg-8 col-xl-8">
+    <div class="card card-border card-contrast">
+      <div class="card-header card-header-contrast">
+        <img src="{% static 'img/flags/united-states.svg' %}" style="width: 25px;" />
+        <strong>Estados Unidos</strong>
+      </div>
+      <div class="card-body">
+
+        <div class="row">
+          <div class="col-3">
+            <h5 class="text-center"><strong>Cruzando</strong></h5>
+
+            <shipments-column checkpoint="BCR">
+            </shipments-column>
+          </div>
+
+          <div class="col-3">
+            <h5 class="text-center"><strong>US Carrier</strong></h5>
+
+            <shipments-column checkpoint="BCA">
+            </shipments-column>
+          </div>
+
+          <div class="col-3">
+            <h5 class="text-center"><strong>En tránsito</strong></h5>
+
+            <shipments-column checkpoint="UTR">
+            </shipments-column>
+          </div>
+
+          <div class="col-3">
+            <h5 class="text-center"><strong>Entregado</strong></h5>
+
+            <shipments-column checkpoint="UDE" class="delivered">
+            </shipments-column>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
