@@ -4,6 +4,7 @@ var updateShipmentApp = new Vue({
   data: {
     shipment: {
       code: '',
+      status_history: [],
       current_status: {
         checkpoint_display: '',
         time_status_display: ''
@@ -71,6 +72,44 @@ var updateShipmentApp = new Vue({
         );
       else
         return null;
+    },
+
+    timesCPM: function() {
+      return {
+        'start': this._formatArrival(this.shipment.start_datetime),
+        'duration': '',
+        'end': ''
+      };
+    },
+
+    timesTransitMX: function() {
+      var s = this._getStatusByCheckpoint(this.checkpoints.MEX_TRANSIT);
+      return this._statusTimes(s);
+    },
+
+    timesCarrierMX: function() {
+      var s = this._getStatusByCheckpoint(this.checkpoints.MEX_CARRIER);
+      return this._statusTimes(s);
+    },
+
+    timesCrossing: function() {
+      var s = this._getStatusByCheckpoint(this.checkpoints.BORDER_CROSSING);
+      return this._statusTimes(s);
+    },
+
+    timesCarrierUS: function() {
+      var s = this._getStatusByCheckpoint(this.checkpoints.BORDER_CARRIER);
+      return this._statusTimes(s);
+    },
+
+    timesTransitUS: function() {
+      var s = this._getStatusByCheckpoint(this.checkpoints.USA_TRANSIT);
+      return this._statusTimes(s);
+    },
+
+    timesDelivered: function() {
+      var s = this._getStatusByCheckpoint(this.checkpoints.USA_DELIVERED);
+      return this._statusTimes(s);
     }
   },
   created: function() {
@@ -78,6 +117,56 @@ var updateShipmentApp = new Vue({
     this.loadCarriers();
   },
   methods: {
+    _statusTimes: function(s) {
+      if(s)
+        return {
+          'start': this._formatArrival(s.start_datetime),
+          'duration': this._formatDuration(s.hours_since_start),
+          'end': this._formatDeparture(s.end_datetime)
+        };
+      else
+        return this._emptyTimes();
+    },
+
+    _emptyTimes: function() {
+      return {
+        'start': '',
+        'duration': '',
+        'end': ''
+      };
+    },
+
+    _formatArrival: function(datetime) {
+      if(datetime) {
+        return '🡻 ' +
+          this._formatDateWithoutYear(datetime) +
+          ', ' +
+          this._formatTime(datetime);
+      } else {
+        return '';
+      }
+    },
+
+    _formatDuration: function(hours) {
+      if(hours >= 24) {
+        var days = hours / 24;
+        return '🕓 ' + days.toFixed(1) + ' dia(s)';
+      } else {
+        return '🕓 ' + hours + ' hora(s)';
+      }
+    },
+
+    _formatDeparture: function(datetime) {
+      if(datetime) {
+        return '🡺 ' +
+          this._formatDateWithoutYear(datetime) +
+          ', ' +
+          this._formatTime(datetime);
+      } else {
+        return '';
+      }
+    },
+
     _etaStringValue: function(index) {
       var eta = this.shipment.estimated_arrival_datetime;
 
@@ -107,6 +196,11 @@ var updateShipmentApp = new Vue({
       var year = date.getFullYear();
 
       return day + ' de ' + monthNames[monthIndex] + ', ' + year;
+    },
+
+    _formatDateWithoutYear: function(date) {
+      var date = this._formatDate(date);
+      return date.substring(0, date.length - 6);
     },
 
     _formatTime: function(date) {
@@ -206,6 +300,12 @@ var updateShipmentApp = new Vue({
 
     _getPlantById: function(id) {
       return this.plants.find(x => x.id == id);
+    },
+
+    _getStatusByCheckpoint: function(checkpoint) {
+      var status = this.shipment.status_history.filter(status => status.checkpoint == checkpoint);
+      if(status.length > 0) return status[0];
+      else return null;
     },
 
     open: function(shipment) {
