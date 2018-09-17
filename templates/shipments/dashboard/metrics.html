@@ -23,11 +23,11 @@
               <tr>
                 <td>AVG. Transit time (in days)</td>
                 <td class="text-center">
-                  <span class="badge badge-pill badge-success">
+                  <span class="badge badge-pill" v-bind:class="getPlantGoalClass(plant)">
                     ${ plant.current_year_metrics.average_duration.toFixed(2) }</span></td>
                 <td class="text-center">
                   <span class="badge badge-pill">
-                    ${ plant.previous_year_metrics.average_duration.toFixed(2) }</span></td>
+                    ${ plant.transit_time_goal.toFixed(2) }</span></td>
               </tr>
             </tbody>
           </table>

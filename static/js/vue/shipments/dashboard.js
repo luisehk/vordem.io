@@ -48,6 +48,18 @@ var app = new Vue({
       return {
         'border-top-color': plant.color
       };
+    },
+
+    getPlantGoalClass: function(plant) {
+      var current = plant.current_year_metrics.average_duration;
+      var goal = plant.transit_time_goal;
+
+      if(current <= goal)
+        return 'badge-success';
+      else if(current <= (goal*1.25))
+        return 'badge-warning';
+      else
+        return 'badge-danger';
     }
   }
 });

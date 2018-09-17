@@ -17,7 +17,7 @@ class Plant(models.Model):
         verbose_name='Color',
         default='#FF0000')
     transit_time_go = models.DecimalField(
-        verbose_name="Tiempo de tránsito",
+        verbose_name="Tiempo de tránsito (objetivo)",
         max_digits=5,
         decimal_places=2,
         blank=True,

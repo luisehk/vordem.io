@@ -37,11 +37,7 @@ def _plant_shipments_metrics(plant, shipments):
 
 def get_plant_metrics(plant):
     current_year = timezone.now().year
-    previous_year_shipments = _year_shipments(current_year - 1)
     current_year_shipments = _year_shipments(current_year)
-
-    previous_year_metrics = _plant_shipments_metrics(
-        plant, previous_year_shipments)
     current_year_metrics = _plant_shipments_metrics(
         plant, current_year_shipments)
 
@@ -50,7 +46,7 @@ def get_plant_metrics(plant):
         'code': plant.code,
         'color': plant.color,
         'name': plant.name,
-        'previous_year_metrics': previous_year_metrics,
+        'transit_time_goal': plant.transit_time_go,
         'current_year_metrics': current_year_metrics
     }
 
