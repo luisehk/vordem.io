@@ -37,6 +37,10 @@ class Shipment(models.Model):
     code = models.CharField(
         verbose_name='Código',
         max_length=150)
+    cpm_number = models.CharField(
+        verbose_name='CPM number',
+        max_length=150,
+        default='')
     current_status = models.ForeignKey(
         'Status',
         verbose_name='Estado actual',
