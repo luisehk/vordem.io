@@ -197,12 +197,12 @@ class Status(models.Model):
     USA_TRANSIT = 'UTR'
     USA_DELIVERED = 'UDE'
     CHECKPOINTS = (
-        (MEX_TRANSIT, 'México: En tránsito',),
-        (MEX_CARRIER, 'México: Carrier mexicano',),
-        (BORDER_CROSSING, 'Laredo: Cruzando',),
-        (BORDER_CARRIER, 'Laredo: US Carrier',),
-        (USA_TRANSIT, 'Destino: En tránsito',),
-        (USA_DELIVERED, 'Destino: Entregado',),
+        (MEX_TRANSIT, 'Tránsito MX',),
+        (MEX_CARRIER, 'Carrier MX',),
+        (BORDER_CROSSING, 'En cruce',),
+        (BORDER_CARRIER, 'Carrier US',),
+        (USA_TRANSIT, 'Tránsito US',),
+        (USA_DELIVERED, 'Entregado',),
     )
 
     TIME_ONTIME = 'TOT'
