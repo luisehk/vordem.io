@@ -22,7 +22,8 @@ var updateShipmentApp = new Vue({
         name: '',
         code: ''
       },
-      estimated_arrival_datetime: new Date()
+      estimated_arrival_datetime: new Date(),
+      comments: []
     },
     plants: [],
     carriers: [],

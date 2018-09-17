@@ -1,38 +1,29 @@
 {% load static %}
 
 <div class="modal-scroll-panel scroll-panel-comments ">
-  <div class="timeline-content">
-    <div class="timeline-avatar avatar-margin-right"><img src="{% static 'img/avatar3.png' %}" alt="Avatar" class="circle"></div>
-    <div class="timeline-header">
-      <span class="timeline-time">9:54 AM</span>
-      <span class="timeline-autor">Roberto Jimenez</span>
-      <div class="timeline-summary">
-        <p>El tráfico hacia Nuevo Laredo estaba lento por un accidente.</p>
+  <template v-if="shipment.comments.length">
+    <div v-for="comment in shipment.comments" class="timeline-content">
+      <div class="timeline-avatar avatar-margin-right"><img :src="comment.user.profile.avatar.crop__128x128" alt="Avatar" class="circle"></div>
+      <div class="timeline-header">
+        <span class="timeline-time">
+          ${_formatDate(comment.datetime)} <br />
+          ${_formatTime(comment.datetime)}
+        </span>
+        <span class="timeline-autor">${comment.first_name} ${comment.last_name}</span>
+        <div class="timeline-summary">
+          <p>${comment.body}</p>
+        </div>
       </div>
     </div>
-  </div>
-
-  <div class="timeline-content">
-    <div class="timeline-avatar avatar-margin-right"><img src="{% static 'img/avatar4.png' %}" alt="Avatar" class="circle"></div>
-    <div class="timeline-header">
-      <span class="timeline-time">11:05 AM</span>
-      <span class="timeline-autor">Luis Herrada</span>
-      <div class="timeline-summary">
-        <p>El tráfico ya se desatoró. Ya llegó con el carrier mexicano.</p>
-      </div>
-    </div>
-  </div>
-
-  <div class="timeline-content">
-    <div class="timeline-avatar avatar-margin-right"><img src="{% static 'img/avatar2.png' %}" alt="Avatar" class="circle"></div>
-    <div class="timeline-header">
-      <span class="timeline-time">16:05 PM</span>
-      <span class="timeline-autor">Roberto Jimenez</span>
-      <div class="timeline-summary">
-        <p>Todo en órden ya.</p>
-      </div>
-    </div>
-  </div>
+  </template>
+  <p v-else style="text-align: center;">
+    Este embarque aún no tiene comentarios.
+  </p>
 </div>
 
-<input type="text" placeholder="Introduce tu comentario" class="form-control">
+<div style="display: flex;">
+  <input type="text" placeholder="Introduce tu comentario" class="form-control">
+  <button class="btn btn-primary btn-lg">
+    Enviar
+  </button>
+</div>

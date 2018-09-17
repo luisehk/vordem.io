@@ -6,6 +6,20 @@ from ...providers.serializers.carriers import (
     TruckSerializer, TruckCreationSerializer)
 from ...company.serializers.plants import PlantSerializer
 from ...providers.models import Truck
+from django.contrib.auth import get_user_model
+
+
+User = get_user_model()
+
+
+# careful, only works if called from api requests...
+# won't work inside celery tasks
+def _add_current_user(serializer, validated_data):
+    request = serializer.context.get('request')
+    user = request.user
+
+    extra_data = {'user': user}
+    return {**validated_data, **extra_data}  # noqa
 
 
 class CommentSerializer(serializers.ModelSerializer):
@@ -14,8 +28,14 @@ class CommentSerializer(serializers.ModelSerializer):
     class Meta:
         model = Comment
         fields = [
-            'id', 'user', 'datetime', 'body'
+            'id', 'shipment', 'user', 'datetime', 'body'
         ]
+        read_only_fields = ['user']
+
+    def create(self, validated_data):
+        data = _add_current_user(
+            self, validated_data)
+        return super().create(data)
 
 
 class StatusSerializer(serializers.ModelSerializer):

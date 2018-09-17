@@ -55,3 +55,5 @@ class ShipmentNextCheckpoint(APIView):
 class CommentViewSet(ModelViewSet):
     queryset = Comment.objects.all()
     serializer_class = CommentSerializer
+    filter_fields = ('shipment',)
+    ordering = ('-datetime')
