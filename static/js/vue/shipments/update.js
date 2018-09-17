@@ -35,7 +35,8 @@ var updateShipmentApp = new Vue({
         'BORDER_CARRIER': 'BCA',
         'USA_TRANSIT': 'UTR',
         'USA_DELIVERED': 'UDE',
-    }
+    },
+    newComment: ''
   },
   computed: {
     formIsValid: function () {
@@ -118,6 +119,17 @@ var updateShipmentApp = new Vue({
     this.loadCarriers();
   },
   methods: {
+    _userDisplayName: function(user) {
+      if(user.first_name && user.last_name)
+        return user.first_name + ' ' + user.last_name;
+      else if(user.first_name)
+        return user.first_name;
+      else if(user.last_name)
+        return user.last_name;
+      else
+        return user.email;
+    },
+
     _statusTimes: function(s) {
       if(s)
         return {
@@ -185,6 +197,7 @@ var updateShipmentApp = new Vue({
       else
         return null;
     },
+
     _formatDate: function(date) {
       var date = new Date(date);
       var monthNames = [
@@ -365,6 +378,47 @@ var updateShipmentApp = new Vue({
           }
         );
       }
+    },
+
+    addComment: function() {
+      var self = this;
+
+      this.loading = true;
+
+      this._post(
+        '/shipments/api/comments/',
+        {
+          body: this.newComment,
+          shipment: this.shipment.id
+        },
+        function(json) {
+          console.log('json comment', json);
+          // add comment to array
+          self.shipment.comments.push(json);
+
+          // reset flags
+          self.loading = false;
+          self.newComment = '';
+
+          // notification
+          $.gritter.add({
+            title: 'Éxito',
+            text: 'Comentario agregado exitosamente',
+            class_name: 'color success'
+          });
+        },
+        function(xhr, status, error) {
+          // reset flags
+          self.loading = false;
+
+          // notification
+          $.gritter.add({
+            title: 'Error',
+            text: 'Hubo un error agregando el comentario.',
+            class_name: 'color danger'
+          });
+        }
+      );
     },
 
     _get_current_eta: function() {

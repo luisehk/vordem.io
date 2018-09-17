@@ -5,11 +5,11 @@
     <div v-for="comment in shipment.comments" class="timeline-content">
       <div class="timeline-avatar avatar-margin-right"><img :src="comment.user.profile.avatar.crop__128x128" alt="Avatar" class="circle"></div>
       <div class="timeline-header">
-        <span class="timeline-time">
-          ${_formatDate(comment.datetime)} <br />
+        <span class="timeline-time" style="text-align: right;">
+          ${_formatDateWithoutYear(comment.datetime)} <br />
           ${_formatTime(comment.datetime)}
         </span>
-        <span class="timeline-autor">${comment.first_name} ${comment.last_name}</span>
+        <span class="timeline-autor">${_userDisplayName(comment.user)}</span>
         <div class="timeline-summary">
           <p>${comment.body}</p>
         </div>
@@ -22,8 +22,8 @@
 </div>
 
 <div style="display: flex;">
-  <input type="text" placeholder="Introduce tu comentario" class="form-control">
-  <button class="btn btn-primary btn-lg">
+  <input v-model="newComment" type="text" placeholder="Introduce tu comentario" class="form-control">
+  <button class="btn btn-primary btn-lg" v-on:click="addComment()">
     Enviar
   </button>
 </div>

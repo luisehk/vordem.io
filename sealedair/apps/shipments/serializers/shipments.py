@@ -23,14 +23,13 @@ def _add_current_user(serializer, validated_data):
 
 
 class CommentSerializer(serializers.ModelSerializer):
-    user = UserSerializer()
+    user = UserSerializer(required=False)
 
     class Meta:
         model = Comment
         fields = [
             'id', 'shipment', 'user', 'datetime', 'body'
         ]
-        read_only_fields = ['user']
 
     def create(self, validated_data):
         data = _add_current_user(
