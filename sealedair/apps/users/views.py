@@ -70,6 +70,27 @@ class UserUpdate(LoginRequiredMixin, UpdateView):
         else:
             return HttpResponseRedirect('/users/list')
 
+    def form_invalid(self, form):
+        messages.error(
+            self.request, "Ese email ya fue registrado.")
+        return self.render_to_response(
+            self.get_context_data(request=self.request, form=form))
+
+    def form_valid(self, form):
+        email = form['user'].cleaned_data['email']
+        print("Este es el email", email)
+        user = User.objects.get(pk=self.object.pk)
+        print(user)
+        if email != user.email:
+            email_exists = User.objects.filter(email=email).exclude(
+                id=user.id).exists()
+            if email_exists:
+                return self.form_invalid(form)
+            else:
+                return super().form_valid(form)
+        else:
+            return super().form_valid(form)
+
 
 class UserDelete(LoginRequiredMixin, DeleteView):
     model = User

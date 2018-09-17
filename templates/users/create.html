@@ -28,7 +28,7 @@
                                     {% render_field form.first_name class="form-control" placeholder="Introduzca su(s) nombre(s)" onkeypress="return Solo_Texto(event);" %}
                                 </div>
                             </div>
-                            
+
                             <div class="col-md-6">
                                 <div class="form-group pt-2">
                                     <label for="{{ field.id_for_last_name }}" style="padding-bottom:8px;"> Apellido(s): *</label>
@@ -36,7 +36,7 @@
                                 </div>
                             </div>
                         </div>
-                        
+
                         <div class="form-group pt-2">
                             <label for="{{ field.id_for_email }}">{{ form.email.label_tag }} *</label>
                             {% render_field form.email class="form-control" placeholder="Introduzca su email" data-parsley-trigger="keyup" %}
@@ -88,21 +88,21 @@
         else if (e.which) code = e.which;
         var character = String.fromCharCode(code);
         var AllowRegex  = /^[\ba-zA-Z\s-]$/;
-        if (AllowRegex.test(character)) return true;     
-        return false; 
+        if (AllowRegex.test(character)) return true;
+        return false;
     }
 
     function notifEmailInvalid(){
         var user = $('#id_email').val();
         $.gritter.add({
             title: 'Email Inválido',
-            text: 'Este email ' + user + ' ya fue registrado por otro usuario.',
+            text: 'Eñ email ' + user + ' ya fue registrado por otro usuario.',
             class_name: 'color danger',
             position: 'bottom-right'
           });
         $('#id_email').val("");
         $('#id_email').focus();
     }
- 
+
 </script>
 {% endblock %}

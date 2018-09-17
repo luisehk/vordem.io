@@ -24,10 +24,14 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group pt-2">
+                                    <label for="{{ field.id_for_user.email }}">{{ form.user.email.label_tag }} *</label>
+                                    {% render_field form.user.email class="form-control" placeholder="Introduzca un email" %}
+                                </div>
+                                <div class="form-group pt-2">
                                     <label for="{{ field.id_for_user.first_name }}">{{ form.user.first_name.label_tag }} *</label>
                                     {% render_field form.user.first_name class="form-control" placeholder="Introduzca un nombre" %}
                                 </div>
-        
+
                                 <div class="form-group pt-2">
                                     <label for="{{ field.id_for_user.last_name }}">{{ form.user.last_name.label_tag }} *</label>
                                     {% render_field form.user.last_name class="form-control" placeholder="Introduzca los apellidos" %}
@@ -36,18 +40,18 @@
                             <div class="col-md-6">
                                 <div class="content">
                                     <div class="text-center">
-                                        <div class="mask-profile">            
-                                            <div class="bg-img"></div>            
-                                            <label for="id_profile-avatar_0">                
-                                            <img id="output" src="{{ user.profile.avatar.url }}" alt="" class="img-thumbnail">            
-                                            </label>            
-                                            <input id="id_profile-avatar_0" type="file" accept="image/*" onchange="loadFile(event)" name="profile-avatar_0"/>       
-                                        </div> 
+                                        <div class="mask-profile">
+                                            <div class="bg-img"></div>
+                                            <label for="id_profile-avatar_0">
+                                            <img id="output" src="{{ user.profile.avatar.url }}" alt="" class="img-thumbnail">
+                                            </label>
+                                            <input id="id_profile-avatar_0" type="file" accept="image/*" onchange="loadFile(event)" name="profile-avatar_0"/>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        
+
 
                         <br>
 
@@ -70,6 +74,14 @@
 {% endblock %}
 {% block extra_scripts %}
 <script>
+    {% if messages %}
+        {% for message in messages %}
+            {% if message.tags == 'error' %}
+                notifEmailInvalid();
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+
     var loadFile = function (event) {
         var reader = new FileReader();
         reader.onload = function () {
@@ -77,6 +89,19 @@
             output.src = reader.result;
         };
         reader.readAsDataURL(event.target.files[0]);
-    }; 
+    };
+
+    function notifEmailInvalid(){
+        var user = $('#id_user-email').val();
+        console.log(user)
+        $.gritter.add({
+            title: 'Email Inválido',
+            text: 'El email ' + user + ' ya fue registrado por otro usuario.',
+            class_name: 'color danger',
+            position: 'bottom-right'
+          });
+        $('#id_user-email').val("");
+        $('#id_user-email').focus();
+    }
 </script>
 {% endblock %}
