@@ -151,7 +151,8 @@ class Shipment(models.Model):
     def change_to_delayed(self):
         status = self.current_status
         hours_spent = status.get_hours_since_start()
-        if hours_spent > 8:
+
+        if hours_spent > 5:
             status.time_status = Status.TIME_DELAYED
             status.save()
 
@@ -166,7 +167,7 @@ class Shipment(models.Model):
         status = self.current_status
         hours_spent = status.get_hours_since_start()
 
-        if hours_spent > 16:
+        if hours_spent > 7:
             status.time_status = Status.TIME_LATE
             status.save()
 
