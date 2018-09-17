@@ -392,9 +392,8 @@ var updateShipmentApp = new Vue({
           shipment: this.shipment.id
         },
         function(json) {
-          console.log('json comment', json);
           // add comment to array
-          self.shipment.comments.push(json);
+          self.shipment.comments.unshift(json);
 
           // reset flags
           self.loading = false;

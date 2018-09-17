@@ -198,6 +198,7 @@ class Comment(models.Model):
     class Meta:
         verbose_name = 'comentario'
         verbose_name_plural = 'comentarios'
+        ordering = ('-datetime',)
 
 
 class Status(models.Model):
