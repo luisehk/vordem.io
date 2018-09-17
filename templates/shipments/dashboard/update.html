@@ -224,6 +224,13 @@
                   exitosamente.
                 </h3>
 
+                <p>
+                  Salida:
+                  <br />
+                  ${_formatDate(shipment.start_datetime)}
+                  ${_formatTime(shipment.start_datetime)}
+                </p>
+
                 <p v-if="shipment.estimated_arrival_datetime">
                   Llegada <strong>estimada</strong>:
                   <br />
