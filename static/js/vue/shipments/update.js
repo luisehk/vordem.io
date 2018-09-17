@@ -273,7 +273,7 @@ var updateShipmentApp = new Vue({
 
     _showEta: function() {
       var c = this.shipment.current_status.checkpoint;
-      var checkpoints = ['BCA', 'UTR', 'UDE'];
+      var checkpoints = ['BCA', 'UTR'];
       return checkpoints.join(',').indexOf(c) > -1;
     },
 

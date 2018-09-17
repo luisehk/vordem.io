@@ -223,6 +223,19 @@
                   <br />
                   exitosamente.
                 </h3>
+
+                <p v-if="shipment.estimated_arrival_datetime">
+                  Llegada <strong>estimada</strong>:
+                  <br />
+                  ${_formatDate(shipment.estimated_arrival_datetime)}
+                  ${_formatTime(shipment.estimated_arrival_datetime)}
+                </p>
+                <p>
+                  Llegada <strong>real</strong>:
+                  <br />
+                  ${_formatDate(shipment.arrival_datetime)}
+                  ${_formatTime(shipment.arrival_datetime)}
+                </p>
               </div>
 
               <div v-if="_showEta()" class="form-group row">
