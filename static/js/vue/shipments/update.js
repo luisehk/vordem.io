@@ -122,7 +122,8 @@ var updateShipmentApp = new Vue({
         return {
           'start': this._formatArrival(s.start_datetime),
           'duration': this._formatDuration(s.hours_since_start),
-          'end': this._formatDeparture(s.end_datetime)
+          'end': this._formatDeparture(s.end_datetime),
+          'empty': false
         };
       else
         return this._emptyTimes();
@@ -132,7 +133,8 @@ var updateShipmentApp = new Vue({
       return {
         'start': '',
         'duration': '',
-        'end': ''
+        'end': '',
+        'empty': true
       };
     },
 
