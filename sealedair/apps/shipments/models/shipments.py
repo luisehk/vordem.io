@@ -154,10 +154,13 @@ class Shipment(models.Model):
         if hours_spent > 8:
             status.time_status = Status.TIME_DELAYED
             status.save()
-            for user in User.objects.filter(
-                        notifications_config__email=True,
-                        notifications_config__late_shipment=True):
-                    self.notification_late_shipment(user)
+
+            users_to_notify = User.objects.filter(
+                notifications_config__email=True,
+                notifications_config__late_shipment=True)
+
+            for user in users_to_notify:
+                self.notification_late_shipment(user)
 
     def change_to_late(self):
         status = self.current_status
@@ -166,10 +169,13 @@ class Shipment(models.Model):
         if hours_spent > 16:
             status.time_status = Status.TIME_LATE
             status.save()
-            for user in User.objects.filter(
-                        notifications_config__email=True,
-                        notifications_config__late_shipment=True):
-                    self.notification_late_shipment(user)
+
+            users_to_notify = User.objects.filter(
+                notifications_config__email=True,
+                notifications_config__late_shipment=True)
+
+            for user in users_to_notify:
+                self.notification_late_shipment(user)
 
 
 class Comment(models.Model):
