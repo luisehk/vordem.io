@@ -175,13 +175,25 @@
 
               <div v-if="!_isDelivered(shipment.current_status)" class="col-12 shipment-status-center">
                 <h3>
-                  Actualmente se encuentra en
+                  Se encuentra en
                   <br />
                   <strong>
                     ${shipment.current_status.checkpoint_display}
                   </strong>
                   <br />
-                  y su traslado va
+                  y su
+                  <template v-if="_isExitOrStay(shipment.current_status.checkpoint) == 'exit'">
+                    salida hacia
+                    <br />
+                    <strong>
+                      ${_getNextCheckpointOrPlant()}
+                    </strong>
+                  </template>
+                  <template v-else>
+                    estadía
+                  </template>
+                  <br/>
+                  se encuentra
                   <br />
                   <strong class="shipment-status-time" v-bind:class="timeStatusClass">
                     ${shipment.current_status.time_status_display}
@@ -189,7 +201,15 @@
                 </h3>
 
                 <p class="shipment-actions">
-                  <button v-on:click="nextCheckpoint" class="btn btn-space btn-success btn-lg"><i class="icon icon-left mdi mdi-check-circle"></i> Ya llegó</button>
+                  <button v-on:click="nextCheckpoint" class="btn btn-space btn-success btn-lg"><i class="icon icon-left mdi mdi-check-circle"></i>
+                  Ya
+                  <template v-if="_isExitOrStay(shipment.current_status.checkpoint) == 'exit'">
+                    llegó
+                  </template>
+                  <template v-else>
+                    salió
+                  </template>
+                  a "${_getNextCheckpointOrPlant()}"</button>
 
                   <button class="btn btn-space btn-primary btn-lg"><i class="icon icon-left mdi mdi-phone"></i> Contactar carrier</button>
                 </p>

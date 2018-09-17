@@ -25,7 +25,15 @@ var updateShipmentApp = new Vue({
     },
     plants: [],
     carriers: [],
-    loading: false
+    loading: false,
+    checkpoints : {
+        'MEX_TRANSIT': 'MTR',
+        'MEX_CARRIER': 'MCA',
+        'BORDER_CROSSING': 'BCR',
+        'BORDER_CARRIER': 'BCA',
+        'USA_TRANSIT': 'UTR',
+        'USA_DELIVERED': 'UDE',
+    }
   },
   computed: {
     formIsValid: function () {
@@ -294,6 +302,107 @@ var updateShipmentApp = new Vue({
           });
         }
       );
+    },
+
+
+    _getNextCheckpoint: function() {
+      var currentCheckpoint = this.shipment.current_status.checkpoint;
+      var checkpoints = this.checkpoints;
+
+      if(currentCheckpoint == checkpoints.MEX_TRANSIT)
+          return checkpoints.MEX_CARRIER;
+
+      if(currentCheckpoint == checkpoints.MEX_CARRIER)
+          return checkpoints.BORDER_CROSSING;
+
+      if(currentCheckpoint == checkpoints.BORDER_CROSSING)
+          return checkpoints.BORDER_CARRIER;
+
+      if(currentCheckpoint == checkpoints.BORDER_CARRIER)
+          return checkpoints.USA_TRANSIT;
+
+      if(currentCheckpoint == checkpoints.USA_TRANSIT)
+          return checkpoints.USA_DELIVERED;
+
+      if(currentCheckpoint == checkpoints.USA_DELIVERED)
+          return null;
+
+      return null;
+    },
+
+    _getPreviousCheckpoint: function() {
+      var currentCheckpoint = this.shipment.current_status.checkpoint;
+      var checkpoints = this.checkpoints;
+
+      if(currentCheckpoint == checkpoints.MEX_TRANSIT)
+          return null;
+
+      if(currentCheckpoint == checkpoints.MEX_CARRIER)
+          return checkpoints.MEX_TRANSIT;
+
+      if(currentCheckpoint == checkpoints.BORDER_CROSSING)
+          return checkpoints.MEX_CARRIER;
+
+      if(currentCheckpoint == checkpoints.BORDER_CARRIER)
+          return checkpoints.BORDER_CROSSING;
+
+      if(currentCheckpoint == checkpoints.USA_TRANSIT)
+          return checkpoints.BORDER_CARRIER;
+
+      if(currentCheckpoint == checkpoints.USA_DELIVERED)
+          return checkpoints.USA_TRANSIT;
+
+      return null;
+    },
+
+    _getCheckpointDisplay: function(checkpoint) {
+      var checkpoints = this.checkpoints;
+
+      if(checkpoint == checkpoints.MEX_TRANSIT)
+        return 'Tránsito MX';
+
+      if(checkpoint == checkpoints.MEX_CARRIER)
+        return 'Carrier MX';
+
+      if(checkpoint == checkpoints.BORDER_CROSSING)
+        return 'En cruce';
+
+      if(checkpoint == checkpoints.BORDER_CARRIER)
+        return 'Carrier US';
+
+      if(checkpoint == checkpoints.USA_TRANSIT)
+        return 'Tránsito US';
+
+      if(checkpoint == checkpoints.USA_DELIVERED)
+        return 'Entregado';
+
+      return null;
+    },
+
+    _isExitOrStay: function(checkpoint) {
+      var checkpoints = this.checkpoints;
+
+      switch(checkpoint) {
+        case checkpoints.MEX_TRANSIT:
+        case checkpoints.BORDER_CROSSING:
+        case checkpoints.USA_TRANSIT:
+          return 'exit';
+        case checkpoints.MEX_CARRIER:
+        case checkpoints.BORDER_CARRIER:
+        case checkpoints.USA_DELIVERED:
+          return 'stay';
+        default:
+          return 'unknown';
+      };
+    },
+
+    _getNextCheckpointOrPlant: function() {
+      var nextCheckpoint = this._getNextCheckpoint();
+
+      if(nextCheckpoint && nextCheckpoint != this.checkpoints.USA_DELIVERED)
+        return this._getCheckpointDisplay(nextCheckpoint);
+      else
+        return this.shipment.plant.name;
     },
 
     changeEtaDate: function(date) {
