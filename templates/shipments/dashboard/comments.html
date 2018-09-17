@@ -22,8 +22,8 @@
 </div>
 
 <div style="display: flex;">
-  <input v-model="newComment" type="text" placeholder="Introduce tu comentario" class="form-control">
-  <button class="btn btn-primary btn-lg" v-on:click="addComment()">
+  <input v-model="newComment" v-on:keyup.enter="addComment()" type="text" placeholder="Introduce tu comentario" class="form-control">
+  <button v-on:click="addComment()" v-bind:class="{ active: newComment.length > 0 }" class="btn btn-primary btn-lg">
     Enviar
   </button>
 </div>

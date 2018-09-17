@@ -381,8 +381,10 @@ var updateShipmentApp = new Vue({
     },
 
     addComment: function() {
-      var self = this;
+      if(!this.newComment)
+        return;
 
+      var self = this;
       this.loading = true;
 
       this._post(
