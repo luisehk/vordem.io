@@ -12,6 +12,9 @@ from ...helpers import get_all_plants_metrics
 class ShipmentViewSet(ModelViewSet):
     queryset = Shipment.objects.all()
     filter_fields = ('current_status__checkpoint',)
+    ordering = (
+        'arrival_datetime', 'start_datetime',
+        'current_status', 'current_status__start_datetime')
 
     def get_serializer_class(self):
         if self.action == 'list':

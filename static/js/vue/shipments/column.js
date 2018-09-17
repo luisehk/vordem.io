@@ -25,10 +25,15 @@ Vue.component('shipments-column', {
     loadShipments: function() {
       var self = this;
 
-      // limit to 5 in delivered category
       url = '/shipments/api/shipments/?current_status__checkpoint=' + this.checkpoint;
+
+      // limit to 5 in delivered category
+      // and order by arrival
+      // else, order by start datetime
       if(this.checkpoint == 'UDE')
-        url += '&limit=5'
+        url += '&limit=5&ordering=-arrival_datetime'
+      else
+        url += '&ordering=current_status__start_datetime'
 
       $.ajax({
         url: url,
