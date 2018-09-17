@@ -88,6 +88,12 @@
                   ${_formatDate(shipment.arrival_datetime)}
                   ${_formatTime(shipment.arrival_datetime)}
                 </p>
+
+                <p class="shipment-actions">
+                  <button class="btn btn-space btn-primary btn-lg">
+                    <i class="icon icon-left mdi mdi-phone"></i> Contactar carrier
+                  </button>
+                </p>
               </div>
 
               <div v-if="_showEta()" class="form-group row">
