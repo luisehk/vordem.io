@@ -77,11 +77,11 @@
 }
 
 .sa-timeline .bullet .time .arrival {
-    color: green;
+    color: red;
 }
 
 .sa-timeline .bullet .time .departure {
-    color: red;
+    color: green;
 }
 
 .sa-timeline .bullet .time .duration {
