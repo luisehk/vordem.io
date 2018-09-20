@@ -78,7 +78,7 @@ var updateShipmentApp = new Vue({
 
     timesCPM: function() {
       return {
-        'start': this._formatArrival(this.shipment.start_datetime),
+        'start': this._formatDeparture(this.shipment.start_datetime),
         'duration': '',
         'end': ''
       };
