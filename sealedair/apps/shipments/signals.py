@@ -2,7 +2,8 @@ from django.utils import timezone
 from django.contrib.auth import get_user_model
 from crum import get_current_user
 from sealedair.apps.notifications.models import Notification
-from .models import Status
+from pytz import timezone as pytz_timezone
+from .models import Status, Shipment, Comment
 
 User = get_user_model()
 
@@ -75,3 +76,54 @@ def create_shipment_status(sender, **kwargs):
                     notifications_config__email=True,
                     notifications_config__delivered_shipment=True):
                 shipment.email_notification_delivered_shipment(user)
+
+
+def check_if_eta_changed(sender, **kwargs):
+    new_shipment, created = _get_relevant_data(kwargs)
+
+    if not created:
+        # add a comment to the shipment if the ETA was changed
+        original_shipment = Shipment.objects.get(id=new_shipment.id)
+        original_eta = original_shipment.estimated_arrival_datetime
+        new_eta = new_shipment.estimated_arrival_datetime
+        current_user = get_current_user()
+
+        if original_eta != new_eta:
+            # NOTE: since we need to create the datetime to string
+            # we are converting it to America/Monterrey timezone
+            mty = pytz_timezone('America/Monterrey')
+            dtf = '%d de %B del %Y a las %I:%M%p'  # date time format
+            new_eta_str = new_eta.astimezone(mty).strftime(dtf)
+
+            msg = ''
+
+            if original_eta:
+                verb = 'cambiado'
+            else:
+                verb = 'establecido'
+
+            if current_user:
+                msg += 'El usuario <strong>{}</strong> ha {} el ETA '.format(
+                    current_user.get_full_name() or current_user.email,
+                    verb
+                )
+            else:
+                msg += 'El ETA ha sido {} '.format(
+                    verb
+                )
+
+            if original_eta:
+                original_eta_str = original_eta.astimezone(mty).strftime(dtf)
+                msg += 'de <strong>{}</strong> a <strong>{}</strong>.'.format(
+                    original_eta_str,
+                    new_eta_str
+                )
+            else:
+                msg += 'a <strong>{}</strong>.'.format(
+                    new_eta_str
+                )
+
+            Comment.objects.create(
+                shipment=original_shipment,
+                user_id=1,  # this user is added via fixture
+                body=msg)
