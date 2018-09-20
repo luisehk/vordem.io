@@ -444,6 +444,9 @@ var updateShipmentApp = new Vue({
           'estimated_arrival_datetime': this.shipment.estimated_arrival_datetime.toISOString()
         },
         function(json) {
+          // update shipment with new data
+          this.shipment = json;
+
           // notification
           $.gritter.add({
             title: 'Éxito',
@@ -461,7 +464,6 @@ var updateShipmentApp = new Vue({
         }
       );
     },
-
 
     _getNextCheckpoint: function() {
       var currentCheckpoint = this.shipment.current_status.checkpoint;
@@ -583,8 +585,8 @@ var updateShipmentApp = new Vue({
     },
 
     success: function(json) {
-      // close modal
-      $(this.$el).modal('toggle');
+      // update shipment with new data
+      this.shipment = json;
 
       // notification
       $.gritter.add({

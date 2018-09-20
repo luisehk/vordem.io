@@ -43,13 +43,21 @@ class ShipmentNextCheckpoint(APIView):
         except Shipment.DoesNotExist():
             raise Http404
 
+    def serialize_data(self, shipment):
+        serializer = ShipmentSerializer(shipment)
+        return serializer.data
+
+    def generate_response(self, serialized_data):
+        return Response(serialized_data, status=status.HTTP_200_OK)
+
     def post(self, request, pk):
+        # do the thing
         shipment = self.get_object(pk)
         shipment.next_checkpoint()
 
-        return Response(
-            {'success': "success"},
-            status=status.HTTP_200_OK)
+        # serialize data for the response
+        serialized_data = self.serialize_data(shipment)
+        return self.generate_response(serialized_data)
 
 
 class CommentViewSet(ModelViewSet):
