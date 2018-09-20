@@ -56,7 +56,9 @@
                   </template>
                   a "${_getNextCheckpointOrPlant()}"</button>
 
-                  <button class="btn btn-space btn-primary btn-lg"><i class="icon icon-left mdi mdi-phone"></i> Contactar carrier</button>
+                  <button v-if="_showEta()" class="btn btn-space btn-primary btn-lg"><i class="icon icon-left mdi mdi-calendar"></i> Establecer ETA</button>
+
+                  <button class="btn btn-space btn-danger btn-lg"><i class="icon icon-left mdi mdi-phone"></i> Contactar carrier</button>
                 </p>
               </div>
 
@@ -68,26 +70,6 @@
                   <br />
                   exitosamente.
                 </h3>
-
-                <p>
-                  Salida:
-                  <br />
-                  ${_formatDate(shipment.start_datetime)}
-                  ${_formatTime(shipment.start_datetime)}
-                </p>
-
-                <p v-if="shipment.estimated_arrival_datetime">
-                  Llegada <strong>estimada</strong>:
-                  <br />
-                  ${_formatDate(shipment.estimated_arrival_datetime)}
-                  ${_formatTime(shipment.estimated_arrival_datetime)}
-                </p>
-                <p>
-                  Llegada <strong>real</strong>:
-                  <br />
-                  ${_formatDate(shipment.arrival_datetime)}
-                  ${_formatTime(shipment.arrival_datetime)}
-                </p>
 
                 <p class="shipment-actions">
                   <button class="btn btn-space btn-primary btn-lg">
