@@ -11,7 +11,7 @@
         </span>
         <span class="timeline-autor">${_userDisplayName(comment.user)}</span>
         <div class="timeline-summary">
-          <p>${comment.body}</p>
+          <p v-html="comment.body"></p>
         </div>
       </div>
     </div>
