@@ -4,6 +4,7 @@ from crum import get_current_user
 from sealedair.apps.notifications.models import Notification
 from pytz import timezone as pytz_timezone
 from .models import Status, Shipment, Comment
+from ..utils import strings
 
 User = get_user_model()
 
@@ -88,12 +89,17 @@ def check_if_eta_changed(sender, **kwargs):
         new_eta = new_shipment.estimated_arrival_datetime
         current_user = get_current_user()
 
+        # format date
+        mty = pytz_timezone('America/Monterrey')
+        dtf = '%d de %B del %Y a las %I:%M%p'  # date time format
+        substitutions = strings.MONTHS
+        format_date = lambda d: strings.replace(  # noqa
+            d.astimezone(mty).strftime(dtf).lower(),
+            substitutions
+        )
+
         if original_eta != new_eta:
-            # NOTE: since we need to create the datetime to string
-            # we are converting it to America/Monterrey timezone
-            mty = pytz_timezone('America/Monterrey')
-            dtf = '%d de %B del %Y a las %I:%M%p'  # date time format
-            new_eta_str = new_eta.astimezone(mty).strftime(dtf)
+            new_eta_str = format_date(new_eta)
 
             msg = ''
 
@@ -113,7 +119,7 @@ def check_if_eta_changed(sender, **kwargs):
                 )
 
             if original_eta:
-                original_eta_str = original_eta.astimezone(mty).strftime(dtf)
+                original_eta_str = format_date(original_eta)
                 msg += 'de <strong>{}</strong> a <strong>{}</strong>.'.format(
                     original_eta_str,
                     new_eta_str
