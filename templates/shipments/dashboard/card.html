@@ -20,14 +20,31 @@
            ${shipment.truck.code} <br />
         </div>
       </div>
-      <div class="row no-margin">
-        <div class="col-10 no-padding">
-          <span class="icon mdi mdi-hourglass-alt"></span> ${timeSinceStatusStart}
+      <template v-if="shipment.estimated_arrival_datetime">
+        <div class="row no-margin">
+          <div class="col-12 no-padding">
+            <span class="icon mdi mdi-time"></span> ${timeSinceStatusStart}
+          </div>
         </div>
-        <div class="col-2 no-padding">
-          <span class="badge float-right" v-bind:class="timeStatusClass">${timeStatusLabel}</span>
+        <div class="row no-margin">
+          <div class="col-10 no-padding">
+            <span class="icon mdi mdi-calendar"></span> ${_formatDatetime(shipment.estimated_arrival_datetime)}
+          </div>
+          <div class="col-2 no-padding">
+            <span class="badge float-right" v-bind:class="timeStatusClass">${timeStatusLabel}</span>
+          </div>
         </div>
-      </div>
+      </template>
+      <template v-else>
+        <div class="row no-margin">
+          <div class="col-10 no-padding">
+            <span class="icon mdi mdi-time"></span> ${timeSinceStatusStart}
+          </div>
+          <div class="col-2 no-padding">
+            <span class="badge float-right" v-bind:class="timeStatusClass">${timeStatusLabel}</span>
+          </div>
+        </div>
+      </template>
     </div>
   </div>
 </script>
