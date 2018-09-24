@@ -409,6 +409,16 @@ var updateShipmentApp = new Vue({
     },
 
     nextCheckpoint: function() {
+      var isExit = this._isExitOrStay(this.shipment.current_status.checkpoint) == 'exit';
+      var verb = isExit ? 'llegó' : 'salió';
+
+      this.editDateTime(
+        new Date(),
+        this._doNextCheckpoint,
+        '¿Cuándo ' + verb + ' a ' + this._getNextCheckpointOrPlant() + '?');
+    },
+
+    _doNextCheckpoint: function() {
       if(confirm('¿Estás seguro de querer realizar esta acción?')) {
         var self = this;
 
