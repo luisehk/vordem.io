@@ -631,7 +631,7 @@ var updateShipmentApp = new Vue({
 
     editETA: function() {
       this.editDateTime(
-        this.shipment.estimated_arrival_datetime,
+        this._get_current_eta(),
         this._saveEta,
         'Por favor establece el ETA en fecha y hora');
     },
