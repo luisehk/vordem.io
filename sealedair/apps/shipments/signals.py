@@ -80,10 +80,10 @@ def create_shipment_status(sender, **kwargs):
 
 def check_if_eta_changed(sender, **kwargs):
     new_shipment, created = _get_relevant_data(kwargs)
+    original_shipment = Shipment.objects.filter(id=new_shipment.id).first()
 
-    if not created:
+    if not created and original_shipment:
         # add a comment to the shipment if the ETA was changed
-        original_shipment = Shipment.objects.get(id=new_shipment.id)
         original_eta = original_shipment.estimated_arrival_datetime
         new_eta = new_shipment.estimated_arrival_datetime
         current_user = get_current_user()
