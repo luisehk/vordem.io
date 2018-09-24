@@ -2,13 +2,17 @@ from django.db.models import F, Func
 from django.db.models.functions import Coalesce
 from django.db import models
 from django.utils import timezone
-from .models import Shipment
+from .models import Shipment, Status
 from ..company.models import Plant
 from datetime import timedelta
 
 
 def _year_shipments(year):
     return Shipment.objects.filter(start_datetime__year=year)
+
+
+def _only_completed(shipments):
+    return shipments.filter(current_status__checkpoint=Status.USA_DELIVERED)
 
 
 def _plant_shipments_metrics(plant, shipments):
@@ -25,7 +29,7 @@ def _plant_shipments_metrics(plant, shipments):
 
     return {
         'average_duration': (
-            shipments_with_metrics.aggregate(
+            _only_completed(shipments_with_metrics).aggregate(
                 avg=models.Avg('duration'))['avg'] or timedelta(seconds=0)
         ).total_seconds() / 60 / 60 / 24,
         'count': shipments_with_metrics.count(),
