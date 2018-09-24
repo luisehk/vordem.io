@@ -124,6 +124,11 @@ var updateShipmentApp = new Vue({
     timesDelivered: function() {
       var s = this._getStatusByCheckpoint(this.checkpoints.USA_DELIVERED);
       return this._statusTimes(s);
+    },
+
+    timesETA: function() {
+      var eta = this.shipment.estimated_arrival_datetime;
+      return this._formatETA(eta);
     }
   },
   created: function() {
@@ -163,9 +168,21 @@ var updateShipmentApp = new Vue({
       };
     },
 
+    _formatETA: function(datetime) {
+      return this._formatDatetimeWithIcon(datetime, '(ETA)');
+    },
+
     _formatArrival: function(datetime) {
+      return this._formatDatetimeWithIcon(datetime, '🡻');
+    },
+
+    _formatDeparture: function(datetime) {
+      return this._formatDatetimeWithIcon(datetime, '🡺');
+    },
+
+    _formatDatetimeWithIcon: function(datetime, icon) {
       if(datetime) {
-        return '🡻 ' +
+        return icon + ' ' +
           this._formatDateWithoutYear(datetime) +
           ', ' +
           this._formatTime(datetime);
@@ -180,17 +197,6 @@ var updateShipmentApp = new Vue({
         return '🕓 ' + days.toFixed(1) + ' dia(s)';
       } else {
         return '🕓 ' + hours + ' hora(s)';
-      }
-    },
-
-    _formatDeparture: function(datetime) {
-      if(datetime) {
-        return '🡺 ' +
-          this._formatDateWithoutYear(datetime) +
-          ', ' +
-          this._formatTime(datetime);
-      } else {
-        return '';
       }
     },
 
@@ -225,10 +231,10 @@ var updateShipmentApp = new Vue({
     _formatDate: function(date) {
       var date = new Date(date);
       var monthNames = [
-        "Enero", "Febrero", "Marzo",
-        "Abril", "Mayo", "Junio", "Julio",
-        "Agosto", "Septiembre", "Octubre",
-        "Noviembre", "Diciembre"
+        "Ene", "Feb", "Mar",
+        "Abr", "May", "Jun", "Jul",
+        "Ago", "Sep", "Oct",
+        "Nov", "Dic"
       ];
 
       var day = date.getDate();

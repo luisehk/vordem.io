@@ -100,3 +100,7 @@
 .small-input {
     max-width: 250px;
 }
+
+.crossed {
+    text-decoration: line-through;
+}

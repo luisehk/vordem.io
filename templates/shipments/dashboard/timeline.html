@@ -123,11 +123,22 @@
           <div class="empty inactive-line"></div>
           <div class="bullet transit inactive-bullet">
             <span class="title" data-title="Entregado"></span>
+            <span class="time">
+              <span class="arrival">
+                ${timesETA}
+              </span>
+            </span>
           </div>
         </template>
         <div v-else class="bullet">
           <span class="title" data-title="Entregado"></span>
           <span class="time">
+            <span class="arrival crossed">
+              ${timesETA}
+            </span>
+
+            <br />
+
             <span class="arrival">
               ${timesDelivered.start}
             </span>
