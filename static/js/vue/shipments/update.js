@@ -461,6 +461,13 @@ var updateShipmentApp = new Vue({
       return checkpoints.join(',').indexOf(c) > -1;
     },
 
+    _getEtaInUTCString: function() {
+      var eta = this._get_current_eta();
+      var tzoffset = (new Date()).getTimezoneOffset() * 60000; // offset in milliseconds
+      var localISOTime = (new Date(eta - tzoffset)).toISOString().slice(0, -1);
+      return localISOTime;
+    },
+
     _saveEta: function() {
       var self = this;
       this.loading = true;
@@ -468,7 +475,7 @@ var updateShipmentApp = new Vue({
       this._patch(
         '/shipments/api/shipments/' + this.shipment.id + '/',
         {
-          'estimated_arrival_datetime': this.shipment.estimated_arrival_datetime.toISOString()
+          'estimated_arrival_datetime': this._getEtaInUTCString()
         },
         function(json) {
           // update shipment with new data
