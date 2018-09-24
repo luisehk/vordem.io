@@ -53,14 +53,13 @@
             <div class="row">
               <div class="col-6">
 
+                <!-- active shipment -->
                 <div v-if="!_isDelivered(shipment.current_status)" class="col-12 shipment-status-center">
                   <h3>
                     Se encuentra en
-                    <br />
                     <strong>
                       ${shipment.current_status.checkpoint_display}
                     </strong>
-                    <br />
                     y su
                     <template v-if="_isExitOrStay(shipment.current_status.checkpoint) == 'exit'">
                       salida hacia
@@ -72,11 +71,13 @@
                     <template v-else>
                       estadía
                     </template>
-                    <br/>
                     se encuentra
-                    <br />
                     <strong class="shipment-status-time" v-bind:class="timeStatusClass">
-                      ${shipment.current_status.time_status_display}
+                      ${shipment.current_status.time_status_display}.
+                    </strong>
+                    Tiene un tiempo transcurrido total de
+                    <strong class="shipment-total-time">
+                      ${shipment.current_status.hours_since_shipment_departure} hora(s).
                     </strong>
                   </h3>
 
@@ -113,13 +114,19 @@
                   </p>
                 </div>
 
+                <!-- completed -->
                 <div v-else class="col-12 shipment-status-center">
                   <h3>
                     El embarque fue
-                    <br />
                     <strong>entregado</strong>
-                    <br />
-                    exitosamente.
+                    exitosamente y llegó
+                    <strong class="shipment-status-time" v-bind:class="timeStatusClass">
+                      ${shipment.current_status.time_status_display},
+                    </strong>
+                    con un tiempo transcurrido total de
+                    <strong class="shipment-total-time">
+                      ${shipment.current_status.hours_since_shipment_departure} hora(s).
+                    </strong>
                   </h3>
 
                   <p class="shipment-actions">
@@ -129,6 +136,7 @@
                   </p>
                 </div>
 
+                <!-- fields -->
                 <div v-if="_showEta()" class="form-group row">
                   <label class="col-12 col-sm-3 col-form-label text-sm-right">
                     <strong>E.T.A.</strong>

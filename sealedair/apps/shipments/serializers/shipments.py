@@ -39,6 +39,7 @@ class CommentSerializer(serializers.ModelSerializer):
 
 class StatusSerializer(serializers.ModelSerializer):
     hours_since_start = serializers.SerializerMethodField()
+    hours_since_shipment_departure = serializers.SerializerMethodField()
     checkpoint_display = serializers.SerializerMethodField()
     next_checkpoint = serializers.SerializerMethodField()
     previous_checkpoint = serializers.SerializerMethodField()
@@ -51,10 +52,13 @@ class StatusSerializer(serializers.ModelSerializer):
             'next_checkpoint', 'previous_checkpoint',
             'time_status', 'time_status_display',
             'start_datetime', 'end_datetime',
-            'hours_since_start']
+            'hours_since_start', 'hours_since_shipment_departure']
 
     def get_hours_since_start(self, obj):
         return obj.get_hours_since_start()
+
+    def get_hours_since_shipment_departure(self, obj):
+        return obj.get_hours_since_shipment_departure()
 
     def get_checkpoint_display(self, obj):
         return obj.get_checkpoint_display()

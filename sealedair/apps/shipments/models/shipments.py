@@ -257,8 +257,14 @@ class Status(models.Model):
         return str(self.shipment) + ' - ' + self.get_checkpoint_display()
 
     def get_hours_since_start(self):
+        return self._get_hours_since(self.start_datetime)
+
+    def get_hours_since_shipment_departure(self):
+        return self._get_hours_since(self.shipment.start_datetime)
+
+    def _get_hours_since(self, dt):
         time = self.end_datetime or timezone.now()
-        delta = time - self.start_datetime
+        delta = time - dt
         return int(delta.total_seconds() // 3600)
 
     def get_next_checkpoint(self):
