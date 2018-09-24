@@ -77,8 +77,8 @@
 }
 
 .modal-scroll-panel {
-    min-height: 590px;
-    max-height: 590px;
+    min-height: 630px;
+    max-height: 630px;
     overflow-y: scroll;
 }
 
@@ -87,8 +87,8 @@
 }
 
 .scroll-panel-comments {
-    min-height: calc(590px - 3.692rem);
-    max-height: calc(590px - 3.692rem);
+    min-height: calc(630px - 3.692rem);
+    max-height: calc(630px - 3.692rem);
 }
 
 .center-things {

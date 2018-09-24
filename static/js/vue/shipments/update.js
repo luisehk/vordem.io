@@ -158,6 +158,7 @@ var updateShipmentApp = new Vue({
         return {
           'start': this._formatArrival(s.start_datetime),
           'duration': this._formatDuration(s.hours_since_start),
+          'total_duration': this._formatTotalDuration(s.hours_since_shipment_departure),
           'end': this._formatDeparture(s.end_datetime),
           'empty': false
         };
@@ -169,6 +170,7 @@ var updateShipmentApp = new Vue({
       return {
         'start': '',
         'duration': '',
+        'total_duration': '',
         'end': '',
         'empty': true
       };
@@ -198,11 +200,19 @@ var updateShipmentApp = new Vue({
     },
 
     _formatDuration: function(hours) {
+      return this._formatDurationWithSuffix(hours, '');
+    },
+
+    _formatTotalDuration: function(hours) {
+      return this._formatDurationWithSuffix(hours, 'totales');
+    },
+
+    _formatDurationWithSuffix: function(hours, suffix) {
       if(hours >= 24) {
         var days = hours / 24;
-        return '🕓 ' + days.toFixed(1) + ' dia(s)';
+        return '🕓 ' + days.toFixed(1) + ' dia(s) ' + suffix;
       } else {
-        return '🕓 ' + hours + ' hora(s)';
+        return '🕓 ' + hours + ' hora(s) ' + suffix;
       }
     },
 
