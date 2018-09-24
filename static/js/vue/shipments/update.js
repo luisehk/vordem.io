@@ -129,6 +129,12 @@ var updateShipmentApp = new Vue({
     timesETA: function() {
       var eta = this.shipment.estimated_arrival_datetime;
       return this._formatETA(eta);
+    },
+
+    totalTime: function() {
+      return this._formatDuration(
+        this.shipment.current_status.hours_since_shipment_departure
+      );
     }
   },
   created: function() {
