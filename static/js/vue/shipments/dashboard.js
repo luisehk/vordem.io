@@ -27,7 +27,7 @@ var app = new Vue({
       // load every 5 seconds
       setInterval(function() {
         self.loadPlantsMetrics.call(self);
-      }, 5000);
+      }, 10000);
     },
 
     loadPlantsMetrics: function() {

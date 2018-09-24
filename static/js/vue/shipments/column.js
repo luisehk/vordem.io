@@ -17,10 +17,10 @@ Vue.component('shipments-column', {
       // load it the first time
       this.loadShipments();
 
-      // load every 5 seconds
+      // load every 10 seconds
       setInterval(function() {
         self.loadShipments.call(self);
-      }, 2000);
+      }, 10000);
     },
     loadShipments: function() {
       var self = this;
