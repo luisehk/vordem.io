@@ -36,7 +36,11 @@ var updateShipmentApp = new Vue({
         'USA_TRANSIT': 'UTR',
         'USA_DELIVERED': 'UDE',
     },
-    newComment: ''
+    newComment: '',
+    dateTimeToEdit: null,
+    editingDateTime: null,
+    onEditDateTimeSuccess: null,
+    dateTimeMessage: 'Por favor establece el ETA en fecha y hora'
   },
   computed: {
     formIsValid: function () {
@@ -75,7 +79,15 @@ var updateShipmentApp = new Vue({
       else
         return null;
     },
-
+    editingDate: function() {
+      return this._datetimeStringValue(
+        this.editingDateTime, 0);
+    },
+    editingTime: function() {
+      return this._formatTimeForInput(
+        this.editingDateTime
+      );
+    },
     timesCPM: function() {
       return {
         'start': this._formatDeparture(this.shipment.start_datetime),
@@ -193,6 +205,18 @@ var updateShipmentApp = new Vue({
         }
 
         return eta.toISOString().split('T')[index];
+      }
+      else
+        return null;
+    },
+
+    _datetimeStringValue: function(datetime, index) {
+      if(datetime) {
+        // convert from string to date if necessary
+        if(typeof(datetime) == "string")
+          datetime = new Date(datetime);
+
+        return datetime.toISOString().split('T')[index];
       }
       else
         return null;
@@ -330,6 +354,8 @@ var updateShipmentApp = new Vue({
 
       // set data
       this.shipment = shipment;
+      this.dateTimeToEdit = null;
+      this.newComment = '';
     },
 
     loadPlants: function() {
@@ -437,6 +463,7 @@ var updateShipmentApp = new Vue({
 
     _saveEta: function() {
       var self = this;
+      this.loading = true;
 
       this._patch(
         '/shipments/api/shipments/' + this.shipment.id + '/',
@@ -445,7 +472,10 @@ var updateShipmentApp = new Vue({
         },
         function(json) {
           // update shipment with new data
-          this.shipment = json;
+          self.shipment = json;
+
+          // flags
+          self.loading = false;
 
           // notification
           $.gritter.add({
@@ -455,6 +485,9 @@ var updateShipmentApp = new Vue({
           });
         },
         function(xhr, status, error) {
+          // flags
+          self.loading = false;
+
           // notification
           $.gritter.add({
             title: 'Error',
@@ -565,23 +598,73 @@ var updateShipmentApp = new Vue({
         return this.shipment.plant.name;
     },
 
+    _changeDate: function(date, newDate) {
+      date.setDate(newDate.getUTCDate());
+      date.setMonth(newDate.getUTCMonth());
+      date.setFullYear(newDate.getUTCFullYear());
+    },
+
+    _changeTime: function(date, newTime) {
+      date.setHours(newTime.getUTCHours());
+      date.setMinutes(newTime.getUTCMinutes());
+    },
+
     changeEtaDate: function(date) {
       var eta = this._get_current_eta();
-
-      eta.setDate(date.getUTCDate() + 1);
-      eta.setMonth(date.getUTCMonth());
-      eta.setFullYear(date.getUTCFullYear());
-
+      this._changeDate(eta, date);
       this._saveEta();
     },
 
     changeEtaTime: function(time) {
       var eta = this._get_current_eta();
-
-      eta.setHours(time.getUTCHours() + 1);
-      eta.setMinutes(time.getUTCMinutes());
-
+      this._changeTime(eta, time);
       this._saveEta();
+    },
+
+    applyDateChange: function(date) {
+      this._changeDate(this.editingDateTime, date);
+    },
+
+    applyTimeChange: function(time) {
+      this._changeTime(this.editingDateTime, time);
+    },
+
+    editETA: function() {
+      this.editDateTime(
+        this.shipment.estimated_arrival_datetime,
+        this._saveEta,
+        'Por favor establece el ETA en fecha y hora');
+    },
+
+    editDateTime: function(datetime, onEditDateTimeSuccess, message) {
+      // dateTimeToEdit = datetime linked by reference
+      // editingDateTime = datetime cloned, used as a temp var
+      // to apply changes call saveDateTime, which applies the
+      // changes to whatever field you specify, using the ref
+      this.dateTimeToEdit = datetime;
+      this.editingDateTime = new Date(this.dateTimeToEdit.getTime());
+      this.onEditDateTimeSuccess = onEditDateTimeSuccess;
+      this.dateTimeMessage = message;
+    },
+
+    cancelDateTimeEdition: function() {
+      this.dateTimeToEdit = null;
+      this.editingDateTime = null;
+      this.onEditDateTimeSuccess = null;
+      this.dateTimeMessage = '';
+    },
+
+    saveDateTime: function() {
+      this._changeDate(this.dateTimeToEdit, this.editingDateTime);
+      this._changeTime(this.dateTimeToEdit, this.editingDateTime);
+
+      if(this.onEditDateTimeSuccess)
+        this.onEditDateTimeSuccess();
+
+      this.dateTimeToEdit = null;
+      this.editingDateTime = null;
+      this.onEditDateTimeSuccess = null;
+      this.dateTimeMessage = '';
     },
 
     success: function(json) {

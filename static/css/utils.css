@@ -90,3 +90,13 @@
     min-height: calc(590px - 3.692rem);
     max-height: calc(590px - 3.692rem);
 }
+
+.center-things {
+    justify-content: center;
+    justify-items: center;
+    text-align: center;
+}
+
+.small-input {
+    max-width: 250px;
+}
