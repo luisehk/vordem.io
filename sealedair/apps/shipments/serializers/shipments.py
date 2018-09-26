@@ -73,6 +73,12 @@ class StatusSerializer(serializers.ModelSerializer):
         return obj.get_time_status_display()
 
 
+class StatusDateSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Status
+        fields = ['start_datetime']
+
+
 class ShipmentSerializer(serializers.ModelSerializer):
     comments = CommentSerializer(many=True)
     status_history = StatusSerializer(many=True)

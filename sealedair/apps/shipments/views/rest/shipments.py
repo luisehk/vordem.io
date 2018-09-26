@@ -4,7 +4,8 @@ from rest_framework.views import APIView
 from rest_framework import status
 from rest_framework.response import Response
 from ...serializers.shipments import (
-    ShipmentCreationSerializer, ShipmentSerializer, CommentSerializer)
+    ShipmentCreationSerializer, ShipmentSerializer,
+    StatusDateSerializer, CommentSerializer)
 from ...models import Shipment, Comment
 from ...helpers import get_all_plants_metrics
 
@@ -51,9 +52,23 @@ class ShipmentNextCheckpoint(APIView):
         return Response(serialized_data, status=status.HTTP_200_OK)
 
     def post(self, request, pk):
-        # do the thing
         shipment = self.get_object(pk)
+
+        # previous status
+        previous_status = shipment.current_status
+
+        # advance to new status
         shipment.next_checkpoint()
+
+        # set the start datetime for new status
+        date_serializer = StatusDateSerializer(
+            shipment.current_status, data=request.data, partial=True)
+        date_serializer.is_valid(raise_exception=True)
+        date_serializer.save()
+
+        # update previous status new date, so it matches with specified date
+        previous_status.end_datetime = shipment.current_status.start_datetime
+        previous_status.save()
 
         # serialize data for the response
         serialized_data = self.serialize_data(shipment)

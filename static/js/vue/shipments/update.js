@@ -40,7 +40,8 @@ var updateShipmentApp = new Vue({
     dateTimeToEdit: null,
     editingDateTime: null,
     onEditDateTimeSuccess: null,
-    dateTimeMessage: 'Por favor establece el ETA en fecha y hora'
+    dateTimeMessage: 'Por favor establece el ETA en fecha y hora',
+    newStatusDateTime: null
   },
   computed: {
     formIsValid: function () {
@@ -412,8 +413,11 @@ var updateShipmentApp = new Vue({
       var isExit = this._isExitOrStay(this.shipment.current_status.checkpoint) == 'exit';
       var verb = isExit ? 'llegó' : 'salió';
 
+      // start with current datetime
+      this.newStatusDateTime = new Date();
+
       this.editDateTime(
-        new Date(),
+        this.newStatusDateTime,
         this._doNextCheckpoint,
         '¿Cuándo ' + verb + ' a ' + this._getNextCheckpointOrPlant() + '?');
     },
@@ -426,7 +430,9 @@ var updateShipmentApp = new Vue({
 
         this._post(
           '/shipments/shipments/' + this.shipment.id + '/next/',
-          {},
+          {
+            'start_datetime': this._getDatetimeInUTCString(this.newStatusDateTime)
+          },
           function(json) {
             self.loading = false;
             self.success.call(self, json);
@@ -493,10 +499,9 @@ var updateShipmentApp = new Vue({
       return checkpoints.join(',').indexOf(c) > -1;
     },
 
-    _getEtaInUTCString: function() {
-      var eta = this._get_current_eta();
+    _getDatetimeInUTCString: function(datetime) {
       var tzoffset = (new Date()).getTimezoneOffset() * 60000; // offset in milliseconds
-      var localISOTime = (new Date(eta - tzoffset)).toISOString().slice(0, -1);
+      var localISOTime = (new Date(datetime - tzoffset)).toISOString().slice(0, -1);
       return localISOTime;
     },
 
@@ -507,7 +512,7 @@ var updateShipmentApp = new Vue({
       this._patch(
         '/shipments/api/shipments/' + this.shipment.id + '/',
         {
-          'estimated_arrival_datetime': this._getEtaInUTCString()
+          'estimated_arrival_datetime': this._getDatetimeInUTCString(this._get_current_eta())
         },
         function(json) {
           // update shipment with new data
