@@ -44,7 +44,7 @@ class Shipment(models.Model):
     current_status = models.ForeignKey(
         'Status',
         verbose_name='Estado actual',
-        on_delete=models.PROTECT,
+        on_delete=models.SET_NULL,
         related_name='current_status_shipments',
         null=True,
         blank=True)
