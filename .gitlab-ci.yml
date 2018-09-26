@@ -89,6 +89,6 @@ deploy_production:
   <<: *deploy
   stage: deploy_production
   variables:
-    HEROKU_APP: "sealedair-production"
+    HEROKU_APP: "sealedair-prod"
   only:
     - production
