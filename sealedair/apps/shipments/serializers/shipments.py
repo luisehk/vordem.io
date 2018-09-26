@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from django.db import transaction
-from ..models import Shipment, Comment, Status
+from ..models import Shipment, Comment, Status, DelayReason
 from ...users.api.serializers import UserSerializer
 from ...providers.serializers.carriers import (
     TruckSerializer, TruckCreationSerializer)
@@ -35,6 +35,12 @@ class CommentSerializer(serializers.ModelSerializer):
         data = _add_current_user(
             self, validated_data)
         return super().create(data)
+
+
+class DelayReasonSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = DelayReason
+        fields = ['id', 'reason']
 
 
 class StatusSerializer(serializers.ModelSerializer):

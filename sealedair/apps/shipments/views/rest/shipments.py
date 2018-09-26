@@ -5,8 +5,8 @@ from rest_framework import status
 from rest_framework.response import Response
 from ...serializers.shipments import (
     ShipmentCreationSerializer, ShipmentSerializer,
-    StatusDateSerializer, CommentSerializer)
-from ...models import Shipment, Comment
+    StatusDateSerializer, CommentSerializer, DelayReasonSerializer)
+from ...models import Shipment, Comment, DelayReason
 from ...helpers import get_all_plants_metrics
 
 
@@ -80,3 +80,9 @@ class CommentViewSet(ModelViewSet):
     serializer_class = CommentSerializer
     filter_fields = ('shipment',)
     ordering = ('-datetime')
+
+
+class DelayReasonViewSet(ModelViewSet):
+    queryset = DelayReason.objects.all()
+    serializer_class = DelayReasonSerializer
+    ordering = ('-reason')
