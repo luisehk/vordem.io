@@ -135,10 +135,6 @@
                   <li class="{% if request.resolver_match.url_name == 'dashboard' %}active{% endif %}">
                     <a href="{% url 'shipments:dashboard' %}" title="Dashboard"><i class="icon mdi mdi-home"></i><span>Dashboard</span></a>
                   </li>
-                  <li class="{% if request.resolver_match.url_name == 'shipment-listar' %}active{% endif %}">
-                    <a href="{% url 'shipments:shipment-listar' %}" title="Embarques"><i class="fas fa-shipping-fast pr-2"></i><span>Embarques</span>
-                    </a>
-                  </li>
                   <li class="{% if request.resolver_match.url_name == 'carrier-list' %}active{% endif %}"><a href="{% url 'providers:carrier-list' %}" title="Carriers"><i class="icon mdi mdi-truck"></i><span>Carriers</span></a>
                   </li>
                   <li class="{% if request.resolver_match.url_name == 'plant-list' %}active{% endif %}"><a href="{% url 'company:plant-list' %}" title="Plantas"><i class="fas fa-building pr-3"></i><span>Plantas</span></a>
