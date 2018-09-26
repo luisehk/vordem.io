@@ -8,7 +8,8 @@ var newShipmentApp = new Vue({
         code: '',
         carrier: 1
       },
-      plant: 1
+      plant: 1,
+      start_datetime: new Date()
     },
     plants: [],
     carriers: [],
@@ -21,6 +22,15 @@ var newShipmentApp = new Vue({
         this.shipment.truck.code &&
         this.shipment.truck.carrier &&
         true;
+    },
+    editingDate: function() {
+      return this._datetimeStringValue(
+        this.shipment.start_datetime, 0);
+    },
+    editingTime: function() {
+      return this._formatTimeForInput(
+        this.shipment.start_datetime
+      );
     }
   },
   created: function() {
@@ -50,6 +60,59 @@ var newShipmentApp = new Vue({
         success : success,
         error : error
       });
+    },
+
+    _datetimeStringValue: function(datetime, index) {
+      if(datetime) {
+        // convert from string to date if necessary
+        if(typeof(datetime) == "string")
+          datetime = new Date(datetime);
+
+        return datetime.toISOString().split('T')[index];
+      }
+      else
+        return null;
+    },
+
+    _formatTimeForInput: function(date) {
+      var time = new Date(date);
+      var hr = time.getHours();
+      var min = time.getMinutes();
+
+      // add initial zero to minute
+      if (hr < 10)
+          hr = "0" + hr;
+
+      // add initial zero to minute
+      if (min < 10)
+          min = "0" + min;
+
+      return hr + ":" + min;
+    },
+
+    _changeDate: function(date, newDate) {
+      date.setDate(newDate.getUTCDate());
+      date.setMonth(newDate.getUTCMonth());
+      date.setFullYear(newDate.getUTCFullYear());
+    },
+
+    _changeTime: function(date, newTime) {
+      date.setHours(newTime.getUTCHours());
+      date.setMinutes(newTime.getUTCMinutes());
+    },
+
+    _getDatetimeInUTCString: function(datetime) {
+      var tzoffset = (new Date()).getTimezoneOffset() * 60000; // offset in milliseconds
+      var localISOTime = (new Date(datetime - tzoffset)).toISOString().slice(0, -1);
+      return localISOTime;
+    },
+
+    applyDateChange: function(date) {
+      this._changeDate(this.shipment.start_datetime, date);
+    },
+
+    applyTimeChange: function(time) {
+      this._changeTime(this.shipment.start_datetime, time);
     },
 
     loadPlants: function() {

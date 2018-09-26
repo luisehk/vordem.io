@@ -46,9 +46,12 @@ def set_status_as_current(sender, **kwargs):
 def create_shipment_status(sender, **kwargs):
     shipment, created = _get_relevant_data(kwargs)
     user_request = get_current_user()  # user logged in
+
     # create status
     if shipment.current_status is None:
-        status = Status(shipment=shipment)
+        status = Status(
+            shipment=shipment,
+            start_datetime=shipment.start_datetime)
         status.save()
 
     if created:

@@ -50,7 +50,7 @@ class Shipment(models.Model):
         blank=True)
     start_datetime = models.DateTimeField(
         verbose_name='Salida',
-        auto_now_add=True)
+        default=timezone.now)
     arrival_datetime = models.DateTimeField(
         verbose_name='Llegada',
         null=True,
@@ -241,7 +241,7 @@ class Status(models.Model):
         default=TIME_ONTIME)
     start_datetime = models.DateTimeField(
         verbose_name='Inicio',
-        auto_now_add=True)
+        default=timezone.now)
     end_datetime = models.DateTimeField(
         verbose_name='Fin',
         null=True,

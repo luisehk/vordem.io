@@ -98,7 +98,7 @@ class ShipmentCreationSerializer(serializers.ModelSerializer):
         model = Shipment
         fields = [
             'id', 'code',
-            'truck', 'plant',
+            'truck', 'plant', 'start_datetime',
         ]
 
     def create(self, validated_data):
