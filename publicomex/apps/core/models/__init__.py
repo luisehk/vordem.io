@@ -1,1 +1,1 @@
-# from .shipments import Shipment, Comment, Status, DelayReason  # noqa
+from .zones import Zone  # noqa

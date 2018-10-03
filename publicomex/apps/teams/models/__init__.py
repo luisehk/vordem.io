@@ -1,1 +1,1 @@
-# from .shipments import Shipment, Comment, Status, DelayReason  # noqa
+from .teams import Team, RegionalTeam, NationalTeam # noqa

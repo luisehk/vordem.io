@@ -1,5 +1,5 @@
-# from ...admin import site
-# from .models import Shipment, Comment, Status, DelayReason
+from ...admin import site
+from .models import Zone
 
 
-# site.register([Shipment, Comment, Status, DelayReason])
+site.register([Zone])
