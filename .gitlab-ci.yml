@@ -6,7 +6,7 @@ services:
 
 variables:
   PIP_CACHE_DIR: "$CI_PROJECT_DIR/.cache"
-  POSTGRES_DB: sealedair
+  POSTGRES_DB: publicomex
 
 cache:
   paths:
@@ -70,14 +70,11 @@ test:
 deploy_dev: &deploy
   stage: deploy_dev
   variables:
-    HEROKU_APP: "sealedair-dev"
+    HEROKU_APP: "publicomex-dev"
   script:
     - dpl --provider=heroku --app=$HEROKU_APP --api-key=$HEROKU_API_KEY
     - heroku run --exit-code --app $HEROKU_APP python manage.py migrate
     - heroku run --exit-code --app $HEROKU_APP python manage.py loaddata fixtures/initial_data.json
-    - heroku run --exit-code --app $HEROKU_APP python manage.py loaddata fixtures/plants.json
-    - heroku run --exit-code --app $HEROKU_APP python manage.py loaddata fixtures/carriers.json
-    - heroku run --exit-code --app $HEROKU_APP python manage.py loaddata fixtures/system.json
   only:
     - master
 
@@ -85,7 +82,7 @@ deploy_staging:
   <<: *deploy
   stage: deploy_staging
   variables:
-    HEROKU_APP: "sealedair-staging"
+    HEROKU_APP: "publicomex-staging"
   only:
     - staging
 
@@ -93,6 +90,6 @@ deploy_production:
   <<: *deploy
   stage: deploy_production
   variables:
-    HEROKU_APP: "sealedair"
+    HEROKU_APP: "publicomex-prod"
   only:
     - production

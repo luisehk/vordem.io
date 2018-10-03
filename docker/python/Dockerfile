@@ -1,4 +1,4 @@
-FROM python:3.6
+FROM python:3.7
 MAINTAINER Luis Herrada <luis@vordem.mx>
 
 # environment configuration
@@ -26,4 +26,4 @@ RUN apt-get install -y postgresql-client
 
 EXPOSE 8000
 
-CMD ["gunicorn", "-b", "0.0.0.0:8000", "sealedair.wsgi:application", "--reload", "--enable-stdio-inheritance"]
+CMD ["gunicorn", "-b", "0.0.0.0:8000", "publicomex.wsgi:application", "--reload", "--enable-stdio-inheritance"]

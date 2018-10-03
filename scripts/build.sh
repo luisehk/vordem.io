@@ -9,6 +9,3 @@ docker-compose -f "$DC_FILE" build
 docker-compose -f "$DC_FILE" run app python manage.py migrate
 docker-compose -f "$DC_FILE" run app python manage.py collectstatic --noinput
 docker-compose -f "$DC_FILE" run app python manage.py loaddata fixtures/initial_data.json
-docker-compose -f "$DC_FILE" run app python manage.py loaddata fixtures/plants.json
-docker-compose -f "$DC_FILE" run app python manage.py loaddata fixtures/carriers.json
-docker-compose -f "$DC_FILE" run app python manage.py loaddata fixtures/system.json

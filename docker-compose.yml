@@ -3,39 +3,39 @@ version: '2'
 services:
   ### data
   db:
-    image: postgres:9.6
+    image: postgres:10.5
     environment:
-      - POSTGRES_DB=1yiKPuNTJDnsLhRApQRrFH2QR
-      - POSTGRES_USER=lCoRG7vLQYZvQX1SUUFfgQXbj
-      - POSTGRES_PASSWORD=lkV8AWmeYCexiMGCFq0bleTFJ
+      - POSTGRES_DB=l2u2j124omdfIIDFMSADFPj2
+      - POSTGRES_USER=jsdfo2psadf0m2305JSFo
+      - POSTGRES_PASSWORD=jopsadf90fgNSDfjsdf62
     volumes:
-      - /srv/sealedair/postgres:/var/lib/postgresql/data
+      - /srv/publicomex/postgres:/var/lib/postgresql/data
 
   redis:
     image: redis:3.2
     volumes:
-      - /srv/sealedair/redis:/data
+      - /srv/publicomex/redis:/data
 
 
   ### application
   app: &app
     build: docker/python
-    command: gunicorn -b 0.0.0.0:8000 sealedair.wsgi:application --timeout 180 --workers 15 -k gevent --enable-stdio-inheritance --reload
+    command: gunicorn -b 0.0.0.0:8000 publicomex.wsgi:application --timeout 180 --workers 15 -k gevent --enable-stdio-inheritance --reload
     env_file: .env
     environment:
-      - DATABASE_URL=postgres://lCoRG7vLQYZvQX1SUUFfgQXbj:lkV8AWmeYCexiMGCFq0bleTFJ@db:5432/1yiKPuNTJDnsLhRApQRrFH2QR
+      - DATABASE_URL=postgres://jsdfo2psadf0m2305JSFo:jopsadf90fgNSDfjsdf62@db:5432/l2u2j124omdfIIDFMSADFPj2
       - PYTHONUNBUFFERED=TRUE
     links:
       - db
       - redis
     volumes:
       - .:/usr/src/app
-      - /srv/sealedair/static:/usr/src/app/.static
-      - /srv/sealedair/media:/usr/src/app/.media
+      - /srv/publicomex/static:/usr/src/app/.static
+      - /srv/publicomex/media:/usr/src/app/.media
 
   worker:
     <<: *app
-    command: celery worker --app=sealedair.celery.app -B
+    command: celery worker --app=publicomex.celery.app -B
     ports: []
 
 
@@ -45,8 +45,8 @@ services:
     links:
       - app
     volumes:
-      - /srv/sealedair/static:/usr/share/nginx/html/static:ro
-      - /srv/sealedair/media:/usr/share/nginx/html/media:ro
+      - /srv/publicomex/static:/usr/share/nginx/html/static:ro
+      - /srv/publicomex/media:/usr/share/nginx/html/media:ro
 
   proxy:
     build: docker/proxy
