@@ -57,7 +57,6 @@ coverage: &app
   variables:
     DATABASE_URL: "postgresql://postgres:postgres@postgres:5432/$POSTGRES_DB"
   script:
-    - python manage.py migrate contenttype
     - python manage.py migrate auth
     - python manage.py migrate sites
     - python manage.py migrate
@@ -76,7 +75,6 @@ deploy_dev: &deploy
     HEROKU_APP: "publicomex-dev"
   script:
     - dpl --provider=heroku --app=$HEROKU_APP --api-key=$HEROKU_API_KEY
-    - heroku run --exit-code --app $HEROKU_APP python manage.py migrate contenttype
     - heroku run --exit-code --app $HEROKU_APP python manage.py migrate auth
     - heroku run --exit-code --app $HEROKU_APP python manage.py migrate sites
     - heroku run --exit-code --app $HEROKU_APP python manage.py migrate
