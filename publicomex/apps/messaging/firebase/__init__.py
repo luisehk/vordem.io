@@ -1,1 +1,1 @@
-default_app_config = 'sealedair.apps.messaging.firebase.apps.FirebaseConfig'
+default_app_config = 'publicomex.apps.messaging.firebase.apps.FirebaseConfig'

@@ -3,11 +3,11 @@ from django.apps import AppConfig
 
 
 class FirebaseConfig(AppConfig):
-    name = 'sealedair.apps.messaging.firebase'
-    label = 'sealedair_firebase'
+    name = 'publicomex.apps.messaging.firebase'
+    label = 'publicomex_firebase'
 
     def ready(self):
-        from sealedair.apps.messaging.firebase.signals import \
+        from publicomex.apps.messaging.firebase.signals import \
             send_push_notification
         from notifications.models import Notification
 

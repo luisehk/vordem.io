@@ -2,8 +2,8 @@ from django.apps import AppConfig
 
 
 class EmailConfig(AppConfig):
-    name = 'sealedair.apps.messaging.email'
-    label = 'sealedair_email'
+    name = 'publicomex.apps.messaging.email'
+    label = 'publicomex_email'
 
     def ready(self):
         pass

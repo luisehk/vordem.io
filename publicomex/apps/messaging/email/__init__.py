@@ -1,1 +1,1 @@
-default_app_config = 'sealedair.apps.messaging.email.apps.EmailConfig'
+default_app_config = 'publicomex.apps.messaging.email.apps.EmailConfig'

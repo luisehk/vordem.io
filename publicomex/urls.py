@@ -3,19 +3,14 @@ from rest_framework.authtoken import views as authviews
 from django.conf.urls.static import static
 from django.conf.urls import url, include
 from allauth.account.views import confirm_email
-from publicomex.apps.users.views import UserHome
 from django.conf import settings
 from . import admin
-from .apps.users import views
-
 
 urlpatterns = [
     # admin platform
     url(r'^admin/', admin.site.urls),
 
     # django defaults
-    url(r'^accounts/password/change/$',
-        views.login_after_password_change, name='account_change_password'),
     url(r'^accounts/', include('allauth.urls')),
 
     # REST framework and authentication
@@ -31,17 +26,18 @@ urlpatterns = [
         'publicomex.apps.users.api.urls')),
 
     # web application
-    url(r'^company/', include(
-        'publicomex.apps.company.urls', namespace='company')),
-    url(r'^providers/', include(
-        'publicomex.apps.providers.urls', namespace='providers')),
-    url(r'^shipments/', include(
-        'publicomex.apps.shipments.urls', namespace='shipments')),
+    url(r'^core/', include(
+        'publicomex.apps.core.urls', namespace='core')),
+    url(r'^directory/', include(
+        'publicomex.apps.directory.urls', namespace='directory')),
+    url(r'^notifications/', include(
+        'publicomex.apps.notifications.urls', namespace='notifications')),
+    url(r'^requests/', include(
+        'publicomex.apps.requests.urls', namespace='requests')),
+    url(r'^teams/', include(
+        'publicomex.apps.teams.urls', namespace='teams')),
     url(r'^users/', include(
         'publicomex.apps.users.urls', namespace='users')),
-
-    # home
-    url(r'^$', UserHome.as_view(), name='index'),
 ]
 
 if settings.DEBUG:

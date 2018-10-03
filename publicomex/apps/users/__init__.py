@@ -1,1 +1,1 @@
-default_app_config = 'sealedair.apps.users.apps.UsersConfig'
+default_app_config = 'publicomex.apps.users.apps.UsersConfig'

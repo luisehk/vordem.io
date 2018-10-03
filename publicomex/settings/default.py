@@ -9,8 +9,6 @@ SHOW_DEBUG_TOOLBAR = os.environ.get(
     'SHOW_DEBUG_TOOLBAR', 'False').lower() == 'true'
 
 INSTALLED_APPS = [
-    'dal',
-    'dal_select2',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
