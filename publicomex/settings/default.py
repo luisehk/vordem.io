@@ -41,11 +41,12 @@ INSTALLED_APPS = [
     'djcelery_email',
     'corsheaders',
 
-    'publicomex.apps.company',
-    'publicomex.apps.providers',
-    'publicomex.apps.shipments',
+    'publicomex.apps.core',
+    'publicomex.apps.directory',
     'publicomex.apps.messaging.email',
     'publicomex.apps.notifications',
+    'publicomex.apps.requests',
+    'publicomex.apps.teams',
     'publicomex.apps.users',
     'storages',
 
