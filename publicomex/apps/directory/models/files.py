@@ -5,6 +5,7 @@ from django.contrib.auth import get_user_model
 from django.db import models
 from django.conf import settings
 import os
+from .sizes import Size
 
 
 User = get_user_model()
@@ -24,6 +25,10 @@ class File(models.Model):
 
     name = models.CharField(
         max_length=264)
+    size = models.ForeignKey(
+        Size,
+        null=True,
+        on_delete=models.PROTECT)
     file_type = models.CharField(
         max_length=2,
         choices=FILE_TYPES,
@@ -54,3 +59,16 @@ class File(models.Model):
             image_attr='image_file')
 
         img_warmer.warm()
+
+
+class Download(models.Model):
+    file = models.ForeignKey(
+        File,
+        on_delete=models.CASCADE,
+        related_name='file_downloads')
+    user = models.ForeignKey(
+        File,
+        on_delete=models.PROTECT,
+        related_name='user_downloads')
+    datetime = models.DateTimeField(
+        auto_now_add=True)
