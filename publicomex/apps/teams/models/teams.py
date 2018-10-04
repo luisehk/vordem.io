@@ -18,3 +18,25 @@ class RegionalTeam(Team):
 
 class NationalTeam(Team):
     pass
+
+
+class Business(NationalTeam):
+    pass
+
+
+class RegionalMarketing(RegionalTeam):
+    pass
+
+
+# agencia (todas las demás)
+class Agency(NationalTeam):
+    pass
+
+
+# despacho (aguinaga)
+class Firm(NationalTeam):
+    pass
+
+
+class Licensee(RegionalTeam):
+    pass
