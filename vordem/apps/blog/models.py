@@ -53,4 +53,3 @@ class BlogPage(Page):
         FieldPanel('tags'),
         MultiFieldPanel(Page.promote_panels, "SEO"),
     ]
-
