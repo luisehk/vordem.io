@@ -39,3 +39,5 @@ if os.environ.get('EMAIL_HOST_USER', ''):
     EMAIL_TIMEOUT = int(os.environ.get('EMAIL_TIMEOUT', '30'))
     EMAIL_USE_TLS = os.environ.get('EMAIL_USE_TLS', 'True').lower() == 'true'
     EMAIL_USE_SSL = os.environ.get('EMAIL_USE_SSL', 'False').lower() == 'true'
+
+GOOGLE_ANALYTICS_ID = os.environ.get('GOOGLE_ANALYTICS_ID')
