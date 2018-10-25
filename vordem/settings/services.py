@@ -26,13 +26,12 @@ CELERY_TASK_SERIALIZER = 'json'
 CELERY_RESULT_SERIALIZER = 'json'
 
 # email
-EMAIL_BACKEND = 'djcelery_email.backends.CeleryEmailBackend'
-CELERY_EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 DEFAULT_FROM_EMAIL = os.environ.get('DEFAULT_FROM_EMAIL', 'bot@vordem.mx')
 SERVER_EMAIL = DEFAULT_FROM_EMAIL
 
 if os.environ.get('EMAIL_HOST_USER', ''):
-    CELERY_EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+    EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
     EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER', 'user')
     EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD', 'password')
     EMAIL_HOST = os.environ.get('EMAIL_HOST', 'smtp.gmail.com')

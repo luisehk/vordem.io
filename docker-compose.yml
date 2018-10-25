@@ -11,11 +11,6 @@ services:
     volumes:
       - /srv/vordem/postgres:/var/lib/postgresql/data
 
-  redis:
-    image: redis:3.2
-    volumes:
-      - /srv/vordem/redis:/data
-
 
   ### application
   app: &app
@@ -27,16 +22,10 @@ services:
       - PYTHONUNBUFFERED=TRUE
     links:
       - db
-      - redis
     volumes:
       - .:/usr/src/app
       - /srv/vordem/static:/usr/src/app/.static
       - /srv/vordem/media:/usr/src/app/.media
-
-  worker:
-    <<: *app
-    command: celery worker --app=vordem.celery.app -B
-    ports: []
 
 
   ### http
