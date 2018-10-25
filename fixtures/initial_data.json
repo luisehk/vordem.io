@@ -3,8 +3,8 @@
         "model": "sites.site",
         "pk": 1,
         "fields": {
-            "domain": "publicomex.io",
-            "name": "publicomex.io"
+            "domain": "vordem.io",
+            "name": "vordem.io"
         }
     }
 ]

@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<section class="pt60">
+    <div class="wrap">
+        <div class="columns">
+            <div class="column is-half">
+                <div class="is-block mb40">
+                    <h1 class="txt36 mb20"><strong>Exploiting the creative and technological potentials</strong></h1>
+                    <p>We are a software developent and design agency. We think, design and create mobile and web applications, that allow to boost our client’s business.</p>
+                    <p>We strongly believe that tecnical perfection and user centered design are the key to create extraordinary digital experiences.</p>
+                </div>
+                <div class="is-block">
+                    <a class="icon-arrow-button-down"></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="bg-red-gradient bg-has-margin-top has-texture pt60 pb80-mobile">
+    <div class="wrap">
+        <div class="columns pb80-mobile">
+            <div class="column">
+                <img src="https://via.placeholder.com/2250x970" alt="">
+            </div>
+        </div>
+        <div class="columns">
+            <div class="column is-two-thirds pr70">
+                <div class="has-iframe">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3595.480933098569!2d-100.35835978452472!3d25.68849601789526!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8662960eb9f1f3bd%3A0xadbd994030146264!2sBolivia+203%2C+Vista+Hermosa%2C+64620+Monterrey%2C+N.L.!5e0!3m2!1ses-419!2smx!4v1536189225898" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+                </div>
+            </div>
+            <div class="column is-one-thirds">
+                <h3 class="txt36 mb20 c-white"><strong>Where to find us</strong></h3>
+                <ul class="has-list">
+                    <li class="pb20 c-white"><div class="has-icon"><img src="{% static 'img/icon1.svg' %}" alt=""></div><p>Bolivia #203</br> Vista Hermosa C.P. 64620</br> Monterrey, NL. México</p></li>
+                    <li class="pb20 c-white"><div class="has-icon"><img src="{% static 'img/icon2.svg' %}" alt=""></div><p>hola@vordem.mx</p></li>
+                    <li class="pb20 c-white"><div class="has-icon"><img src="{% static 'img/icon3.svg' %}" alt=""></div><p>+52 81 2473 9607</p></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section class="bg-white ptb60">
+    <div class="wrap">
+        <div class="columns">
+            <div class="column is-one-third">
+                <h1 class="txt36 mb20"><strong>Interested in working at Vordem?</strong></h1>
+                <p class="mb40">We are a software developent and design agency. We think, design and create mobile and web applications, that allow to boost our client’s business.</p>
+                <a href="{% url 'website:careers' %}" class="is-hidden-mobile button bg-red c-white has-arrow is-right">Careers</a>
+            </div>
+            <div class="column is-two-thirds">
+                <div class="columns">
+                    <div class="column is-flex">
+                        <div class="is-right">
+                            <img src="{% static 'img/img2.png' %}" alt="" class="has-shadow">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="column is-hidden-tablet">
+                <a href="{% url 'website:careers' %}" class="button bg-red c-white has-arrow is-right">Careers</a>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

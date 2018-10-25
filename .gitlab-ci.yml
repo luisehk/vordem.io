@@ -6,7 +6,7 @@ services:
 
 variables:
   PIP_CACHE_DIR: "$CI_PROJECT_DIR/.cache"
-  POSTGRES_DB: publicomex
+  POSTGRES_DB: vordem
 
 cache:
   paths:
@@ -32,9 +32,7 @@ stages:
   - bandit
   - coverage
   - test
-  - deploy_dev
-  - deploy_staging
-  - deploy_production
+  - deploy
 
 pep8:
   stage: pep8
@@ -69,10 +67,10 @@ test:
   script:
     - python manage.py test
 
-deploy_dev: &deploy
-  stage: deploy_dev
+deploy:
+  stage: deploy
   variables:
-    HEROKU_APP: "publicomex-dev"
+    HEROKU_APP: "vordem"
   script:
     - dpl --provider=heroku --app=$HEROKU_APP --api-key=$HEROKU_API_KEY
     - heroku run --exit-code --app $HEROKU_APP python manage.py migrate auth
@@ -81,19 +79,3 @@ deploy_dev: &deploy
     - heroku run --exit-code --app $HEROKU_APP python manage.py loaddata fixtures/initial_data.json
   only:
     - master
-
-deploy_staging:
-  <<: *deploy
-  stage: deploy_staging
-  variables:
-    HEROKU_APP: "publicomex-staging"
-  only:
-    - staging
-
-deploy_production:
-  <<: *deploy
-  stage: deploy_production
-  variables:
-    HEROKU_APP: "publicomex-prod"
-  only:
-    - production

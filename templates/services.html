@@ -1,0 +1,125 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<section class="ptb60">
+    <div class="wrap">
+        <div class="columns">
+            <div class="column is-half">
+                <div class="is-block mb40">
+                    <h1 class="txt36 mb20"><strong>Together, we can reach new horizons</strong></h1>
+                    <p>We are a software developent and design agency. We think, design and create mobile and web applications, that allow to boost our client’s business.</p>
+                </div>
+                <div class="is-block">
+                    <a class="icon-arrow-button-down"></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="bg-blue-gradient has-texture c-white ptb60">
+    <div class="wrap">
+        <div class="columns">
+            <div class="column is-one-third is-align-middle">
+                <h1 class="txt36 mb20"><strong>Mobile and Web development</strong></h1>
+                <p class="mb40">Technology is the means to solve human problems. That is why, through a multidisciplinary approach, we conduct conversations with our clients to devise and build products that reconcile technology, design and business.</p>
+                <a href="{% url 'website:projects' %}" class="is-hidden-mobile button bg-white c-red has-arrow is-right">Related Projects</a>
+            </div>
+            <div class="column is-two-thirds is-align-middle">
+                <div class="columns">
+                    <div class="column is-align-bottom has-text-right-tablet is-hidden-mobile">
+                        <p><strong>Fronesis</strong></p>
+                        <p>Web development</p>
+                    </div>
+                    <div class="column max520">
+                        <img src="{% static 'img/img6.png' %}" alt="" class="has-shadow">
+                    </div>
+                    <div class="column is-align-bottom has-text-right-tablet is-hidden-tablet">
+                        <p><strong>Fronesis</strong></p>
+                        <p>Web development</p>
+                    </div>
+                </div>
+            </div>
+            <div class="column is-hidden-tablet">
+                <a href="{% url 'website:projects' %}" class="button bg-white c-red has-arrow is-right">Related Projects</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="bg-white ptb60">
+    <div class="wrap">
+        <div class="columns">
+            <div class="column is-two-thirds is-align-middle is-hidden-mobile">
+                <div class="columns">
+                    <div class="column max230">
+                        <img src="{% static 'img/img4.png' %}" alt="" class="has-shadow">
+                    </div>
+                    <div class="column max230">
+                        <img src="{% static 'img/img5.png' %}" alt="" class="has-shadow">
+                    </div>
+                    <div class="column is-align-bottom">
+                        <p><strong>Fronesis</strong></p>
+                        <p>Web development</p>
+                    </div>
+                </div>
+            </div>
+            <div class="column is-one-third is-align-middle">
+                <h1 class="txt36 mb20"><strong>Mobile and Web development</strong></h1>
+                <p class="mb40">Technology is the means to solve human problems. That is why, through a multidisciplinary approach, we conduct conversations with our clients to devise and build products that reconcile technology, design and business.</p>
+                <a href="{% url 'website:projects' %}" class="is-hidden-mobile button bg-red c-white has-arrow is-right">Related Projects</a>
+            </div>
+            <div class="column is-two-thirds is-align-middle is-hidden-tablet">
+                <div class="columns is-mobile">
+                    <div class="column max230">
+                        <img src="{% static 'img/img4.png' %}" alt="" class="has-shadow">
+                    </div>
+                    <div class="column max230">
+                        <img src="{% static 'img/img5.png' %}" alt="" class="has-shadow">
+                    </div>
+                </div>
+                <div class="columns">
+                    <div class="column is-align-bottom">
+                        <p><strong>Fronesis</strong></p>
+                        <p>Web development</p>
+                    </div>
+                </div>
+            </div>
+            <div class="column is-hidden-tablet">
+                <a href="{% url 'website:projects' %}" class="button bg-red c-white has-arrow is-right">Related Projects</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="bg-green-gradient has-texture c-white ptb60">
+    <div class="wrap">
+        <div class="columns">
+            <div class="column is-one-third is-align-middle">
+                <h1 class="txt36 mb20"><strong>Mobile and Web development</strong></h1>
+                <p class="mb40">Technology is the means to solve human problems. That is why, through a multidisciplinary approach, we conduct conversations with our clients to devise and build products that reconcile technology, design and business.</p>
+                <a href="{% url 'website:projects' %}" class="is-hidden-mobile button bg-white c-red has-arrow is-right">Related Projects</a>
+            </div>
+            <div class="column is-two-thirds is-align-middle">
+                <div class="columns">
+                    <div class="column is-align-bottom has-text-right-tablet is-hidden-mobile">
+                        <p><strong>Fronesis</strong></p>
+                        <p>Web development</p>
+                    </div>
+                    <div class="column max520">
+                        <img src="{% static 'img/img6.png' %}" alt="" class="has-shadow">
+                    </div>
+                    <div class="column is-align-bottom has-text-right-tablet is-hidden-tablet">
+                        <p><strong>Fronesis</strong></p>
+                        <p>Web development</p>
+                    </div>
+                </div>
+            </div>
+            <div class="column is-hidden-tablet">
+                <a href="{% url 'website:projects' %}" class="button bg-white c-red has-arrow is-right">Related Projects</a>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

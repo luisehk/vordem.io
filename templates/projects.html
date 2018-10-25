@@ -1,0 +1,131 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<section class="ptb60">
+    <div class="wrap">
+        <div class="columns">
+            <div class="column is-half">
+                <div class="is-block mb40">
+                    <h1 class="txt36 mb20"><strong>Together, we can reach new horizons</strong></h1>
+                    <p>We are a software developent and design agency. We think, design and create mobile and web applications, that allow to boost our client’s business.</p>
+                </div>
+                <div class="is-block">
+                    <a class="icon-arrow-button-down"></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section class="bg-blue-gradient has-texture c-white ptb60">
+    <div class="wrap">
+        <div class="columns">
+            <div class="column">
+                <h3 class="c-white txt26 pb20">Filter projects by type:</h3>
+            </div>
+        </div>
+        <div class="columns pb40">
+            <ul class="column has-inline-list tab-menu is-bold">
+                <li><a href="#tab-1" class="c-blue"><span>ALL</span></a></li>
+                <li><a href="#tab-2" class="c-blue"><span>Mobile</span></a></li>
+                <li><a href="#tab-3" class="c-blue"><span>Web</span></a></li>
+                <li><a href="#tab-4" class="c-blue"><span>UI/UX</span></a></li>
+                <li><a href="#tab-5" class="c-blue"><span>Digital Product Design</span></a></li>
+            </ul>
+        </div>
+
+        <div class="is-inline-block size-0 has-columns" style="width: 100%;">
+            <div id="tab-1" class="tab-content">
+                <div class="fade is-two-thirds-inline has-column is-inline-block">
+                    <div class="square-card">
+                        <a href="{% url 'website:project' %}">
+                            <div class="img is-flex">
+                                <div class="is-align-middle">
+                                    <img src="{% static 'img/img3.png' %}" alt="">
+                                </div>
+                            </div>
+                            <div class="title"><h3 class="txt26"><strong>Fronesis</strong></h3></div>
+                        </a>
+                    </div>
+                </div>
+                <div class="fade is-one-third-inline has-column is-inline-block">
+                    <div class="square-card small-img">
+                        <a href="#">
+                            <div class="img is-flex">
+                                <div class="is-align-middle">
+                                    <img src="{% static 'img/img5.png' %}" alt="">
+                                </div>
+                            </div>
+                            <div class="title"><h3 class="txt26"><strong>Fronesis</strong></h3></div>
+                        </a>
+                    </div>
+                </div>
+                <div class="fade is-one-third-inline has-column is-inline-block">
+                    <div class="square-card">
+                        <a href="#">
+                            <div class="img is-flex">
+                                <div class="is-align-middle">
+                                    <img src="{% static 'img/img3.png' %}" alt="">
+                                </div>
+                            </div>
+                            <div class="title"><h3 class="txt26"><strong>Fronesis</strong></h3></div>
+                        </a>
+                    </div>
+                </div>
+                <div class="fade is-one-third-inline has-column is-inline-block">
+                    <div class="square-card">
+                        <a href="#">
+                            <div class="img is-flex">
+                                <div class="is-align-middle">
+                                    <img src="{% static 'img/img3.png' %}" alt="">
+                                </div>
+                            </div>
+                            <div class="title"><h3 class="txt26"><strong>Fronesis</strong></h3></div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div id="tab-2" class="tab-content">
+                <div class="fade is-one-third-inline has-column is-inline-block">
+                    <div class="square-card">
+                        <a href="#">
+                            <div class="img is-flex">
+                                <div class="is-align-middle">
+                                    <img src="{% static 'img/img3.png' %}" alt="">
+                                </div>
+                            </div>
+                            <div class="title"><h3 class="txt26"><strong>Fronesis</strong></h3></div>
+                        </a>
+                    </div>
+                </div>
+                <div class="fade is-one-third-inline has-column is-inline-block">
+                    <div class="square-card">
+                        <a href="#">
+                            <div class="img is-flex">
+                                <div class="is-align-middle">
+                                    <img src="{% static 'img/img3.png' %}" alt="">
+                                </div>
+                            </div>
+                            <div class="title"><h3 class="txt26"><strong>Fronesis</strong></h3></div>
+                        </a>
+                    </div>
+                </div>
+                <div class="fade is-one-third-inline has-column is-inline-block">
+                    <div class="square-card">
+                        <a href="#">
+                            <div class="img is-flex">
+                                <div class="is-align-middle">
+                                    <img src="{% static 'img/img3.png' %}" alt="">
+                                </div>
+                            </div>
+                            <div class="title"><h3 class="txt26"><strong>Fronesis</strong></h3></div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

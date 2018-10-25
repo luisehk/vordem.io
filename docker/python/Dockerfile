@@ -26,4 +26,4 @@ RUN apt-get install -y postgresql-client
 
 EXPOSE 8000
 
-CMD ["gunicorn", "-b", "0.0.0.0:8000", "publicomex.wsgi:application", "--reload", "--enable-stdio-inheritance"]
+CMD ["gunicorn", "-b", "0.0.0.0:8000", "vordem.wsgi:application", "--reload", "--enable-stdio-inheritance"]

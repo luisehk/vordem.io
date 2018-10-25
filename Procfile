@@ -1,2 +1,2 @@
-web: gunicorn publicomex.wsgi:application --workers 15 -k gevent --enable-stdio-inheritance
-worker: celery worker --app=publicomex.celery.app -B
+web: gunicorn vordem.wsgi:application --workers 5 -k gevent --enable-stdio-inheritance
+worker: celery worker --app=vordem.celery.app -B

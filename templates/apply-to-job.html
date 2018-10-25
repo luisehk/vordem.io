@@ -1,0 +1,105 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<section class="ptb60">
+    <div class="wrap">
+        <div class="columns">
+            <div class="column is-half">
+                <div class="is-block mb40">
+                    <h1 class="txt36 mb20"><strong>Check out this content from the people at Vordem</strong></h1>
+                    <p>We are a software developent and design agency. We think, design and create mobile and web applications, that allow to boost our client’s business.</p>
+                </div>
+                <div class="is-block">
+                    <a class="icon-arrow-button-down"></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="bg-green-gradient has-texture c-white ptb60">
+    <div class="wrap">
+        <div class="size-0">
+            <form class="max780" action="" method="post">
+                <div class="columns is-block pb60">
+                    <div class="column is-12">
+                        <label class="label">
+                            <p class="txt16">1/4</p>
+                            <p class="txt30"><strong>First, let’s hear from you</p></strong>
+                        </label>
+                    </div>
+                    <div class="column is-inline-block is-half">
+                        <input class="has-input" type="text" placeholder="Name">
+                    </div>
+                    <div class="column is-inline-block is-half">
+                        <input class="has-input" type="text" placeholder="Cellphone number">
+                    </div>
+                    <div class="column is-inline-block is-half">
+                        <input class="has-input" type="text" placeholder="Email">
+                    </div>
+                    <div class="column is-inline-block is-half">
+                        <input class="has-input" type="text" placeholder="Current workplace (optional)">
+                    </div>
+                </div>
+                <div class="columns is-block pb60">
+                    <div class="column is-12">
+                        <label class="label">
+                            <p class="txt16">2/4</p>
+                            <p class="txt30"><strong>Submit your Resume / CV</p></strong>
+                        </label>
+                    </div>
+                    <div class="column is-inline-block is-one-third">
+                        <div class="has-input-file">
+                            <label class="input-text" for="input-file">Attach file</label>
+                            <input type="file"  name="input-file" class="has-input" id="input-file">
+                            <!-- do not move -->
+                            <label id="input-file"></label>
+                            <!-- do not move -->
+                        </div>
+                    </div>
+                    <div class="column is-inline-block is-two-thirds">
+                        <input class="has-input" type="text" placeholder="Or place a link">
+                    </div>
+                </div>
+                <div class="columns is-block pb60">
+                    <div class="column is-12">
+                        <label class="label">
+                            <p class="txt16">3/4</p>
+                            <p class="txt30 mb10"><strong>Links</p></strong>
+                        </label>
+                    </div>
+                    <div class="column is-inline-block is-half">
+                        <input type="text" class="has-input" name="" placeholder="LinkedIn (optional)">
+                    </div>
+                    <div class="column is-inline-block is-half">
+                        <input type="text" class="has-input" name="" placeholder="Personal website (optional)">
+                    </div>
+                    <div class="column is-inline-block is-half">
+                        <input type="text" class="has-input" name="" placeholder="Github (optional)">
+                    </div>
+                    <div class="column is-inline-block is-half">
+                        <input type="text" class="has-input" name="" placeholder="Behance (optional)">
+                    </div>
+                </div>
+                <div class="columns is-block pb30">
+                    <div class="column is-12">
+                        <label class="label">
+                            <p class="txt16">4/4</p>
+                            <p class="txt30 mb10"><strong>Additional information</p></strong>
+                        </label>
+                    </div>
+                    <div class="column is-inline-block is-12">
+                        <textarea class="has-input" name="name" rows="8" cols="80" placeholder="Add a cover letter or anything else you want to share"></textarea>
+                    </div>
+                </div>
+                <div class="columns is-block pb60">
+                    <div class="column is-12">
+                        <a href="#" class="button bg-white c-red has-arrow">Send</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+{% endblock %}

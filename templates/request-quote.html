@@ -1,0 +1,164 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<section class="ptb60">
+    <div class="wrap">
+        <div class="columns">
+            <div class="column is-half">
+                <div class="is-block mb40">
+                    <h1 class="txt36 mb20"><strong>Check out this content from the people at Vordem</strong></h1>
+                    <p>We are a software developent and design agency. We think, design and create mobile and web applications, that allow to boost our client’s business.</p>
+                </div>
+                <div class="is-block">
+                    <a class="icon-arrow-button-down"></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="bg-blue-gradient has-texture c-white ptb60">
+    <div class="wrap">
+        <div class="size-0">
+            <form class="max780" action="" method="post">
+                <div class="columns is-block pb60">
+                    <div class="column is-12">
+                        <label class="label">
+                            <p class="txt16">1/5</p>
+                            <p class="txt30"><strong>First, let’s hear from you</p></strong>
+                        </label>
+                    </div>
+                    <div class="column is-inline-block is-half">
+                        <input class="has-input" type="text" placeholder="Text input">
+                    </div>
+                    <div class="column is-inline-block is-half">
+                        <input class="has-input" type="text" placeholder="Text input">
+                    </div>
+                    <div class="column is-inline-block is-half">
+                        <input class="has-input" type="text" placeholder="Text input">
+                    </div>
+                    <div class="column is-inline-block is-half">
+                        <input class="has-input" type="text" placeholder="Text input">
+                    </div>
+                </div>
+                <div class="columns is-block pb60">
+                    <div class="column is-12">
+                        <label class="label">
+                            <p class="txt16">2/5</p>
+                            <p class="txt30 mb10"><strong>First, let’s hear from you</p></strong>
+                            <p class="txt16">*Choose as many as you want</p>
+                        </label>
+                    </div>
+                    <div class="column is-inline-block is-one-third">
+                        <div class="button-select">
+                            <input type="checkbox">
+                            <label>1 month</label>
+                        </div>
+                    </div>
+                    <div class="column is-inline-block is-one-third">
+                        <div class="button-select">
+                            <input type="checkbox">
+                            <label>3 months</label>
+                        </div>
+                    </div>
+                    <div class="column is-inline-block is-one-third">
+                        <div class="button-select">
+                            <input type="checkbox">
+                            <label>6 months</label>
+                        </div>
+                    </div>
+                    <div class="column is-inline-block is-one-third">
+                        <div class="button-select">
+                            <input type="checkbox">
+                            <label>When ready</label>
+                        </div>
+                    </div>
+                    <div class="column is-inline-block is-one-third">
+                        <div class="button-select">
+                            <input type="checkbox">
+                            <label>I’m not sure</label>
+                        </div>
+                    </div>
+                    <div class="column is-inline-block is-one-third">
+                        <input class="has-input" type="text" placeholder="Other">
+                    </div>
+                </div>
+                <div class="columns is-block pb60">
+                    <div class="column is-12">
+                        <label class="label">
+                            <p class="txt16">3/5</p>
+                            <p class="txt30 mb10"><strong>When do you need it?</p></strong>
+                            <p class="txt16">*Choose as many as you want</p>
+                        </label>
+                    </div>
+                    <div class="column is-inline-block is-one-third">
+                        <div class="button-select">
+                            <input type="checkbox">
+                            <label>Web app</label>
+                        </div>
+                    </div>
+                    <div class="column is-inline-block is-one-third">
+                        <div class="button-select">
+                            <input type="checkbox">
+                            <label>Android app</label>
+                        </div>
+                    </div>
+                    <div class="column is-inline-block is-one-third">
+                        <div class="button-select">
+                            <input type="checkbox">
+                            <label>iOS app</label>
+                        </div>
+                    </div>
+                    <div class="column is-inline-block is-one-third">
+                        <div class="button-select">
+                            <input type="checkbox">
+                            <label>Website</label>
+                        </div>
+                    </div>
+                    <div class="column is-inline-block is-one-third">
+                        <div class="button-select">
+                            <input type="checkbox">
+                            <label>I’m not sure</label>
+                        </div>
+                    </div>
+                    <div class="column is-inline-block is-one-third">
+                        <input class="has-input" type="text" placeholder="Other">
+                    </div>
+                </div>
+                <div class="columns is-block pb60">
+                    <div class="column is-12">
+                        <label class="label">
+                            <p class="txt16">4/5</p>
+                            <p class="txt30 mb10"><strong>When do you need it?</p></strong>
+                            <p class="txt16">*Choose as many as you want</p>
+                        </label>
+                    </div>
+                    <div class="column is-inline-block is-12">
+                        <div class="is-relative">
+                            <input type="range" id="fader" min="0" max="500000" value="100000" step="100" oninput="outputUpdate(value)">
+                            <output for="fader" id="volume" class="c-white txt18 is-bold">100000</output>
+                        </div>
+                    </div>
+                </div>
+                <div class="columns is-block pb30">
+                    <div class="column is-12">
+                        <label class="label">
+                            <p class="txt16">5/5</p>
+                            <p class="txt30 mb10"><strong>Finally, how would you describe your project in one paragraph?</p></strong>
+                        </label>
+                    </div>
+                    <div class="column is-inline-block is-12">
+                        <textarea class="has-input" name="name" rows="8" cols="80"></textarea>
+                    </div>
+                </div>
+                <div class="columns is-block pb60">
+                    <div class="column is-12">
+                        <a href="#" class="button bg-white c-red has-arrow">Send</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="24px" viewBox="0 0 16 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 49.3 (51167) - http://www.bohemiancoding.com/sketch -->
+    <title>Group 3</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <polygon id="path-1" points="0 0 16 0 16 24 0 24"></polygon>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Contact---Vordem" transform="translate(-845.000000, -1127.000000)">
+            <g id="Group-3" transform="translate(845.000000, 1127.000000)">
+                <mask id="mask-2" fill="white">
+                    <use xlink:href="#path-1"></use>
+                </mask>
+                <g id="Clip-2"></g>
+                <path d="M7.99520096,11.6861538 C6.22915417,11.6861538 4.79904019,10.3107692 4.79904019,8.61230769 C4.79904019,6.91384615 6.22915417,5.53846154 7.99520096,5.53846154 C9.76124775,5.53846154 11.2009598,6.91384615 11.2009598,8.61230769 C11.2009598,10.3107692 9.76124775,11.6861538 7.99520096,11.6861538 M7.99520096,0 C3.58008398,0 0,3.44307692 0,7.68923077 C0,14.3076923 7.99520096,24 7.99520096,24 C7.99520096,24 16,14.04 16,7.68923077 C16,3.44307692 12.419916,0 7.99520096,0" id="Fill-1" fill="#FFFFFF" mask="url(#mask-2)"></path>
+            </g>
+        </g>
+    </g>
+</svg>

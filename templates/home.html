@@ -1,0 +1,127 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<section class="pt60">
+  <div class="l-wrapp-hidden-widescreen pb80">
+    <div class="columns">
+      <div class="column is-half pr70">
+        <h1 class="txt48 mb50"><strong>We are an expert team in building digital products, so your business can reach its fullest potential</strong></h1>
+        <a class="icon-arrow-button-down"></a>
+      </div>
+      <div class="column is-half is-flex-tablet">
+        <div class="is-right has-img">
+          <img src="{% static 'img/img1-1.svg' %}" alt="">
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="wrap">
+    <div class="columns">
+      <div class="column is-two-thirds pr70">
+        <img src="{% static 'img/pic1.jpg' %}" alt="">
+      </div>
+      <div class="column is-one-thirds">
+        <h1 class="txt36 mb20"><strong>We exploit the creative and technological potential to make innovation happen</strong></h1>
+        <p class="mb40">
+          Successful digital products come from the collaboration by strategists, developers and designers, working together to craft simple solutions to complex challenges. That's why we join forces with our clients to plan, create and grow their digital products.
+        </p>
+        <a href="{% url 'website:quote' %}" class="button bg-red c-white has-arrow is-right">Request Quote</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="bg-blue-gradient has-texture ptb60 mt60">
+  <div class="wrap">
+    <h4 class="c-white txt36 mb40"><strong>Recent projects</strong></h4>
+    <div class="columns pb20">
+      <div class="column is-one-third">
+        <div class="square-card">
+          <a href="#">
+            <div class="img">
+              <img src="{% static 'img/img3.png' %}" alt="">
+            </div>
+            <div class="title"><h3 class="txt26"><strong>Fronesis</strong></h3></div>
+          </a>
+        </div>
+      </div>
+      <div class="column is-one-third">
+        <div class="square-card">
+          <a href="#">
+            <div class="img">
+              <img src="{% static 'img/img3.png' %}" alt="">
+            </div>
+            <div class="title"><h3 class="txt26"><strong>Fronesis</strong></h3></div>
+          </a>
+        </div>
+      </div>
+      <div class="column is-one-third">
+        <div class="square-card">
+          <a href="#">
+            <div class="img">
+              <img src="{% static 'img/img3.png' %}" alt="">
+            </div>
+            <div class="title"><h3 class="txt26"><strong>Fronesis</strong></h3></div>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="columns">
+      <div class="column is-flex-tablet">
+        <a href="{% url 'website:projects' %}" class="button bg-white c-red has-arrow is-right">Portfolio</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="bg-white ptb60">
+  <div class="wrap">
+    <div class="columns pb80">
+      <div class="is-one-third column">
+        <h4 class="txt36 mb40"><strong>Our clients</strong></h4>
+        <p>We've worked with startups and big companies from different industries: transportation, finance, information technology, retail, education and others.</p>
+      </div>
+    </div>
+    <div class="columns">
+      <div class="column is-12">
+        <div class="has-inline-list has-logo-list has-text-centered-tablet">
+          <div class="img is-grayscale is-half-inline">
+            <img src="{% static 'img/icon-logo1.png' %}" alt="">
+          </div>
+          <div class="img is-grayscale is-half-inline">
+            <img src="{% static 'img/icon-logo8.png' %}" alt="">
+          </div>
+          <div class="img is-grayscale is-half-inline">
+            <img src="{% static 'img/icon-logo3.png' %}" alt="">
+          </div>
+          <div class="img is-grayscale is-half-inline">
+            <img src="{% static 'img/icon-logo10.png' %}" alt="">
+          </div>
+          <div class="img is-grayscale is-half-inline">
+            <img src="{% static 'img/icon-logo4.png' %}" alt="">
+          </div>
+          <div class="img is-grayscale is-half-inline">
+            <img src="{% static 'img/icon-logo2.png' %}" alt="">
+          </div>
+          <div class="img is-grayscale is-half-inline">
+            <img src="{% static 'img/icon-logo5.png' %}" alt="">
+          </div>
+          <div class="img is-grayscale is-half-inline">
+            <img src="{% static 'img/icon-logo6.png' %}" alt="">
+          </div>
+          <div class="img is-grayscale is-half-inline">
+            <img src="{% static 'img/icon-logo11.png' %}" alt="">
+          </div>
+          <div class="img is-grayscale is-half-inline">
+            <img src="{% static 'img/icon-logo9.svg' %}" alt="">
+          </div>
+          <div class="img is-grayscale is-half-inline">
+            <img src="{% static 'img/icon-logo7.png' %}" alt="">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

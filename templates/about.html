@@ -1,0 +1,91 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<section class="pt60">
+    <div class="wrap">
+        <div class="columns">
+            <div class="column is-half">
+                <div class="is-block mb40">
+                    <h1 class="txt36 mb20"><strong>Exploiting the creative and technological potentials</strong></h1>
+                    <p>We are a software developent and design agency. We think, design and create mobile and web applications, that allow to boost our client’s business.</p>
+                    <p>We strongly believe that tecnical perfection and user centered design are the key to create extraordinary digital experiences.</p>
+                </div>
+                <div class="is-block">
+                    <a class="icon-arrow-button-down"></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="bg-red-gradient bg-has-margin-top has-texture pt60 pb80">
+    <div class="wrap">
+        <div class="columns pb80-mobile">
+            <div class="column">
+                <img src="https://via.placeholder.com/2250x970" alt="">
+            </div>
+        </div>
+        <div class="columns">
+            <div class="column is-two-thirds pr70">
+                <img src="https://via.placeholder.com/1250x550" alt="">
+            </div>
+            <div class="column is-one-thirds">
+                <h1 class="txt36 mb20 c-white"><strong>We take the best out of design, technology and strategy to take your business to the next level</strong></h1>
+                <p class="mb40 c-white">We are a software developent and design agency that think, design and create mobile and web applications, that allow to boost our client’s business.</p>
+                <a href="{% url 'website:quote' %}" class="button bg-white c-red has-arrow is-right">Request Quote</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="bg-white ptb60">
+    <div class="wrap">
+        <div class="columns">
+            <div class="is-one-third column">
+                <h4 class="txt36 mb20"><strong>Our work process</strong></h4>
+            </div>
+        </div>
+        <div class="columns">
+            <div class="is-one-half column">
+                <div class="rectangular-card-249px bg-blue-gradient has-texture c-white p30">
+                    <div class="max330">
+                        <p class="txt18">1/4</p>
+                        <h5 class="txt30 is-bold pb30">Proposal and agreement</h5>
+                        <p>Understanding the problem, elaborating a high level solution and defining the scope of the project.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="is-one-half column">
+                <div class="rectangular-card-249px bg-blue-gradient has-texture c-white p30">
+                    <div class="max330">
+                        <p class="txt18">2/4</p>
+                        <h5 class="txt30 is-bold pb30">Planning and design</h5>
+                        <p>Project kickoff and background research. Time estimations and tasks prioritation.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="columns">
+            <div class="is-one-half column">
+                <div class="rectangular-card-249px bg-blue-gradient has-texture c-white p30">
+                    <div class="max330">
+                        <p class="txt18">3/4</p>
+                        <h5 class="txt30 is-bold pb30">Development</h5>
+                        <p>System construction and customer feedback.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="is-one-half column">
+                <div class="rectangular-card-249px bg-blue-gradient has-texture c-white p30">
+                    <div class="max330">
+                        <p class="txt18">4/4</p>
+                        <h5 class="txt30 is-bold pb30">Presentation</h5>
+                        <p>Implementation of the system and planning of new opportunities.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
