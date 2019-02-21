@@ -6,7 +6,12 @@
   <div class="l-wrapp-hidden-widescreen pb80">
     <div class="columns">
       <div class="column is-half pr70">
-        <h1 class="txt48 mb50"><strong>We are an expert team in building digital products, so your business can reach its fullest potential</strong></h1>
+        <h1 class="txt48 mb50">
+          <strong>We create digital products that help businesses reach their full potential</strong>
+        </h1>
+        <p class="mb40">
+          Vordem is a digital product agency, founded with the mission of making businesses thrive by doing what we do best: technology. This means working at the intersection of business, creativity and technology through a structured innovation process with a clear goal in mind: making things happen.
+        </p>
         <a class="icon-arrow-button-down"></a>
       </div>
       <div class="column is-half is-flex-tablet">
@@ -22,11 +27,11 @@
         <img src="{% static 'img/pic1.jpg' %}" alt="">
       </div>
       <div class="column is-one-thirds">
-        <h1 class="txt36 mb20"><strong>We exploit the creative and technological potential to make innovation happen</strong></h1>
+        <h1 class="txt36 mb20"><strong>A balanced approach</strong></h1>
         <p class="mb40">
-          Successful digital products come from the collaboration by strategists, developers and designers, working together to craft simple solutions to complex challenges. That's why we join forces with our clients to plan, create and grow their digital products.
+          Successful digital products come from the focused collaboration by strategists, developers, designers and product managers, working together to craft simple and elegant solutions to complex challenges.
         </p>
-        <a href="{% url 'website:quote' %}" class="button bg-red c-white has-arrow is-right">Request Quote</a>
+        <a href="{% url 'website:about' %}" class="button bg-red c-white has-arrow is-right">Know more about us</a>
       </div>
     </div>
   </div>
@@ -38,27 +43,27 @@
     <div class="columns pb20">
       <div class="column is-one-third">
         <div class="square-card">
-          <a href="#">
+          <a href="{% url 'website:project' %}">
             <div class="img">
               <img src="{% static 'img/img3.png' %}" alt="">
             </div>
-            <div class="title"><h3 class="txt26"><strong>Fronesis</strong></h3></div>
+            <div class="title"><h3 class="txt26"><strong>Sealed Air</strong></h3></div>
           </a>
         </div>
       </div>
       <div class="column is-one-third">
         <div class="square-card">
-          <a href="#">
+          <a href="{% url 'website:project' %}">
             <div class="img">
               <img src="{% static 'img/img3.png' %}" alt="">
             </div>
-            <div class="title"><h3 class="txt26"><strong>Fronesis</strong></h3></div>
+            <div class="title"><h3 class="txt26"><strong>Comex</strong></h3></div>
           </a>
         </div>
       </div>
       <div class="column is-one-third">
         <div class="square-card">
-          <a href="#">
+          <a href="{% url 'website:project' %}">
             <div class="img">
               <img src="{% static 'img/img3.png' %}" alt="">
             </div>
@@ -87,9 +92,6 @@
       <div class="column is-12">
         <div class="has-inline-list has-logo-list has-text-centered-tablet">
           <div class="img is-grayscale is-half-inline">
-            <img src="{% static 'img/icon-logo1.png' %}" alt="">
-          </div>
-          <div class="img is-grayscale is-half-inline">
             <img src="{% static 'img/icon-logo8.png' %}" alt="">
           </div>
           <div class="img is-grayscale is-half-inline">
@@ -99,10 +101,16 @@
             <img src="{% static 'img/icon-logo10.png' %}" alt="">
           </div>
           <div class="img is-grayscale is-half-inline">
+            <img src="{% static 'img/icon-logo1.png' %}" alt="">
+          </div>
+          <div class="img is-grayscale is-half-inline">
             <img src="{% static 'img/icon-logo4.png' %}" alt="">
           </div>
           <div class="img is-grayscale is-half-inline">
             <img src="{% static 'img/icon-logo2.png' %}" alt="">
+          </div>
+          <div class="img is-grayscale is-half-inline">
+            <img src="{% static 'img/icon-logo7.png' %}" alt="">
           </div>
           <div class="img is-grayscale is-half-inline">
             <img src="{% static 'img/icon-logo5.png' %}" alt="">
@@ -111,13 +119,10 @@
             <img src="{% static 'img/icon-logo6.png' %}" alt="">
           </div>
           <div class="img is-grayscale is-half-inline">
-            <img src="{% static 'img/icon-logo11.png' %}" alt="">
-          </div>
-          <div class="img is-grayscale is-half-inline">
             <img src="{% static 'img/icon-logo9.svg' %}" alt="">
           </div>
           <div class="img is-grayscale is-half-inline">
-            <img src="{% static 'img/icon-logo7.png' %}" alt="">
+            <img src="{% static 'img/icon-logo11.png' %}" alt="">
           </div>
         </div>
       </div>
