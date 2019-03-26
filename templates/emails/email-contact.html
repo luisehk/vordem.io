@@ -1,0 +1,45 @@
+
+{% load static %}
+<body style="margin: 0; padding: 0; font-family: comex-medium, sans-serif;">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <tr>
+            <td style="padding: 10px 0 10px 0;">
+                <table align="center" border="0" cellpadding="0" cellspacing="0" width="600" style="border: 1px solid #cccccc; border-collapse: collapse;">
+                    <tr>
+                        <td align="center" bgcolor="#FFFFFF" style="padding: 40px 0 30px 0; color: #cccccc; font-size: 28px; font-weight: bold; font-family: Arial, sans-serif;">
+                          <img src="{{ host }}{% static 'img/mail_header.png' %}" width="600" height="130" style="display: block;" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td bgcolor="#ffffff" style="padding: 10px 30px 40px 30px;">
+                            <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                                <tr>
+                                    <td style="padding: 10px 0 30px 0; color: #153643; font-size: 15px; line-height: 20px; text-align: justify;">
+
+
+                                      <b style="color:#F14F60;">{{name}}</b>, of the company <b style="color:#F14F60;">{{company}}</b> with contact number <b style="color:#F14F60;">{{cellphone}}</b> has been reported for a product with the following details:
+                                      {% for b in build %}
+                                        <ul>
+                                          {% if b == "Im not sure" %}
+                                            <li style="color:#F14F60;">{{b}}: {{other}}</li>
+                                          {% else %}
+                                            <li> <span style="color:#F14F60;">{{b}} </span></li>
+                                          {% endif %}
+                                        </ul>
+                                      {% endfor %}
+                                      The time requested is in: <span style="color:#F14F60;">{{time}} {% if other_time %}: {{other_time}} {% endif  %}</span>,
+                                      the price range requested is from: <span style="color:#F14F60;">{{fader}}</span>.
+                                      <p>Here a description of the project: <span style="color:#F14F60;">{{describe_project}}</span></p>
+                                      <br><br>
+                                      <p><i><b>En vordem</b>, tenemos como misión hacer que las empresas prosperen a través de la digitalización de estas mismas.</i></p>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+</body>
+

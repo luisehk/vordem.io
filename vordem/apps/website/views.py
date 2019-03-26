@@ -1,4 +1,6 @@
-from django.views.generic import TemplateView
+from django.views.generic import TemplateView, FormView
+from ..messaging.email.helpers import send_email
+from .forms import ContactForm
 
 
 class Home(TemplateView):
@@ -25,8 +27,39 @@ class Contact(TemplateView):
     template_name = "contact.html"
 
 
-class RequestQuote(TemplateView):
+class RequestQuote(FormView):
     template_name = "request-quote.html"
+    form_class = ContactForm
+    success_url = '/thanks/'
+
+    def form_valid(self, form):
+        name = form.cleaned_data['name']
+        company = form.cleaned_data['company']
+        cellphone = form.cleaned_data['cellphone']
+        build = form.cleaned_data['build']
+        other = form.cleaned_data['other']
+        time = form.cleaned_data['time']
+        other_time = form.cleaned_data['other_time']
+        fader = form.cleaned_data['fader']
+        describe_project = form.cleaned_data['describe_project']
+
+        send_email(
+            subject='Vordem - Formulario de contacto.',
+            to_email=['edderleonardo@gmail.com'],
+            template='emails/email-contact.html',
+            ctx={
+                'name': name,
+                'company': company,
+                'cellphone': cellphone,
+                'build': build,
+                'other': other,
+                'time': time,
+                'other_time': other_time,
+                'fader': fader,
+                'describe_project': describe_project,
+                'host': self.request.get_host()
+            })
+        return super().form_valid(form)
 
 
 class Careers(TemplateView):

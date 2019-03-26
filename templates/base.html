@@ -8,12 +8,14 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
     <title>Vordem | Digital Product Agency</title>
-
+    <link rel="icon" type="image/png" href="{% static 'img/favicon.ico' %}">
     <link rel="stylesheet" href="//fonts.googleapis.com/css?family=PT+Sans:400,700">
     <link rel="stylesheet" href="{% static 'css/reset.css' %}">
     <link rel="stylesheet" href="{% static 'css/index.css' %}">
-    <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+    <link rel="stylesheet" href="{% static 'css/vordem.css' %}">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script type="text/javascript" src="//unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
+    <script src="{% static 'js/parsley.min.js' %}"></script>
 
     {% if settings.GOOGLE_ANALYTICS_ID %}
       <script async src="https://www.googletagmanager.com/gtag/js?id={{ settings.GOOGLE_ANALYTICS_ID }}"></script>
@@ -104,5 +106,6 @@
 
     <!-- SCRIPTS -->
     <script type="text/javascript" src="{% static 'js/scripts.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/vordem.js' %}"></script>
 </body>
 </html>

@@ -1,0 +1,10 @@
+.parsley-errors-list {
+    font-size: 15px !important;
+    color: #F44662;
+    font-weight: 800;
+}
+
+.parsley-errors-list > li {
+    list-style: none;
+    margin-left: -37px;
+}

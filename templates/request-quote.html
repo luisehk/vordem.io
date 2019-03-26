@@ -21,7 +21,8 @@
 <section class="bg-blue-gradient has-texture c-white ptb60">
     <div class="wrap">
         <div class="size-0">
-            <form class="max780" action="" method="post">
+            <form class="max780" method="POST" data-parsley-validate id="request-quote">
+              {% csrf_token %}
                 <div class="columns is-block pb60">
                     <div class="column is-12">
                         <label class="label">
@@ -30,16 +31,16 @@
                         </label>
                     </div>
                     <div class="column is-inline-block is-half">
-                        <input class="has-input" type="text" placeholder="Name">
+                        <input id="id_name" name="name" class="has-input" type="text" placeholder="Name" required>
                     </div>
                     <div class="column is-inline-block is-half">
-                        <input class="has-input" type="text" placeholder="Company name">
+                        <input id="id_company" name="company" class="has-input" type="text" placeholder="Company name" required>
                     </div>
                     <div class="column is-inline-block is-half">
-                        <input class="has-input" type="email" placeholder="Email">
+                        <input id="id_email" name="email" class="has-input" type="email" placeholder="Email" required>
                     </div>
                     <div class="column is-inline-block is-half">
-                        <input class="has-input" type="text" placeholder="Cellphone number">
+                        <input id="id_cellphone" name="cellphone" class="has-input" type="text" placeholder="Cellphone number" required>
                     </div>
                 </div>
 
@@ -53,37 +54,89 @@
                     </div>
                     <div class="column is-inline-block is-one-third">
                         <div class="button-select">
-                            <input type="checkbox">
+                          <input
+                            type="checkbox"
+                            name="build"
+                            value="Web App"
+                            data-parsley-multiple="build"
+                            data-parsley-mincheck="1"
+                            data-parsley-error-message="Please choose at least one."
+                            data-parsley-errors-container="#want_to_build"
+                            data-parsley-required="true"
+                            id="id_build_0">
                             <label>Web app</label>
                         </div>
                     </div>
                     <div class="column is-inline-block is-one-third">
                         <div class="button-select">
-                            <input type="checkbox">
+                          <input
+                            type="checkbox"
+                            name="build"
+                            value="Android app"
+                            data-parsley-multiple="build"
+                            data-parsley-mincheck="1"
+                            data-parsley-error-message="Please choose at least one."
+                            data-parsley-errors-container="#want_to_build"
+                            data-parsley-required="true"
+                            id="id_build_1">
                             <label>Android app</label>
                         </div>
                     </div>
                     <div class="column is-inline-block is-one-third">
                         <div class="button-select">
-                            <input type="checkbox">
+                          <input
+                            type="checkbox"
+                            name="build"
+                            value="IOS app"
+                            data-parsley-multiple="build"
+                            data-parsley-mincheck="1"
+                            data-parsley-error-message="Please choose at least one."
+                            data-parsley-errors-container="#want_to_build"
+                            data-parsley-required="true"
+                            id="id_build_2">
                             <label>iOS app</label>
                         </div>
                     </div>
                     <div class="column is-inline-block is-one-third">
                         <div class="button-select">
-                            <input type="checkbox">
+                          <input
+                            type="checkbox"
+                            name="build"
+                            value="Web site"
+                            data-parsley-multiple="build"
+                            data-parsley-mincheck="1"
+                            data-parsley-error-message="Please choose at least one."
+                            data-parsley-errors-container="#want_to_build"
+                            data-parsley-required="true"
+                            id="id_build_3">
                             <label>Website</label>
                         </div>
                     </div>
                     <div class="column is-inline-block is-one-third">
                         <div class="button-select">
-                            <input type="checkbox">
+                          <input
+                            type="checkbox"
+                            name="build"
+                            value="Im not sure"
+                            data-parsley-multiple="build"
+                            data-parsley-mincheck="1"
+                            data-parsley-error-message="Please choose at least one."
+                            data-parsley-errors-container="#want_to_build"
+                            data-parsley-required="true"
+                            id="id_build_4">
                             <label>I’m not sure</label>
                         </div>
                     </div>
                     <div class="column is-inline-block is-one-third">
-                        <input class="has-input" type="text" placeholder="Other">
+                        <input
+                          id="id_other"
+                          name="other"
+                          class="has-input"
+                          type="text"
+                          placeholder="Other"
+                          disabled>
                     </div>
+                   <div id="want_to_build"></div>
                 </div>
 
                 <div class="columns is-block pb60">
@@ -93,39 +146,87 @@
                           <p class="txt30 mb10"><strong>When do you need it?</p></strong>
                       </label>
                   </div>
+                  
                   <div class="column is-inline-block is-one-third">
                       <div class="button-select">
-                          <input type="checkbox">
+                        <input
+                          type="radio"
+                          name="time"
+                          value="One month"
+                          data-parsley-error-message="Please choose at least one."
+                          data-parsley-errors-container="#when_do_you_need_it"
+                          data-parsley-required="true"
+                          required=""
+                          id="id_time_0"
+                          data-parsley-multiple="time"
+                          data-parsley-id="44">
                           <label>1 month</label>
                       </div>
                   </div>
                   <div class="column is-inline-block is-one-third">
                       <div class="button-select">
-                          <input type="checkbox">
+                        <input
+                          type="radio"
+                          name="time"
+                          value="Three month"
+                          data-parsley-error-message="Please choose at least one."
+                          data-parsley-errors-container="#when_do_you_need_it"
+                          data-parsley-required="true"
+                          required=""
+                          id="id_time_1"
+                          data-parsley-multiple="time">
                           <label>3 months</label>
                       </div>
                   </div>
                   <div class="column is-inline-block is-one-third">
                       <div class="button-select">
-                          <input type="checkbox">
+                        <input
+                          type="radio"
+                          name="time"
+                          value="Six month"
+                          data-parsley-error-message="Please choose at least one."
+                          data-parsley-errors-container="#when_do_you_need_it"
+                          data-parsley-required="true"
+                          required=""
+                          id="id_time_2"
+                          data-parsley-multiple="time">
                           <label>6 months</label>
                       </div>
                   </div>
                   <div class="column is-inline-block is-one-third">
                       <div class="button-select">
-                          <input type="checkbox">
+                        <input
+                          type="radio"
+                          name="time"
+                          value="When ready"
+                          data-parsley-error-message="Please choose at least one."
+                          data-parsley-errors-container="#when_do_you_need_it"
+                          data-parsley-required="true"
+                          required=""
+                          id="id_time_3"
+                          data-parsley-multiple="time">
                           <label>When ready</label>
                       </div>
                   </div>
                   <div class="column is-inline-block is-one-third">
                       <div class="button-select">
-                          <input type="checkbox">
+                        <input
+                          type="radio"
+                          name="time"
+                          value="Not sure time"
+                          data-parsley-error-message="Please choose at least one."
+                          data-parsley-errors-container="#when_do_you_need_it"
+                          data-parsley-required="true"
+                          required=""
+                          id="id_time_4"
+                          data-parsley-multiple="time">
                           <label>I’m not sure</label>
                       </div>
                   </div>
                   <div class="column is-inline-block is-one-third">
-                      <input class="has-input" type="text" placeholder="Other">
+                      <input id="id_other_time" name="other_time" class="has-input" type="text" placeholder="Other" disabled>
                   </div>
+                  <div id="when_do_you_need_it"></div>
               </div>
 
                 <div class="columns is-block pb60">
@@ -138,8 +239,8 @@
                     </div>
                     <div class="column is-inline-block is-12">
                         <div class="is-relative">
-                            <input type="range" id="fader" min="0" max="500000" value="100000" step="100" oninput="outputUpdate(value)">
-                            <output for="fader" id="volume" class="c-white txt18 is-bold">100000</output>
+                            {{form.fader}}
+                            <output for="id_intervalo" id="volume" class="c-white txt18 is-bold">100000</output>
                         </div>
                     </div>
                 </div>
@@ -151,16 +252,19 @@
                         </label>
                     </div>
                     <div class="column is-inline-block is-12">
-                        <textarea class="has-input" name="name" rows="8" cols="80"></textarea>
+                        <textarea class="has-input" name="describe_project" cols="80" rows="8" required="" id="id_describe_project"></textarea>
                     </div>
                 </div>
                 <div class="columns is-block pb60">
                     <div class="column is-12">
-                        <a href="#" class="button bg-white c-red has-arrow">Send</a>
+                        <a
+                          id="send_form"
+                          class="button bg-white c-red has-arrow">Send</a>
                     </div>
                 </div>
             </form>
         </div>
     </div>
 </section>
+
 {% endblock %}
