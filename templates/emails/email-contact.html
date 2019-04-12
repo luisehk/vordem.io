@@ -17,21 +17,21 @@
                                     <td style="padding: 10px 0 30px 0; color: #153643; font-size: 15px; line-height: 20px; text-align: justify;">
 
 
-                                      <b style="color:#F14F60;">{{name}}</b>, of the company <b style="color:#F14F60;">{{company}}</b> with contact number <b style="color:#F14F60;">{{cellphone}}</b> has been reported for a product with the following details:
+                                      <b style="color:#F14F60;">{{name}}</b>, of the company <b style="color:#F14F60;">{{company}}</b> (contact details: number <b style="color:#F14F60;">{{cellphone}}</b> email: <b style="color:#F14F60;">{{email}}</b>) has sent a product quoting, below the following details:
                                       {% for b in build %}
                                         <ul>
                                           {% if b == "Im not sure" %}
-                                            <li style="color:#F14F60;">{{b}}: {{other}}</li>
+                                          <b style="color:#F14F60;"><li style="color:#F14F60;">{{b}}: {{other}}</li></b>
                                           {% else %}
-                                            <li> <span style="color:#F14F60;">{{b}} </span></li>
+                                          <b style="color:#F14F60;"><li> <span style="color:#F14F60;">{{b}} </span></li></b>
                                           {% endif %}
                                         </ul>
                                       {% endfor %}
-                                      The time requested is in: <span style="color:#F14F60;">{{time}} {% if other_time %}: {{other_time}} {% endif  %}</span>,
-                                      the price range requested is from: <span style="color:#F14F60;">{{fader}}</span>.
-                                      <p>Here a description of the project: <span style="color:#F14F60;">{{describe_project}}</span></p>
+                                      <p>The time requested is in: <b style="color:#F14F60;"><span style="color:#F14F60;">{{time}} {% if other_time %}: {{other_time}} {% endif  %}</span></b></p>
+                                      <p>The price range requested is from: <b style="color:#F14F60;"><span style="color:#F14F60;">{{fader}}</span></b></p>
+                                      <p>Here a description of the project: <b style="color:#F14F60;"><span style="color:#F14F60;">{{describe_project}}</span></b></p>
                                       <br><br>
-                                      <p><i><b>En vordem</b>, tenemos como misión hacer que las empresas prosperen a través de la digitalización de estas mismas.</i></p>
+                                      <p><i><b>In vordem</b>, our mission is to make companies thrive through the digitalization of these.</i></p>
                                     </td>
                                 </tr>
                             </table>

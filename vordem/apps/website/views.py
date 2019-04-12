@@ -1,3 +1,4 @@
+from django.urls import reverse_lazy
 from django.views.generic import TemplateView, FormView
 from ..messaging.email.helpers import send_email
 from .forms import ContactForm
@@ -30,11 +31,12 @@ class Contact(TemplateView):
 class RequestQuote(FormView):
     template_name = "request-quote.html"
     form_class = ContactForm
-    success_url = '/thanks/'
+    success_url = reverse_lazy('website:thanks')
 
     def form_valid(self, form):
         name = form.cleaned_data['name']
         company = form.cleaned_data['company']
+        email = form.cleaned_data['email']
         cellphone = form.cleaned_data['cellphone']
         build = form.cleaned_data['build']
         other = form.cleaned_data['other']
@@ -53,6 +55,7 @@ class RequestQuote(FormView):
             ctx={
                 'name': name,
                 'company': company,
+                'email': email,
                 'cellphone': cellphone,
                 'build': build,
                 'other': other,
@@ -79,3 +82,7 @@ class SingleProject(TemplateView):
 
 class SingleArticle(TemplateView):
     template_name = "article.html"
+
+
+class ThanksView(TemplateView):
+    template_name = "thanks.html"
