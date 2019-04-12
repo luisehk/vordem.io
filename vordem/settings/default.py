@@ -12,6 +12,7 @@ INSTALLED_APPS = [
     'vordem.apps.website',
     'vordem.apps.blog',
     'vordem.apps.search',
+    'vordem.apps.messaging.email',
 
     'wagtail.contrib.forms',
     'wagtail.contrib.redirects',

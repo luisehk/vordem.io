@@ -3,7 +3,7 @@ from django.conf.urls import url
 from .views import (
     Home, About, Services, Projects, Blog,
     Contact, RequestQuote, Careers, ApplyToJob,
-    SingleArticle, SingleProject
+    SingleArticle, SingleProject, ThanksView
 )
 
 app_name = 'website'
@@ -20,5 +20,6 @@ urlpatterns = [
     url(r'^apply/$', ApplyToJob.as_view(), name='apply'),
     url(r'^project/$', SingleProject.as_view(), name='project'),
     url(r'^article/$', SingleArticle.as_view(), name='article'),
+    url(r'^thanks/$', ThanksView.as_view(), name='thanks'),
     url(r'^$', RedirectView.as_view(url='/home/'))
 ]
