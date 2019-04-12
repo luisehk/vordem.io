@@ -45,7 +45,10 @@ class RequestQuote(FormView):
 
         send_email(
             subject='Vordem - Formulario de contacto.',
-            to_email=['edderleonardo@gmail.com'],
+            to_email=[
+                # TODO: email de vordem
+                'edderleonardo@gmail.com',
+                'c4m2m8z4k0i7c8t1@vordem.slack.com'],
             template='emails/email-contact.html',
             ctx={
                 'name': name,
