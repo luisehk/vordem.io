@@ -2831,7 +2831,9 @@ input[type="range"] + output {
 
 @media (min-width: 768px) {
   .pr70 {
-    padding-right: 70px; } }
+    padding-right: 70px; }
+  .pl70 {
+    padding-left: 70px; } }
 
 .is-one-col-inline {
   width: 100%; }
