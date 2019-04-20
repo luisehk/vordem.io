@@ -45,10 +45,10 @@
                     </div>
                     <div id="navMenuDocumentation" class="navbar-menu">
                         <div class="navbar-end">
+                            <a href="{% url 'website:home' %}" class="navbar-item is-hidden-mobile txt18">Home</a>
                             <a href="{% url 'website:about' %}" class="navbar-item is-hidden-mobile txt18">What we do</a>
                             <a href="{% url 'website:projects' %}" class="navbar-item is-hidden-mobile txt18">Our work</a>
-                            <a href="{% url 'website:services' %}" class="navbar-item is-hidden-mobile txt18">Services</a>
-                            <a href="{% url 'website:contact' %}" class="navbar-item is-hidden-mobile txt18">Contact</a>
+                            <a href="{% url 'website:contact' %}" class="navbar-item is-hidden-mobile txt18">Company</a>
                         </div>
                     </div>
                 </div>
@@ -66,10 +66,10 @@
         <div class="one-col is-table">
             <div class="one-col is-table">
                 <ul class="is-table-cell has-list has-text-centered" id="aside-menu">
+                    <a href="{% url 'website:home' %}" class="c-white txt18 mb20 is-bold">Home</a>
                     <a href="{% url 'website:about' %}" class="c-white txt18 mb20 is-bold">What we do</a>
                     <a href="{% url 'website:projects' %}" class="c-white txt18 mb20 is-bold">Our work</a>
-                    <a href="{% url 'website:services' %}" class="c-white txt18 mb20 is-bold">Services</a>
-                    <a href="{% url 'website:contact' %}" class="c-white txt18 mb20 is-bold">Contact</a>
+                    <a href="{% url 'website:contact' %}" class="c-white txt18 mb20 is-bold">Company</a>
                 </ul>
             </div>
         </div>
@@ -84,12 +84,12 @@
                 <div class="column is-half">
                     <div class="columns is-mobile">
                         <div class="column is-half has-list">
+                            <p class="bd-footer-link"><a href="{% url 'website:home' %}" class="txt18">Home</a></p>
                             <p class="bd-footer-link"><a href="{% url 'website:about' %}" class="txt18">What we do</a></p>
-                            <p class="bd-footer-link"><a href="{% url 'website:projects' %}" class="txt18">Our work</a></p>
                         </div>
                         <div class="column is-half has-list">
-                            <p class="bd-footer-link"><a href="{% url 'website:services' %}" class="txt18">Services</a></p>
-                            <p class="bd-footer-link"><a href="{% url 'website:contact' %}" class="txt18">Contact</a></p>
+                            <p class="bd-footer-link"><a href="{% url 'website:projects' %}" class="txt18">Our work</a></p>
+                            <p class="bd-footer-link"><a href="{% url 'website:contact' %}" class="txt18">Company</a></p>
                         </div>
                     </div>
                 </div>
