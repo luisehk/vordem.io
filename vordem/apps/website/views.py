@@ -38,18 +38,16 @@ class RequestQuote(FormView):
         company = form.cleaned_data['company']
         email = form.cleaned_data['email']
         cellphone = form.cleaned_data['cellphone']
+        location = form.cleaned_data['location']
         build = form.cleaned_data['build']
-        other = form.cleaned_data['other']
         time = form.cleaned_data['time']
-        other_time = form.cleaned_data['other_time']
         fader = form.cleaned_data['fader']
         describe_project = form.cleaned_data['describe_project']
 
         send_email(
             subject='Vordem - Formulario de contacto.',
             to_email=[
-                # TODO: email de vordem
-                'edderleonardo@gmail.com',
+                'hello@vordem.io',
                 'c4m2m8z4k0i7c8t1@vordem.slack.com'],
             template='emails/email-contact.html',
             ctx={
@@ -57,10 +55,9 @@ class RequestQuote(FormView):
                 'company': company,
                 'email': email,
                 'cellphone': cellphone,
+                'location': location,
                 'build': build,
-                'other': other,
                 'time': time,
-                'other_time': other_time,
                 'fader': fader,
                 'describe_project': describe_project,
                 'host': self.request.get_host()

@@ -2,7 +2,6 @@ from django import forms
 
 
 class ContactForm(forms.Form):
-
     WEBAPP = 'Web App'
     ANDROID = 'Android app'
     IOS = 'IOS app'
@@ -35,6 +34,7 @@ class ContactForm(forms.Form):
     company = forms.CharField()
     email = forms.CharField()
     cellphone = forms.CharField()
+    location = forms.CharField()
     build = forms.MultipleChoiceField(
         choices=WHAT_DO_YOU_WANT_TO_BUILD,
         widget=forms.CheckboxSelectMultiple(
@@ -44,7 +44,6 @@ class ContactForm(forms.Form):
                 'data-parsley-required': 'true'
             }
         ))
-    other = forms.CharField(required=False)
     time = forms.ChoiceField(
         choices=WHEN_DO_YOU_NEED_IT,
         widget=forms.RadioSelect(
@@ -54,7 +53,6 @@ class ContactForm(forms.Form):
                 'data-parsley-required': 'true'
             }
         ))
-    other_time = forms.CharField(required=False)
     fader = forms.IntegerField(
         required=False,
         widget=forms.NumberInput(
