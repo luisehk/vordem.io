@@ -4,6 +4,7 @@ services:
   ### data
   db:
     image: postgres:10.5
+    restart: always
     environment:
       - POSTGRES_DB=l2u2j124omdfIIDFMSADFPj2
       - POSTGRES_USER=jsdfo2psadf0m2305JSFo
@@ -15,6 +16,7 @@ services:
   ### application
   app: &app
     build: docker/python
+    restart: always
     command: gunicorn -b 0.0.0.0:8000 vordem.wsgi:application --workers 5 -k gevent --enable-stdio-inheritance --reload
     env_file: .env
     environment:
@@ -31,6 +33,7 @@ services:
   ### http
   cdn:
     build: docker/cdn
+    restart: always
     links:
       - app
     volumes:
@@ -39,8 +42,23 @@ services:
 
   proxy:
     build: docker/proxy
-    ports:
-      - "80:80"
+    restart: always
     links:
       - app
       - cdn
+    expose:
+      - '80'
+    networks:
+      - web
+      - default
+    labels:
+      - "traefik.backend=vordem"
+      - "traefik.docker.network=web"
+      - "traefik.frontend.rule=Host:vordem.mx, vordem.io"
+      - "traefik.enable=true"
+      - "traefik.port=80"
+
+
+networks:
+  web:
+    external: True
