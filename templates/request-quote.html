@@ -2,20 +2,29 @@
 {% load static %}
 
 {% block content %}
-<section class="ptb60">
-    <div class="wrap">
-        <div class="columns">
-            <div class="column is-half">
-                <div class="is-block mb40">
-                    <h1 class="txt36 mb20"><strong>Check out this content from the people at Vordem</strong></h1>
-                    <p>We are a software developent and design agency. We think, design and create mobile and web applications, that allow to boost our client’s business.</p>
-                </div>
-                <div class="is-block">
-                    <a class="icon-arrow-button-down"></a>
-                </div>
-            </div>
+<section class="pt60">
+  <div class="l-wrapp-hidden-widescreen pb80">
+    <div class="columns">
+      <div class="column is-half pr70">
+        <h1 class="txt48 mb50">
+          <strong>Let's talk</strong>
+        </h1>
+        <p class="mb40">
+            All great projects start with a Hello.
+        </p>
+        <p class="mb40">
+            Tell us about your project by filling this form. Please add as much detail as possible: What's your idea? What's the goal of the project? Is there a deadline you need to meet?
+        </p>
+
+        <a class="icon-arrow-button-down"></a>
+      </div>
+      <div class="column is-half is-flex-tablet">
+        <div class="is-right has-img">
+          <img src="{% static 'img/contact.svg' %}" alt="">
         </div>
+      </div>
     </div>
+  </div>
 </section>
 
 <section class="bg-blue-gradient has-texture c-white ptb60">
@@ -146,7 +155,7 @@
                           <p class="txt30 mb10"><strong>When do you need it?</p></strong>
                       </label>
                   </div>
-                  
+
                   <div class="column is-inline-block is-one-third">
                       <div class="button-select">
                         <input

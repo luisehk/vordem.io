@@ -2,30 +2,34 @@
 {% load static %}
 
 {% block content %}
+
 <section class="pt60">
-    <div class="wrap">
-        <div class="columns">
-            <div class="column is-half">
-                <div class="is-block mb40">
-                    <h1 class="txt36 mb20"><strong>Let's talk</strong></h1>
-                    <p>We are a software developent and design agency. We think, design and create mobile and web applications, that allow to boost our client’s business.</p>
-                    <p>We strongly believe that tecnical perfection and user centered design are the key to create extraordinary digital experiences.</p>
-                </div>
-                <div class="is-block">
-                    <a class="icon-arrow-button-down"></a>
-                </div>
-            </div>
+  <div class="l-wrapp-hidden-widescreen pb80">
+    <div class="columns">
+      <div class="column is-half pr70">
+        <h1 class="txt48 mb50">
+          <strong>Let's talk</strong>
+        </h1>
+        <p class="mb40">
+            All great projects start with a Hello.
+        </p>
+        <p class="mb40">
+            Tell us about your project by <a href="{% url 'website:quote' %}" class="c-black"><strong>filling this form</strong></a> or sending an email to <a href="mailto:luis@vordem.io" class="c-black"><strong>luis@vordem.io</strong></a>.
+        </p>
+
+        <a class="icon-arrow-button-down"></a>
+      </div>
+      <div class="column is-half is-flex-tablet">
+        <div class="is-right has-img">
+          <img src="{% static 'img/conversation.svg' %}" alt="">
         </div>
+      </div>
     </div>
+  </div>
 </section>
 
-<section class="bg-red-gradient bg-has-margin-top has-texture pt60 pb80-mobile">
+<section class="bg-red-gradient has-texture pt60 pb80-mobile">
     <div class="wrap">
-        <div class="columns pb80-mobile">
-            <div class="column">
-                <img src="https://via.placeholder.com/2250x970" alt="">
-            </div>
-        </div>
         <div class="columns">
             <div class="column is-two-thirds pr70">
                 <div class="has-iframe">
@@ -36,7 +40,10 @@
                 <h3 class="txt36 mb20 c-white"><strong>Where to find us</strong></h3>
                 <ul class="has-list">
                     <li class="pb20 c-white"><div class="has-icon"><img src="{% static 'img/icon1.svg' %}" alt=""></div><p>Bolivia #203</br> Vista Hermosa C.P. 64620</br> Monterrey, NL. México</p></li>
-                    <li class="pb20 c-white"><div class="has-icon"><img src="{% static 'img/icon2.svg' %}" alt=""></div><p>hello@vordem.io</p></li>
+                    <li class="pb20 c-white">
+                        <div class="has-icon"><img src="{% static 'img/icon2.svg' %}" alt=""></div>
+                        <p><a href="mailto:hello@vordem.io" class="c-white">hello@vordem.io</a></p>
+                    </li>
                     <li class="pb20 c-white"><div class="has-icon"><img src="{% static 'img/icon3.svg' %}" alt=""></div><p>+52 81 2473 9607</p></li>
                 </ul>
             </div>
@@ -50,8 +57,11 @@
         <div class="columns">
             <div class="column is-one-third">
                 <h1 class="txt36 mb20"><strong>Interested in working at Vordem?</strong></h1>
-                <p class="mb40">We are a software developent and design agency. We think, design and create mobile and web applications, that allow to boost our client’s business.</p>
-                <a href="{% url 'website:careers' %}" class="is-hidden-mobile button bg-red c-white has-arrow is-right">Careers</a>
+                <p class="mb40">We are always looking for software engineers, UI/UX designers, strategists, data scientists, business developers and product managers eager to make an impact in this world through technology.</p>
+
+                <p class="mb40">If you're looking for a place where you can work on challenging problems with an exceptional team, let's talk!</p>
+
+                <a href="mailto:hello@vordem.io" class="is-hidden-mobile button bg-red c-white has-arrow is-right">Drop us an email</a>
             </div>
             <div class="column is-two-thirds">
                 <div class="columns">

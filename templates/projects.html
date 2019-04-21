@@ -2,20 +2,27 @@
 {% load static %}
 
 {% block content %}
-<section class="ptb60">
-    <div class="wrap">
-        <div class="columns">
-            <div class="column">
-                <div class="is-block mb40">
-                    <h1 class="txt48 mb20"><strong>Technology to take your business to the next level</strong></h1>
-                    <p>Take a look at some of our work.</p>
-                </div>
-                <div class="is-block">
-                    <a class="icon-arrow-button-down"></a>
-                </div>
-            </div>
+
+<section class="pt60">
+  <div class="l-wrapp-hidden-widescreen pb80">
+    <div class="columns">
+      <div class="column is-half pr70">
+        <h1 class="txt48 mb50">
+          <strong>Technology to take your business to the next level</strong>
+        </h1>
+        <p class="mb40">
+            Take a look at some of our work.
+        </p>
+
+        <a class="icon-arrow-button-down"></a>
+      </div>
+      <div class="column is-half is-flex-tablet">
+        <div class="is-right has-img">
+          <img src="{% static 'img/resume.svg' %}" alt="">
         </div>
+      </div>
     </div>
+  </div>
 </section>
 
 <section class="bg-blue-gradient has-texture c-white ptb60">
@@ -24,7 +31,7 @@
             <div id="tab-1" class="tab-content">
                 <div class="fade is-two-thirds-inline has-column is-inline-block">
                     <div class="square-card">
-                        <a href="{% url 'website:project' %}">
+                        <a href="#">
                             <div class="img is-flex">
                                 <div class="is-align-middle">
                                     <img src="{% static 'img/portfolio/comex/thumbnail.png' %}" class="card-thumbnail" alt="Publicomex">

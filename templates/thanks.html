@@ -2,79 +2,29 @@
 {% load static %}
 
 {% block content %}
+
 <section class="pt60">
-  <div class="l-wrapp-hidden-widescreen pb60">
+  <div class="l-wrapp-hidden-widescreen pb80">
     <div class="columns">
-      <div class="column is-half">
-        <h1 class="txt36 mb50">
-          <strong>Thank you for contacting us, we will get back to you soon.</strong>
+      <div class="column is-half pr70">
+        <h1 class="txt48 mb50">
+          <strong>Thank you</strong>
         </h1>
         <p class="mb40">
+            We received your message, we will get back to you soon.
         </p>
-        <a href="{% url 'website:home' %}" class="button bg-white c-red has-arrow is-right">Go to index</a>
-      </div>
-    </div>
-  </div>
-  <div class="wrap">
-    <div class="columns">
-      <div class="column is-two-thirds pr70">
 
-      </div>
-      <div class="column is-one-thirds">
-        <h1 class="txt36 mb20"><strong></strong></h1>
         <p class="mb40">
+          <a href="{% url 'website:home' %}" class="button bg-red c-white has-arrow is-right">Continue browsing</a>
         </p>
+      </div>
+      <div class="column is-half is-flex-tablet">
+        <div class="is-right has-img">
+          <img src="{% static 'img/sent.svg' %}" alt="">
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<section class="bg-white ptb60">
-    <div class="wrap">
-      <div class="columns pb80">
-        <div class="is-one-third column">
-          <h4 class="txt36 mb40"><strong></strong></h4>
-        </div>
-      </div>
-      <div class="columns">
-        <div class="column is-12">
-          <div class="has-inline-list has-logo-list has-text-centered-tablet">
-            <div class="img is-grayscale is-half-inline">
-              <img src="{% static 'img/icon-logo8.png' %}" alt="">
-            </div>
-            <div class="img is-grayscale is-half-inline">
-              <img src="{% static 'img/icon-logo3.png' %}" alt="">
-            </div>
-            <div class="img is-grayscale is-half-inline">
-              <img src="{% static 'img/icon-logo10.png' %}" alt="">
-            </div>
-            <div class="img is-grayscale is-half-inline">
-              <img src="{% static 'img/icon-logo1.png' %}" alt="">
-            </div>
-            <div class="img is-grayscale is-half-inline">
-              <img src="{% static 'img/icon-logo4.png' %}" alt="">
-            </div>
-            <div class="img is-grayscale is-half-inline">
-              <img src="{% static 'img/icon-logo2.png' %}" alt="">
-            </div>
-            <div class="img is-grayscale is-half-inline">
-              <img src="{% static 'img/icon-logo7.png' %}" alt="">
-            </div>
-            <div class="img is-grayscale is-half-inline">
-              <img src="{% static 'img/icon-logo5.png' %}" alt="">
-            </div>
-            <div class="img is-grayscale is-half-inline">
-              <img src="{% static 'img/icon-logo6.png' %}" alt="">
-            </div>
-            <div class="img is-grayscale is-half-inline">
-              <img src="{% static 'img/icon-logo9.svg' %}" alt="">
-            </div>
-            <div class="img is-grayscale is-half-inline">
-              <img src="{% static 'img/icon-logo11.png' %}" alt="">
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
 {% endblock %}
