@@ -1,0 +1,16 @@
+.parsley-errors-list {
+    font-size: 15px !important;
+    color: #F44662;
+    font-weight: 800;
+}
+
+.parsley-errors-list > li {
+    list-style: none;
+    margin-left: -37px;
+}
+
+.card-thumbnail {
+    max-width: 100% !important;
+    max-height: 231px !important;
+    height: auto !important;
+}
