@@ -1,21 +1,3 @@
-// HERO MENU
-$("#navbarBurger").click(function(event) {
-    event.preventDefault();
-    $(".hero-nav").toggleClass("show");
-    $("body").addClass("overflow-active");
-    $("html").addClass("html-overflow-active");
-    $("#aside-menu").addClass("aside-overflow-active");
-});
-
-$(".hero-nav-close").click(function(event) {
-    event.preventDefault();
-    $(".hero-nav").removeClass("show");
-    $("body").removeClass("overflow-active");
-    $("html").removeClass("html-overflow-active");
-    $("#aside-menu").removeClass("aside-overflow-active");
-});
-
-
 // MASONRY
     $('.grid').masonry({
         // options
