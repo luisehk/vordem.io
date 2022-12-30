@@ -21,7 +21,7 @@
   "homepage": "https://github.com/luisehk/herrada.me#readme",
   "description": "",
   "dependencies": {
-    "next": "^8.1.0",
+    "next": "^13.1.1",
     "react": "^16.8.6",
     "react-dom": "^16.8.6"
   }
